@@ -1,8 +1,8 @@
 <?php
-	class Reprimands 
+	class Remarks 
 	{
 		public $id;
-		public $reprimand;
+		public $remark;
 		public $minutes;
 		public $kid_id;
 	}
