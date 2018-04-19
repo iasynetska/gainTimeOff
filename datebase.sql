@@ -54,10 +54,10 @@ CREATE TABLE tasks (
 	FOREIGN KEY (kid_id) REFERENCES kids (id)
 );
 
-/*Create new table reprimands*/
-CREATE TABLE reprimands (
+/*Create new table remarks*/
+CREATE TABLE remarks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
-    reprimand varchar(255) NOT NULL,
+    remark varchar(255) NOT NULL,
 	minutes time NOT NULL,
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
@@ -86,14 +86,14 @@ CREATE TABLE done_tasks (
 	FOREIGN KEY (task_id) REFERENCES tasks (id)
 );
 
-/*Create new table got_reprimands*/
-CREATE TABLE got_reprimands (
+/*Create new table got_remarks*/
+CREATE TABLE got_remarks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
-    reprimand_id int NOT NULL,
+    remark_id int NOT NULL,
 	date date NOT NULL,
 	note varchar(255),
     PRIMARY KEY (id),
-	FOREIGN KEY (reprimand_id) REFERENCES reprimands (id)
+	FOREIGN KEY (remark_id) REFERENCES remarks (id)
 );
 
 /*Create new table time_to_play*/
