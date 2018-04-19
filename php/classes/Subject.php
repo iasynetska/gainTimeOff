@@ -1,8 +1,10 @@
 <?php
-	class Subjects 
+	class Subject 
 	{
 		public $id;
+		
 		public $subject;
+		
 		public $kid_id;
 	}
 ?>

@@ -1,9 +1,12 @@
 <?php
-	class Marks 
+	class Mark 
 	{
 		public $id;
+		
 		public $mark;
+		
 		public $minutes;
+		
 		public $kid_id;
 	}
 ?>

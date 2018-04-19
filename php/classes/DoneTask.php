@@ -1,9 +1,12 @@
 <?php
-	class GotRemarks
+	class DoneTask
 	{
 		public $id;
-		public $remark_id;
+		
+		public $task_id;
+		
 		public $date;
+		
 		public $note;
 	}
 ?>
