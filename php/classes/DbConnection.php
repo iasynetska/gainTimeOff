@@ -1,5 +1,5 @@
 <?php
-	class DatabaseConnection
+	class DbConnection
 	{
 		private static $host = 'localhost';
 		
