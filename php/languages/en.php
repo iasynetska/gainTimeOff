@@ -1,8 +1,14 @@
 <?php
 	$lang = array (
-		"wellcome_en" => "English",
-		"wellcome_pl" => "Polish",
-		"wellcome_btn_parent" => "Parent",
-		"wellcome_btn_kid" => "Kid"
+		"en" => "English",
+		"pl" => "Polish",
+		"parent" => "Parent",
+		"kid" => "Kid",
+		"password" => "Password",
+		"confirm_password" => "Confirm password",
+		"login_submit" => "Log In",
+		"login_parent_link" => "Registration - create an account!",
+		"name" => "name",
+		"signup" => "Sign up"
 	);
 ?>
