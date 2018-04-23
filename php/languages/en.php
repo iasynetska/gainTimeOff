@@ -8,7 +8,7 @@
 		"confirm_password" => "Confirm password",
 		"login_submit" => "Log In",
 		"login_parent_link" => "Registration - create an account!",
-		"name" => "name",
+		"name" => "Name",
 		"signup" => "Sign up"
 	);
 ?>
