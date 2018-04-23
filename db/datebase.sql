@@ -1,8 +1,8 @@
 /*Create new datebase*/
 CREATE DATABASE gainTimeOff; 
 
-/*Create new table parents*/
-CREATE TABLE parents (
+/*Create new table user_parents*/
+CREATE TABLE user_parents (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     name varchar(255) NOT NULL,
     login varchar(255) NOT NULL UNIQUE,
@@ -11,8 +11,8 @@ CREATE TABLE parents (
     PRIMARY KEY (id)
 );
 
-/*Create new table kids*/
-CREATE TABLE kids (
+/*Create new table user_kids*/
+CREATE TABLE user_kids (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     name varchar(255) NOT NULL,
     login varchar(255) NOT NULL UNIQUE,
@@ -22,7 +22,7 @@ CREATE TABLE kids (
     parent_id int NOT NULL,
     mins_to_play time NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (parent_id) REFERENCES parents (id)
+    FOREIGN KEY (parent_id) REFERENCES user_parents (id)
 );
 
 /*Create new table subjects*/
@@ -31,7 +31,7 @@ CREATE TABLE subjects (
     subject varchar(255) NOT NULL,
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES kids (id)
+	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
 
 /*Create new table marks*/
@@ -41,7 +41,7 @@ CREATE TABLE marks (
 	minutes time NOT NULL,
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES kids (id)
+	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
 
 /*Create new table tasks*/
@@ -51,7 +51,7 @@ CREATE TABLE tasks (
 	minutes time NOT NULL,
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES kids (id)
+	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
 
 /*Create new table remarks*/
@@ -61,7 +61,7 @@ CREATE TABLE remarks (
 	minutes time NOT NULL,
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES kids (id)
+	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
 
 /*Create new table school_marks*/
@@ -104,5 +104,5 @@ CREATE TABLE time_to_play (
 	note varchar(255),
 	kid_id int NOT NULL,
     PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES kids (id)
+	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
