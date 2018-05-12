@@ -9,29 +9,28 @@
     });
     
     
-    $name = $_POST['name'];
-    $login = $_POST['login'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $name = filter_input(INPUT_POST, 'name');
+    $login = filter_input(INPUT_POST, 'login');
+    $email = filter_input(INPUT_POST, 'email');
+    $password = filter_input(INPUT_POST, 'password');
+    $confirm_password = filter_input(INPUT_POST, 'confirm_password');
     
-    //remember the entered data
-    $_SESSION['rem_name'] = $name;
-    $_SESSION['rem_login'] = $login;
-    $_SESSION['rem_email'] = $email;
-    $_SESSION['rem_password'] = $password;
-            
+    
     $error = false;
     
     
     //validation name
-    if(empty($name))
+    $options = array(
+            "options"=>array(
+            'regexp'=>'/^[a-zA-Z ]*$/'
+            )
+        );
+    
+    if(empty(filter_var($name)))
     {
         $error = true;
-        $_SESSION['error_empty_name'] = $lang['er_empty_name'];
-    }
-    
-    if((!preg_match("/^[a-zA-Z ]*$/",$name)))
+        $_SESSION['error_name'] = $lang['er_empty_name'];
+    }else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
     {
         $error = true;
         $_SESSION['error_name'] = $lang['er_name'];
@@ -44,14 +43,12 @@
         $error = true;
         $_SESSION['error_login'] = $lang['er_login'];
     }
-    else 
-    {    
-        if(ctype_alnum($login)==false)
-        {
-            $error = true;
-            $_SESSION['error_alnum_login'] = $lang['er_alnum_login'];
-        }
+    else if(!ctype_alnum($login))
+    {
+        $error = true;
+        $_SESSION['error_alnum_login'] = $lang['er_alnum_login'];
     }
+    
     
     
     //validation email
@@ -81,7 +78,7 @@
     
     //validation captcha
     $secret = "6Ld-SlUUAAAAALPqKT2lokYnL76iiTcFOKsiPmhQ";	
-    $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+    $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.filter_input(INPUT_POST, 'g-recaptcha-response'));
     $result = json_decode($check);
 
     if ($result->success==false)
@@ -91,20 +88,55 @@
     }
     
     
+    //check errors
     if($error == true) 
     {
+        //temporary variables
+        $_SESSION['temp_name'] = $name;
+        $_SESSION['temp_login'] = $login;
+        $_SESSION['temp_email'] = $email;
+        $_SESSION['temp_password'] = $password;
+        
         header('Location: /gaintimeoff/php/registration.php');
     } 
     else 
-    {
-        $_SESSION['name'] = $_POST['name'];
-        header('Location: /gaintimeoff/php/greeting.php');
-    }
-    
+    {       
+        $parentDao = new UserParentDao(DbConnection::getPDO());
+        
+        $exist = false;
+        
 
-//    $parentDao = new UserParentDao(DbConnection::getPDO());
-//
-//    $parent = new UserParent($_POST['name'], $_POST['login'], $_POST['email'], $_POST['password']);
-//
-//    $parentDao->createUserParent($parent);
+        //check if Login and Email already exist
+        if($parentDao->isLoginExisting($login))
+        {
+            $exist = true;
+            $_SESSION['error_login_existing'] = $lang['er_login_existing'];
+        }
+        
+        if($parentDao->isEmailExisting($email))
+        {
+            $exist = true;
+            $_SESSION['error_email_existing'] = $lang['er_email_existing'];
+        }
+        
+        if($exist)
+        {
+            header('Location: /gaintimeoff/php/registration.php');
+        }
+        else
+        {
+            //unset temporary variables AND create User
+            unset($_SESSION['temp_name']);
+            unset($_SESSION['temp_login']);
+            unset($_SESSION['temp_email']);
+            unset($_SESSION['temp_password']);
+            
+            $hash_password = password_hash($password, PASSWORD_DEFAULT); 
+            $parent = new UserParent($name, $login, $email, $hash_password);
+            $parentDao->createUserParent($parent);
+
+            $_SESSION['name'] = $name;
+            header('Location: /gaintimeoff/php/greeting.php');
+        }
+    }
 ?>

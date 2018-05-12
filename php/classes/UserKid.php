@@ -1,14 +1,6 @@
 <?php
-    class UserKid 
+    class UserKid extends User
     {
-        private $id;
-
-        public $name;
-
-        public $login;
-
-        public $password;
-
         public $date_of_birth;
 
         public $photo;

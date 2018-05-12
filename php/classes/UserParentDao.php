@@ -18,9 +18,10 @@
         }
 
 
-        public function createUserParent(UserParent $parent) {
+        public function createUserParent(UserParent $parent)
+        {
 
-            $stmt = $this->pdo->prepare("INSERT INTO user_parents(name, login, email, password)
+            $sql_statement = $this->pdo->prepare("INSERT INTO user_parents(name, login, email, password)
             VALUES (:name, :login, :email, :password)");
             
             $name = $parent->name;
@@ -28,12 +29,57 @@
             $email = $parent->email;
             $password = $parent->password;
 
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':login', $login);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
+            $sql_statement->bindParam(':name', $name);
+            $sql_statement->bindParam(':login', $login);
+            $sql_statement->bindParam(':email', $email);
+            $sql_statement->bindParam(':password', $password);
 
-            $stmt->execute();
+            $sql_statement->execute();
+        }
+        
+        
+        public function getParentByLogin(String $login)
+        {
+            
+            $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE login = :login");
+            
+            $sql_statement->bindParam(':login', $login);
+            
+            $sql_statement->execute();
+            
+            $parent = $sql_statement->fetch();
+            
+            $parent_logged = new UserParent($parent['email'], $parent['name'], $parent['login'], $parent['password'], $parent['id']);
+            
+            return $parent_logged;
+        }
+        
+        
+        public function isLoginExisting(String $login)
+        {
+            $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE login = :login");
+            
+            $sql_statement->bindParam(':login', $login);
+            
+            $sql_statement->execute();
+            
+            $rowCount = $sql_statement->rowCount();
+            
+            return $rowCount > 0;
+        }
+        
+        
+        public function isEmailExisting(String $email)
+        {
+            $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE email = :email");
+            
+            $sql_statement->bindParam(':email', $email);
+            
+            $sql_statement->execute();
+            
+            $rowCount = $sql_statement->rowCount();
+            
+            return $rowCount > 0;
         }
 
     }

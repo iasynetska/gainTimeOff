@@ -23,6 +23,11 @@
         "er_password" => "The password must have between 8 and 20 characters!",
         "er_confirm_password" => "The entered passwords are not identical!",
         "er_robot" => "Confirm that you are not a robot!",
-        "greeting" => "Hello %s! Thank you for registering. Now you can log in with your login and password."
+        "greeting" => "Hello %s! Thank you for registering. Now you can log in with your login and password.",
+        "er_login_existing" => "This login is already taken!",
+        "er_email_existing" => "This email is already in use!",
+       
+        //form Login_parent.php
+        "er_login_password" => "Wrong login or password!"
     );
 ?>

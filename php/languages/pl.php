@@ -23,6 +23,11 @@
         "er_password" => "Hasło musi posiadać od 8 do 20 znaków!",
         "er_confirm_password" => "Podane hasła nie są identyczne!",
         "er_robot" => "Potwierdź, że nie jesteś robotem!",
-        "greeting" => "Dzień dobry, %s! Dziękujemy za rejestrację. Teraz możesz zalogować się za pomocą swojego loginu i hasła."
+        "greeting" => "Dzień dobry, %s! Dziękujemy za rejestrację. Teraz możesz zalogować się za pomocą swojego loginu i hasła.",
+        "er_login_existing" => "Podany login jest już zajęty!",
+        "er_email_existing" => "Ten adres e-mail jest już w użyciu!",
+       
+        //form Login_parent.php
+        "er_login_password" => "Nieprawidłowe login lub hasło!"
     );
-?>
+?> 
