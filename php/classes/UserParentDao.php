@@ -49,7 +49,7 @@
             
             $parent = $sql_statement->fetch();
             
-            $parent_logged = new UserParent($parent['email'], $parent['name'], $parent['login'], $parent['password'], $parent['id']);
+            $parent_logged = new UserParent($parent['name'], $parent['login'], $parent['email'], $parent['password'], $parent['id']);
             
             return $parent_logged;
         }
@@ -81,6 +81,6 @@
             
             return $rowCount > 0;
         }
+        
 
     }
-?>

@@ -1,6 +1,6 @@
 <?php
 	
-    $lang = filter_input(INPUT_GET, 'lang', FILTER_SANITIZE_STRING);
+    $lang = filter_input(INPUT_GET, 'lang');
 
     if(($lang==="en" || $lang==="pl") && $_SESSION['lang']!==$lang)
     {
@@ -12,4 +12,3 @@
     }
 
     require_once "languages/".$_SESSION['lang'].".php";
-?>

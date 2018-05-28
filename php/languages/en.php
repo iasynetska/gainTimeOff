@@ -28,6 +28,15 @@
         "er_email_existing" => "This email is already in use!",
        
         //form Login_parent.php
-        "er_login_password" => "Wrong login or password!"
+        "er_login_password" => "Wrong login or password!",
+        
+        //dashboard
+        "kids" => "Kids",
+        "add_kid" => "Add kid",
+        "logout" => "Log out",
+        
+        //add_kid
+        "date_of_birth" => "Date of birthday",
+        "photo" => "Photo",
+        "next" => "Next"
     );
-?>

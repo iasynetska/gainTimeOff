@@ -1,4 +1,11 @@
 <?php
+
+    if(!isset($_SESSION['name']))
+    {
+        header('Location: /gaintimeoff/php/login_parent.php');
+        exit();
+    }
+    
     session_start();
     include_once "lang_config.php";
 ?>
@@ -14,6 +21,10 @@
         <a href="greeting.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
         
         <p><?php echo sprintf($lang['greeting'], $_SESSION['name'])?></p> <br />
+        
+        <?php
+            unset($_SESSION['name']);
+        ?>
         
         <a href="login_parent.php"><?php echo $lang['login_submit']?></a>
     </body>

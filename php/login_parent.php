@@ -3,6 +3,8 @@
     include_once "lang_config.php";
 ?>
 
+
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>

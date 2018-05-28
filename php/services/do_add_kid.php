@@ -14,13 +14,12 @@
     
     $name = filter_input(INPUT_POST, 'name');
     $login = filter_input(INPUT_POST, 'login');
-    $email = filter_input(INPUT_POST, 'email');
     $password = filter_input(INPUT_POST, 'password');
     $confirm_password = filter_input(INPUT_POST, 'confirm_password');
+    $date_of_birth = filter_input(INPUT_POST, 'date_of_birth');
     
     
     $error = false;
-    
     
     //validation name
     $options = array(
@@ -53,17 +52,6 @@
     }
     
     
-    
-    //validation email
-    $valid_email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-    if ((filter_var($valid_email, FILTER_VALIDATE_EMAIL)==false) || ($valid_email!=$email))
-    {
-        $error = true;
-        $_SESSION['error_email']=$lang['er_email'];
-    }
-    
-    
     //validation password
     if(strlen($password)<8||strlen($password)>20)
     {
@@ -78,18 +66,17 @@
         }
     }
     
-    
-    //validation captcha
-    $secret = "6Ld-SlUUAAAAALPqKT2lokYnL76iiTcFOKsiPmhQ";	
-    $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.filter_input(INPUT_POST, 'g-recaptcha-response'));
-    $result = json_decode($check);
-
-    if ($result->success==false)
+    //validation Date of photo
+    $uploaddir = './';
+    if($_FILES['photo']['error'] == UPLOAD_ERR_OK)
     {
-        $error = true;
-        $_SESSION['error_robot'] = $lang['er_robot'];
+        $photo_name = $uploaddir.$_FILES['photo']['name'];
+        $photo_tmp = $_FILES['photo']['tmp_name'];
+        $photo_content = file_get_contents($photo_tmp);
+        $photo = base64_encode($photo_content);
     }
-    
+
+
     
     //check errors
     if($error == true) 
@@ -97,49 +84,44 @@
         //temporary variables
         $_SESSION['tmp_name'] = $name;
         $_SESSION['tmp_login'] = $login;
-        $_SESSION['tmp_email'] = $email;
         $_SESSION['tmp_password'] = $password;
         
-        header('Location: /gaintimeoff/php/registration.php');
+        header('Location: /gaintimeoff/php/add_kid.php');
     } 
     else 
     {       
-        $parentDao = new UserParentDao(DbConnection::getPDO());
+        $kidDao = new UserKidDao(DbConnection::getPDO());
         
         $exist = false;
         
 
-        //check if Login and Email already exist
-        if($parentDao->isLoginExisting($login))
+        //check if Login already exist
+        $parent = $_SESSION['parent'];
+        $parent_id = $parent->getId();
+        
+        if($kidDao->isLoginExisting($login, $parent_id))
         {
             $exist = true;
             $_SESSION['error_login_existing'] = $lang['er_login_existing'];
         }
         
-        if($parentDao->isEmailExisting($email))
-        {
-            $exist = true;
-            $_SESSION['error_email_existing'] = $lang['er_email_existing'];
-        }
-        
+      
         if($exist)
         {
-            header('Location: /gaintimeoff/php/registration.php');
+            header('Location: /gaintimeoff/php/add_kid.php');
         }
         else
         {
             //unset temporary variables AND create User
             unset($_SESSION['tmp_name']);
             unset($_SESSION['tmp_login']);
-            unset($_SESSION['tmp_email']);
             unset($_SESSION['tmp_password']);
             
             $hash_password = password_hash($password, PASSWORD_DEFAULT); 
-            $parent = new UserParent($name, $login, $email, $hash_password);
-            $parentDao->createUserParent($parent);
+            $kid = new UserKid($name, $login, $hash_password, $date_of_birth, $photo, $parent_id);
+            $kidDao->createUserKid($kid);
+            $_SESSION['kid'] = $kid;
 
-            $_SESSION['name'] = $name;
-            header('Location: /gaintimeoff/php/greeting.php');
+            header('Location: /gaintimeoff/php/dashboard_parent.php');
         }
     }
-?>

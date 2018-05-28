@@ -14,5 +14,6 @@
         <a href="welcome.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
         <a href="login_parent.php"><?php echo $lang['parent']?></a>
         <a href="login_kid.php"><?php echo $lang['kid']?></a>
+        
     </body>
 </html>

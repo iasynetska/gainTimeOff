@@ -1,14 +1,31 @@
 <?php
-        session_start();
-	include_once "lang_config.php";
+
+    //auto-load Classes
+    spl_autoload_register(function ($class) 
+    {
+        require_once 'classes/' . $class . '.php';
+    });
+    
+    session_start();
+    
+    include_once "lang_config.php";
+    
+    
+    
+    //check if authorised
+    if (!isset($_SESSION['parent']))
+    {
+        header('Location: welcome.php');
+        exit();
+    }
 ?>
+
 
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Registration for parent</title>
-        <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
+        <title>Add new kid</title>
         <style>
             .error
             {
@@ -19,10 +36,12 @@
 	</style>
     </head>
     <body>
-        <a href="registration.php?lang=en"><?php echo $lang['en']?></a>
-        <a href="registration.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
-
-        <form action="./services/do_registration.php" method="post">
+        <br /><br /><a href="add_kid.php?lang=en"><?php echo $lang['en']?></a>
+        <a href="add_kid.php?lang=pl"><?php echo $lang['pl']?></a>
+        
+        <br /><br /><a href="./services/do_logout_parent.php"><?php echo $lang['logout']?></a>
+        
+        <br /><br /><form action="./services/do_add_kid.php" method="post" enctype = "multipart/form-data">
             
             <!--field Name-->
             <?php echo $lang['name']?>: <br /> <input type="text" value="<?php
@@ -30,7 +49,7 @@
                 {
                     echo $_SESSION['tmp_name'];
                 }
-            ?>" name="name" /> <br />
+            ?>" name="name" /><br />
             <?php 
                 if(isset($_SESSION['error_name']))
                 {
@@ -45,7 +64,7 @@
                 {
                     echo $_SESSION['tmp_login'];
                 }
-                ?>" name="login" /> <br />
+                ?>" name="login" /><br />
             <?php
                 if(isset($_SESSION['error_login']))
                 {
@@ -64,25 +83,6 @@
                 }
             ?>
             
-            <!--field E-mail-->
-            E-mail: <br /> <input type="email" value="<?php
-                if(isset($_SESSION['tmp_email']))
-                {
-                    echo $_SESSION['tmp_email'];
-                }
-            ?>" name="email" /> <br />
-            <?php
-                if(isset($_SESSION['error_email']))
-                {
-                    echo "<div class='error'>".$_SESSION['error_email']."</div>";
-                    unset($_SESSION['error_email']);
-                }
-                if(isset($_SESSION['error_email_existing']))
-                {
-                    echo "<div class='error'>".$_SESSION['error_email_existing']."</div>";
-                    unset($_SESSION['error_email_existing']);
-                }
-            ?>
             
             <!--field Password-->
             <?php echo $lang['password']?>: <br /> <input type="password" value="<?php
@@ -90,7 +90,7 @@
                 {
                     echo $_SESSION['tmp_password'];
                 }
-            ?>" name="password" /> <br />
+            ?>" name="password" /><br />
             <?php
                 if(isset($_SESSION['error_password']))
                 {
@@ -100,26 +100,16 @@
             ?>
             
             <!--field Confirm Password-->
-            <?php echo $lang['confirm_password']?>: <br /> <input type="password" name="confirm_password" /> <br /><br />
-            <?php
-                if(isset($_SESSION['error_confirm_password']))
-                {
-                    echo "<div class='error'>".$_SESSION['error_confirm_password']."</div>";
-                    unset($_SESSION['error_confirm_password']);
-                }
-            ?>
+            <?php echo $lang['confirm_password']?>: <br /> <input type="password" name="confirm_password" /><br />
             
-            <!--field Captcha-->
-            <div class="g-recaptcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS"></div> <br />
-            <?php
-                if(isset($_SESSION['error_robot']))
-                {
-                    echo "<div class='error'>".$_SESSION['error_robot']."</div>";
-                    unset($_SESSION['error_robot']);
-                }
-            ?>
-
-            <input type="submit" value="<?php echo $lang['signup']?>" />
+            <!--field Date of birthday-->
+            <?php echo $lang['date_of_birth']?>: <br /> <input type="date" name="date_of_birth" /><br />
+            
+            <!--photo-->
+            <?php echo $lang['photo']?>: <br /> <input type="file" name="photo" /><br />
+            
+            <br /><input type="submit" value="<?php echo $lang['next']?>" />
+            
         </form>
     </body>
 </html>
