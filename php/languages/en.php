@@ -4,6 +4,7 @@
         "pl" => "Polish",
         "parent" => "Parent",
         "kid" => "Kid",
+        "back" => "Back",
         
         //form Log in
         "password" => "Password",
@@ -31,12 +32,25 @@
         "er_login_password" => "Wrong login or password!",
         
         //dashboard
+        "messenger" => "You can add a kid!",
         "kids" => "Kids",
         "add_kid" => "Add kid",
         "logout" => "Log out",
         
         //add_kid
+        "gender" => "Gender",
+        "boy" => "Boy",
+        "girl" => "Girl",
         "date_of_birth" => "Date of birthday",
+        "er_date" => "The date format is not valid",
         "photo" => "Photo",
+        "er_gender" => "No option selected!",
+        "er_size" => "Maximum file size exceeded!",
+        "er_partially_uploaded" => "The uploaded file was only partially uploaded!",
+        "er_no_file" => "No file was uploaded!",
+        "er_tmp_folder" => "Missing a temporary folder! Please, contact the administration of the website!",
+        "er_cant_write" => "Failed to write file to disk! Please, contact the administration of the website!",
+        "er_extension_PHP" => "A PHP extension stopped the file upload! Please, contact the administration of the website!",
+        "er_unknown" => "Oops! Something went wrong, please try again!",
         "next" => "Next"
     );

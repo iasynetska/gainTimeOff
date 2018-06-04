@@ -100,7 +100,7 @@
         $_SESSION['tmp_email'] = $email;
         $_SESSION['tmp_password'] = $password;
         
-        header('Location: /gaintimeoff/php/registration.php');
+        header('Location: ../registration.php');
     } 
     else 
     {       
@@ -139,7 +139,7 @@
             $parentDao->createUserParent($parent);
 
             $_SESSION['name'] = $name;
-            header('Location: /gaintimeoff/php/greeting.php');
+            header('Location: ../greeting.php');
         }
     }
 ?>

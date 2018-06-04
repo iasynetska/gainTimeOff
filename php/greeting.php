@@ -1,12 +1,11 @@
-<?php
-
+<?php 
+    session_start();
     if(!isset($_SESSION['name']))
     {
-        header('Location: /gaintimeoff/php/login_parent.php');
+        header('Location: login_parent.php');
         exit();
     }
     
-    session_start();
     include_once "lang_config.php";
 ?>
 

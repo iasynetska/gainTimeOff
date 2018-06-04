@@ -15,6 +15,7 @@ CREATE TABLE user_parents (
 CREATE TABLE user_kids (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     name varchar(255) NOT NULL,
+    gender varchar(50) NOT NULL,
     login varchar(255) NOT NULL UNIQUE,
     password varchar(255) NOT NULL,
     date_of_birth date,

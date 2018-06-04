@@ -36,6 +36,8 @@
 	</style>
     </head>
     <body>
+        <a href="dashboard_parent.php"><?php echo $lang['back']?></a>
+        
         <br /><br /><a href="add_kid.php?lang=en"><?php echo $lang['en']?></a>
         <a href="add_kid.php?lang=pl"><?php echo $lang['pl']?></a>
         
@@ -57,6 +59,18 @@
                     unset($_SESSION['error_name']);
                 }
             ?>
+            
+            <!--field Gender-->
+            <?php echo $lang['gender']?>: <br /> <input type="radio" name="gender" value="boy"><?php echo $lang['boy']?>
+                <input type="radio" name="gender" value="girl"><?php echo $lang['girl']?><br />
+            <?php
+                if(isset($_SESSION['error_gender']))
+                {
+                    echo "<div class='error'>".$_SESSION['error_gender']."</div>";
+                    unset($_SESSION['error_gender']);
+                }
+            ?>
+        
             
             <!--field Login-->
             Login: <br /> <input type="text" value="<?php
@@ -103,10 +117,29 @@
             <?php echo $lang['confirm_password']?>: <br /> <input type="password" name="confirm_password" /><br />
             
             <!--field Date of birthday-->
-            <?php echo $lang['date_of_birth']?>: <br /> <input type="date" name="date_of_birth" /><br />
+            <?php echo $lang['date_of_birth']?>: <br /> <input type="date" value="<?php
+                if(isset($_SESSION['tmp_date']))
+                    {
+                        echo $_SESSION['tmp_date'];
+                    }
+            ?>" name="date_of_birth" /><br />
+            <?php
+                if(isset($_SESSION['error_date']))
+                {
+                    echo "<div class='error'>".$_SESSION['error_date']."</div>";
+                    unset($_SESSION['error_date']);
+                }
+            ?>
             
             <!--photo-->
             <?php echo $lang['photo']?>: <br /> <input type="file" name="photo" /><br />
+            <?php
+                if(isset($_SESSION['error_photo']))
+                {
+                    echo "<div class='error'>".$_SESSION['error_photo']."</div>";
+                    unset($_SESSION['error_photo']);
+                }
+            ?>
             
             <br /><input type="submit" value="<?php echo $lang['next']?>" />
             

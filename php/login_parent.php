@@ -19,6 +19,8 @@
 	</style>
     </head>
     <body>
+        <a href="welcome.php"><img src="../img/logo.png" alt="logo" width="100px" height="100px" /></a><br />
+        
         <a href="login_parent.php?lang=en"><?php echo $lang['en']?></a>
         <a href="login_parent.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
 

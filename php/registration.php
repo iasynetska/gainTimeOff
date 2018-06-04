@@ -1,4 +1,4 @@
-<?php
+<?php 
         session_start();
 	include_once "lang_config.php";
 ?>
@@ -19,6 +19,10 @@
 	</style>
     </head>
     <body>
+        <a href="welcome.php"><img src="../img/logo.png" alt="logo" width="100px" height="100px" /></a><br />
+        
+        <a href="login_parent.php">Log In</a><br /><br />
+        
         <a href="registration.php?lang=en"><?php echo $lang['en']?></a>
         <a href="registration.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
 

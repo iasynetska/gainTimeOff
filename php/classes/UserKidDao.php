@@ -21,10 +21,11 @@
         public function createUserKid(UserKid $kid)
         {
 
-            $sql_statement = $this->pdo->prepare("INSERT INTO user_kids(name, login, password, date_of_birth, photo, parent_id)
-            VALUES (:name, :login, :password, :date_of_birth, :photo, :parent_id)");
+            $sql_statement = $this->pdo->prepare("INSERT INTO user_kids(name, gender, login, password, date_of_birth, photo, parent_id)
+            VALUES (:name, :gender, :login, :password, :date_of_birth, :photo, :parent_id)");
             
             $name = $kid->name;
+            $gender = $kid->gender;
             $login = $kid->login;
             $password = $kid->password;
             $date_of_birth = $kid->date_of_birth;
@@ -32,6 +33,7 @@
             $parent_id = $kid->parent_id;
 
             $sql_statement->bindParam(':name', $name);
+            $sql_statement->bindParam(':gender', $gender);
             $sql_statement->bindParam(':login', $login);
             $sql_statement->bindParam(':password', $password);
             $sql_statement->bindParam(':date_of_birth', $date_of_birth);
@@ -55,7 +57,7 @@
             $arr_kids = [];            
             foreach ($kids_result as $result)
             {
-                $kid = new UserKid($result['name'], $result['login'], $result['password'], $result['date_of_birth'], $result['photo'], 
+                $kid = new UserKid($result['name'], $result['gender'], $result['login'], $result['password'], $result['date_of_birth'], $result['photo'], 
                         $result['parent_id'], $result['mins_to_play'], $result['id']);
                 array_push($arr_kids, $kid);
             }

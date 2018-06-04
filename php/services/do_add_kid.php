@@ -13,10 +13,11 @@
  
     
     $name = filter_input(INPUT_POST, 'name');
+    $gender = filter_input(INPUT_POST, 'gender');
     $login = filter_input(INPUT_POST, 'login');
     $password = filter_input(INPUT_POST, 'password');
     $confirm_password = filter_input(INPUT_POST, 'confirm_password');
-    $date_of_birth = filter_input(INPUT_POST, 'date_of_birth');
+    $date = filter_input(INPUT_POST, 'date_of_birth');
     
     
     $error = false;
@@ -32,10 +33,19 @@
     {
         $error = true;
         $_SESSION['error_name'] = $lang['er_empty_name'];
-    }else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
+    }
+    else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
     {
         $error = true;
         $_SESSION['error_name'] = $lang['er_name'];
+    }
+    
+    
+    //validation gender
+    if(!($gender == 'girl' || $gender == 'boy'))
+    {
+        $error = true;
+        $_SESSION['error_gender'] = $lang['er_gender'];
     }
     
     
@@ -62,19 +72,82 @@
         if($password!=$confirm_password)
         {
             $error = true;
-            $_SESSION['error_confirm_password'] = $lang['er_confirm_password'];
+            $_SESSION['error_password'] = $lang['er_confirm_password'];
         }
     }
     
-    //validation Date of photo
-    $uploaddir = './';
-    if($_FILES['photo']['error'] == UPLOAD_ERR_OK)
+    //valida Date of birthday
+    if(empty($date))
     {
-        $photo_name = $uploaddir.$_FILES['photo']['name'];
-        $photo_tmp = $_FILES['photo']['tmp_name'];
-        $photo_content = file_get_contents($photo_tmp);
-        $photo = base64_encode($photo_content);
+        $date_of_birth = NULL;
     }
+    else
+    {
+        $date_array = explode("-", $date);
+        $year = $date_array[0];
+        $month = $date_array[1];
+        $day = $date_array[2];
+        
+        if(checkdate($month, $day, $year))
+        {
+            $date_of_birth = $date;
+        }
+        else
+        {
+            $error = true;
+            $_SESSION['error_date'] = $lang['er_date'];
+        }
+    }
+    
+    //validation photo
+    if($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE)
+    {
+        $photo = NULL;
+    }
+    else
+    {
+        if($_FILES['photo']['error'] == UPLOAD_ERR_OK)
+        {
+            $photo_tmp = $_FILES['photo']['tmp_name'];
+            $photo_content = file_get_contents($photo_tmp);
+            $photo = base64_encode($photo_content);
+        }
+        else 
+       {
+            switch($_FILES['photo']['error'])
+            {
+                case UPLOAD_ERR_INI_SIZE :
+                case UPLOAD_ERR_FORM_SIZE :
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_size'];
+                    break;
+
+                case UPLOAD_ERR_PARTIAL :
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_partially_uploaded'];
+                    break;
+
+                case UPLOAD_ERR_NO_TMP_DIR:
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_tmp_folder'];
+                    break;
+
+                case UPLOAD_ERR_CANT_WRITE:
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_cant_write'];
+                    break;
+
+                case UPLOAD_ERR_EXTENSION:
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_extension_PHP'];
+
+                default :
+                    $error = true;
+                    $_SESSION['error_photo'] = $lang['er_unknown'];
+                    echo "Nieznany typ błędu!";
+            }
+        }
+   }
 
 
     
@@ -83,11 +156,13 @@
     {
         //temporary variables
         $_SESSION['tmp_name'] = $name;
+        $_SESSION['tmp_gender'] = $gender;
         $_SESSION['tmp_login'] = $login;
         $_SESSION['tmp_password'] = $password;
+        $_SESSION['tmp_date'] = $date;
         
         header('Location: /gaintimeoff/php/add_kid.php');
-    } 
+    }
     else 
     {       
         $kidDao = new UserKidDao(DbConnection::getPDO());
@@ -114,11 +189,14 @@
         {
             //unset temporary variables AND create User
             unset($_SESSION['tmp_name']);
+            unset($_SESSION['tmp_gender']);
             unset($_SESSION['tmp_login']);
             unset($_SESSION['tmp_password']);
+            unset($_SESSION['tmp_date']);
             
-            $hash_password = password_hash($password, PASSWORD_DEFAULT); 
-            $kid = new UserKid($name, $login, $hash_password, $date_of_birth, $photo, $parent_id);
+            
+            $hash_password = password_hash($password, PASSWORD_DEFAULT);
+            $kid = new UserKid($name, $gender, $login, $hash_password, $date_of_birth, $photo, $parent_id);
             $kidDao->createUserKid($kid);
             $_SESSION['kid'] = $kid;
 
