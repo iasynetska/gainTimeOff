@@ -1,7 +1,7 @@
 <?php
     $lang = array (
-        "en" => "English",
-        "pl" => "Polish",
+        "en" => "En",
+        "pl" => "Pl",
         "parent" => "Parent",
         "kid" => "Kid",
         "back" => "Back",

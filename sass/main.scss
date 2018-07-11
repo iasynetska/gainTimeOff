@@ -1,0 +1,143 @@
+@import "_colors";
+
+html, body {
+    height: 100%;
+}
+
+html
+{
+    font-size: 14px;
+}
+
+body
+{
+    margin: 0;
+    font-family: 'Almendra', sans-serif;
+    background: url(../img/background.jpg) no-repeat top center fixed;
+    background-size: cover;
+}
+
+/****************
+
+NAV-MANU
+
+*****************/
+.top-nav
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background-color: $bg-color;
+    border-bottom: 1px solid $link-color;
+}
+
+.top-nav_logo
+{
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.top-nav_lang
+{
+    display: flex;
+    list-style: none;
+}
+
+.top-nav a,
+.top-nav  .nav-slash,
+.user .card-header a
+{
+    text-decoration: none;
+    color: $white-color;
+}
+
+.top-nav_lang li
+{
+    margin-right: 15px;
+}
+
+
+.top-nav_lang li a,
+.user .card-header a
+{
+    text-transform: uppercase;
+}
+
+.top-nav_logo a:hover,
+.top-nav_lang li a:hover,
+.user .card-header a:hover
+{
+    color: $link-color;
+}
+
+/***********************
+
+SECTION
+
+***********************/
+
+.user .container
+{
+    margin-top: 150px;
+}
+@media(max-width: 767px)
+{
+   .user .container
+   {
+       margin-top: 70px;
+   }
+}
+
+.user .card
+{
+    text-align: center;
+    background-color: $bg-color;
+    border: 1px solid $link-color;
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+.user .kid,
+.user .parent
+{
+    margin-bottom: 15px;
+}
+
+.user .card .card-header
+{
+    padding: 15px;
+    border-bottom: 1px solid $link-color;
+}
+
+.user .card .card-body
+{
+    padding: 15px 50px 15px 50px;
+}
+
+
+.user .card:hover
+{
+    background: $dark-color;
+}
+
+/**************************
+
+FOOTER
+
+**************************/
+.footer
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: $white-color;
+    background-color: $bg-color;
+    border-top: 1px solid $link-color;
+}
+
+.footer .copy
+{
+    float: right;
+}
