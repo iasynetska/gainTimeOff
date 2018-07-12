@@ -54,20 +54,20 @@
                 <div class="row justify-content-center">
                     <div class="col-md-auto kid">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header"  onclick="location.href='login_kid.php';">
                                 <a class="nav-link" href="login_kid.php"><?php echo $lang['kid']?></a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" onclick="location.href='login_kid.php';">
                                 <img src="../img/children_white.png" alt="kid">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-auto parent">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" onclick="location.href='login_parent.php';">
                                 <a class="nav-link" href="login_parent.php"><?php echo $lang['parent']?></a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" onclick="location.href='login_parent.php';">
                                 <img src="../img/couple_white.png" alt="parent">
                             </div>
                         </div>
@@ -78,9 +78,30 @@
         
         <footer class="footer">
             <div class="container">
-                <div class="copy">
-                    <p>&copy;2018 Viktoriia Iasynetska</p>
-                </div> 
+                <div class="row">
+                    <div class="col">
+                        <div class="counter">
+                            <p><?php echo $lang['visitors']?>:  
+                                <?php 
+                                    include_once "./services/do_visitor_counter.php";
+                                    if(($count = getCounter()) !== false)
+                                    {
+                                        echo $count;
+                                    }
+                                    else
+                                    {
+                                        echo 'unknown';
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="copy">
+                            <p>&copy;2018 Viktoriia Iasynetska</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
         

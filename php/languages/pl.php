@@ -5,6 +5,7 @@
         "parent" => "Rodzic",
         "kid" => "Dziecko",
         "back" => "Wstecz",
+        "visitors" => "Goście",
         
         //form Log in
         "password" => "Hasło",

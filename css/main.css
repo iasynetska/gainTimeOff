@@ -70,12 +70,12 @@ SECTION
 .user .container {
   margin-top: 150px;
 }
-@media only screen and (max-width: 768px) {
+
+@media (max-width: 767px) {
   .user .container {
     margin-top: 70px;
   }
 }
-
 .user .card {
   text-align: center;
   background-color: rgba(4, 27, 40, 0.9);
@@ -118,6 +118,22 @@ FOOTER
 
 .footer .copy {
   float: right;
+}
+
+/***********************
+
+LOGIN_KID FORM
+
+***********************/
+.login {
+  margin-top: 150px;
+}
+
+.login form {
+  background-color: rgba(4, 27, 40, 0.9);
+  border: 1px solid #2EBBCE;
+  border-radius: 5px;
+  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */
