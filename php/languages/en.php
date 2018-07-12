@@ -6,6 +6,7 @@
         "kid" => "Kid",
         "back" => "Back",
         "visitors" => "Visitors",
+        "customers" => "Customers",
         
         //form Log in
         "password" => "Password",

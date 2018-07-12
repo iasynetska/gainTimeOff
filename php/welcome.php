@@ -52,8 +52,8 @@
         <section class="user">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-auto kid">
-                        <div class="card">
+                    <div class="col-md-auto">
+                        <div class="card kid">
                             <div class="card-header"  onclick="location.href='login_kid.php';">
                                 <a class="nav-link" href="login_kid.php"><?php echo $lang['kid']?></a>
                             </div>
@@ -62,8 +62,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-auto parent">
-                        <div class="card">
+                    <div class="col-md-auto">
+                        <div class="card parent">
                             <div class="card-header" onclick="location.href='login_parent.php';">
                                 <a class="nav-link" href="login_parent.php"><?php echo $lang['parent']?></a>
                             </div>
@@ -79,10 +79,9 @@
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-2 col-sm-3 col-6">
                         <div class="counter">
-                            <p><?php echo $lang['visitors']?>:  
-                                <?php 
+                            <p><?php echo $lang['visitors'].': ';
                                     include_once "./services/do_visitor_counter.php";
                                     if(($count = getCounter()) !== false)
                                     {
@@ -96,7 +95,12 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-2 col-sm-3 col-6">
+                        <div class="counter">
+                            <p><?php echo $lang['customers'].': ';?></p>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-6 col-12">
                         <div class="copy">
                             <p>&copy;2018 Viktoriia Iasynetska</p>
                         </div>

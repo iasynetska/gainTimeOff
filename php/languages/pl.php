@@ -6,6 +6,7 @@
         "kid" => "Dziecko",
         "back" => "Wstecz",
         "visitors" => "Goście",
+        "customers" => "Klienci",
         
         //form Log in
         "password" => "Hasło",

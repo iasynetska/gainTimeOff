@@ -78,31 +78,27 @@ SECTION
 
 ***********************/
 
-.user .container
-{
-    margin-top: 150px;
-}
-@media(max-width: 767px)
-{
-   .user .container
-   {
-       margin-top: 70px;
-   }
-}
-
 .user .card
 {
+    margin-top: 150px;
     text-align: center;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
     cursor: pointer; 
 }
-
-.user .kid,
-.user .parent
+@media  only screen and (max-width: 767px)
 {
-    margin-bottom: 15px;
+   .user .kid
+   {
+       margin-top: 90px;
+   }
+   
+   .user .parent
+   {
+       margin-top: 30px;
+       margin-bottom: 100px;
+   }
 }
 
 .user .card .card-header
@@ -147,14 +143,9 @@ FOOTER
 LOGIN_KID FORM
 
 ***********************/
-
-.login
-{
-    margin-top: 150px;
-}
-
 .login form
 {
+    margin-top: 150px;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
