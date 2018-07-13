@@ -7,6 +7,7 @@
         "back" => "Wstecz",
         "visitors" => "Goście",
         "customers" => "Klienci",
+        "unknown" => "nieznany",
         
         //form Log in
         "password" => "Hasło",

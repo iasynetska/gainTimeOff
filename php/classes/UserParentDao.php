@@ -82,5 +82,12 @@
             return $rowCount > 0;
         }
         
-
+        public function getNumberOfParents()
+        {
+            $query = "SELECT COUNT(*) FROM user_parents";
+            
+            $result = $this->pdo->query($query)->fetch();
+            
+            return $result[0];
+        }
     }

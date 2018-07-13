@@ -1,6 +1,18 @@
 <?php
+    //auto-load Classes
+    spl_autoload_register(function ($class) 
+        {
+            require_once './classes/' . $class . '.php';
+        });
+        
     session_start();
     include_once "lang_config.php";
+
+    
+    if(($count = CustomerNumberServices::incrementAndGetVisitorCounter()) == false)
+        {
+            $count = $lang['unknown'];
+        }
 ?>
 
 <!DOCTYPE HTML>
@@ -13,6 +25,9 @@
         
         <title>Welcome</title>
         
+        <!-- reset for browsers -->
+        <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+        
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
@@ -20,7 +35,7 @@
         <link href="https://fonts.googleapis.com/css?family=Almendra:400,700&amp;subset=latin-ext" rel="stylesheet">
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
     </head>
     
     <body>
@@ -81,23 +96,12 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-3 col-6">
                         <div class="counter">
-                            <p><?php echo $lang['visitors'].': ';
-                                    include_once "./services/do_visitor_counter.php";
-                                    if(($count = getCounter()) !== false)
-                                    {
-                                        echo $count;
-                                    }
-                                    else
-                                    {
-                                        echo 'unknown';
-                                    }
-                                ?>
-                            </p>
+                            <p><?php echo $lang['visitors'].': '.$count;?></p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-3 col-6">
                         <div class="counter">
-                            <p><?php echo $lang['customers'].': ';?></p>
+                            <p><?php echo $lang['customers'].': '.CustomerNumberServices::getNumberOfRegisteredUsers();?></p>
                         </div>
                     </div>
                     <div class="col-md-8 col-sm-6 col-12">

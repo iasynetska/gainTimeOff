@@ -7,6 +7,7 @@
         "back" => "Back",
         "visitors" => "Visitors",
         "customers" => "Customers",
+        "unknown" => "unknown",
         
         //form Log in
         "password" => "Password",

@@ -15,7 +15,7 @@
     
     session_start();
     
-    include_once "../lang_config.php";
+//    include_once "../lang_config.php";
     
     
     

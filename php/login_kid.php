@@ -33,13 +33,13 @@
                         <div class="col">
                             <ul class="top-nav_lang justify-content-end">
                                 <li>
-                                    <a class="nav-link english" href="welcome.php?lang=en"><?php echo $lang['en']?></a>
+                                    <a class="nav-link english" href="login_kid.php?lang=en"><?php echo $lang['en']?></a>
                                 </li>
                                 <li>
                                     <div class="nav-slash">|</div>
                                 </li>
                                 <li>
-                                    <a class="nav-link polish" href="welcome.php?lang=pl"><?php echo $lang['pl']?></a>
+                                    <a class="nav-link polish" href="login_kid.php?lang=pl"><?php echo $lang['pl']?></a>
                                 </li>
                             </ul>
                         </div>
@@ -51,11 +51,17 @@
         <section class="login">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-auto kid">
-                        <form action="login.php" method="post">
-                            Login: <br /> <input type="text" name="login" /> <br />
-                            <?php echo $lang['password']?>: <br /> <input type="password" name="password" /> <br /><br />
-                            <input type="submit" value="<?php echo $lang['login_submit']?>" /><br /><br />
+                    <div class="col-auto">
+                        <form class="login_kid" action="login.php" method="post">
+                            <label>
+                                Login:
+                                <input class="field" type="text" name="login" />
+                            </label>
+                            <label>
+                                <?php echo $lang['password']?>:
+                                <input class="field" type="password" name="password" />
+                            </label>
+                            <input class="sub-btn" type="submit" value="<?php echo $lang['login_submit']?>" />
                         </form>
                     </div>
                 </div>  
