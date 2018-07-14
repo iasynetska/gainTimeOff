@@ -1,11 +1,3 @@
-html, body {
-  height: 100%;
-}
-
-html {
-  font-size: 14px;
-}
-
 body {
   margin: 0;
   font-family: 'Almendra', sans-serif;
@@ -18,7 +10,8 @@ body {
 NAV-MANU
 
 *****************/
-.top-nav {
+header {
+  display: block;
   position: fixed;
   top: 0;
   right: 0;
@@ -67,8 +60,13 @@ NAV-MANU
 SECTION
 
 ***********************/
+.wrapper {
+  padding-top: 50px;
+}
+
 .user .card {
-  margin-top: 150px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   text-align: center;
   background-color: rgba(4, 27, 40, 0.9);
   border: 1px solid #2EBBCE;
@@ -76,16 +74,6 @@ SECTION
   cursor: pointer;
 }
 
-@media only screen and (max-width: 767px) {
-  .user .kid {
-    margin-top: 90px;
-  }
-
-  .user .parent {
-    margin-top: 30px;
-    margin-bottom: 100px;
-  }
-}
 .user .card .card-header {
   padding: 15px;
   border-bottom: 1px solid #2EBBCE;
@@ -105,9 +93,6 @@ FOOTER
 
 **************************/
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   color: #fff;
   background-color: rgba(4, 27, 40, 0.9);
   border-top: 1px solid #2EBBCE;
@@ -122,9 +107,14 @@ FOOTER
 LOGIN_KID FORM
 
 ***********************/
-.login form {
-  margin-top: 250px;
-  margin-bottom: 50px;
+.login,
+.user {
+  display: block;
+}
+
+.login .login_kid {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   background-color: rgba(4, 27, 40, 0.9);
   border: 1px solid #2EBBCE;
   border-radius: 5px;
@@ -133,11 +123,6 @@ LOGIN_KID FORM
   width: 300px;
 }
 
-@media only screen and (max-width: 767px) {
-  .login form {
-    margin-top: 150px;
-  }
-}
 .login .field {
   width: 100%;
   padding: 5px;

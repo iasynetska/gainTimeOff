@@ -23,7 +23,7 @@
     </head>
     
     <body>
-        <header>
+        <header class="header">
             <nav class="top-nav">
                 <div class="container-fluid">
                     <div class="row">
@@ -48,34 +48,35 @@
             </nav>
         </header>
         
-        <section class="login">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <form class="login_kid" action="login.php" method="post">
-                            <label>
-                                Login:
-                                <input class="field" type="text" name="login" />
-                            </label>
-                            <label>
-                                <?php echo $lang['password']?>:
-                                <input class="field" type="password" name="password" />
-                            </label>
-                            <input class="sub-btn" type="submit" value="<?php echo $lang['login_submit']?>" />
-                        </form>
-                    </div>
-                </div>  
-            </div>
-        </section>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="copy">
-                    <p>&copy;2018 Viktoriia Iasynetska</p>
+        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
+            <main class="login d-flex flex-column flex-grow-1">
+                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                    <div class="row justify-content-center">
+                        <div class="col-md-auto">
+                            <form class="login_kid" action="login.php" method="post">
+                                <label>
+                                    Login:
+                                    <input class="field" type="text" name="login" />
+                                </label>
+                                <label>
+                                    <?php echo $lang['password']?>:
+                                    <input class="field" type="password" name="password" />
+                                </label>
+                                <input class="sub-btn" type="submit" value="<?php echo $lang['login_submit']?>" />
+                            </form>
+                        </div>
+                    </div>  
                 </div>
-            </div>
-        </footer>
-        
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="copy">
+                        <p>&copy;2018 Viktoriia Iasynetska</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
         <!--Bootstrap core Javascript-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script>window.jQuery || document.write('<script src="../js/jquery-3.2.1.slim.min.js"><\/script>')</script>

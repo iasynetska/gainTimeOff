@@ -39,7 +39,7 @@
     </head>
     
     <body>
-        <header>
+        <header class="header">
             <nav class="top-nav">
                 <div class="container-fluid">
                     <div class="row">
@@ -49,13 +49,13 @@
                         <div class="col">
                             <ul class="top-nav_lang justify-content-end">
                                 <li>
-                                    <a class="nav-link english" href="welcome.php?lang=en"><?php echo $lang['en']?></a>
+                                    <a class="nav-link english" href="login_kid.php?lang=en"><?php echo $lang['en']?></a>
                                 </li>
                                 <li>
                                     <div class="nav-slash">|</div>
                                 </li>
                                 <li>
-                                    <a class="nav-link polish" href="welcome.php?lang=pl"><?php echo $lang['pl']?></a>
+                                    <a class="nav-link polish" href="login_kid.php?lang=pl"><?php echo $lang['pl']?></a>
                                 </li>
                             </ul>
                         </div>
@@ -64,55 +64,56 @@
             </nav>
         </header>
         
-        <section class="user">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-auto">
-                        <div class="card kid">
-                            <div class="card-header"  onclick="location.href='login_kid.php';">
-                                <a class="nav-link" href="login_kid.php"><?php echo $lang['kid']?></a>
-                            </div>
-                            <div class="card-body" onclick="location.href='login_kid.php';">
-                                <img src="../img/children_white.png" alt="kid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-auto">
-                        <div class="card parent">
-                            <div class="card-header" onclick="location.href='login_parent.php';">
-                                <a class="nav-link" href="login_parent.php"><?php echo $lang['parent']?></a>
-                            </div>
-                            <div class="card-body" onclick="location.href='login_parent.php';">
-                                <img src="../img/couple_white.png" alt="parent">
+        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
+            <main class="user d-flex flex-column flex-grow-1">
+                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                    <div class="row justify-content-center">
+                        <div class="col-md-auto">
+                            <div class="card kid">
+                                <div class="card-header"  onclick="location.href='login_kid.php';">
+                                    <a class="nav-link" href="login_kid.php"><?php echo $lang['kid']?></a>
+                                </div>
+                                <div class="card-body" onclick="location.href='login_kid.php';">
+                                    <img src="../img/children_white.png" alt="kid">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>  
-            </div>
-        </section>
-        
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-6">
-                        <div class="counter">
-                            <p><?php echo $lang['visitors'].': '.$count;?></p>
+                        <div class="col-md-auto">
+                            <div class="card parent">
+                                <div class="card-header" onclick="location.href='login_parent.php';">
+                                    <a class="nav-link" href="login_parent.php"><?php echo $lang['parent']?></a>
+                                </div>
+                                <div class="card-body" onclick="location.href='login_parent.php';">
+                                    <img src="../img/couple_white.png" alt="parent">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-6">
-                        <div class="counter">
-                            <p><?php echo $lang['customers'].': '.CustomerNumberServices::getNumberOfRegisteredUsers();?></p>
+                    </div>  
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3 col-6">
+                            <div class="counter">
+                                <p><?php echo $lang['visitors'].': '.$count;?></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-8 col-sm-6 col-12">
-                        <div class="copy">
-                            <p>&copy;2018 Viktoriia Iasynetska</p>
+                        <div class="col-md-2 col-sm-3 col-6">
+                            <div class="counter">
+                                <p><?php echo $lang['customers'].': '.CustomerNumberServices::getNumberOfRegisteredUsers();?></p>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-6 col-12">
+                            <div class="copy">
+                                <p>&copy;2018 Viktoriia Iasynetska</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-        
+            </footer>
+        </div>
 
         <!--Bootstrap core Javascript-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

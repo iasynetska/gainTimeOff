@@ -1,14 +1,5 @@
 @import "_colors";
 
-html, body {
-    height: 100%;
-}
-
-html
-{
-    font-size: 14px;
-}
-
 body
 {
     margin: 0;
@@ -22,8 +13,10 @@ body
 NAV-MANU
 
 *****************/
-.top-nav
+
+header
 {
+    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -78,27 +71,20 @@ SECTION
 
 ***********************/
 
+.wrapper
+    {
+        padding-top: 50px;
+    }
+
 .user .card
 {
-    margin-top: 150px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     text-align: center;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
     cursor: pointer; 
-}
-@media  only screen and (max-width: 767px)
-{
-   .user .kid
-   {
-       margin-top: 90px;
-   }
-   
-   .user .parent
-   {
-       margin-top: 30px;
-       margin-bottom: 100px;
-   }
 }
 
 .user .card .card-header
@@ -123,11 +109,9 @@ SECTION
 FOOTER
 
 **************************/
+
 .footer
 {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     color: $white-color;
     background-color: $bg-color;
     border-top: 1px solid $link-color;
@@ -143,23 +127,23 @@ FOOTER
 LOGIN_KID FORM
 
 ***********************/
-.login form
+
+.login,
+.user
 {
-    margin-top: 250px;
-    margin-bottom: 50px;
+    display: block;
+}
+
+.login .login_kid
+{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
     color: $white-color;
     padding: 25px;
     width: 300px;
-}
-@media  only screen and (max-width: 767px)
-{
-    .login form
-    {
-    margin-top: 150px;
-    }
 }
 
 .login .field
