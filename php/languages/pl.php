@@ -14,6 +14,8 @@
         "confirm_password" => "Powtórz hasło",
         "login_submit" => "Zaloguj się",
         "login_parent_link" => "Rejestracja - załóż konto!",
+        "for_parent" => "Dla rodziców",
+        "for_kid" => "Dla dzieci",
         
         //form Registration.php
         "name" => "Imię",

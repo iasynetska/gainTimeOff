@@ -1,3 +1,29 @@
+/*********************************************************
+
+Main Stylesheet
+
+Project structure:
+
+---Welcome.php---
+1. Header -> .header
+    + Navigation Menu -> .top-nav
+        - Navigation Logo -> .top-nav_logo
+        - Navigation Languages -> .top-nav_lang
+            - Link English -> .nav-link .english
+            - Link Polish -> .nav-link .polish
+2. Main -> .main
+    + Cards for Users -> .user
+        - Card for Kid -> .card .kid
+        - Card for Parent -> .card .parent
+3. Footer -> .footer
+
+
+*********************************************************/
+/*******************
+
+Global styling
+
+*******************/
 body {
   margin: 0;
   font-family: 'Almendra', sans-serif;
@@ -5,9 +31,27 @@ body {
   background-size: cover;
 }
 
+ul {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #2EBBCE;
+}
+
 /****************
 
-NAV-MANU
+NAVIGATION MENU
 
 *****************/
 header {
@@ -30,13 +74,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  list-style: none;
 }
 
-.top-nav a,
-.top-nav .nav-slash,
-.user .card-header a {
-  text-decoration: none;
+.top-nav .nav-slash {
   color: #fff;
 }
 
@@ -49,15 +89,9 @@ header {
   text-transform: uppercase;
 }
 
-.top-nav_logo a:hover,
-.top-nav_lang li a:hover,
-.user .card-header a:hover {
-  color: #2EBBCE;
-}
-
 /***********************
 
-SECTION
+MAIN
 
 ***********************/
 .wrapper {
@@ -104,7 +138,7 @@ FOOTER
 
 /***********************
 
-LOGIN_KID FORM
+LOGIN_KID AND LOGIN_PARENT
 
 ***********************/
 .login,
@@ -112,38 +146,49 @@ LOGIN_KID FORM
   display: block;
 }
 
-.login .login_kid {
+.login .login_kid,
+.login .login_parent {
+  width: 300px;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  padding: 25px;
+  color: #fff;
   background-color: rgba(4, 27, 40, 0.9);
   border: 1px solid #2EBBCE;
   border-radius: 5px;
+}
+
+.login_title {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: center;
   color: #fff;
-  padding: 25px;
-  width: 300px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #2EBBCE;
 }
 
 .login .field {
   width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 5px;
   border: none;
   border: 1px solid #2EBBCE;
   border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .sub-btn {
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 10px;
   padding: 5px;
+  font-size: 16px;
+  font-family: 'Almendra', sans-serif;
+  color: #fff;
+  background: #02141e;
   border: none;
   border: 1px solid #2EBBCE;
   border-radius: 5px;
-  background: #02141e;
-  color: #fff;
-  font-family: 'Almendra', sans-serif;
-  font-size: 14px;
 }
 
 .sub-btn:hover {

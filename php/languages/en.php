@@ -14,6 +14,8 @@
         "confirm_password" => "Confirm password",
         "login_submit" => "Log In",
         "login_parent_link" => "Registration - create an account!",
+        "for_parent" => "For parent",
+        "for_kid" => "For kid",
         
         //form Registration.php
         "name" => "Name",
