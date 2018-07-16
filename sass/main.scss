@@ -1,11 +1,8 @@
 @import "_colors";
 
 /*********************************************************
-
 Main Stylesheet
-
 Project structure:
-
 ---Welcome.php---
 1. Header -> .header
     + Navigation Menu -> .top-nav
@@ -18,14 +15,10 @@ Project structure:
         - Card for Kid -> .card .kid
         - Card for Parent -> .card .parent
 3. Footer -> .footer
-
-
 *********************************************************/
 
 /*******************
-
 Global styling
-
 *******************/
 
 body
@@ -59,14 +52,11 @@ a:hover
 }
 
 /****************
-
 NAVIGATION MENU
-
 *****************/
 
 header
 {
-    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -106,9 +96,7 @@ header
 }
 
 /***********************
-
 MAIN
-
 ***********************/
 
 .wrapper
@@ -118,26 +106,41 @@ MAIN
 
 .user .card
 {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    text-align: center;
+    cursor: pointer;
+}
+
+.user .card,
+.login .login_kid,
+.login .login_parent,
+.register .register_parent
+{
+    width: 300px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 25px;
+    color: $white-color;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
-    cursor: pointer; 
 }
 
-.user .card .card-header
+.card_title,
+.login_title,
+.register_title
 {
-    padding: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: $white-color; 
+    text-transform: uppercase;
     border-bottom: 1px solid $link-color;
 }
 
-.user .card .card-body
+.user .card .img_kid,
+.user .card .img_parent
 {
-    padding: 15px 50px 15px 50px;
+    text-align: center;
 }
-
 
 .user .card:hover
 {
@@ -145,9 +148,7 @@ MAIN
 }
 
 /**************************
-
 FOOTER
-
 **************************/
 
 .footer
@@ -163,41 +164,11 @@ FOOTER
 }
 
 /***********************
-
 LOGIN_KID AND LOGIN_PARENT
-
 ***********************/
 
-.login,
-.user
-{
-    display: block;
-}
-
-.login .login_kid,
-.login .login_parent
-{
-    width: 300px;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    padding: 25px;
-    color: $white-color;
-    background-color: $bg-color;
-    border: 1px solid $link-color;
-    border-radius: 5px;
-}
-
-.login_title
-{
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    color: $white-color; 
-    text-transform: uppercase;
-    border-bottom: 1px solid $link-color;
-}
-
-.login .field
+.login .field,
+.register .field
 {
     width: 100%;
     margin-top: 5px;
@@ -227,4 +198,9 @@ LOGIN_KID AND LOGIN_PARENT
     background: linear-gradient($link-color, $dark-color);
     transition: all ease-out 0.2s;
     opacity: 0.9;
+}
+
+.captcha
+{
+    margin-top: 20px;
 }

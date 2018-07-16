@@ -7,7 +7,6 @@
         
     session_start();
     include_once "lang_config.php";
-
     
     if(($count = CustomerNumberServices::incrementAndGetVisitorCounter()) == false)
         {
@@ -68,22 +67,22 @@
             <main class="user d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
-                        <div class="col-md-auto">
-                            <div class="card kid">
-                                <div class="card-header"  onclick="location.href='login_kid.php';">
-                                    <a class="nav-link" href="login_kid.php"><?php echo $lang['kid']?></a>
+                        <div class="col-auto">
+                            <div class="card kid" onclick="location.href='login_kid.php';">
+                                <div class="card_title">
+                                    <?php echo $lang['kid']?>
                                 </div>
-                                <div class="card-body" onclick="location.href='login_kid.php';">
+                                <div class="img_kid">
                                     <img src="../img/children_white.png" alt="kid">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-auto">
-                            <div class="card parent">
-                                <div class="card-header" onclick="location.href='login_parent.php';">
-                                    <a class="nav-link" href="login_parent.php"><?php echo $lang['parent']?></a>
+                        <div class="col-auto">
+                            <div class="card parent" onclick="location.href='login_parent.php';">
+                                <div class="card_title">
+                                    <?php echo $lang['parent']?>
                                 </div>
-                                <div class="card-body" onclick="location.href='login_parent.php';">
+                                <div class="img_parent">
                                     <img src="../img/couple_white.png" alt="parent">
                                 </div>
                             </div>

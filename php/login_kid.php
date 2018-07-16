@@ -54,7 +54,9 @@
                     <div class="row justify-content-center">
                         <div class="col-md-auto">
                             <form class="login_kid" action="login.php" method="post">
-                                <div class="login_title"><?php echo $lang['for_kid']?></div>
+                                <div class="login_title">
+                                    <?php echo $lang['kid']?>
+                                </div>
                                 <label>
                                     Login:
                                     <input class="field" type="text" name="login" />

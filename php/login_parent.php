@@ -64,7 +64,9 @@
                     <div class="row justify-content-center">
                         <div class="col-md-auto">
                             <form class="login_parent" action="./services/do_login_parent.php" method="post">
-                                <div class="login_title"><?php echo $lang['for_parent']?></div>
+                                <div class="login_title">
+                                    <?php echo $lang['parent']?>
+                                </div>
                                 <label>
                                     Login: 
                                     <input class="field" type="text" value="<?php
