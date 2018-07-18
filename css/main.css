@@ -104,6 +104,12 @@ MAIN
   border-radius: 5px;
 }
 
+/* Small Devices, Tablets */
+@media only screen and (min-width: 576px) {
+  .register .register_parent {
+    width: 400px;
+  }
+}
 .card_title,
 .login_title,
 .register_title {
@@ -175,6 +181,13 @@ LOGIN_KID AND LOGIN_PARENT
 
 .captcha {
   margin-top: 20px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 576px) {
+  .captcha {
+    margin-bottom: 20px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

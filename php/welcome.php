@@ -114,8 +114,5 @@
             </footer>
         </div>
 
-        <!--Bootstrap core Javascript-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../js/jquery-3.2.1.slim.min.js"><\/script>')</script>
     </body>
 </html>

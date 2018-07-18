@@ -28,6 +28,8 @@
         
         <!--Custom styles for this template-->
         <link rel="stylesheet" href="../css/main.css"/>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     
     <body>
@@ -167,7 +169,7 @@
                                 </label>
                                 
                                 <!--field Captcha-->
-                                <div class="g-recaptcha captcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS" style="transform:scale(0.82);transform-origin:0 0"></div>
+                                <div class="g-recaptcha captcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS" <!--style="transform:scale(0.82);transform-origin:0 0"--></div>
                                     <?php
                                         if(isset($_SESSION['error_robot']))
                                         {
@@ -189,10 +191,17 @@
                         <p>&copy;2018 Viktoriia Iasynetska</p>
                     </div>
                 </div>
-            </footer>
-    </div>
+            </footer>          
+        </div>
         
-    <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
+        <!--Recaptcha-->
+        <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
+
+        <!--jQuery-->
+        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
+        
+        <script src="../js/common.js"></script>
+
         
     </body>
 </html>
