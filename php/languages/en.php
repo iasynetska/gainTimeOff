@@ -37,10 +37,12 @@
         "er_login_password" => "Wrong login or password!",
         
         //dashboard
+        "hello" => "Hello, ",
         "messenger" => "You can add a kid!",
         "kids" => "Kids",
         "add_kid" => "Add kid",
         "logout" => "Log out",
+        "time_to_play" => "Time to play",
         
         //add_kid
         "gender" => "Gender",

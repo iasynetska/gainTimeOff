@@ -21,12 +21,21 @@ Project structure:
 Global styling
 *******************/
 
-body
+body#homepage,
+body#login_kid,
+body#login_parent,
+body#registration
 {
     margin: 0;
     font-family: 'Almendra', sans-serif;
     background: url(../img/background.jpg) no-repeat top center fixed;
     background-size: cover;
+}
+
+body#dashboard_parent
+{
+    margin: 0;
+    background-color: #0d4861;
 }
 
 ul 
@@ -100,9 +109,9 @@ MAIN
 ***********************/
 
 .wrapper
-    {
-        padding-top: 50px;
-    }
+{
+    padding-top: 50px;
+}
 
 .user .card
 {

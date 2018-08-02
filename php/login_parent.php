@@ -32,13 +32,13 @@
         <link rel="stylesheet" href="../css/main.css"/>
     </head>
 
-    <body>
+    <body id="login_parent">
         <header class="header">
             <nav class="top-nav">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col top-nav_logo">
-                            <a href="welcome.php">TimeToGain</a>
+                            <a href="welcome.php">gainTimeOff</a>
                         </div>
                         <div class="col">
                             <ul class="top-nav_lang justify-content-end">
@@ -58,7 +58,7 @@
             </nav>
         </header>
 
-        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
+        <div class="wrapper d-flex flex-column" style="min-height: 100vh;">
             <main class="login d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">

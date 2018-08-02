@@ -20,42 +20,44 @@
     }         
     
     $parent = $_SESSION['parent'];
+   
     
-    echo "PARENT: ".$parent->name."<br />";
+    echo "<br /><br /><br />";
+    echo $lang['hello'].$parent->name."<br /><a href='./services/do_logout_parent.php'>".$lang['logout']."</a><br >";
+    echo "<a href='./add_kid.php'>".$lang['add_kid']."</a>";
     echo "<hr />";
     echo "DZIECI";
+
     
-    echo "<br /><br />";
-    $kidDao = new UserKidDao(DbConnection::getPDO());
-    $kid = $kidDao->getKidsByParentId($parent->getId());
+    $kids = $parent->getKids();
     
-    if(count($kid) === 0) 
+    if(count($kids) === 0) 
     {
         echo '<a href="./add_kid.php">'.$lang['messenger'].'</a>';
     }
     else
     {
-        for($i=0; $i<count($kid); $i++)
+        for($i=0; $i<count($kids); $i++)
         {
-            echo "<hr />";
-            echo "NAME: ".$kid[$i]->name."<br />";
-            echo "TIME TO PLAY: ".$kid[$i]->mins_to_play."<br /><br />";
-            if ($kid[$i]->photo === NULL)
+            echo $lang['name'].": ".$kids[$i]->name."<br />";
+            echo $lang['time_to_play'].": ".$kids[$i]->mins_to_play."<br /><br />";
+            if ($kids[$i]->photo === NULL)
             {
-                if ($kid[$i]->gender == "girl")
+                if ($kids[$i]->gender == "girl")
                 {
                     echo '<img src="../img/girl.png" alt="girl">';
                 }
                 else
                 {
-                    echo '<img src="../img/boy.png" alt="girl">';
+                    echo '<img src="../img/boy.png" alt="boy">';
                 }
             }
             else
             {
-                echo '<img src="data:image/jpeg;base64,'.$kid[$i]->photo.'"width="128" height="128"/>';
+                echo '<img src="data:image/jpeg;base64,'.$kids[$i]->photo.'"width="128" height="128"/>';
             }    
             echo "<br /><br />";
+            echo "<hr />";
         }
     }
 ?>
@@ -64,13 +66,47 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>Dashboard</title>
-    </head>
-    <body>
-        <br /><br /><a href="dashboard_parent.php?lang=en"><?php echo $lang['en']?></a>
-        <a href="dashboard_parent.php?lang=pl"><?php echo $lang['pl']?></a>
         
-        <br /><br /><a href="./kids.php"><?php echo $lang['kids']?></a>
-        <br /><br /><a href="./services/do_logout_parent.php"><?php echo $lang['logout']?></a>
+        <!--Bootstrap Grid CSS & CSS-->
+        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        
+        <!--Fonts Google Almendra-->
+        <link href="https://fonts.googleapis.com/css?family=Almendra:400,700&amp;subset=latin-ext" rel="stylesheet">
+        
+        <!--Custom styles for this template-->
+        <link rel="stylesheet" href="../css/main.css"/>
+    </head>
+    <body id="dashboard_parent">
+        <header class="header">
+            <nav class="top-nav">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col top-nav_logo">
+                            <a href="welcome.php">gainTimeOff</a>
+                        </div>
+                        <div class="col">
+                            <ul class="top-nav_lang justify-content-end">
+                                <li>
+                                    <a class="nav-link english" href="dashboard_parent.php?lang=en"><?php echo $lang['en']?></a>
+                                </li>
+                                <li>
+                                    <div class="nav-slash">|</div>
+                                </li>
+                                <li>
+                                    <a class="nav-link polish" href="dashboard_parent.php?lang=pl"><?php echo $lang['pl']?></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+
+        
     </body>
 </html>

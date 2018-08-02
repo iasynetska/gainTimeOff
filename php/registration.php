@@ -32,13 +32,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     
-    <body>
+    <body id="registration">
         <header class="header">
             <nav class="top-nav">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col top-nav_logo">
-                            <a href="welcome.php">TimeToGain</a>
+                            <a href="welcome.php">gainTimeOff</a>
                         </div>
                         <div class="col">
                             <ul class="top-nav_lang justify-content-end">

@@ -10,7 +10,7 @@
     {
         public $email;
         
-        ///////////////////////////private $kids;
+        private $kids;
 
         public function __construct($name, $login, $email, $password, $id=NULL) 
         {
@@ -25,11 +25,13 @@
             if(!isset($this->kids))
             {
                 $userKidDao = new UserKidDao(DbConnection::getPDO());
-                $this->kids = $userKidDao->getKidsByParentId($this->id);
+                
+                $this->kids = $userKidDao->getKidsByParentId($this->getId());
             }
             
             return $this->kids;
         }
+        
         
         public function reloadKids()
         {
