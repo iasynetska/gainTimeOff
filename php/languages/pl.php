@@ -41,8 +41,13 @@
         "messenger" => "Możesz dodać dziecko!",
         "kids" => "Dzieci",
         "add_kid" => "Dodaj dziecko",
+        "create_kid_profile" => "Utwórz profil dziecka",
         "logout" => "Wyloguj",
         "time_to_play" => "Czas na zabawę",
+        "delete" => "Usuń",
+        "delete_profile" => "Profil",
+        "delete_alert" => "został usunięty",
+        "save" => "zapisać",
         
         //add_kid
         "gender" => "Płeć",
@@ -59,5 +64,21 @@
         "er_cant_write" => "Nie udało się zapisać pliku na dysku serwera! Proszę skontaktować się z administracją strony internetowej!",
         "er_extension_PHP" => "Nie udało się zapisać pliku na dysku serwera! Proszę skontaktować się z administracją strony internetowej!",
         "er_unknown" => "Ups! Coś poszło nie tak, spróbuj ponownie!",
-        "next" => "Dalej"
+        "next" => "Dalej",
+        
+        //add_marks
+        "add_marks_title" => "Dodaj oceny szkolne i czas gry dla nich",
+        "add" => "Dodaj",
+        "skip" => "Pominąć",
+        
+        //create_kid_profile
+        "back_dashboard" => "Powrót do głównej deski",
+        "add_subjects_title" => "Dodaj nazwy przedmiotów",
+        "subject" => "Nazwa przedmiotu",
+        
+        //add_tasks
+        "add_tasks_title" => "Dodaj zadania i czas gry dla nich",
+        
+        //add_remarks
+        "add_remarks_title" => "Dodaj uwagi i czas gry dla nich"
     );

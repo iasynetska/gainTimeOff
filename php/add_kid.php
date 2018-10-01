@@ -141,7 +141,7 @@
                 }
             ?>
             
-            <br /><input type="submit" value="<?php echo $lang['next']?>" />
+            <br /><input type="submit" value="<?php echo $lang['save']?>" />
             
         </form>
     </body>

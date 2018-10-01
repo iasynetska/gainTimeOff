@@ -41,8 +41,13 @@
         "messenger" => "You can add a kid!",
         "kids" => "Kids",
         "add_kid" => "Add kid",
+        "create_kid_profile" => "Create kid profile",
         "logout" => "Log out",
         "time_to_play" => "Time to play",
+        "delete" => "Delete",
+        "delete_profile" => "Profile",
+        "delete_alert" => "was deleted",
+        "save" => "save",
         
         //add_kid
         "gender" => "Gender",
@@ -59,5 +64,21 @@
         "er_cant_write" => "Failed to write file to disk! Please, contact the administration of the website!",
         "er_extension_PHP" => "A PHP extension stopped the file upload! Please, contact the administration of the website!",
         "er_unknown" => "Oops! Something went wrong, please try again!",
-        "next" => "Next"
+        "next" => "Next",
+        
+        //add_marks
+        "add_marks_title" => "Add school marks and play time for them",
+        "add" => "Add",
+        "skip" => "Skip",
+        
+        //create_kid_profile
+        "back_dashboard" => "Back to dashboard",
+        "add_subjects_title" => "Add subjects",
+        "subject" => "Subject",
+        
+        //add_tasks
+        "add_tasks_title" => "Add tasks and play time for them",
+        
+        //add_remarks
+        "add_remarks_title" => "Add remarks and play time for them"
     );

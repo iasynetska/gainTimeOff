@@ -44,6 +44,18 @@
         }
         
         
+        public function deleteUserKid($parentId, $kidName)
+        {
+            $sql_statement = $this->pdo->prepare("DELETE FROM user_kids WHERE parent_id=:parent_id AND name=:kidName");
+            
+            $sql_statement->bindParam(':parent_id', $parentId);
+            
+            $sql_statement->bindParam(':kidName', $kidName);
+            
+            $sql_statement->execute();
+        }
+        
+        
         public function getKidsByParentId($parentId)
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE parent_id = :parent_id");

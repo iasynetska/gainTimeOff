@@ -199,6 +199,8 @@
             $kid = new UserKid($name, $gender, $login, $hash_password, $date_of_birth, $photo, $parent_id);
             $kidDao->createUserKid($kid);
             $_SESSION['kid'] = $kid;
+            
+            $parent->reloadKids();
 
             header('Location: /gaintimeoff/php/dashboard_parent.php');
         }
