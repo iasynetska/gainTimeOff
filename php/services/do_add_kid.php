@@ -202,6 +202,6 @@
             
             $parent->reloadKids();
 
-            header('Location: /gaintimeoff/php/dashboard_parent.php');
+            header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
         }
     }

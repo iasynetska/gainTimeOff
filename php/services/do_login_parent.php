@@ -30,7 +30,7 @@
     if($parent && password_verify($pass, $parent->password))
     {
         $_SESSION['parent'] = $parent;
-        header('Location: /gaintimeoff/php/dashboard_parent.php');
+        header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
     } else {
         $_SESSION['error_login_password'] = $lang['er_login_password'];
         header('Location: /gaintimeoff/php/login_parent.php');

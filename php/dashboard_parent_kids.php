@@ -24,28 +24,26 @@
     
     echo "<br /><br /><br />";
     echo $lang['hello'].$parent->name."<br /><a href='./services/do_logout_parent.php'>".$lang['logout']."</a><br >";
-    echo "<a href='./add_kid.php'>".$lang['add_kid']."</a><br />";
-    echo "<a href='./create_kid_profile.php'>".$lang['create_kid_profile']."</a><br />";
     echo "<hr />";
-    echo "DZIECI"."<br />";
-
+    echo "<div>***MENU***</div><br >";
+    echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a><br ><br >";
+    echo "<hr />";
     
-    $kids = $parent->getKids();
+    $arr_kids = $parent->getKids();
     
-    if(count($kids) === 0) 
+    if(!isset($arr_kids)) 
     {
-        echo '<a href="./add_kid.php">'.$lang['messenger'].'</a>';
+        echo "<div>**************</div>";
+        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
+        echo "<div>**************</div>";
     }
     else
     {
-        for($i=0; $i<count($kids); $i++)
+        foreach($arr_kids as $kid)
         {
-            echo "<div id=\"kid-".$kids[$i]->name."\">";
-            echo $lang['name'].": ".$kids[$i]->name."<br />";
-            echo $lang['time_to_play'].": ".$kids[$i]->mins_to_play."<br /><br />";
-            if ($kids[$i]->photo === NULL)
+            if ($kid->photo === NULL)
             {
-                if ($kids[$i]->gender == "girl")
+                if ($kid->gender == "girl")
                 {
                     echo '<img src="../img/girl.png" alt="girl">';
                 }
@@ -56,13 +54,21 @@
             }
             else
             {
-                echo '<img src="data:image/jpeg;base64,'.$kids[$i]->photo.'"width="128" height="128"/>';
+                echo '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="128" height="128"/>';
             }
-            echo "<button onclick=\"areYouSure('".$kids[$i]->name."')\">".$lang['delete']."</button>";
+            echo "<button onclick=\"areYouSure('".$kid->name."')\">".$lang['delete']."</button>";
             echo "<br /><br />";
+            echo "<div id=\"kid-".$kid->name."\">";
+            echo $lang['name'].": ".$kid->name."---<a href='edit_kid.php'>".$lang['edit']."</a><br />";
+            echo "Login: ".$kid->login;
+            echo "<br /><br />";
+            echo $lang['time_to_play'].": ".$kid->mins_to_play."<br /><br />";
             echo "<hr />";
             echo "</div>";
         }
+        echo "<div>**************</div>";
+        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
+        echo "<div>**************</div>";
     }
 ?>
 
@@ -84,7 +90,7 @@
         <!--Custom styles for this template-->
         <link rel="stylesheet" href="../css/main.css"/>
     </head>
-    <body id="dashboard_parent">
+    <body id="dashboard_parent_kids">
         <header class="header">
             <nav class="top-nav">
                 <div class="container-fluid">
@@ -95,13 +101,13 @@
                         <div class="col">
                             <ul class="top-nav_lang justify-content-end">
                                 <li>
-                                    <a class="nav-link english" href="dashboard_parent.php?lang=en"><?php echo $lang['en']?></a>
+                                    <a class="nav-link english" href="dashboard_parent_kids.php?lang=en"><?php echo $lang['en']?></a>
                                 </li>
                                 <li>
                                     <div class="nav-slash">|</div>
                                 </li>
                                 <li>
-                                    <a class="nav-link polish" href="dashboard_parent.php?lang=pl"><?php echo $lang['pl']?></a>
+                                    <a class="nav-link polish" href="dashboard_parent_kids.php?lang=pl"><?php echo $lang['pl']?></a>
                                 </li>
                             </ul>
                         </div>

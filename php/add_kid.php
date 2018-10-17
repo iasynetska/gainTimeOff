@@ -36,7 +36,7 @@
 	</style>
     </head>
     <body>
-        <a href="dashboard_parent.php"><?php echo $lang['back']?></a>
+        <a href="dashboard_parent_kids.php"><?php echo $lang['back']?></a>
         
         <br /><br /><a href="add_kid.php?lang=en"><?php echo $lang['en']?></a>
         <a href="add_kid.php?lang=pl"><?php echo $lang['pl']?></a>

@@ -38,15 +38,14 @@
         
         //dashboard
         "hello" => "Hello, ",
-        "messenger" => "You can add a kid!",
         "kids" => "Kids",
-        "add_kid" => "Add kid",
-        "create_kid_profile" => "Create kid profile",
+        "add_kid" => "Add new kid",
         "logout" => "Log out",
         "time_to_play" => "Time to play",
         "delete" => "Delete",
         "delete_profile" => "Profile",
         "delete_alert" => "was deleted",
+        "edit" => "Edit",
         "save" => "save",
         
         //add_kid

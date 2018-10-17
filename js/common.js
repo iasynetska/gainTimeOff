@@ -38,7 +38,7 @@ function areYouSure(name)
 };
 
 
-//Delete Kid from database(dashboard_parent.php)
+//Delete Kid from database(dashboard_parent_kids.php)
 function deleteKid(name)
 {
     var xhttp = new XMLHttpRequest();
@@ -87,16 +87,43 @@ function deleteSubject(subjectId)
 
 
 //Save Subjects
-function saveSubjects()
+function collectData()
 {
+    var kidsName = [];
     var subjects = [];
+    
+    $(".kid:checked").each(function()
+    {
+        kidsName.push($(this).val());      
+    });
 
     $(".subject_name").each(function()
     {
         subjects.push($(this).text());      
     });
+
+    var kidsNameJSON = JSON.stringify(kidsName);
+    var subjectsJSON = JSON.stringify(subjects);
     
-//    console.log(subjects);
-    var a = $(".subject_name").serialize();
-    console.log(a);
+    saveSubjects(kidsNameJSON, subjectsJSON);
 }
+
+
+//Save Subjects in Database
+function saveSubjects(arrKidsName, arrSubjects)
+{
+    var kidsName = arrKidsName;
+    var subjects = arrSubjects;
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            alert(this.responseText);
+        };
+    };
+    xhttp.open("POST", "services/do_add_subjects.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidsName="+kidsName+"&subjects="+subjects);
+};

@@ -26,7 +26,12 @@
             {
                 $userKidDao = new UserKidDao(DbConnection::getPDO());
                 
-                $this->kids = $userKidDao->getKidsByParentId($this->getId());
+                $arr_kids = $userKidDao->getKidsByParentId($this->getId());
+                
+                foreach($arr_kids as $kid)
+                {
+                    $this->kids[$kid->name] = $kid;
+                }
             }
             
             return $this->kids;
