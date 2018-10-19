@@ -1,0 +1,13 @@
+/* adding font Almendra-Regular */
+@font-face {
+  font-family: "Almendra-Regular";
+  src: url("../fonts/Almendra-Regular/Almendra-Regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/Almendra-Regular/Almendra-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/Almendra-Regular/Almendra-Regular.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/Almendra-Regular/Almendra-Regular.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/Almendra-Regular/Almendra-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/Almendra-Regular/Almendra-Regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/Almendra-Regular/Almendra-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}

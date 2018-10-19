@@ -15,38 +15,17 @@
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
-        <!--Fonts Google Almendra-->
-        <link href="https://fonts.googleapis.com/css?family=Almendra:400,700&amp;subset=latin-ext" rel="stylesheet">
+        <!--Adding Fonts-->
+        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
         
         <!--Custom styles for this template-->
         <link rel="stylesheet" href="../css/main.css"/>
     </head>
     
     <body id="login_kid">
-        <header class="header">
-            <nav class="top-nav">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col top-nav_logo">
-                            <a href="welcome.php">gainTimeOff</a>
-                        </div>
-                        <div class="col">
-                            <ul class="top-nav_lang justify-content-end">
-                                <li>
-                                    <a class="nav-link english" href="login_kid.php?lang=en"><?php echo $lang['en']?></a>
-                                </li>
-                                <li>
-                                    <div class="nav-slash">|</div>
-                                </li>
-                                <li>
-                                    <a class="nav-link polish" href="login_kid.php?lang=pl"><?php echo $lang['pl']?></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        <?php 
+            include_once 'header_main.php';
+        ?>
         
         <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
             <main class="login d-flex flex-column flex-grow-1">
@@ -72,13 +51,9 @@
                 </div>
             </main>
 
-            <footer class="footer">
-                <div class="container">
-                    <div class="copy">
-                        <p>&copy;2018 Viktoriia Iasynetska</p>
-                    </div>
-                </div>
-            </footer>
+            <?php 
+                include_once 'footer_no_counter.php';
+            ?>
         </div>
 
     </body>
