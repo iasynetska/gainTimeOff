@@ -1,0 +1,13 @@
+/****************
+GREETING
+*****************/
+
+body#greeting
+{
+    @include body_main;
+}
+
+.greeting .message
+{
+    @include form;
+}

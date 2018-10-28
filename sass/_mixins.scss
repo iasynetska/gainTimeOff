@@ -1,0 +1,39 @@
+@mixin body_main
+{
+    margin: 0;
+    background: $reserve-bg url(../img/background.jpg) no-repeat top center fixed;
+    background-size: cover;
+}
+
+@mixin form
+{
+    width: 300px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 25px;
+    color: $white-color;
+    background-color: $bg-color;
+    border: 1px solid $link-color;
+    border-radius: 5px;
+}
+
+@mixin form_title
+{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: $white-color; 
+    text-transform: uppercase;
+    border-bottom: 1px solid $link-color;
+}
+
+@mixin form_fields
+{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: none;
+    border: 1px solid $link-color;
+    border-radius: 5px;  
+}

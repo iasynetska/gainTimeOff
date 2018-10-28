@@ -1,0 +1,17 @@
+/****************
+MEDIA QUERIES
+*****************/
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 576px) 
+{
+    .register .register_parent
+    {
+        width: 400px;
+    }
+    
+    .captcha
+    {
+        margin-bottom: 20px;
+    }
+}

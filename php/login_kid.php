@@ -19,12 +19,12 @@
         <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/main.css"/>
+        <link rel="stylesheet" href="../css/style.css"/>
     </head>
     
     <body id="login_kid">
         <?php 
-            include_once 'header_main.php';
+            include_once 'header.php';
         ?>
         
         <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
@@ -52,7 +52,7 @@
             </main>
 
             <?php 
-                include_once 'footer_no_counter.php';
+                include_once 'footer.php';
             ?>
         </div>
 

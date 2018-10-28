@@ -1,0 +1,35 @@
+/****************
+HEADER
+*****************/
+header
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background-color: $bg-color;
+    border-bottom: 1px solid $link-color;
+}
+
+.top-nav_logo
+{
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.top-nav_lang
+{
+    display: flex;
+}
+
+.top-nav .nav-slash,
+{
+
+    color: $white-color;
+}
+
+.top-nav_lang li
+{
+    margin-right: 15px;
+}

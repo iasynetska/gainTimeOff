@@ -46,7 +46,7 @@
         <link href="https://fonts.googleapis.com/css?family=Almendra:400,700&amp;subset=latin-ext" rel="stylesheet">
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/main.css"/>
+        <link rel="stylesheet" href="../css/style.css"/>
     </head>
     <body id="dashboard_parent_kids">
         <header class="header">

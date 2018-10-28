@@ -1,0 +1,29 @@
+/*******************
+WELCOME.php
+*******************/
+body#welcome
+{
+    @include body_main;
+}
+
+.user .card
+{
+    cursor: pointer;
+    @include form;
+}
+
+.card_title
+{
+    @include form_title;
+}
+
+.user .card .img_kid,
+.user .card .img_parent
+{
+    text-align: center;
+}
+
+.user .card:hover
+{
+    background: $dark-color;
+}

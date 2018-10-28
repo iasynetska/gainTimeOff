@@ -34,12 +34,12 @@
         <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
     </head>
     
-    <body id="homepage">
+    <body id="welcome">
         <?php 
-            include_once 'header_main.php';
+            include_once 'header.php';
         ?>
         
         <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
@@ -71,7 +71,7 @@
             </main>
             
             <?php
-                include_once 'footer_main.php';
+                include_once 'footer_with_counter.php';
             ?>
     </body>
 </html>

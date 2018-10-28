@@ -1,0 +1,24 @@
+/**************************
+LOGIN parent and kid
+**************************/
+body#login_kid,
+body#login_parent
+{
+    @include body_main;
+}
+
+.login .login_kid,
+.login .login_parent
+{
+    @include form;
+}
+
+.login_title
+{
+    @include form_title;
+}
+
+.login .field
+{
+    @include form_fields;
+}

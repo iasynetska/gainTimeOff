@@ -13,18 +13,48 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>Greeting</title>
+        
+        <!--Bootstrap Grid CSS & CSS-->
+        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        
+        <!--Adding Fonts-->
+        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        
+        <!--Custom styles for this template-->
+        <link rel="stylesheet" href="../css/style.css"/>
     </head>
-    <body>
-        <a href="greeting.php?lang=en"><?php echo $lang['en']?></a>
-        <a href="greeting.php?lang=pl"><?php echo $lang['pl']?></a><br /><br />
-        
-        <p><?php echo sprintf($lang['greeting'], $_SESSION['name'])?></p> <br />
-        
-        <?php
-            unset($_SESSION['name']);
+    
+    <body id="greeting">
+        <?php 
+            include_once 'header.php';
         ?>
         
-        <a href="login_parent.php"><?php echo $lang['login_submit']?></a>
+        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
+            <main class="greeting d-flex flex-column flex-grow-1">
+                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                    <div class="row justify-content-center">
+                        <div class="col-md-auto">
+                            <div class="message">
+                                <p><?php echo sprintf($lang['greeting'], $_SESSION['name'])?></p> <br />
+
+                                <?php
+                                    unset($_SESSION['name']);
+                                ?>
+
+                                <a href="login_parent.php"><button class="sub-btn"><?php echo $lang['login_submit']?></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <?php 
+                include_once 'footer.php';
+            ?>
+        </div>
     </body>
 </html>

@@ -22,55 +22,52 @@
     $parent = $_SESSION['parent'];
    
     
-    echo "<br /><br /><br />";
-    echo $lang['hello'].$parent->name."<br /><a href='./services/do_logout_parent.php'>".$lang['logout']."</a><br >";
-    echo "<hr />";
-    echo "<div>***MENU***</div><br >";
-    echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a><br ><br >";
-    echo "<hr />";
-    
-    $arr_kids = $parent->getKids();
-    
-    if(!isset($arr_kids)) 
-    {
-        echo "<div>**************</div>";
-        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
-        echo "<div>**************</div>";
-    }
-    else
-    {
-        foreach($arr_kids as $kid)
-        {
-            if ($kid->photo === NULL)
-            {
-                if ($kid->gender == "girl")
-                {
-                    echo '<img src="../img/girl.png" alt="girl">';
-                }
-                else
-                {
-                    echo '<img src="../img/boy.png" alt="boy">';
-                }
-            }
-            else
-            {
-                echo '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="128" height="128"/>';
-            }
-            echo "<button onclick=\"areYouSure('".$kid->name."')\">".$lang['delete']."</button>";
-            echo "<br /><br />";
-            echo "<div id=\"kid-".$kid->name."\">";
-            echo $lang['name'].": ".$kid->name."---<a href='edit_kid.php'>".$lang['edit']."</a><br />";
-            echo "Login: ".$kid->login;
-            echo "<br /><br />";
-            echo $lang['time_to_play'].": ".$kid->mins_to_play."<br /><br />";
-            echo "<hr />";
-            echo "</div>";
-        }
-        echo "<div>**************</div>";
-        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
-        echo "<div>**************</div>";
-    }
-?>
+//    echo "<div>***MENU***</div><br >";
+//    echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a><br ><br >";
+//    echo "<hr />";
+//    
+//    $arr_kids = $parent->getKids();
+//    
+//    if(!isset($arr_kids)) 
+//    {
+//        echo "<div>**************</div>";
+//        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
+//        echo "<div>**************</div>";
+//    }
+//    else
+//    {
+//        foreach($arr_kids as $kid)
+//        {
+//            if ($kid->photo === NULL)
+//            {
+//                if ($kid->gender == "girl")
+//                {
+//                    echo '<img src="../img/girl.png" alt="girl">';
+//                }
+//                else
+//                {
+//                    echo '<img src="../img/boy.png" alt="boy">';
+//                }
+//            }
+//            else
+//            {
+//                echo '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="128" height="128"/>';
+//            }
+//            echo "<button onclick=\"areYouSure('".$kid->name."')\">".$lang['delete']."</button>";
+//            echo "<br /><br />";
+//            echo "<div id=\"kid-".$kid->name."\">";
+//            echo $lang['name'].": ".$kid->name."---<a href='edit_kid.php'>".$lang['edit']."</a><br />";
+//            echo "Login: ".$kid->login;
+//            echo "<br /><br />";
+//            echo $lang['time_to_play'].": ".$kid->mins_to_play."<br /><br />";
+//            echo "<hr />";
+//            echo "</div>";
+//        }
+//        echo "<div>**************</div>";
+//        echo "<a href='add_kid.php'>".$lang['add_kid']."</a>";
+//        echo "<div>**************</div>";
+//    }
+//?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -84,38 +81,54 @@
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
-        <!--Fonts Google Almendra-->
-        <link href="https://fonts.googleapis.com/css?family=Almendra:400,700&amp;subset=latin-ext" rel="stylesheet">
+        <!--Adding Fonts-->
+        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/main.css"/>
+        <link rel="stylesheet" href="../css/style.css"/>
     </head>
     <body id="dashboard_parent_kids">
-        <header class="header">
-            <nav class="top-nav">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col top-nav_logo">
-                            <a href="welcome.php">gainTimeOff</a>
+        <?php 
+            include_once 'header.php';
+        ?>
+        
+        <div class="wrapper d-flex flex-column" style="min-height: 100vh;">
+            <main class="dashboard d-flex flex-wrap flex-row flex-grow-1">
+                <div class="dashboard_aside d-flex">
+                    <div class="dashboard_aside_menu d-flex flex-column justify-content-center">
+                        <div class="dashboard_aside_menu_item">
+                            <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
                         </div>
-                        <div class="col">
-                            <ul class="top-nav_lang justify-content-end">
-                                <li>
-                                    <a class="nav-link english" href="dashboard_parent_kids.php?lang=en"><?php echo $lang['en']?></a>
-                                </li>
-                                <li>
-                                    <div class="nav-slash">|</div>
-                                </li>
-                                <li>
-                                    <a class="nav-link polish" href="dashboard_parent_kids.php?lang=pl"><?php echo $lang['pl']?></a>
-                                </li>
-                            </ul>
+                        <div class="dashboard_aside_menu_item">
+                            <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </header>
-        
+                <div class="dashboard_content d-flex flex-column">
+                    <div class="dashboard_content-header d-flex justify-content-end">
+                        <div class="dashboard_content-logout">
+                            <?php
+                                echo $lang['hello'].$parent->name;
+                                echo"<div><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
+                            ?>
+                        </div>
+                    </div>
+                    <div class="dashboard_content-main d-flex justify-content-center">
+                        <div class="dashboard_content-add">
+                            <a href='add_kid.php'><img src="../img/plus-128.png" alt="Add kid"></a>
+                            <div class="dashboard_content-text">
+                                <?php echo "<a href='add_kid.php'>".$lang['add_kid']."</a>"?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <?php 
+                include_once 'footer.php';
+            ?> 
+        </div>
+                
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

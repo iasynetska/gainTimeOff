@@ -1,0 +1,23 @@
+/****************
+REGISTRATION
+*****************/
+
+body#registration
+{
+    @include body_main;
+}
+
+.register .register_parent
+{
+    @include form;
+}
+
+.register_title
+{
+    @include form_title;
+}
+
+.register .field
+{
+    @include form_fields;
+}
