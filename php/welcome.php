@@ -47,21 +47,21 @@
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-auto">
-                            <div class="card kid" onclick="location.href='login_kid.php';">
-                                <div class="card_title">
+                            <div class="user-card" onclick="location.href='login_kid.php';">
+                                <div class="user-card__title">
                                     <?php echo $lang['kid']?>
                                 </div>
-                                <div class="img_kid">
+                                <div class="user-card__img">
                                     <img src="../img/children_white.png" alt="kid">
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto">
-                            <div class="card parent" onclick="location.href='login_parent.php';">
-                                <div class="card_title">
+                            <div class="user-card" onclick="location.href='login_parent.php';">
+                                <div class="user-card__title">
                                     <?php echo $lang['parent']?>
                                 </div>
-                                <div class="img_parent">
+                                <div class="user-card__img">
                                     <img src="../img/couple_white.png" alt="parent">
                                 </div>
                             </div>

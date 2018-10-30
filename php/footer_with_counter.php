@@ -3,19 +3,19 @@
 '<footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-sm-3 col-6">
-                <div class="counter">
+            <div class="col-6 col-sm-3 col-md-2">
+                <div class="footer-counter">
                     <p>'.$lang["visitors"].': '.$count.'</p>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-3 col-6">
-                <div class="counter">
+            <div class="col-6 col-sm-3 col-md-2">
+                <div class="footer-customers">
                     <p>'.$lang["customers"].': '.CustomerNumberServices::getNumberOfRegisteredUsers().'</p>
                 </div>
             </div>
-            <div class="col-md-8 col-sm-6 col-12">
-                <div class="copy">
-                    <p>&copy;2018 Viktoriia Iasynetska</p>
+            <div class="col-12 col-sm-6 col-md-8">
+                <div class="footer-copy">
+                    <p class="footer-copy__text">&copy;2018 Viktoriia Iasynetska</p>
                 </div>
             </div>
         </div>

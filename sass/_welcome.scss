@@ -6,24 +6,20 @@ body#welcome
     @include body_main;
 }
 
-.user .card
+.user-card
 {
     cursor: pointer;
     @include form;
-}
-
-.card_title
-{
-    @include form_title;
-}
-
-.user .card .img_kid,
-.user .card .img_parent
-{
-    text-align: center;
-}
-
-.user .card:hover
-{
-    background: $dark-color;
+    &__title
+    {
+       @include form__title; 
+    }
+    &__img
+    {
+        text-align: center;
+    }
+    &:hover
+    {
+        background: $dark-color;
+    }
 }

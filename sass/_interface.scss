@@ -8,30 +8,23 @@ body
 
 ul 
 {
-  text-decoration: none; 
+    text-decoration: none; 
 }
 
 li 
 {
-  list-style-type: none; 
+    list-style-type: none; 
 }
 
 a 
 {
-  list-style: none;
-  text-decoration: none;
-  color: $white-color; 
-}
-
-a:hover 
-{
-  color: $link-color; 
-}
-
-.top-nav_lang li a,
-.user .card-header a
-{
-    text-transform: uppercase;
+    list-style: none;
+    text-decoration: none;
+    color: $white-color;
+    &:hover
+    {
+        color: $link-color;
+    }
 }
 
 .wrapper
@@ -39,26 +32,27 @@ a:hover
     padding-top: 50px;
 }
 
-.sub-btn
+.form
 {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-family: 'Almendra-Regular', sans-serif;
-    text-transform: uppercase;
-    font-size: 16px;
-    color: $white-color;
-    background: $dark-color;
-    border: none;
-    border: 1px solid $link-color;
-    border-radius: 5px;  
-}
-
-.sub-btn:hover {
-    background: linear-gradient($link-color, $dark-color);
-    transition: all ease-out 0.2s;
-    opacity: 0.9;
+    @include form;
+    &__title
+    {
+        @include form__title;
+    }
+    &__field
+    {
+        @include form__field;
+    }
+    &__btn
+    {
+        @include form__btn;
+    }
+    &__link
+    {
+        display: block;
+        text-decoration: underline;
+        text-align: center;
+    }
 }
 
 .captcha

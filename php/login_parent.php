@@ -41,14 +41,14 @@
             <main class="login d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
-                        <div class="col-md-auto">
-                            <form class="login_parent" action="./services/do_login_parent.php" method="post">
-                                <div class="login_title">
+                        <div class="col-auto">
+                            <form class="login-parent form" action="./services/do_login_parent.php" method="post">
+                                <div class="form__title">
                                     <?php echo $lang['parent']?>
                                 </div>
                                 <label>
                                     Login: 
-                                    <input class="field" type="text" value="<?php
+                                    <input class="form__field" type="text" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
@@ -58,7 +58,7 @@
                                 </label>
                                 <label>
                                     <?php echo $lang['password']?>:
-                                    <input class="field" type="password" name="password" />
+                                    <input class="form__field" type="password" name="password" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {
@@ -67,9 +67,9 @@
                                             }
                                         ?>
                                 </label>
-                                <input class="sub-btn" type="submit" value="<?php echo $lang['login_submit']?>" />
+                                <input class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
 
-                                <a href="registration.php"><?php echo $lang['login_parent_link']?></a>
+                                <a class="form__link" href="registration.php"><?php echo $lang['login_parent_link']?></a>
                             </form>
                         </div>
                     </div>  

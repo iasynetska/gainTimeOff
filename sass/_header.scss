@@ -12,24 +12,24 @@ header
     border-bottom: 1px solid $link-color;
 }
 
-.top-nav_logo
+.top-nav__logo
 {
     margin: 10px;
     font-size: 1.2em;
 }
 
-.top-nav_lang
+.top-nav__lang
 {
-    display: flex;
-}
-
-.top-nav .nav-slash,
-{
-
-    color: $white-color;
-}
-
-.top-nav_lang li
-{
-    margin-right: 15px;
+    & .slash
+    {
+        color: $white-color;
+    }
+    li
+    {
+        margin-right: 15px;
+        a
+        {
+            text-transform: uppercase;
+        }
+    }
 }

@@ -37,7 +37,7 @@
         "er_login_password" => "Nieprawidłowe login lub hasło!",
         
         //dashboard
-        "hello" => "Dzień dobry, ",
+        "hello" => "Witaj, ",
         "kids" => "Dzieci",
         "add_kid" => "Dodaj nowe dziecko",
         "logout" => "Wyloguj",

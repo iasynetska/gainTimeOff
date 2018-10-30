@@ -32,19 +32,19 @@
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-md-auto">
-                            <form class="login_kid" action="login.php" method="post">
-                                <div class="login_title">
+                            <form class="login-parent form" action="login.php" method="post">
+                                <div class="form__title">
                                     <?php echo $lang['kid']?>
                                 </div>
                                 <label>
                                     Login:
-                                    <input class="field" type="text" name="login" />
+                                    <input class="form__field" type="text" name="login" />
                                 </label>
                                 <label>
                                     <?php echo $lang['password']?>:
-                                    <input class="field" type="password" name="password" />
+                                    <input class="form__field" type="password" name="password" />
                                 </label>
-                                <input class="sub-btn" type="submit" value="<?php echo $lang['login_submit']?>" />
+                                <input class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
                             </form>
                         </div>
                     </div>  

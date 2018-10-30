@@ -2,8 +2,8 @@
 
 '<footer class="footer">
     <div class="container">
-        <div class="copy">
-            <p>&copy;2018 Viktoriia Iasynetska</p>
+        <div class="footer-copy">
+            <p class="footer-copy__text">&copy;2018 Viktoriia Iasynetska</p>
         </div>
     </div>
 </footer>';

@@ -94,29 +94,29 @@
         
         <div class="wrapper d-flex flex-column" style="min-height: 100vh;">
             <main class="dashboard d-flex flex-wrap flex-row flex-grow-1">
-                <div class="dashboard_aside d-flex">
-                    <div class="dashboard_aside_menu d-flex flex-column justify-content-center">
-                        <div class="dashboard_aside_menu_item">
+                <div class="dashboard-aside d-flex">
+                    <div class="aside-menu d-flex flex-column justify-content-center">
+                        <div class="aside-menu__item">
                             <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
                         </div>
-                        <div class="dashboard_aside_menu_item">
+                        <div class="aside-menu__item">
                             <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
                         </div>
                     </div>
                 </div>
-                <div class="dashboard_content d-flex flex-column">
-                    <div class="dashboard_content-header d-flex justify-content-end">
-                        <div class="dashboard_content-logout">
+                <div class="dashboard-content d-flex flex-column">
+                    <div class="content-header d-flex justify-content-end">
+                        <div class="content-header__logout">
                             <?php
                                 echo $lang['hello'].$parent->name;
-                                echo"<div><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
+                                echo"<div class='form__link'><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
                             ?>
                         </div>
                     </div>
-                    <div class="dashboard_content-main d-flex justify-content-center">
-                        <div class="dashboard_content-add">
+                    <div class="content-main d-flex justify-content-center">
+                        <div class="content-main__block">
                             <a href='add_kid.php'><img src="../img/plus-128.png" alt="Add kid"></a>
-                            <div class="dashboard_content-text">
+                            <div class="content-main__text">
                                 <?php echo "<a href='add_kid.php'>".$lang['add_kid']."</a>"?>
                             </div>
                         </div>

@@ -17,17 +17,17 @@
     border-radius: 5px;
 }
 
-@mixin form_title
+@mixin form__title
 {
     margin-bottom: 10px;
     padding-bottom: 10px;
     text-align: center;
-    color: $white-color; 
     text-transform: uppercase;
+    color: $white-color; 
     border-bottom: 1px solid $link-color;
 }
 
-@mixin form_fields
+@mixin form__field
 {
     width: 100%;
     margin-top: 5px;
@@ -36,4 +36,26 @@
     border: none;
     border: 1px solid $link-color;
     border-radius: 5px;  
+}
+
+@mixin form__btn
+{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-family: 'Almendra-Regular', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: $white-color;
+    background: $dark-color;
+    border: none;
+    border: 1px solid $link-color;
+    border-radius: 5px;  
+    &:hover
+    {
+        background: linear-gradient($link-color, $dark-color);
+        transition: all ease-out 0.2s;
+        opacity: 0.9;
+    }
 }

@@ -41,16 +41,17 @@
             <main class="register d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
+                        <div class="col-12"><div><a class="btn-back" href="login_parent.php">&#60; BACK</a></div><div>
                         <div class="col-md-auto">
-                            <form class="register_parent" action="./services/do_registration.php" method="post">
-                                <div class="register_title">
+                            <form class="register_parent form" action="./services/do_registration.php" method="post">
+                                <div class="form__title">
                                     <?php echo $lang['registration']?>
                                 </div>
                                 
                                 <!--field Name-->
                                 <label>
                                     <?php echo $lang['name']?>: 
-                                    <input class="field" type="text" value="<?php
+                                    <input class="form__field" type="text" value="<?php
                                         if(isset($_SESSION['tmp_name']))
                                         {
                                             echo $_SESSION['tmp_name'];
@@ -68,7 +69,7 @@
                                 <!--field Login-->
                                 <label>
                                     Login: 
-                                    <input class="field" type="text" value="<?php
+                                    <input class="form__field" type="text" value="<?php
                                         if(isset($_SESSION['tmp_login']))
                                         {
                                             echo $_SESSION['tmp_login'];
@@ -96,7 +97,7 @@
                                 <!--field E-mail-->
                                 <label>
                                     E-mail: 
-                                    <input class="field" type="email" value="<?php
+                                    <input class="form__field" type="email" value="<?php
                                         if(isset($_SESSION['tmp_email']))
                                         {
                                             echo $_SESSION['tmp_email'];
@@ -119,7 +120,7 @@
                                 <!--field Password-->
                                 <label>
                                     <?php echo $lang['password']?>: 
-                                    <input class="field" type="password" value="<?php
+                                    <input class="form__field" type="password" value="<?php
                                         if(isset($_SESSION['tmp_password']))
                                         {
                                             echo $_SESSION['tmp_password'];
@@ -137,7 +138,7 @@
                                 <!--field Confirm Password-->
                                 <label>
                                     <?php echo $lang['confirm_password']?>:: 
-                                    <input class="field" type="password" name="confirm_password" />
+                                    <input class="form__field" type="password" name="confirm_password" />
                                         <?php
                                             if(isset($_SESSION['error_confirm_password']))
                                             {
@@ -157,7 +158,7 @@
                                         }
                                     ?>
                                 
-                                <input class="sub-btn" type="submit" value="<?php echo $lang['signup']?>" />
+                                <input class="form__btn" type="submit" value="<?php echo $lang['signup']?>" />
                             </form>
                         </div>
                     </div>  
