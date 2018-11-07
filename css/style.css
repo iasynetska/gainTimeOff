@@ -21,6 +21,11 @@
 /*******************
 Global styling
 *******************/
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
 body {
   font-family: 'Almendra-Regular', sans-serif; }
 
@@ -37,8 +42,15 @@ a {
   a:hover {
     color: #2EBBCE; }
 
+.active {
+  border-bottom: 2px solid #2EBBCE;
+  text-shadow: 0 0 7px #02141e; }
+
 .wrapper {
-  padding-top: 50px; }
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px; }
 
 .form {
   width: 300px;
@@ -83,6 +95,8 @@ a {
       -webkit-transition: all ease-out 0.2s;
       transition: all ease-out 0.2s;
       opacity: 0.9; }
+    .form__btn:active {
+      font-size: 12px; }
   .form__link {
     display: block;
     text-decoration: underline;
@@ -96,7 +110,7 @@ WELCOME.php
 *******************/
 body#welcome {
   margin: 0;
-  background: #373737 url(../img/background.jpg) no-repeat top center fixed;
+  background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
 .user-card {
@@ -120,11 +134,13 @@ body#welcome {
     text-align: center; }
   .user-card:hover {
     background: #02141e; }
+  .user-card:active {
+    padding: 20px; }
 
 /****************
 HEADER
 *****************/
-header {
+.header {
   position: fixed;
   top: 0;
   right: 0;
@@ -134,7 +150,6 @@ header {
   border-bottom: 1px solid #2EBBCE; }
 
 .top-nav__logo {
-  margin: 10px;
   font-size: 1.2em; }
 
 .top-nav__lang .slash {
@@ -149,6 +164,11 @@ header {
 FOOTER
 **************************/
 .footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
   color: #fff;
   background-color: rgba(4, 27, 40, 0.9);
   border-top: 1px solid #2EBBCE; }
@@ -161,7 +181,7 @@ LOGIN parent and kid
 body#login_kid,
 body#login_parent {
   margin: 0;
-  background: #373737 url(../img/background.jpg) no-repeat top center fixed;
+  background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
 /****************
@@ -169,7 +189,7 @@ REGISTRATION
 *****************/
 body#registration {
   margin: 0;
-  background: #373737 url(../img/background.jpg) no-repeat top center fixed;
+  background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
 /****************
@@ -177,7 +197,7 @@ GREETING
 *****************/
 body#greeting {
   margin: 0;
-  background: #373737 url(../img/background.jpg) no-repeat top center fixed;
+  background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
 .greeting .message {
@@ -198,24 +218,18 @@ body#dashboard_parent_kids {
   background-color: #0d4861; }
 
 .dashboard-aside {
+  -ms-flex-preferred-size: 20%;
+  flex-basis: 20%;
   padding: 15px;
   color: #fff;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   background-color: rgba(4, 27, 40, 0.9);
   border-right: 1px solid #2EBBCE; }
-  .dashboard-aside > * {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 100%;
-    flex: 1 100%; }
 
 .dashboard-content {
   padding: 15px;
   color: #fff;
-  -webkit-box-flex: 4;
-  -ms-flex: 4;
-  flex: 4; }
+  -ms-flex-preferred-size: 80%;
+  flex-basis: 80%; }
 
 .aside-menu__item {
   padding: 15px;
@@ -224,26 +238,70 @@ body#dashboard_parent_kids {
   .aside-menu__item:nth-child(1) {
     border-top: 1px solid #2EBBCE; }
 
-.content-header__logout {
+.content-header {
   text-align: right; }
+  .content-header .logout-link {
+    text-decoration: underline; }
 
 .content-main__block {
   background-color: rgba(4, 27, 40, 0.9);
   border: 1px solid #2EBBCE;
   border-radius: 20px;
   padding: 40px 60px;
-  margin-top: 100px; }
+  cursor: pointer; }
+  .content-main__block:hover {
+    background-color: #01131d;
+    -webkit-transition: all ease-out 0.2s;
+    transition: all ease-out 0.2s; }
+  .content-main__block:active {
+    padding: 35px 55px; }
 
 .content-main__text {
   text-align: center;
   margin-top: 15px; }
 
 /****************
+ADD KID
+*****************/
+body#add_kid {
+  margin: 0;
+  background-color: #0d4861; }
+
+.adding-kid .button {
+  width: auto;
+  padding: 5px 10px;
+  margin: 5px 0 0 0;
+  text-transform: none; }
+
+.form__text {
+  margin-left: 10px; }
+
+/****************
 MEDIA QUERIES
 *****************/
+/*==========  Desktop First Method  ==========*/
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  .wrapper {
+    padding-bottom: 100px; }
+  .footer-counter,
+  .footer-customers {
+    text-align: center; }
+  .footer-copy__text {
+    text-align: center; } }
+
+/*Small devices (landscape phones, less than 768px)*/
+/*Medium devices (tablets, less than 992px)*/
+/*Large devices (desktops, less than 1200px)*/
+/*==========  Mobile First Method  ==========*/
 /* Small Devices, Tablets */
 @media only screen and (min-width: 576px) {
-  .register .register_parent {
+  .register .register-parent,
+  .content-main .adding-kid {
     width: 400px; }
   .captcha {
     margin-bottom: 20px; } }
+
+/*Medium devices (tablets, 768px and up)*/
+/*Large devices (desktops, 992px and up)*/
+/*Extra large devices (large desktops, 1200px and up)*/

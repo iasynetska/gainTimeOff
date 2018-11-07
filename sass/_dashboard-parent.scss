@@ -11,21 +11,17 @@ body#dashboard_parent_kids
 {
     &-aside
     {
+        flex-basis: 20%;
         padding: 15px;
         color: $white-color;
-        flex: 1;
         background-color: $bg-color;
         border-right: 1px solid $link-color;
-        &>*
-        {
-            flex: 1 100%;
-        }
     }
     &-content
     {
         padding: 15px;
         color: $white-color;
-        flex: 4;
+        flex-basis: 80%;
     } 
 }
 
@@ -40,9 +36,13 @@ body#dashboard_parent_kids
     }
 }
 
-.content-header__logout
+.content-header
 {
     text-align: right;
+    .logout-link
+    {
+        text-decoration: underline;
+    }
 }
 
 .content-main
@@ -53,7 +53,16 @@ body#dashboard_parent_kids
         border: 1px solid $link-color;
         border-radius: 20px;
         padding: 40px 60px;
-        margin-top: 100px; 
+        cursor: pointer;
+        &:hover
+        {
+            background-color: $reserve-bg;
+            transition: all ease-out 0.2s;
+        }
+        &:active
+        {
+            padding: 35px 55px;
+        }
     }
     &__text
     {

@@ -58,4 +58,8 @@
         transition: all ease-out 0.2s;
         opacity: 0.9;
     }
+    &:active
+    {
+        font-size: 12px;
+    }
 }

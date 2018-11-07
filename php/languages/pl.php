@@ -49,12 +49,13 @@
         "save" => "zapisać",
         
         //add_kid
-        "gender" => "Płeć",
         "boy" => "Chłopiec",
         "girl" => "Dziewczyna",
         "date_of_birth" => "Data urodzin",
         "er_date" => "Format daty jest nieprawidłowy",
         "photo" => "Zdjęcie",
+        "choose_file" => "Wybierz plik",
+        "no_file" => "Nie wybrano żadnego pliku",
         "er_gender" => "Nie została zaznaczona żadna opcja!",
         "er_size" => "Przekroczony maksymalny rozmiar pliku!",
         "er_partially_uploaded" => "Odebrano tylko część pliku!",

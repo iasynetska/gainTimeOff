@@ -2,7 +2,7 @@
 function changeCaptchaSize() 
 {
     var reCaptchaWidth = 302;
-    var containerWidth = $(".register_parent").width();
+    var containerWidth = $(".register-parent").width();
     if(reCaptchaWidth !== containerWidth) 
     {
         var reCaptchaScale = containerWidth / reCaptchaWidth;

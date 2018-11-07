@@ -1,7 +1,7 @@
 <?php echo
 
 '<footer class="footer">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-6 col-sm-3 col-md-2">
                 <div class="footer-counter">

@@ -24,9 +24,6 @@
         
         <title>Welcome</title>
         
-        <!-- reset for browsers -->
-        <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
-        
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
@@ -38,13 +35,13 @@
     </head>
     
     <body id="welcome">
-        <?php 
-            include_once 'header.php';
-        ?>
+        <div class="wrapper d-flex flex-column">
+            <?php 
+                include_once 'header.php';
+            ?>
         
-        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
             <main class="user d-flex flex-column flex-grow-1">
-                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                <div class="container-fluid d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-auto">
                             <div class="user-card" onclick="location.href='login_kid.php';">
@@ -52,7 +49,10 @@
                                     <?php echo $lang['kid']?>
                                 </div>
                                 <div class="user-card__img">
-                                    <img src="../img/children_white.png" alt="kid">
+                                    <picture>
+                                        <source media="(max-height: 680px)" srcset="../img/children_white_small.png">
+                                        <img src="../img/children_white.png" alt="kid">
+                                    </picture>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,10 @@
                                     <?php echo $lang['parent']?>
                                 </div>
                                 <div class="user-card__img">
-                                    <img src="../img/couple_white.png" alt="parent">
+                                    <picture>
+                                        <source media="(max-height: 680px)" srcset="../img/couple_white_small.png">
+                                        <img src="../img/couple_white.png" alt="parent">
+                                    </picture>
                                 </div>
                             </div>
                         </div>

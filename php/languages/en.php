@@ -49,12 +49,13 @@
         "save" => "save",
         
         //add_kid
-        "gender" => "Gender",
         "boy" => "Boy",
         "girl" => "Girl",
         "date_of_birth" => "Date of birthday",
         "er_date" => "The date format is not valid",
         "photo" => "Photo",
+        "choose_file" => "Choose file",
+        "no_file" => "No file chosen",
         "er_gender" => "No option selected!",
         "er_size" => "Maximum file size exceeded!",
         "er_partially_uploaded" => "The uploaded file was only partially uploaded!",

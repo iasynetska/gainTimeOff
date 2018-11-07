@@ -87,35 +87,30 @@
         <!--Custom styles for this template-->
         <link rel="stylesheet" href="../css/style.css"/>
     </head>
+    
     <body id="dashboard_parent_kids">
-        <?php 
-            include_once 'header.php';
-        ?>
-        
-        <div class="wrapper d-flex flex-column" style="min-height: 100vh;">
-            <main class="dashboard d-flex flex-wrap flex-row flex-grow-1">
-                <div class="dashboard-aside d-flex">
-                    <div class="aside-menu d-flex flex-column justify-content-center">
-                        <div class="aside-menu__item">
-                            <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
-                        </div>
-                        <div class="aside-menu__item">
-                            <?php echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a>";?>
-                        </div>
-                    </div>
-                </div>
-                <div class="dashboard-content d-flex flex-column">
-                    <div class="content-header d-flex justify-content-end">
+        <div class="wrapper d-flex flex-column">
+            <?php 
+                include_once 'header.php';
+            ?>
+
+            <main class="dashboard d-flex flex-grow-1">
+                <?php
+                    include_once 'sidebar.php';
+                ?>
+                
+                <div class="dashboard-content flex-grow-1 d-flex flex-column">
+                    <div class="content-header">
                         <div class="content-header__logout">
                             <?php
-                                echo $lang['hello'].$parent->name;
-                                echo"<div class='form__link'><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
+                                echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
+                                echo"<div class='logout-link'><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
                             ?>
                         </div>
                     </div>
-                    <div class="content-main d-flex justify-content-center">
-                        <div class="content-main__block">
-                            <a href='add_kid.php'><img src="../img/plus-128.png" alt="Add kid"></a>
+                    <div class="content-main flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                        <div class="content-main__block"  onclick="location.href='add_kid.php';">
+                            <a class="content-main__img" href='add_kid.php'><img src="../img/plus-128.png" alt="Add kid"></a>
                             <div class="content-main__text">
                                 <?php echo "<a href='add_kid.php'>".$lang['add_kid']."</a>"?>
                             </div>

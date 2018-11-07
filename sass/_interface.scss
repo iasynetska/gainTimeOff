@@ -1,6 +1,13 @@
 /*******************
 Global styling
 *******************/
+body,html
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body
 {
     font-family: 'Almendra-Regular', sans-serif;
@@ -27,9 +34,18 @@ a
     }
 }
 
+.active
+{
+    border-bottom: 2px solid $link-color;
+    text-shadow: 0 0 7px $dark-color;
+}
+
 .wrapper
 {
+    min-height: 100vh;
+    margin: 0 auto;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .form

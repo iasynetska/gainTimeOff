@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Log in for parent</title>
+        <title>Registration</title>
         
         <style>
             .error
@@ -33,17 +33,16 @@
     </head>
     
     <body id="registration">
-        <?php 
-            include_once 'header.php';
-        ?>
+        <div class="wrapper d-flex flex-column">
+            <?php 
+                include_once 'header.php';
+            ?>
         
-        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
             <main class="register d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
-                        <div class="col-12"><div><a class="btn-back" href="login_parent.php">&#60; BACK</a></div><div>
-                        <div class="col-md-auto">
-                            <form class="register_parent form" action="./services/do_registration.php" method="post">
+                        <div class="col-auto">
+                            <form class="register-parent form" action="./services/do_registration.php" method="post">
                                 <div class="form__title">
                                     <?php echo $lang['registration']?>
                                 </div>

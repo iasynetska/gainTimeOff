@@ -33,11 +33,11 @@
     </head>
 
     <body id="login_parent">
-        <?php 
-            include_once 'header.php';
-        ?>
+        <div class="wrapper d-flex flex-column">
+            <?php 
+                include_once 'header.php';
+            ?>
 
-        <div class="wrapper d-flex flex-column" style="min-height: 100vh;">
             <main class="login d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
