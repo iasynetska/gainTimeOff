@@ -204,5 +204,8 @@
                 include_once 'footer.php';
             ?>
         </div>  
+        
+        <!--JavaScript-->
+        <script src="../js/common.js"></script>
     </body>
 </html>

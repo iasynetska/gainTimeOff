@@ -26,6 +26,26 @@ $(window).resize(function()
     }
 );
 
+//Adding new kid (Choose file)
+const fileReal = document.getElementById("add-file__real");
+const fileBtn = document.getElementById("add-file__btn");
+const fileTxt = document.getElementById("add-file__text");
+const fileTxtValue = document.getElementById("add-file__text").textContent;
+
+fileBtn.addEventListener("click", function() {
+  fileReal.click();
+});
+
+fileReal.addEventListener("change", function() {
+  if (fileReal.value) {
+    fileTxt.innerHTML = fileReal.value.match(
+      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+    )[1];
+  } else {
+    fileTxt.innerHTML = fileTxtValue;
+  }
+});
+
 
 //Confirmation box
 
