@@ -47,6 +47,7 @@
         "delete_alert" => "was deleted",
         "edit" => "Edit",
         "save" => "save",
+        "my_kids" => "My kids",
         
         //add_kid
         "boy" => "Boy",

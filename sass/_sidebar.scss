@@ -1,0 +1,16 @@
+.aside
+    {
+        flex-basis: 20%;
+        padding: 15px;
+        padding-top: 100px;
+        color: $white-color;
+        background-color: $bg-color;
+        border-right: 1px solid $link-color;
+        &-menu__item
+        {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid $link-color;
+            text-shadow: 0 0 7px $dark-color;
+        }
+    }

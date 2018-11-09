@@ -36,8 +36,11 @@ a
 
 .active
 {
-    border-bottom: 2px solid $link-color;
-    text-shadow: 0 0 7px $dark-color;
+    &-link
+    {
+        border-bottom: 2px solid $link-color;
+        text-shadow: 0 0 7px $dark-color;
+    }
 }
 
 .wrapper

@@ -26,6 +26,7 @@ $(window).resize(function()
     }
 );
 
+
 //Adding new kid (Choose file)
 const fileReal = document.getElementById("add-file__real");
 const fileBtn = document.getElementById("add-file__btn");
@@ -47,8 +48,21 @@ fileReal.addEventListener("change", function() {
 });
 
 
-//Confirmation box
+//Change active profile
+function changeActiveProfile(idKid)
+{
+    var kids = document.getElementsByClassName("kid");
+    for(var i=0; i<kids.length; i++)
+    {
+        kids[i].classList.remove("active-profile");
+    }
 
+    var newActiveProfile = document.getElementById(idKid);
+    newActiveProfile.classList.add("active-profile");
+}
+
+
+//Confirmation box
 function areYouSure(name)
 {
     if (confirm("You really want to delete this profile?"))

@@ -42,7 +42,7 @@ a {
   a:hover {
     color: #2EBBCE; }
 
-.active {
+.active-link {
   border-bottom: 2px solid #2EBBCE;
   text-shadow: 0 0 7px #02141e; }
 
@@ -210,6 +210,20 @@ body#greeting {
   border: 1px solid #2EBBCE;
   border-radius: 5px; }
 
+.aside {
+  -ms-flex-preferred-size: 20%;
+  flex-basis: 20%;
+  padding: 15px;
+  padding-top: 100px;
+  color: #fff;
+  background-color: rgba(4, 27, 40, 0.9);
+  border-right: 1px solid #2EBBCE; }
+  .aside-menu__item {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #2EBBCE;
+    text-shadow: 0 0 7px #02141e; }
+
 /*******************
 DASHBOARD PARENT
 *******************/
@@ -217,26 +231,11 @@ body#dashboard_parent_kids {
   margin: 0;
   background-color: #0d4861; }
 
-.dashboard-aside {
-  -ms-flex-preferred-size: 20%;
-  flex-basis: 20%;
-  padding: 15px;
-  color: #fff;
-  background-color: rgba(4, 27, 40, 0.9);
-  border-right: 1px solid #2EBBCE; }
-
 .dashboard-content {
   padding: 15px;
   color: #fff;
   -ms-flex-preferred-size: 80%;
   flex-basis: 80%; }
-
-.aside-menu__item {
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #2EBBCE; }
-  .aside-menu__item:nth-child(1) {
-    border-top: 1px solid #2EBBCE; }
 
 .content-header {
   text-align: right; }
@@ -259,6 +258,32 @@ body#dashboard_parent_kids {
 .content-main__text {
   text-align: center;
   margin-top: 15px; }
+
+.kids-title {
+  text-align: center;
+  border-bottom: 1px solid #fff; }
+
+.kids-blocks .active-profile {
+  -webkit-filter: none;
+  filter: none; }
+
+.kid {
+  margin: 10px;
+  width: 160px;
+  height: 210px;
+  background-color: rgba(4, 27, 40, 0.9);
+  border: 1px solid #2EBBCE;
+  border-radius: 20px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+  .kid:hover {
+    background-color: #02141e; }
+  .kid-delete {
+    padding: 5px 10px;
+    width: 100%;
+    text-align: right; }
+  .kid-name {
+    margin-top: 10px; }
 
 /****************
 ADD KID
