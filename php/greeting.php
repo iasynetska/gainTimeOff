@@ -29,11 +29,11 @@
     </head>
     
     <body id="greeting">
-        <?php 
-            include_once 'header.php';
-        ?>
-        
-        <div class="wrapper  d-flex flex-column" style="min-height: 100vh;">
+        <div class="wrapper d-flex flex-column">
+            <?php 
+                include_once 'header.php';
+            ?>
+
             <main class="greeting d-flex flex-column flex-grow-1">
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
@@ -45,13 +45,12 @@
                                     unset($_SESSION['name']);
                                 ?>
 
-                                <a href="login_parent.php"><button class="sub-btn"><?php echo $lang['login_submit']?></button></a>
-                            </div>
+                                <button class="form__btn" onclick="location.href='login_parent.php';"><?php echo $lang['login_submit']?></button>
                         </div>
                     </div>
                 </div>
             </main>
-            
+
             <?php 
                 include_once 'footer.php';
             ?>

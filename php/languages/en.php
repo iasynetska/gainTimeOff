@@ -48,6 +48,9 @@
         "edit" => "Edit",
         "save" => "save",
         "my_kids" => "My kids",
+        "school_subjects" =>"School subjects",
+        "tasks" => "Tasks",
+        "played_time" => "Played time",
         
         //add_kid
         "boy" => "Boy",

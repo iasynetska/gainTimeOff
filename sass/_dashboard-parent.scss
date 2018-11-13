@@ -33,7 +33,8 @@ body#dashboard_parent_kids
         background-color: $bg-color;
         border: 1px solid $link-color;
         border-radius: 20px;
-        padding: 40px 60px;
+        box-shadow: 10px 10px 15px 2px $bg-color; 
+        padding: 40px 50px 20px 50px;
         cursor: pointer;
         &:hover
         {
@@ -42,7 +43,7 @@ body#dashboard_parent_kids
         }
         &:active
         {
-            padding: 35px 55px;
+            padding: 39px 49px 19px 49px;
         }
     }
     &__text
@@ -59,24 +60,42 @@ body#dashboard_parent_kids
         text-align: center;
         border-bottom: 1px solid $white-color;
     }
+    &-new
+    {
+        text-align: right;
+        &__img
+        {
+            box-shadow: 5px 4px 9px 1px $bg-color; 
+            &:hover
+            {
+               cursor: pointer; 
+            }
+        }
+    }
     &-blocks .active-profile
     {
         filter: none;
+    }
+    &-table
+    {
+        margin-top: 30px;
     }
 }
 
 .kid
 {
     margin: 10px;
-    width: 160px;
-    height: 210px;
+    width: 120px;
+    height: 140px;
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 20px;
     filter: grayscale(100%);
+    box-shadow: 5px 4px 9px 1px $bg-color;
     &:hover
     {
-       background-color: $dark-color; 
+        cursor: pointer;
+        background-color: $dark-color; 
     }
     &-delete
     {

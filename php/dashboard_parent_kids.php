@@ -22,6 +22,8 @@
     $parent = $_SESSION['parent'];
     
     $arr_kids = $parent->getKids();
+    
+    $arr_kids_names = array_keys($arr_kids);
 ?>
 
 <!DOCTYPE HTML>
@@ -72,8 +74,8 @@
                         {
                             echo
                             '<div class="content-main flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-                                <div class="content-main__block"  onclick="location.href="add_kid.php";">
-                                    <a class="content-main__img" href="add_kid.php"><img src="../img/plus-128.png" alt="Add kid"></a>
+                                <div class="content-main__block"  onclick="location.href=\'add_kid.php\';">
+                                    <img src="../img/plus-128.png" alt="Add kid">
                                     <div class="content-main__text">
                                         <a href="add_kid.php">'.$lang["add_kid"].'</a>
                                     </div>
@@ -86,6 +88,7 @@
                                 '<div class="kids">
                                     <div class="container">
                                         <h1 class="kids-title">'.$lang["my_kids"].'</h1>
+                                        <div class="kids-new"><img class="kids-new__img" onclick="location.href=\'add_kid.php\';" src="../img/plus-32.png" alt="Add kid"></div>
                                         <div class="kids-blocks d-flex flex-wrap justify-content-center">';
                             foreach($arr_kids as $kid)
                             {
@@ -101,43 +104,50 @@
                                 }
                                 echo 
                                                 '<div class="kid-delete">
-                                                    <i class="far fa-trash-alt"></i>
+                                                    <i class="far fa-trash-alt icon" onclick="areYouSure(\''.$kid->name.'\')"></i>
                                                 </div>';
                                 if ($kid->photo === NULL)
                                 {
                                     if ($kid->gender == "girl")
                                     {
                                         echo 
-                                                '<img src="../img/girl.png" alt="girl">';
+                                                '<img src="../img/girl_small.png" alt="girl">';
                                     }
                                     else
                                     {
                                         echo 
-                                                '<img src="../img/boy.png" alt="boy">';
+                                                '<img src="../img/boy_small.png" alt="boy">';
                                     }
                                 }
                                 else
                                 {
                                     echo 
-                                                '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="128" height="128"/>';
+                                                '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="64" height="64"/>';
                                 }
                                 echo
-                                                '<div class="kid-name">'.$kid->name.'</div>
+                                                '<div class="kid-name">'.$kid->name.'<i class="far fa-edit icon"></i></div>
                                             </div><!-- /.kid -->';
-//                                echo "<button onclick=\"areYouSure('".$kid->name."')\">".$lang['delete']."</button>";
-//                                echo "<br /><br />";
-//                                echo "<div id=\"kid-".$kid->name."\">";
 //                                echo $lang['name'].": ".$kid->name."---<a href='edit_kid.php'>".$lang['edit']."</a><br />";
-//                                echo "Login: ".$kid->login;
-//                                echo "<br /><br />";
 //                                echo $lang['time_to_play'].": ".$kid->mins_to_play."<br /><br />";
-//                                echo "<hr />";
-//                                echo "</div>";
                             }
                             echo
                                         '</div><!-- /.kids-blocks -->
                                     </div><!-- /.container -->    
-                                </div><!-- /.kids -->';
+                                </div><!-- /.kids -->
+                            
+                                <table class="kids-table">
+                                    <tr>
+                                        <th>'.$arr_kids[$arr_kids_names[0]]->name.'</th>
+                                    </tr>
+                                    <tr>
+                                        <td>'.$lang['time_to_play'].': '.$arr_kids[$arr_kids_names[0]]->mins_to_play.'</td>
+                                    </tr>
+                                    <tr>
+                                        <td>'.$lang['school_subjects'].'</td>
+                                        <td>'.$lang['tasks'].'</td>
+                                        <td>'.$lang['played_time'].'</td>
+                                    </tr>
+                                </table>';
                         }
                     ?>
                 </div>
@@ -147,13 +157,7 @@
                 include_once 'footer.php';
             ?> 
         </div>
-                
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
-        
+                     
         <!-- Main JavaScript-->
         <script src="../js/common.js"></script>
     </body>

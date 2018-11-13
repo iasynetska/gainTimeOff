@@ -34,7 +34,7 @@ a
     }
 }
 
-.active
+#active
 {
     &-link
     {
@@ -77,4 +77,23 @@ a
 .captcha
 {
     margin-top: 20px;
+}
+
+.icon
+{
+    padding-left: 10px;
+    &:hover
+    {
+       color: $link-color;
+    }
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    background-color: $bg-color;
+    border: 1px solid $link-color;
+    padding: 10px;
 }

@@ -51,7 +51,8 @@
     background: $dark-color;
     border: none;
     border: 1px solid $link-color;
-    border-radius: 5px;  
+    border-radius: 5px; 
+    outline: none;
     &:hover
     {
         background: linear-gradient($link-color, $dark-color);
@@ -60,6 +61,7 @@
     }
     &:active
     {
-        font-size: 12px;
+        outline: none;
+        background: $dark-color;
     }
 }

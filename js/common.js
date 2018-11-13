@@ -65,10 +65,21 @@ function changeActiveProfile(idKid)
 //Confirmation box
 function areYouSure(name)
 {
-    if (confirm("You really want to delete this profile?"))
+    var lang = document.getElementById("active-link").text;
+    if(lang==="En")
     {
-        deleteKid(name);
-    };
+        if (confirm("You really want to delete profile "+name+"?"))
+        {
+            deleteKid(name);
+        }
+    }
+    else if(lang==="Pl")
+    {
+        if (confirm("Naprawdę chcesz usunąć profil "+name+"?"))
+        {
+            deleteKid(name);
+        }
+    }
 };
 
 
@@ -80,7 +91,7 @@ function deleteKid(name)
     {
         if (this.readyState === 4 && this.status === 200)
         {
-            var divKid = document.getElementById("kid-"+name);
+            var divKid = document.getElementById(name);
             divKid.parentNode.removeChild(divKid);
             alert(this.responseText);
         };

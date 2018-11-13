@@ -48,6 +48,9 @@
         "edit" => "Edytować",
         "save" => "zapisać",
         "my_kids" => "Moje dzieci",
+        "school_subjects" =>"Przedmioty szkolne",
+        "tasks" => "Zadania",
+        "played_time" => "Zagrany czas",
         
         //add_kid
         "boy" => "Chłopiec",
