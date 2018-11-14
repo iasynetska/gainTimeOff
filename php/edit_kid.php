@@ -22,7 +22,7 @@
     $parent = $_SESSION['parent'];
     
     echo "<br /><br /><br />";
-    echo $lang['hello'].$parent->name."<br /><a href='./services/do_logout_parent.php'>".$lang['logout']."</a><br >";
+    echo $lang['hello'].$parent->name."<br /><a href='./services/do_logout.php'>".$lang['logout']."</a><br >";
     echo "<hr />";
     echo "<div>***MENU***</div><br >";
     echo "<a href='dashboard_parent_kids.php'>".$lang['kids']."</a><br ><br >";

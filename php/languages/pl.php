@@ -48,9 +48,14 @@
         "edit" => "Edytować",
         "save" => "zapisać",
         "my_kids" => "Moje dzieci",
-        "school_subjects" =>"Przedmioty szkolne",
+        "school_subjects" =>"Przedmioty szkolne i ocene",
         "tasks" => "Zadania",
         "played_time" => "Zagrany czas",
+        "create_sub_and_marks" => "Stwórz nowe przedmioty i ocene",
+        "create_tasks" => "Stwórz nowe zadania",
+        
+        //dashboard kid
+        "your_time" => "Twój czas na grę",
         
         //add_kid
         "boy" => "Chłopiec",
@@ -67,13 +72,12 @@
         "er_tmp_folder" => "Brak dostępu do katalogu tymczasowego! Proszę skontaktować się z administracją strony internetowej!",
         "er_cant_write" => "Nie udało się zapisać pliku na dysku serwera! Proszę skontaktować się z administracją strony internetowej!",
         "er_extension_PHP" => "Nie udało się zapisać pliku na dysku serwera! Proszę skontaktować się z administracją strony internetowej!",
-        "er_unknown" => "Ups! Coś poszło nie tak, spróbuj ponownie!",
-        "next" => "Dalej",
+        "er_unknown" => "Ups! Coś poszło nie tak, spróbuj ponownie!",        
         
-        //add_marks
+        //create_subjects_and_marks
+        "add_subjects_title" => "Dodaj nowe przedmioty szkolne",
         "add_marks_title" => "Dodaj oceny szkolne i czas gry dla nich",
         "add" => "Dodaj",
-        "skip" => "Pominąć",
         
         //create_kid_profile
         "back_dashboard" => "Powrót do głównej deski",

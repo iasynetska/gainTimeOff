@@ -50,7 +50,7 @@
                                 <!--field Name-->
                                 <label>
                                     <?php echo $lang['name']?>: 
-                                    <input class="form__field" type="text" value="<?php
+                                    <input class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['tmp_name']))
                                         {
                                             echo $_SESSION['tmp_name'];
@@ -68,7 +68,7 @@
                                 <!--field Login-->
                                 <label>
                                     Login: 
-                                    <input class="form__field" type="text" value="<?php
+                                    <input class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['tmp_login']))
                                         {
                                             echo $_SESSION['tmp_login'];
@@ -96,7 +96,7 @@
                                 <!--field E-mail-->
                                 <label>
                                     E-mail: 
-                                    <input class="form__field" type="email" value="<?php
+                                    <input class="form__field field-100" type="email" value="<?php
                                         if(isset($_SESSION['tmp_email']))
                                         {
                                             echo $_SESSION['tmp_email'];
@@ -119,7 +119,7 @@
                                 <!--field Password-->
                                 <label>
                                     <?php echo $lang['password']?>: 
-                                    <input class="form__field" type="password" value="<?php
+                                    <input class="form__field field-100" type="password" value="<?php
                                         if(isset($_SESSION['tmp_password']))
                                         {
                                             echo $_SESSION['tmp_password'];
@@ -136,8 +136,8 @@
                                 
                                 <!--field Confirm Password-->
                                 <label>
-                                    <?php echo $lang['confirm_password']?>:: 
-                                    <input class="form__field" type="password" name="confirm_password" />
+                                    <?php echo $lang['confirm_password']?>: 
+                                    <input class="form__field field-100" type="password" name="confirm_password" />
                                         <?php
                                             if(isset($_SESSION['error_confirm_password']))
                                             {

@@ -109,17 +109,17 @@ function addSubject()
     var divMain = document.createElement('div');
     divMain.setAttribute("id", subject);
     var div = document.createElement('div');
-    div.setAttribute("class", "subject_name");
+    div.setAttribute("class", "subject-name");
     div.innerText = subject;
     
     
-    var button = document.createElement('button');
-    button.innerText = "-";
-    button.setAttribute("onclick", "deleteSubject(\'"+subject+"\')");
+    var img = document.createElement('img');
+    img.src = "../img/delete-24.png";
+    img.setAttribute("onclick", "deleteSubject(\'"+subject+"\')");
     
     divMain.appendChild(div);
-    divMain.appendChild(button);
-    document.getElementById("section_subjects").appendChild(divMain);
+    divMain.appendChild(img);
+    document.getElementById("form__list").appendChild(divMain);
 }
 
 

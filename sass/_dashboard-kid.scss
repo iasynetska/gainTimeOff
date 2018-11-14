@@ -1,0 +1,25 @@
+/*******************
+DASHBOARD KID
+*******************/
+body#dashboard_kid
+{
+    @include body_main;
+}
+
+.content
+{
+    &-info
+    {
+        background-color: $bg-color;
+        border: 1px solid $link-color;
+        border-radius: 20px;
+        box-shadow: 10px 10px 15px 2px $bg-color;
+        padding: 20px;
+        width: 250px;
+        &__time
+        {
+            text-align: center;
+            font-size: 32px;
+        }
+    }
+}

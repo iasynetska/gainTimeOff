@@ -77,6 +77,22 @@
             return $arr_kids;
         }
         
+        public function getKidByLogin(String $login)
+        {
+            
+            $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE login = :login");
+            
+            $sql_statement->bindParam(':login', $login);
+            
+            $sql_statement->execute();
+           
+            $kid = $sql_statement->fetch();
+            
+            $kid_logged = new UserKid($kid['name'], $kid['gender'], $kid['login'], $kid['password'], $kid['date_of_birth'], $kid['photo'], $kid['parent_id'], $kid['mins_to_play'], $kid['id']);
+            
+            return $kid_logged;
+        }
+        
         
         public function isLoginExisting(String $login, $parentId)
         {

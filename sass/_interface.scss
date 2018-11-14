@@ -74,6 +74,23 @@ a
     }
 }
 
+.field
+{
+    &-100
+    {
+        width: 100%;
+    }
+    &-80
+    {
+        width: 80%;
+    }
+}
+
+input
+{
+    outline:none;
+}
+
 .captcha
 {
     margin-top: 20px;

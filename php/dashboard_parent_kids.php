@@ -65,7 +65,7 @@
                         <div class="content-header__logout">
                             <?php
                                 echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
-                                echo"<div class='logout-link'><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
+                                echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
                             ?>
                         </div>
                     </div>
@@ -127,8 +127,6 @@
                                 echo
                                                 '<div class="kid-name">'.$kid->name.'<i class="far fa-edit icon"></i></div>
                                             </div><!-- /.kid -->';
-//                                echo $lang['name'].": ".$kid->name."---<a href='edit_kid.php'>".$lang['edit']."</a><br />";
-//                                echo $lang['time_to_play'].": ".$kid->mins_to_play."<br /><br />";
                             }
                             echo
                                         '</div><!-- /.kids-blocks -->
@@ -137,15 +135,28 @@
                             
                                 <table class="kids-table">
                                     <tr>
-                                        <th>'.$arr_kids[$arr_kids_names[0]]->name.'</th>
+                                        <th colspan="3">'.$arr_kids[$arr_kids_names[0]]->name.'</th>
                                     </tr>
                                     <tr>
-                                        <td>'.$lang['time_to_play'].': '.$arr_kids[$arr_kids_names[0]]->mins_to_play.'</td>
+                                        <td colspan="3">'.$lang['time_to_play'].': '.$arr_kids[$arr_kids_names[0]]->mins_to_play.'</td>
                                     </tr>
                                     <tr>
-                                        <td>'.$lang['school_subjects'].'</td>
-                                        <td>'.$lang['tasks'].'</td>
-                                        <td>'.$lang['played_time'].'</td>
+                                        <td width="33%">'.$lang['school_subjects'].'</td>
+                                        <td width="33%">'.$lang['tasks'].'</td>
+                                        <td width="33%">'.$lang['played_time'].'</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            '.$lang['create_sub_and_marks'].'<br />
+                                            <img src="../img/plus-32.png" onclick="location.href=\'create_subjects_and_marks.php\';">
+                                        </td>
+                                        <td>
+                                            '.$lang['create_tasks'].'<br />
+                                            <img src="../img/plus-32.png" onclick="location.href=\'create_kid_profile.php\';">
+                                        </td>
+                                        <td>
+                                            '.$lang['played_time'].'
+                                        </td>
                                     </tr>
                                 </table>';
                         }

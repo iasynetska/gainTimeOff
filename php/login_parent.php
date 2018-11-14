@@ -48,7 +48,7 @@
                                 </div>
                                 <label>
                                     Login: 
-                                    <input class="form__field" type="text" value="<?php
+                                    <input class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
@@ -58,7 +58,7 @@
                                 </label>
                                 <label>
                                     <?php echo $lang['password']?>:
-                                    <input class="form__field" type="password" name="password" />
+                                    <input class="form__field field-100" type="password" name="password" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {

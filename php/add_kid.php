@@ -69,7 +69,7 @@
                         <div class="content-header__logout">
                             <?php
                                 echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
-                                echo"<div class='logout-link'><a href='./services/do_logout_parent.php'>".$lang['logout']."</a></div>";
+                                echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
                             ?>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             <!--field Name-->
                             <label>
                                 <?php echo $lang['name']?>: 
-                                <input class="form__field" type="text" value="<?php
+                                <input class="form__field field-100" type="text" value="<?php
                                     if(isset($_SESSION['tmp_name']))
                                     {
                                         echo $_SESSION['tmp_name'];
@@ -111,7 +111,7 @@
                             <!--field Login-->
                             <label>
                                 Login:
-                                <input class="form__field" type="text" value="<?php
+                                <input class="form__field field-100" type="text" value="<?php
                                     if(isset($_SESSION['tmp_login']))
                                     {
                                         echo $_SESSION['tmp_login'];
@@ -139,7 +139,7 @@
                             <!--field Password-->
                             <label>
                                 <?php echo $lang['password']?>:
-                                <input class="form__field" type="password" value="<?php
+                                <input class="form__field field-100" type="password" value="<?php
                                     if(isset($_SESSION['tmp_password']))
                                     {
                                         echo $_SESSION['tmp_password'];
@@ -157,13 +157,13 @@
                             <!--field Confirm Password-->
                             <label>
                                 <?php echo $lang['confirm_password']?>:
-                                <input class="form__field" type="password" name="confirm_password" />
+                                <input class="form__field field-100" type="password" name="confirm_password" />
                             </label>
 
                             <!--field Date of birthday-->
                             <label>
                                 <?php echo $lang['date_of_birth']?>:
-                                <input class="form__field" type="date" value="<?php
+                                <input class="form__field field-100" type="date" value="<?php
                                     if(isset($_SESSION['tmp_date']))
                                         {
                                             echo $_SESSION['tmp_date'];
@@ -181,7 +181,7 @@
                             <!--photo-->
                             <label>
                                 <?php echo $lang['photo']?>:<br />
-                                <input id="add-file__real" class="form__field" type="file" name="photo" hidden="hidden" />
+                                <input id="add-file__real" class="form__field field-100" type="file" name="photo" hidden="hidden" />
                                 <button id="add-file__btn" class="form__btn button" type="button"><?php echo $lang['choose_file']?></button>
                                 <span id="add-file__text" class="form__text"><?php echo $lang['no_file']?></span>
                                 

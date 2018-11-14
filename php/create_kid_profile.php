@@ -77,7 +77,7 @@
         <br /><br /><a href="create_kid_profile.php?lang=en"><?php echo $lang['en']?></a>
         <a href="create_kid_profile.php?lang=pl"><?php echo $lang['pl']?></a>
         
-        <br /><br /><a href="./services/do_logout_parent.php"><?php echo $lang['logout']?></a>
+        <br /><br /><a href="./services/do_logout.php"><?php echo $lang['logout']?></a>
         
         <h1><?php echo $lang['add_subjects_title']?></h1>
         

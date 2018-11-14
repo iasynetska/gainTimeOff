@@ -48,9 +48,14 @@
         "edit" => "Edit",
         "save" => "save",
         "my_kids" => "My kids",
-        "school_subjects" =>"School subjects",
+        "school_subjects" =>"School subjects and marks",
         "tasks" => "Tasks",
         "played_time" => "Played time",
+        "create_sub_and_marks" => "Create new subjects and marks",
+        "create_tasks" => "Create new tasks",
+        
+        //dashboard kid
+        "your_time" => "Your time for game",
         
         //add_kid
         "boy" => "Boy",
@@ -68,12 +73,11 @@
         "er_cant_write" => "Failed to write file to disk! Please, contact the administration of the website!",
         "er_extension_PHP" => "A PHP extension stopped the file upload! Please, contact the administration of the website!",
         "er_unknown" => "Oops! Something went wrong, please try again!",
-        "next" => "Next",
         
-        //add_marks
+        //create_subjects_and_marks
+        "add_subjects_title" => "Add school subjects",
         "add_marks_title" => "Add school marks and play time for them",
         "add" => "Add",
-        "skip" => "Skip",
         
         //create_kid_profile
         "back_dashboard" => "Back to dashboard",

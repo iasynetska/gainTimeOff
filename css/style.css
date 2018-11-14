@@ -69,7 +69,6 @@ a {
     color: #fff;
     border-bottom: 1px solid #2EBBCE; }
   .form__field {
-    width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
@@ -103,6 +102,15 @@ a {
     display: block;
     text-decoration: underline;
     text-align: center; }
+
+.field-100 {
+  width: 100%; }
+
+.field-80 {
+  width: 80%; }
+
+input {
+  outline: none; }
 
 .captcha {
   margin-top: 20px; }
@@ -329,6 +337,58 @@ body#add_kid {
 
 .form__text {
   margin-left: 10px; }
+
+/*************************
+CREATE SUBJECTS AND MARKS
+**************************/
+body#create_subjects {
+  margin: 0;
+  background-color: #0d4861; }
+
+.content-main__form {
+  background-color: rgba(4, 27, 40, 0.9);
+  border: 1px solid #2EBBCE;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 15px 2px rgba(4, 27, 40, 0.9);
+  box-shadow: 10px 10px 15px 2px rgba(4, 27, 40, 0.9);
+  padding: 10px;
+  color: #fff;
+  width: 400px;
+  text-align: center; }
+
+.form__plus {
+  margin-left: 10px;
+  vertical-align: middle;
+  cursor: pointer; }
+
+.form__list {
+  padding: 5px; }
+  .form__list img {
+    text-align: right;
+    vertical-align: middle; }
+
+.subject-name {
+  display: inline-block; }
+
+/*******************
+DASHBOARD KID
+*******************/
+body#dashboard_kid {
+  margin: 0;
+  background: #01131d url(../img/background.jpg) no-repeat top center fixed;
+  background-size: cover; }
+
+.content-info {
+  background-color: rgba(4, 27, 40, 0.9);
+  border: 1px solid #2EBBCE;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 15px 2px rgba(4, 27, 40, 0.9);
+  box-shadow: 10px 10px 15px 2px rgba(4, 27, 40, 0.9);
+  padding: 20px;
+  width: 250px; }
+  .content-info__time {
+    text-align: center;
+    font-size: 32px; }
 
 /****************
 MEDIA QUERIES
