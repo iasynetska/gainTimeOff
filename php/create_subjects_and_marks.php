@@ -71,10 +71,12 @@
                         </div>
                     </div>
                     <div class="content-main flex-grow-1 d-flex flex-wrap justify-content-around align-items-center">
-                        <form class="subject-add form" action=".services/do_add_subjects.php" method="post">
+                        <form class="subject-create form" action=".services/do_add_subjects.php" method="post">
                             <div class="form__title"><?php echo $lang['add_subjects_title']?></div>
+                            <div>
                             <input id="subject-new" class="form__field field-80" type="text" name="subject" />
-                            <img class="form__plus" src="../img/plus-32.png" alt="add" onclick="addSubject()">
+                            <img class="form__img" src="../img/plus-32.png" alt="add" onclick="addSubject()">
+                            </div>
                             <div id="form__list"></div>
                             <input class="form__btn" type="submit" value="<?php echo $lang['save']?>" />
                         </form>

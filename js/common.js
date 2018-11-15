@@ -104,22 +104,24 @@ function deleteKid(name)
 //Adding Subjects
 function addSubject()
 {
-    var subject = document.getElementById("subject").value;
+    var subject = document.getElementById("subject-new").value;
     
     var divMain = document.createElement('div');
     divMain.setAttribute("id", subject);
+    divMain.setAttribute("class", "subject");
     var div = document.createElement('div');
     div.setAttribute("class", "subject-name");
     div.innerText = subject;
     
-    
     var img = document.createElement('img');
+    img.setAttribute("class", "form__img");
     img.src = "../img/delete-24.png";
     img.setAttribute("onclick", "deleteSubject(\'"+subject+"\')");
     
     divMain.appendChild(div);
     divMain.appendChild(img);
     document.getElementById("form__list").appendChild(divMain);
+    document.getElementById("subject-new").value = "";
 }
 
 

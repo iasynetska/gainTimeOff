@@ -15,6 +15,7 @@
     background-color: $bg-color;
     border: 1px solid $link-color;
     border-radius: 5px;
+    box-shadow: 10px 10px 15px 2px $bg-color; 
 }
 
 @mixin form__title

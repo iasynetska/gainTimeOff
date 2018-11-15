@@ -8,41 +8,32 @@ body#create_subjects
     background-color: #0d4861;
 }
 
-.content-main
-{
-    &__form
-    {
-        background-color: $bg-color;
-        border: 1px solid $link-color;
-        border-radius: 20px;
-        box-shadow: 10px 10px 15px 2px $bg-color; 
-        padding: 10px;
-        color: $white-color;
-        width: 400px;
-        text-align: center;
-    }
-}
-
 .form
 {
-    &__plus
+    &__img
     {
-        margin-left: 10px;
+        float: right;
         vertical-align: middle;
         cursor: pointer;
     }
     &__list
     {
         padding: 5px;
-        img
-        {
-            text-align: right;
-            vertical-align: middle;
-        }
     }
 }
 
-.subject-name
+.subject
 {
-    display: inline-block;
+    text-align: left;
+    border-bottom: 1px dotted $white-color;
+    padding: 10px;
+    &-name
+    {
+        display: inline-block;
+    }
+    &-new
+    {
+        vertical-align: middle;
+        padding: 20px;
+    }
 }

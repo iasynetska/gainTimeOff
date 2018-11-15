@@ -55,16 +55,6 @@ CREATE TABLE tasks (
 	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
 );
 
-/*Create new table remarks*/
-CREATE TABLE remarks (
-    id int NOT NULL AUTO_INCREMENT UNIQUE,
-    remark varchar(255) NOT NULL,
-	minutes time NOT NULL,
-	kid_id int NOT NULL,
-    PRIMARY KEY (id),
-	FOREIGN KEY (kid_id) REFERENCES user_kids (id)
-);
-
 /*Create new table school_marks*/
 CREATE TABLE school_marks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
@@ -85,16 +75,6 @@ CREATE TABLE done_tasks (
 	note varchar(255),
     PRIMARY KEY (id),
 	FOREIGN KEY (task_id) REFERENCES tasks (id)
-);
-
-/*Create new table got_remarks*/
-CREATE TABLE got_remarks (
-    id int NOT NULL AUTO_INCREMENT UNIQUE,
-    remark_id int NOT NULL,
-	date date NOT NULL,
-	note varchar(255),
-    PRIMARY KEY (id),
-	FOREIGN KEY (remark_id) REFERENCES remarks (id)
 );
 
 /*Create new table time_to_play*/
