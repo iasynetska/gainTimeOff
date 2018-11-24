@@ -10,8 +10,12 @@
         public $password;
         
         
-        public function __construct($name, $login, $password, $id=NULL) 
-        {
+        public function __construct(
+            string $name, 
+            string $login, 
+            string $password, 
+            int $id=NULL
+        ){
             if(isset($id))
             {
                 $this->id = $id;
@@ -20,9 +24,9 @@
             $this->login = $login;
             $this->password = $password;
         }
-        
 
-        public function getId() 
+
+        public function getId(): int
         {
             return $this->id;	
         }

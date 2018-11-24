@@ -135,10 +135,10 @@
                             
                                 <table class="kids-table">
                                     <tr>
-                                        <th colspan="3">'.$arr_kids[$arr_kids_names[0]]->name.'</th>
+                                        <th colspan="3">XXX</th>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">'.$lang['time_to_play'].': '.$arr_kids[$arr_kids_names[0]]->mins_to_play.'</td>
+                                        <td colspan="3">'.$lang['time_to_play'].':XXX</td>
                                     </tr>
                                     <tr>
                                         <td width="33%">'.$lang['school_subjects'].'</td>
@@ -146,8 +146,8 @@
                                         <td width="33%">'.$lang['played_time'].'</td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            '.$lang['create_sub_and_marks'].'<br />
+                                        <td>'
+                                            .$lang['create_sub_and_marks'].'<br />
                                             <img src="../img/plus-32.png" onclick="location.href=\'create_subjects_and_marks.php\';">
                                         </td>
                                         <td>

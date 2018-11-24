@@ -3,7 +3,7 @@
     class CustomerNumberServices
     {
 
-        public static function incrementAndGetVisitorCounter()
+        public static function incrementAndGetVisitorCounter(): int
         {
             if(!file_exists('../visitor_counter.txt'))
             {
@@ -35,7 +35,7 @@
         }
     
     
-        public static function getNumberOfRegisteredUsers()
+        public static function getNumberOfRegisteredUsers(): int
         {
             $parentDao = new UserParentDao(DbConnection::getPDO());
 

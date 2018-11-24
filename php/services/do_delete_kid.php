@@ -20,12 +20,12 @@
     }         
     
     $parent = $_SESSION['parent'];
-    $parent_id = $parent->getId();
     $kidName = filter_input(INPUT_GET, 'name');
+    $kid = $parent->getKids()[$kidName];
     
     $kidDao = new UserKidDao(DbConnection::getPDO());
     
-    $kidDao->deleteUserKid($parent_id, $kidName);
+    $kidDao->deleteUserKid($kid);
     
     $parent->reloadKids();
     

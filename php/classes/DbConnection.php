@@ -12,7 +12,7 @@
         private static $pdo;
 
 
-        public static function getPDO()
+        public static function getPDO(): PDO
         {
             if(!isset(self::$pdo))
             {

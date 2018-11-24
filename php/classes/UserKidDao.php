@@ -44,21 +44,23 @@
         }
         
         
-        public function deleteUserKid($parentId, $kidName)
+        public function deleteUserKid(UserKid $kid)
         {
-            $sql_statement = $this->pdo->prepare("DELETE FROM user_kids WHERE parent_id=:parent_id AND name=:kidName");
+            $sql_statement = $this->pdo->prepare("DELETE FROM user_kids WHERE id=:id");
             
-            $sql_statement->bindParam(':parent_id', $parentId);
+            $kidId = $kid->getId();
             
-            $sql_statement->bindParam(':kidName', $kidName);
+            $sql_statement->bindParam(':id', $kidId);
             
             $sql_statement->execute();
         }
         
         
-        public function getKidsByParentId($parentId)
+        public function getKidsByParent(UserParent $parent): array
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE parent_id = :parent_id");
+            
+            $parentId = $parent->getId();
             
             $sql_statement->bindParam(':parent_id', $parentId);
             
@@ -69,7 +71,8 @@
             $arr_kids = [];            
             foreach ($kids_result as $result)
             {
-                $kid = new UserKid($result['name'], $result['gender'], $result['login'], $result['password'], $result['date_of_birth'], $result['photo'], 
+                $kid = new UserKid($result['name'], $result['gender'], $result['login'], 
+                        $result['password'], $result['date_of_birth'], $result['photo'], 
                         $result['parent_id'], $result['mins_to_play'], $result['id']);
                 array_push($arr_kids, $kid);
             }
@@ -77,7 +80,8 @@
             return $arr_kids;
         }
         
-        public function getKidByLogin(String $login)
+        
+        public function getKidByLogin(String $login): UserKid
         {
             
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE login = :login");
@@ -94,7 +98,7 @@
         }
         
         
-        public function isLoginExisting(String $login, $parentId)
+        public function isLoginExisting(String $login, $parentId): bool
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE login = :login && parent_id = :parent_id");
             

@@ -3,24 +3,28 @@
     {
         private $id;
 
-        public $mark;
+        public $name;
 
         public $minutes;
 
         public $kid_id;
         
-        public function __construct($mark, $minutes, $kid_id, $id=NULL)
-        {
+        public function __construct(
+            string $name, 
+            $minutes, 
+            int $kid_id, 
+            int $id=NULL
+        ){
             if(isset($id))
             {
                 $this->id = $id;
             }
-            $this->mark = $mark;
+            $this->name = $name;
             $this->minutes = $minutes;
             $this->kid_id = $kid_id;
         }
         
-        public function getId() 
+        public function getId():int 
         {
             return $this->id;	
         }

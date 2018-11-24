@@ -18,19 +18,24 @@
         }
         
         
-        public function addSubject(Subject $subjects)
+        public function getSubjectsByKid(UserKid $kid): array
         {
+            $sql_statement = $this->pdo->prepare("SELECT * FROM subjects WHERE kid_id = :kid_id");
             
-            $sql_statement = $this->pdo->prepare("INSERT INTO subjects (subject, kid_id) "
-                    . "VALUES (:subject, :kidId)");
-            
-            $subject = $subjects->subject;
-            $kidId = $subjects->kid_id;
-            
-            $sql_statement->bindParam(':subject', $subject); 
-            $sql_statement->bindParam(':kidId', $kidId);
+            $sql_statement->bindParam(':kid_id', $kid->getId());
             
             $sql_statement->execute();
+            
+            $subjects_result = $sql_statement->fetchAll();
+            
+            $arr_subjects = [];
+            foreach ($subjects_result as $result)
+            {
+                $subject = new Subject($result['subject'], $result['id']);
+                array_push($arr_subjects, $subject);
+            }
+            
+            return $arr_subjects;
         }
     }
 

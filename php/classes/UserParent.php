@@ -12,7 +12,14 @@
         
         private $kids;
 
-        public function __construct($name, $login, $email, $password, $id=NULL) 
+        public function __construct
+        (
+            string $name, 
+            string $login, 
+            string $email, 
+            string $password, 
+            int $id=NULL
+        ) 
         {
             parent::__construct($name, $login, $password, $id);
 
@@ -20,13 +27,13 @@
         }
 
         
-        public function getKids()
+        public function getKids(): array
         {
             if(!isset($this->kids))
             {
                 $userKidDao = new UserKidDao(DbConnection::getPDO());
                 
-                $arr_kids = $userKidDao->getKidsByParentId($this->getId());
+                $arr_kids = $userKidDao->getKidsByParent($this);
                 
                 foreach($arr_kids as $kid)
                 {

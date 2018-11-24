@@ -19,8 +19,23 @@
 
         public $mins_to_play;
         
-        public function __construct($name, $gender, $login, $password, $date_of_birth, $photo, $parent_id, $mins_to_play=0, $id=NULL)
-        {
+        private $subjects;
+        
+        private $marks;
+        
+        private $school_marks;
+        
+        public function __construct(
+            string $name, 
+            string $gender, 
+            string $login, 
+            string $password, 
+            $date_of_birth, 
+            $photo, 
+            int $parent_id, 
+            $mins_to_play=0, 
+            int $id=NULL
+        ){
             parent::__construct($name, $login, $password, $id);
             
             $this->gender = $gender;
@@ -28,5 +43,21 @@
             $this->photo = $photo;
             $this->parent_id = $parent_id;
             $this->mins_to_play = $mins_to_play;
+        }
+        
+        public function getSubjects(): array
+        {
+            if(!isset($this->subjects))
+            {
+                $subjectDao = new SubjectDao(DbConnection::getPDO());
+                $arr_subjects = $SubjectDao->getSubjectsByKid($this);
+                
+                foreach($arr_subjects as $subject)
+                {
+                    $this->subjects[$subject->name] = $subject;
+                }
+            }
+            
+            return $this->subjects;
         }
     }
