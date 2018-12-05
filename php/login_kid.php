@@ -12,14 +12,6 @@
         <meta name="author" content="">
         <title>Log in for kid</title>
         
-        <style>
-            .error
-            {
-                color:red;
-                margin-bottom: 10px;
-            }
-	</style>
-        
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
@@ -40,32 +32,32 @@
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-md-auto">
-                            <form class="login-parent form" action="./services/do_login_kid.php" method="post">
+                            <form id="formLogin" class="login-kid form" action="./services/do_login_kid.php" method="post" onsubmit="return validateLoginForm('formLogin', 'loginField', 'passwordField')">
                                 <div class="form__title">
                                     <?php echo $lang['kid']?>
                                 </div>
                                 <label>
                                     Login:
-                                    <input class="form__field field-100" type="text" value="<?php
+                                    <input id="loginField" class="form__field field-100" type="text" oninput="removeBorder(this.id)" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
                                             unset($_SESSION['rem_login']);
                                         }
-                                    ?>" name="login" /> 
+                                    ?>" name="login" autocomplete="on" autofocus/> 
                                 </label>
                                 <label>
                                     <?php echo $lang['password']?>:
-                                    <input class="form__field field-100" type="password" name="password" />
+                                    <input id="passwordField" class="form__field field-100" type="password" oninput="removeBorder(this.id)" name="password" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {
-                                                echo "<div class='error'>".$_SESSION['error_login_password']."</div>";
+                                                echo "<div id='errorMessage'>".$_SESSION['error_login_password']."</div>";
                                                 unset($_SESSION['error_login_password']);
                                             }
                                         ?>
                                 </label>
-                                <input class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
+                                <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
                             </form>
                         </div>
                     </div>  
@@ -76,6 +68,9 @@
                 include_once 'footer.php';
             ?>
         </div>
+        
+        <!-- Main JavaScript-->
+        <script src="../js/common.js"></script>
 
     </body>
 </html>

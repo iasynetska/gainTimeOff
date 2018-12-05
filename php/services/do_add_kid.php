@@ -32,12 +32,12 @@
     if(empty(filter_var($name)))
     {
         $error = true;
-        $_SESSION['error_name'] = $lang['er_empty_name'];
+        $_SESSION['error_name'] = $lang['err_empty_name'];
     }
     else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
     {
         $error = true;
-        $_SESSION['error_name'] = $lang['er_name'];
+        $_SESSION['error_name'] = $lang['err_name'];
     }
     
     
@@ -45,7 +45,7 @@
     if(!($gender == 'girl' || $gender == 'boy'))
     {
         $error = true;
-        $_SESSION['error_gender'] = $lang['er_gender'];
+        $_SESSION['error_gender'] = $lang['err_gender'];
     }
     
     
@@ -53,12 +53,12 @@
     if(strlen($login)<3||strlen($login)>20||empty($login))
     {
         $error = true;
-        $_SESSION['error_login'] = $lang['er_login'];
+        $_SESSION['error_login'] = $lang['err_login'];
     }
     else if(!ctype_alnum($login))
     {
         $error = true;
-        $_SESSION['error_alnum_login'] = $lang['er_alnum_login'];
+        $_SESSION['error_alnum_login'] = $lang['err_alnum_login'];
     }
     
     
@@ -66,13 +66,13 @@
     if(strlen($password)<8||strlen($password)>20)
     {
         $error = true;
-        $_SESSION['error_password'] = $lang['er_password'];
+        $_SESSION['error_password'] = $lang['err_password'];
     }
     else {
         if($password!=$confirm_password)
         {
             $error = true;
-            $_SESSION['error_password'] = $lang['er_confirm_password'];
+            $_SESSION['error_password'] = $lang['err_confirm_password'];
         }
     }
     
@@ -95,7 +95,7 @@
         else
         {
             $error = true;
-            $_SESSION['error_date'] = $lang['er_date'];
+            $_SESSION['error_date'] = $lang['err_date'];
         }
     }
     
@@ -119,31 +119,31 @@
                 case UPLOAD_ERR_INI_SIZE :
                 case UPLOAD_ERR_FORM_SIZE :
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_size'];
+                    $_SESSION['error_photo'] = $lang['err_size'];
                     break;
 
                 case UPLOAD_ERR_PARTIAL :
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_partially_uploaded'];
+                    $_SESSION['error_photo'] = $lang['err_partially_uploaded'];
                     break;
 
                 case UPLOAD_ERR_NO_TMP_DIR:
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_tmp_folder'];
+                    $_SESSION['error_photo'] = $lang['err_tmp_folder'];
                     break;
 
                 case UPLOAD_ERR_CANT_WRITE:
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_cant_write'];
+                    $_SESSION['error_photo'] = $lang['err_cant_write'];
                     break;
 
                 case UPLOAD_ERR_EXTENSION:
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_extension_PHP'];
+                    $_SESSION['error_photo'] = $lang['err_extension_PHP'];
 
                 default :
                     $error = true;
-                    $_SESSION['error_photo'] = $lang['er_unknown'];
+                    $_SESSION['error_photo'] = $lang['err_unknown'];
                     echo "Nieznany typ błędu!";
             }
         }
@@ -177,7 +177,7 @@
         if($kidDao->isLoginExisting($login, $parent_id))
         {
             $exist = true;
-            $_SESSION['error_login_existing'] = $lang['er_login_existing'];
+            $_SESSION['error_login_existing'] = $lang['err_login_existing'];
         }
         
       

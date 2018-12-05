@@ -59,11 +59,8 @@
         public function getKidsByParent(UserParent $parent): array
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE parent_id = :parent_id");
-            
             $parentId = $parent->getId();
-            
             $sql_statement->bindParam(':parent_id', $parentId);
-            
             $sql_statement->execute();
             
             $kids_result = $sql_statement->fetchAll();
@@ -81,31 +78,28 @@
         }
         
         
-        public function getKidByLogin(String $login): UserKid
+        public function getKidByLogin(String $login): ?UserKid
         {
             
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE login = :login");
-            
             $sql_statement->bindParam(':login', $login);
-            
             $sql_statement->execute();
            
             $kid = $sql_statement->fetch();
             
-            $kid_logged = new UserKid($kid['name'], $kid['gender'], $kid['login'], $kid['password'], $kid['date_of_birth'], $kid['photo'], $kid['parent_id'], $kid['mins_to_play'], $kid['id']);
-            
-            return $kid_logged;
+            if($kid)
+            {
+                return new UserKid($kid['name'], $kid['gender'], $kid['login'], $kid['password'], $kid['date_of_birth'], $kid['photo'], $kid['parent_id'], $kid['mins_to_play'], $kid['id']);
+            }
+            return NULL;
         }
         
         
         public function isLoginExisting(String $login, $parentId): bool
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_kids WHERE login = :login && parent_id = :parent_id");
-            
             $sql_statement->bindParam(':login', $login);
-            
             $sql_statement->bindParam(':parent_id', $parentId);
-            
             $sql_statement->execute();
             
             $rowCount = $sql_statement->rowCount();

@@ -66,6 +66,10 @@ a
     {
         @include form__btn;
     }
+    #errorMessage
+    {
+        color: $attention-color;
+    }
     &__link
     {
         display: block;

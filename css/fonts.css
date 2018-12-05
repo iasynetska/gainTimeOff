@@ -1,0 +1,19 @@
+/* adding font Almendra-Regular */
+@font-face {
+  font-family: "Almendra-Regular";
+  src: url("../fonts/Almendra-Regular/Almendra-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Almendra-Regular/Almendra-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Almendra-Regular/Almendra-Regular.otf") format("opentype"), url("../fonts/Almendra-Regular/Almendra-Regular.svg") format("svg"), url("../fonts/Almendra-Regular/Almendra-Regular.ttf") format("truetype"), url("../fonts/Almendra-Regular/Almendra-Regular.woff") format("woff"), url("../fonts/Almendra-Regular/Almendra-Regular.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal; }
+
+/* adding font Almendra-Bold */
+@font-face {
+  font-family: "Almendra-Bold";
+  src: url("../fonts/Almendra-Bold/Almendra-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Almendra-Bold/Almendra-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Almendra-Bold/Almendra-Bold.otf") format("opentype"), url("../fonts/Almendra-Bold/Almendra-Bold.svg") format("svg"), url("../fonts/Almendra-Bold/Almendra-Bold.ttf") format("truetype"), url("../fonts/Almendra-Bold/Almendra-Bold.woff") format("woff"), url("../fonts/Almendra-Bold/Almendra-Bold.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: bold;
+  font-style: normal; }

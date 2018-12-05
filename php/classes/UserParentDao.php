@@ -38,29 +38,27 @@
         }
         
         
-        public function getParentByLogin(String $login): UserParent
+        public function getParentByLogin(String $login): ?UserParent
         {
             
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE login = :login");
-            
             $sql_statement->bindParam(':login', $login);
-            
             $sql_statement->execute();
             
             $parent = $sql_statement->fetch();
             
-            $parent_logged = new UserParent($parent['name'], $parent['login'], $parent['email'], $parent['password'], $parent['id']);
-            
-            return $parent_logged;
+            if($parent)
+            {
+                return new UserParent($parent['name'], $parent['login'], $parent['email'], $parent['password'], $parent['id']);
+            }
+            return NULL;
         }
         
         
         public function isLoginExisting(String $login): bool
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE login = :login");
-            
             $sql_statement->bindParam(':login', $login);
-            
             $sql_statement->execute();
             
             $rowCount = $sql_statement->rowCount();
@@ -72,15 +70,14 @@
         public function isEmailExisting(String $email): bool
         {
             $sql_statement = $this->pdo->prepare("SELECT * FROM user_parents WHERE email = :email");
-            
             $sql_statement->bindParam(':email', $email);
-            
             $sql_statement->execute();
             
             $rowCount = $sql_statement->rowCount();
             
             return $rowCount > 0;
         }
+        
         
         public function getNumberOfParents(): int
         {

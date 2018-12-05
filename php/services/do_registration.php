@@ -32,11 +32,11 @@
     if(empty(filter_var($name)))
     {
         $error = true;
-        $_SESSION['error_name'] = $lang['er_empty_name'];
+        $_SESSION['error_name'] = $lang['err_empty_name'];
     }else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
     {
         $error = true;
-        $_SESSION['error_name'] = $lang['er_name'];
+        $_SESSION['error_name'] = $lang['err_name'];
     }
     
     
@@ -44,12 +44,12 @@
     if(strlen($login)<3||strlen($login)>20||empty($login))
     {
         $error = true;
-        $_SESSION['error_login'] = $lang['er_login'];
+        $_SESSION['error_login'] = $lang['err_login'];
     }
     else if(!ctype_alnum($login))
     {
         $error = true;
-        $_SESSION['error_alnum_login'] = $lang['er_alnum_login'];
+        $_SESSION['error_alnum_login'] = $lang['err_alnum_login'];
     }
     
     
@@ -60,7 +60,7 @@
     if ((filter_var($valid_email, FILTER_VALIDATE_EMAIL)==false) || ($valid_email!=$email))
     {
         $error = true;
-        $_SESSION['error_email']=$lang['er_email'];
+        $_SESSION['error_email']=$lang['err_email'];
     }
     
     
@@ -68,13 +68,13 @@
     if(strlen($password)<8||strlen($password)>20)
     {
         $error = true;
-        $_SESSION['error_password'] = $lang['er_password'];
+        $_SESSION['error_password'] = $lang['err_password'];
     }
     else {
         if($password!=$confirm_password)
         {
             $error = true;
-            $_SESSION['error_confirm_password'] = $lang['er_confirm_password'];
+            $_SESSION['error_confirm_password'] = $lang['err_confirm_password'];
         }
     }
     
@@ -87,7 +87,7 @@
     if ($result->success==false)
     {
         $error = true;
-        $_SESSION['error_robot'] = $lang['er_robot'];
+        $_SESSION['error_robot'] = $lang['err_robot'];
     }
     
     
@@ -113,13 +113,13 @@
         if($parentDao->isLoginExisting($login))
         {
             $exist = true;
-            $_SESSION['error_login_existing'] = $lang['er_login_existing'];
+            $_SESSION['error_login_existing'] = $lang['err_login_existing'];
         }
         
         if($parentDao->isEmailExisting($email))
         {
             $exist = true;
-            $_SESSION['error_email_existing'] = $lang['er_email_existing'];
+            $_SESSION['error_email_existing'] = $lang['err_email_existing'];
         }
         
         if($exist)

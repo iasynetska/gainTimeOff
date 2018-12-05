@@ -32,6 +32,6 @@
         $_SESSION['kid'] = $kid;
         header('Location: /gaintimeoff/php/dashboard_kid.php');
     } else {
-        $_SESSION['error_login_password'] = $lang['er_login_password'];
+        $_SESSION['error_login_password'] = $lang['err_login_password'];
         header('Location: /gaintimeoff/php/login_kid.php');
     }

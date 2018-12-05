@@ -17,8 +17,6 @@
     
     include_once "../lang_config.php";
     
-    
-    
     $login = filter_input(INPUT_POST, 'login');
     $pass = filter_input(INPUT_POST, 'password');
     $_SESSION['rem_login'] = $login;
@@ -32,6 +30,6 @@
         $_SESSION['parent'] = $parent;
         header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
     } else {
-        $_SESSION['error_login_password'] = $lang['er_login_password'];
+        $_SESSION['error_login_password'] = $lang['err_login_password'];
         header('Location: /gaintimeoff/php/login_parent.php');
     }

@@ -1,3 +1,6 @@
+window.onload = changeCaptchaSize();
+window.addEventListener("resize", changeCaptchaSize);
+
 //Adaptive reCAPTCHA
 function changeCaptchaSize() 
 {
@@ -14,18 +17,82 @@ function changeCaptchaSize()
     }
 }
 
-$(window).ready(function()
-    {
-        changeCaptchaSize();
-    }
-);
 
-$(window).resize(function()
+/**
+ * Checking fields of login forms.
+ * @param formId id of submitted form.
+ * @param loginId id of login field.
+ * @param passwordId id of password field.
+ * @returns Result of validation. true - valid, false - not valid.
+ */
+function validateLoginForm(formId, loginId, passwordId)
+{
+    var valid = true;
+    
+    if(document.getElementById(loginId).value.trim() === "")
     {
-        changeCaptchaSize();
+        document.getElementById(loginId).style.border = "1px solid red";
+        valid = false;
     }
-);
+    
+    if(document.getElementById(passwordId).value === "")
+    {
+        document.getElementById(passwordId).style.border = "1px solid red";
+        valid = false;
+    }
+    
+    if(!valid)
+    {
+        var divError = document.getElementById("errorMessage");
+        if(divError === null)
+        {
+            var divError = document.createElement("div");
+            divError.setAttribute("id", "errorMessage");
+            var btn = document.getElementById("subBtn");
+            var form = document.getElementById(formId);
+            form.insertBefore(divError, btn);
+        }
+        
+        try 
+        {
+            var errorName = getErrorMessage("err_empty_fields");
+            divError.innerText = errorName;
+        }
+        catch(error)
+        {
+            divError.innerText = error;
+        }
+    }
+    
+    return valid;
+}
 
+
+/**
+ * @param errorName - name of error massage to get.
+ * @returns error message.
+ * @throws Exception if no such error name or other issue.
+ */
+function getErrorMessage(errorName)
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+        if (this.readyState === 4 && this.status !== 200)
+        {
+            throw this.responseText;
+        }
+    };
+    xhttp.open("GET", "services/error_message.php?errorName="+errorName, false);
+    xhttp.send();
+    return xhttp.responseText;
+}
+
+//remove red border
+function removeBorder(id)
+{
+    document.getElementById(id).style.border = null;
+}
 
 //Adding new kid (Choose file)
 const fileReal = document.getElementById("add-file__real");
