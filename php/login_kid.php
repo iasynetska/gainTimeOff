@@ -32,31 +32,34 @@
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-md-auto">
-                            <form id="formLogin" class="login-kid form" action="./services/do_login_kid.php" method="post" onsubmit="return validateLoginForm('formLogin', 'loginField', 'passwordField')">
+                            <form id="formLoginKid" class="login-kid form" action="./services/do_login_kid.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['kid']?>
                                 </div>
-                                <label>
-                                    Login:
-                                    <input id="loginField" class="form__field field-100" type="text" oninput="removeBorder(this.id)" value="<?php
+                                
+                                <div class="form__sectin">
+                                    <label for="loginField">Login:</label>
+                                    <input id="loginField" class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
                                             unset($_SESSION['rem_login']);
                                         }
-                                    ?>" name="login" autocomplete="on" autofocus/> 
-                                </label>
-                                <label>
-                                    <?php echo $lang['password']?>:
-                                    <input id="passwordField" class="form__field field-100" type="password" oninput="removeBorder(this.id)" name="password" />
+                                    ?>" name="login" oninput="removeBorder(this.id)" autocomplete="on" autofocus/> 
+                                </div>
+                                
+                                <div class="form__sectin">
+                                    <label for="passwordField"><?php echo $lang['password']?>:</label>
+                                    <input id="passwordField" class="form__field field-100" type="password" name="password" oninput="removeBorder(this.id)" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {
-                                                echo "<div id='errorMessage'>".$_SESSION['error_login_password']."</div>";
+                                                echo "<div class='form__error'>".$_SESSION['error_login_password']."</div>";
                                                 unset($_SESSION['error_login_password']);
                                             }
                                         ?>
-                                </label>
+                                </div>
+                                
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
                             </form>
                         </div>
@@ -69,8 +72,11 @@
             ?>
         </div>
         
-        <!-- Main JavaScript-->
-        <script src="../js/common.js"></script>
+        
+        <!--jQuery-->
+        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
+        <!--JavaScript-->
+        <script src="../js/validateForms.js"></script>
 
     </body>
 </html>

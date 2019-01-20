@@ -66,9 +66,10 @@ a
     {
         @include form__btn;
     }
-    #errorMessage
+    &__error
     {
         color: $attention-color;
+        margin-bottom: 10px;
     }
     &__link
     {
@@ -95,9 +96,37 @@ input
     outline:none;
 }
 
-.captcha
+
+.requared:after
 {
-    margin-top: 20px;
+    content:" *";
+    color: $attention-color;
+}
+
+#reCaptcha
+{
+    margin-top: 5px;
+}
+
+.attention
+{
+    color: $attention-color;
+}
+
+#gender
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid $white-color;
+    border-radius: 5px; 
+}
+
+.form_add-file
+{
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .icon

@@ -1,11 +1,11 @@
-window.onload = changeCaptchaSize();
-window.addEventListener("resize", changeCaptchaSize);
-
-//Adaptive reCAPTCHA
+/**
+ * Resize reCAPTCHA to fit width of container
+ * reCaptchaScale = containerWidth / elementWidth
+**/
 function changeCaptchaSize() 
 {
     var reCaptchaWidth = 302;
-    var containerWidth = $(".register-parent").width();
+    var containerWidth = $("#formRegistration").width();
     if(reCaptchaWidth !== containerWidth) 
     {
         var reCaptchaScale = containerWidth / reCaptchaWidth;
@@ -16,104 +16,6 @@ function changeCaptchaSize()
         });
     }
 }
-
-
-/**
- * Checking fields of login forms.
- * @param formId id of submitted form.
- * @param loginId id of login field.
- * @param passwordId id of password field.
- * @returns Result of validation. true - valid, false - not valid.
- */
-function validateLoginForm(formId, loginId, passwordId)
-{
-    var valid = true;
-    
-    if(document.getElementById(loginId).value.trim() === "")
-    {
-        document.getElementById(loginId).style.border = "1px solid red";
-        valid = false;
-    }
-    
-    if(document.getElementById(passwordId).value === "")
-    {
-        document.getElementById(passwordId).style.border = "1px solid red";
-        valid = false;
-    }
-    
-    if(!valid)
-    {
-        var divError = document.getElementById("errorMessage");
-        if(divError === null)
-        {
-            var divError = document.createElement("div");
-            divError.setAttribute("id", "errorMessage");
-            var btn = document.getElementById("subBtn");
-            var form = document.getElementById(formId);
-            form.insertBefore(divError, btn);
-        }
-        
-        try 
-        {
-            var errorName = getErrorMessage("err_empty_fields");
-            divError.innerText = errorName;
-        }
-        catch(error)
-        {
-            divError.innerText = error;
-        }
-    }
-    
-    return valid;
-}
-
-
-/**
- * @param errorName - name of error massage to get.
- * @returns error message.
- * @throws Exception if no such error name or other issue.
- */
-function getErrorMessage(errorName)
-{
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-        if (this.readyState === 4 && this.status !== 200)
-        {
-            throw this.responseText;
-        }
-    };
-    xhttp.open("GET", "services/error_message.php?errorName="+errorName, false);
-    xhttp.send();
-    return xhttp.responseText;
-}
-
-//remove red border
-function removeBorder(id)
-{
-    document.getElementById(id).style.border = null;
-}
-
-//Adding new kid (Choose file)
-const fileReal = document.getElementById("add-file__real");
-const fileBtn = document.getElementById("add-file__btn");
-const fileTxt = document.getElementById("add-file__text");
-const fileTxtValue = document.getElementById("add-file__text").textContent;
-
-fileBtn.addEventListener("click", function() {
-  fileReal.click();
-});
-
-fileReal.addEventListener("change", function() {
-  if (fileReal.value) {
-    fileTxt.innerHTML = fileReal.value.match(
-      /[\/\\]([\w\d\s\.\-\(\)]+)$/
-    )[1];
-  } else {
-    fileTxt.innerHTML = fileTxtValue;
-  }
-});
-
 
 //Change active profile
 function changeActiveProfile(idKid)

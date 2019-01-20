@@ -25,7 +25,7 @@
     //validation name
     $options = array(
             "options"=>array(
-            'regexp'=>'/^[a-zA-Z ]*$/'
+            'regexp'=>'/^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/'
             )
         );
     
@@ -36,7 +36,7 @@
     }else if(!filter_var($name,FILTER_VALIDATE_REGEXP,$options))
     {
         $error = true;
-        $_SESSION['error_name'] = $lang['err_name'];
+        $_SESSION['error_name'] = $lang['err_name_letters'];
     }
     
     
@@ -79,7 +79,7 @@
     }
     
     
-    //validation captcha
+    //validation reCaptcha
     $secret = "6Ld-SlUUAAAAALPqKT2lokYnL76iiTcFOKsiPmhQ";	
     $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.filter_input(INPUT_POST, 'g-recaptcha-response'));
     $result = json_decode($check);

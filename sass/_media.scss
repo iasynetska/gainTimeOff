@@ -40,13 +40,13 @@ MEDIA QUERIES
 /* Small Devices, Tablets */
 @media only screen and (min-width : 576px) 
 {
-    .register .register-parent,
-    .content-main .adding-kid
+    #formRegistration,
+    #formAddingKid
     {
         width: 400px;
     }
     
-    .captcha
+    #reCaptcha
     {
         margin-bottom: 20px;
     }

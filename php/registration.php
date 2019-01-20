@@ -12,14 +12,6 @@
         <meta name="author" content="">
         <title>Registration</title>
         
-        <style>
-            .error
-            {
-                color:red;
-                margin-bottom: 10px;
-            }
-	</style>
-        
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
@@ -42,122 +34,134 @@
                 <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
                     <div class="row justify-content-center">
                         <div class="col-auto">
-                            <form class="register-parent form" action="./services/do_registration.php" method="post">
+                            <form id="formRegistration" class="form" action="./services/do_registration.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['registration']?>
                                 </div>
                                 
                                 <!--field Name-->
-                                <label>
-                                    <?php echo $lang['name']?>: 
-                                    <input class="form__field field-100" type="text" value="<?php
+                                <div class="form__section">
+                                    <label for="name" class="requared"><?php echo $lang['name']?>:</label>
+
+                                    <input id="name" class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['tmp_name']))
                                         {
                                             echo $_SESSION['tmp_name'];
                                         }
-                                    ?>" name="name" /> <br />
+                                    ?>" name="name" oninput="removeBorder(this.id)" />
                                     <?php 
                                         if(isset($_SESSION['error_name']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_name']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_name']."</div>";
                                             unset($_SESSION['error_name']);
                                         }
                                     ?> 
-                                </label>
+                                </div>
                                 
                                 <!--field Login-->
-                                <label>
-                                    Login: 
-                                    <input class="form__field field-100" type="text" value="<?php
+                                <div class="form__section">
+                                    <label for="login" class="requared">Login:</label>
+
+                                    <input id="login" class="form__field field-100" type="text" value="<?php
                                         if(isset($_SESSION['tmp_login']))
                                         {
                                             echo $_SESSION['tmp_login'];
                                         }
-                                        ?>" name="login" /> <br />
+                                        ?>" name="login" oninput="removeBorder(this.id)" /> <br />
                                     <?php
                                         if(isset($_SESSION['error_login']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_login']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_login']."</div>";
                                             unset($_SESSION['error_login']);
                                         }
                                         if(isset($_SESSION['error_alnum_login']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_alnum_login']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_alnum_login']."</div>";
                                             unset($_SESSION['error_alnum_login']);
                                         }
                                         if(isset($_SESSION['error_login_existing']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_login_existing']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_login_existing']."</div>";
                                             unset($_SESSION['error_login_existing']);
                                         }
-                                    ?> 
-                                </label>
+                                    ?>
+                                </div>
                                 
                                 <!--field E-mail-->
-                                <label>
-                                    E-mail: 
-                                    <input class="form__field field-100" type="email" value="<?php
+                                <div class="form__section">
+                                    <label for="email" class="requared">E-mail:</label>
+
+                                    <input id="email" class="form__field field-100" type="email" value="<?php
                                         if(isset($_SESSION['tmp_email']))
                                         {
                                             echo $_SESSION['tmp_email'];
                                         }
-                                    ?>" name="email" /> <br />
+                                    ?>" name="email" oninput="removeBorder(this.id)" /> <br />
                                     <?php
                                         if(isset($_SESSION['error_email']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_email']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_email']."</div>";
                                             unset($_SESSION['error_email']);
                                         }
                                         if(isset($_SESSION['error_email_existing']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_email_existing']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_email_existing']."</div>";
                                             unset($_SESSION['error_email_existing']);
                                         }
                                     ?> 
-                                </label>
+                                </div>
                                 
                                 <!--field Password-->
-                                <label>
-                                    <?php echo $lang['password']?>: 
-                                    <input class="form__field field-100" type="password" value="<?php
+                                <div class="form__section">
+                                    <label for="password" class="requared"><?php echo $lang['password']?>:</label>
+
+                                    <input id="password" class="form__field field-100" type="password" value="<?php
                                         if(isset($_SESSION['tmp_password']))
                                         {
                                             echo $_SESSION['tmp_password'];
                                         }
-                                    ?>" name="password" /> <br />
+                                    ?>" name="password" oninput="removeBorder(this.id)" /> <br />
                                     <?php
                                         if(isset($_SESSION['error_password']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_password']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_password']."</div>";
                                             unset($_SESSION['error_password']);
                                         }
                                     ?> 
-                                </label>
+                                </div>
                                 
                                 <!--field Confirm Password-->
-                                <label>
-                                    <?php echo $lang['confirm_password']?>: 
-                                    <input class="form__field field-100" type="password" name="confirm_password" />
+                                <div class="form__section">
+                                    <label for="confirmPassword" class="requared"><?php echo $lang['confirm_password']?>:</label>
+
+                                    <input id="confirmPassword" class="form__field field-100" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
                                         <?php
                                             if(isset($_SESSION['error_confirm_password']))
                                             {
-                                                echo "<div class='error'>".$_SESSION['error_confirm_password']."</div>";
+                                                echo "<div class='form__error'>".$_SESSION['error_confirm_password']."</div>";
                                                 unset($_SESSION['error_confirm_password']);
                                             }
-                                        ?> 
-                                </label>
+                                        ?>
+                                </div>
                                 
-                                <!--field Captcha-->
-                                <div class="g-recaptcha captcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS" <!--style="transform:scale(0.82);transform-origin:0 0"--></div>
+                                <!--field reCaptcha-->
+                                <div class="form__section">
+                                    <div class="requared"><?php echo $lang['not_robot']?>:</div>
+                                    <div id="reCaptcha" class="g-recaptcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS" data-callback="selectReCaptcha"></div>
                                     <?php
                                         if(isset($_SESSION['error_robot']))
                                         {
-                                            echo "<div class='error'>".$_SESSION['error_robot']."</div>";
+                                            echo "<div class='form__error'>".$_SESSION['error_robot']."</div>";
                                             unset($_SESSION['error_robot']);
                                         }
                                     ?>
+                                </div>
                                 
-                                <input class="form__btn" type="submit" value="<?php echo $lang['signup']?>" />
+                                <span class="attention">*</span><small> - <?php echo $lang['required_field']?></small>
+                                
+                                <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['signup']?>" />
+                                
+                                <a class="form__link" href="login_parent.php"><?php echo $lang['link_login']?></a>
                             </form>
                         </div>
                     </div>  
@@ -171,12 +175,15 @@
         
         <!--Recaptcha-->
         <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
-
-        <!--jQuery-->
-        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
         
+        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
         <script src="../js/common.js"></script>
+        <script src="../js/validateForms.js"></script>
 
+        <script>
+            window.onload = changeCaptchaSize();
+            window.addEventListener("resize", changeCaptchaSize);
+        </script>
         
     </body>
 </html>

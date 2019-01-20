@@ -59,7 +59,7 @@ a {
     border-radius: 5px; }
   .form__btn {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 10px;
     padding: 5px;
     font-family: 'Almendra-Regular', sans-serif;
@@ -80,8 +80,9 @@ a {
     .form__btn:active {
       outline: none;
       background: #02141e; }
-  .form #errorMessage {
-    color: #FF0000; }
+  .form__error {
+    color: #FF0000;
+    margin-bottom: 10px; }
   .form__link {
     display: block;
     text-decoration: underline;
@@ -96,8 +97,27 @@ a {
 input {
   outline: none; }
 
-.captcha {
-  margin-top: 20px; }
+.requared:after {
+  content: " *";
+  color: #FF0000; }
+
+#reCaptcha {
+  margin-top: 5px; }
+
+.attention {
+  color: #FF0000; }
+
+#gender {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px; }
+
+.form_add-file {
+  margin-top: 5px;
+  margin-bottom: 10px; }
 
 .icon {
   padding-left: 10px; }
@@ -391,10 +411,10 @@ MEDIA QUERIES
 /*==========  Mobile First Method  ==========*/
 /* Small Devices, Tablets */
 @media only screen and (min-width: 576px) {
-  .register .register-parent,
-  .content-main .adding-kid {
+  #formRegistration,
+  #formAddingKid {
     width: 400px; }
-  .captcha {
+  #reCaptcha {
     margin-bottom: 20px; } }
 
 /*Medium devices (tablets, 768px and up)*/
