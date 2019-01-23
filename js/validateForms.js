@@ -28,8 +28,9 @@ function validateForm(formId)
     var fieldsValid = validateFormInputs(form);
     var reCaptchaValid = validateFormReCaptcha();
     var radioSelected = validateRadioButtons(form);
+    var dateValid = validateDateField();
     
-    return fieldsValid && reCaptchaValid && radioSelected;
+    return fieldsValid && reCaptchaValid && radioSelected && dateValid;
 }
 
 
@@ -41,18 +42,21 @@ function validateForm(formId)
 function validateFormInputs(form)
 {
     var valid = true;
-    var inputElements = form.elements;
-    //remove last input button from inputElements
-    for(var i=0; i<inputElements.length-1; i++)
+    var formElements = form.elements;
+    
+    for(var i=0; i<formElements.length; i++)
     {
-        var element = inputElements.item(i);
+        var element = formElements.item(i);
         
         if(element.value.trim() === "")
         {
-            var errorName = "err_empty_field";
-            element.style.border = "1px solid red";
-            addErrorMessage(element, errorName);
-            valid = false;
+            if (element.classList.contains("requared"))
+            {
+                var errorName = "err_empty_field";
+                element.style.border = "1px solid red";
+                addErrorMessage(element, errorName);
+                valid = false;
+            }
         }
         else
         {
@@ -184,12 +188,32 @@ function validateRadioButtons(form)
         
         if(!selected)
         {
-            errorName = "err_gender";
+            errorName = "err_check_option";
+            radioButtonsWithSameName[0].parentNode.style.border = "1px solid red";
             addErrorMessage(radioButtonsWithSameName[0], errorName);
             valid = false;
         }
     }
     
+    return valid;
+}
+
+function validateDateField()
+{
+    var valid = true; 
+    var inputtedDate  = document.getElementById('birthday');
+    var regDate = /^((19|20)\d{2})[/|-]((0[1-9])|1[0-2])[/|-]((0[1-9]|[12][0-9]|3[0-1]))$/;
+    
+    if(inputtedDate.value.trim() !== "")
+    {
+        if(!regDate.test(inputtedDate.value.trim()))
+        {
+        errorName = "err_date";
+        inputtedDate.style.border = "1px solid red";
+        addErrorMessage(inputtedDate, errorName);
+        valid = false;
+        }
+    }
     return valid;
 }
 

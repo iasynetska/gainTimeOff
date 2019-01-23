@@ -69,7 +69,7 @@
         "photo" => "Dodaj zdjęcie swojego dziecka",
         "choose_file" => "Wybierz plik",
         "no_file" => "Nie wybrano żadnego pliku",
-        "err_gender" => "Nie została zaznaczona żadna opcja!",
+        "err_check_option" => "Nie została zaznaczona żadna opcja!",
         "err_size" => "Przekroczony maksymalny rozmiar pliku!",
         "err_partially_uploaded" => "Odebrano tylko część pliku!",
         "err_no_file" => "Plik nie został pobrany!",

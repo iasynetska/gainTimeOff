@@ -81,14 +81,14 @@
                             
                             <!--field Name-->
                             <div class="form__section">
-                                <label for="name" class="requared"><?php echo $lang['name']?>:</label>
+                                <label for="name" class="markerRequared"><?php echo $lang['name']?>:</label>
                                 
-                                <input id="name" class="form__field field-100" type="text" value="<?php
+                                <input id="name" class="form__field field-100 requared" type="text" value="<?php
                                     if(isset($_SESSION['tmp_name']))
                                     {
                                         echo $_SESSION['tmp_name'];
                                     }
-                                ?>" name="name" />
+                                ?>" name="name" oninput="removeBorder(this.id)" />
                                 <?php 
                                     if(isset($_SESSION['error_name']))
                                     {
@@ -101,11 +101,11 @@
 
                             <!--field Gender-->
                             <div class="form__section">
-                                <div class="requared"><?php echo $lang['choose_option']?></div>
+                                <div class="markerRequared"><?php echo $lang['choose_option']?></div>
                                 
                                 <div id="gender">
-                                    <input id="boy" type="radio" name="gender" value="boy"><?php echo $lang['boy']?>
-                                    <input id="girl" type="radio" name="gender" value="girl"><?php echo $lang['girl']?><br />
+                                    <input id="boy" type="radio" name="gender" value="boy" oninput="removeBorder('gender')" /><?php echo $lang['boy']?>
+                                    <input id="girl" type="radio" name="gender" value="girl" oninput="removeBorder(this.id)" /><?php echo $lang['girl']?><br />
                                     <?php
                                         if(isset($_SESSION['error_gender']))
                                         {
@@ -118,14 +118,14 @@
 
                             <!--field Login-->
                             <div class="form__section">
-                                <label for="login" class="requared">Login:</label>
+                                <label for="login" class="markerRequared">Login:</label>
                                 
-                                <input id="login" class="form__field field-100" type="text" value="<?php
+                                <input id="login" class="form__field field-100 requared" type="text" value="<?php
                                     if(isset($_SESSION['tmp_login']))
                                     {
                                         echo $_SESSION['tmp_login'];
                                     }
-                                    ?>" name="login" /><br />
+                                    ?>" name="login" oninput="removeBorder(this.id)" /><br />
                                 <?php
                                     if(isset($_SESSION['error_login']))
                                     {
@@ -148,14 +148,14 @@
                             <!--field Password-->
                             <div class="form__section">
                                 
-                                <label for="password" class="requared"><?php echo $lang['password']?>:</label>
+                                <label for="password" class="markerRequared"><?php echo $lang['password']?>:</label>
 
-                                <input id="password" class="form__field field-100" type="password" value="<?php
+                                <input id="password" class="form__field field-100 requared" type="password" value="<?php
                                     if(isset($_SESSION['tmp_password']))
                                     {
                                         echo $_SESSION['tmp_password'];
                                     }
-                                ?>" name="password" /><br />
+                                ?>" name="password" oninput="removeBorder(this.id)" /><br />
                                 <?php
                                     if(isset($_SESSION['error_password']))
                                     {
@@ -167,9 +167,9 @@
                                 
                             <!--field Confirm Password-->
                             <div class="form__section">
-                                <label for="confirmPassword" class="requared"><?php echo $lang['confirm_password']?>:</label>
+                                <label for="confirmPassword" class="markerRequared"><?php echo $lang['confirm_password']?>:</label>
                                 
-                                <input id="confirmPassword" class="form__field field-100" type="password" name="confirm_password" />
+                                <input id="confirmPassword" class="form__field field-100 requared" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
                             </div>
                             
                             <!--field Date of birthday-->
@@ -181,7 +181,7 @@
                                         {
                                             echo $_SESSION['tmp_date'];
                                         }
-                                ?>" name="date_of_birth" /><br />
+                                ?>" name="date_of_birth" oninput="removeBorder(this.id)" /><br />
                                 <?php
                                     if(isset($_SESSION['error_date']))
                                     {

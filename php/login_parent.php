@@ -40,8 +40,8 @@
                                 </div>
                                 
                                 <div class="form__sectin">
-                                    <label for="loginField">Login:</label>    
-                                    <input id="loginField" class="form__field field-100" type="text" value="<?php
+                                    <label for="loginField" class="markerRequared">Login:</label>    
+                                    <input id="loginField" class="form__field field-100 requared" type="text" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
@@ -51,8 +51,8 @@
                                 </div>
                                 
                                 <div class="form__sectin">
-                                    <label for="passwordField"><?php echo $lang['password']?>:</label>
-                                    <input id="passwordField" class="form__field field-100" type="password" name="password" oninput="removeBorder(this.id)" />
+                                    <label for="passwordField" class="markerRequared"><?php echo $lang['password']?>:</label>
+                                    <input id="passwordField" class="form__field field-100 requared" type="password" name="password" oninput="removeBorder(this.id)" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {
@@ -61,6 +61,8 @@
                                             }
                                         ?>
                                 </div>
+                                
+                                <span class="attention">*</span><small> - <?php echo $lang['required_field']?></small>
                                 
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
 

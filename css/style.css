@@ -97,7 +97,7 @@ a {
 input {
   outline: none; }
 
-.requared:after {
+.markerRequared:after {
   content: " *";
   color: #FF0000; }
 

@@ -69,7 +69,7 @@
         "photo" => "Add a photo of your kid",
         "choose_file" => "Choose file",
         "no_file" => "No file chosen",
-        "err_gender" => "No option selected!",
+        "err_check_option" => "No option selected!",
         "err_size" => "Maximum file size exceeded!",
         "err_partially_uploaded" => "The uploaded file was only partially uploaded!",
         "err_no_file" => "No file was uploaded!",
