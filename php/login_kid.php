@@ -28,10 +28,10 @@
                 include_once 'header.php';
             ?>
         
-            <main class="login d-flex flex-column flex-grow-1">
-                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+            <main class="login d-flex align-items-center justify-content-center">
+                <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-auto">
+                        <div class="col-auto flex-shrink-1">
                             <form id="formLoginKid" class="login-kid form" action="./services/do_login_kid.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['kid']?>

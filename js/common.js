@@ -1,21 +1,22 @@
 /**
  * Resize reCAPTCHA to fit width of container
- * reCaptchaScale = containerWidth / elementWidth
 **/
-function changeCaptchaSize() 
-{
-    var reCaptchaWidth = 302;
-    var containerWidth = $("#formRegistration").width();
-    if(reCaptchaWidth !== containerWidth) 
-    {
-        var reCaptchaScale = containerWidth / reCaptchaWidth;
-        $(".g-recaptcha").css(
-        {
-            "transform":"scale("+reCaptchaScale+")",
-            "transform-origin":"0 0"
-        });
-    }
+function resizeReCaptcha() 
+{      
+    var width = $( ".g-recaptcha" ).parent().width();
+  
+  if (width < 302) {
+      var scale = width / 302;
+  } else {
+      var scale = 1;
+  }
+  
+  $( ".g-recaptcha" ).css('transform', 'scale(' + scale + ')');
+  $( ".g-recaptcha" ).css('-webkit-transform', 'scale(' + scale + ')');
+  $( ".g-recaptcha" ).css('transform-origin', '0 0');
+  $( ".g-recaptcha" ).css('-webkit-transform-origin', '0 0');
 }
+
 
 //Change active profile
 function changeActiveProfile(idKid)

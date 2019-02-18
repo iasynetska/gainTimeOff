@@ -280,22 +280,32 @@ function removeBorder(id)
     document.getElementById(id).style.border = null;
 }
 
-//Adding new kid (Choose file)
-//const fileReal = document.getElementById("add-file__real");
-//const fileBtn = document.getElementById("add-file__btn");
-//const fileTxt = document.getElementById("add-file__text");
-//const fileTxtValue = document.getElementById("add-file__text").textContent;
-//
-//fileBtn.addEventListener("click", function() {
-//  fileReal.click();
-//});
-//
-//fileReal.addEventListener("change", function() {
-//  if (fileReal.value) {
-//    fileTxt.innerHTML = fileReal.value.match(
-//      /[\/\\]([\w\d\s\.\-\(\)]+)$/
-//    )[1];
-//  } else {
-//    fileTxt.innerHTML = fileTxtValue;
-//  }
-//});
+function clickInputFile()
+{
+    var fileReal = document.getElementById("add-file__real");
+    fileReal.click();
+}
+
+function addFileName()
+{
+    var fileReal = document.getElementById("add-file__real");
+    var fileTxt = document.getElementById("add-file__text");
+    var fileTxtValue = document.getElementById("add-file__text").textContent;
+    
+    if (fileReal.value) 
+    {
+        fileTxt.innerHTML = fileReal.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else 
+    {
+        fileTxt.innerHTML = fileTxtValue;
+    }
+}
+
+function clearFile()
+{
+    var inputFile = document.getElementById("add-file__real");
+    var fileTxt = document.getElementById("add-file__text");
+    inputFile.value = "";
+    fileTxt.innerHTML = "NoNoNo";
+}

@@ -5,22 +5,20 @@ MEDIA QUERIES
 
 /*==========  Desktop First Method  ==========*/
 
+/* Smartphones (portrait) */
+@media (max-width: 320px){}
 
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) 
 {
-    .wrapper
+    .footer
     {
-        padding-bottom: 100px;
-    }
-    .footer-counter,
-    .footer-customers
-    {
-        text-align: center;
-    }
-    .footer-copy__text
-    {
-        text-align: center;
+        &-counter,
+        &-customers,
+        &-copy__text
+        {
+            text-align: center;
+        }
     }
 }
 
@@ -38,19 +36,7 @@ MEDIA QUERIES
 
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 576px) 
-{
-    #formRegistration,
-    #formAddingKid
-    {
-        width: 400px;
-    }
-    
-    #reCaptcha
-    {
-        margin-bottom: 20px;
-    }
-}
+@media only screen and (min-width : 576px) {}
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {}

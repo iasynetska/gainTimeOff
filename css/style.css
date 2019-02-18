@@ -1,10 +1,9 @@
-/*******************
-Global styling
-*******************/
+/*********************************
+Global styling (_interface.scss)
+**********************************/
 body, html {
   margin: 0;
-  padding: 0;
-  height: 100%; }
+  padding: 0; }
 
 body {
   font-family: 'Almendra-Regular', sans-serif; }
@@ -27,15 +26,14 @@ a {
   text-shadow: 0 0 7px #02141e; }
 
 .wrapper {
-  min-height: 100vh;
-  margin: 0 auto;
+  height: 100vh;
   padding-top: 50px;
-  padding-bottom: 50px; }
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 .form {
-  width: 300px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  max-width: 350px;
+  margin: 2rem auto;
   padding: 25px;
   color: #FFFFFF;
   background-color: rgba(4, 27, 40, 0.9);
@@ -103,6 +101,8 @@ input {
 
 #reCaptcha {
   margin-top: 5px; }
+  #reCaptcha > div {
+    width: 200px !important; }
 
 .attention {
   color: #FF0000; }
@@ -118,6 +118,14 @@ input {
 .form_add-file {
   margin-top: 5px;
   margin-bottom: 10px; }
+
+.hidden {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
 
 .icon {
   padding-left: 10px; }
@@ -140,11 +148,15 @@ body#welcome {
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
+.user {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
+
 .user-card {
   cursor: pointer;
-  width: 300px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  max-width: 350px;
+  margin: 2rem auto;
   padding: 25px;
   color: #FFFFFF;
   background-color: rgba(4, 27, 40, 0.9);
@@ -170,9 +182,9 @@ HEADER
 .header {
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
   z-index: 100;
+  width: 100%;
   background-color: rgba(4, 27, 40, 0.9);
   border-bottom: 1px solid #2EBBCE; }
 
@@ -191,11 +203,6 @@ HEADER
 FOOTER
 **************************/
 .footer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
   color: #FFFFFF;
   background-color: rgba(4, 27, 40, 0.9);
   border-top: 1px solid #2EBBCE; }
@@ -211,6 +218,11 @@ body#login_parent {
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
 
+.login {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
+
 /****************
 REGISTRATION
 *****************/
@@ -218,6 +230,11 @@ body#registration {
   margin: 0;
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
+
+.register {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
 
 /****************
 GREETING
@@ -228,9 +245,8 @@ body#greeting {
   background-size: cover; }
 
 .greeting .message {
-  width: 300px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  max-width: 350px;
+  margin: 2rem auto;
   padding: 25px;
   color: #FFFFFF;
   background-color: rgba(4, 27, 40, 0.9);
@@ -334,7 +350,6 @@ body#dashboard_parent_kids {
 ADD KID
 *****************/
 body#add_kid {
-  margin: 0;
   background-color: #0d4861; }
 
 .adding-kid .button {
@@ -395,14 +410,10 @@ body#dashboard_kid {
 MEDIA QUERIES
 *****************/
 /*==========  Desktop First Method  ==========*/
+/* Smartphones (portrait) */
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-  .wrapper {
-    padding-bottom: 100px; }
-  .footer-counter,
-  .footer-customers {
-    text-align: center; }
-  .footer-copy__text {
+  .footer-counter, .footer-customers, .footer-copy__text {
     text-align: center; } }
 
 /*Small devices (landscape phones, less than 768px)*/
@@ -410,13 +421,6 @@ MEDIA QUERIES
 /*Large devices (desktops, less than 1200px)*/
 /*==========  Mobile First Method  ==========*/
 /* Small Devices, Tablets */
-@media only screen and (min-width: 576px) {
-  #formRegistration,
-  #formAddingKid {
-    width: 400px; }
-  #reCaptcha {
-    margin-bottom: 20px; } }
-
 /*Medium devices (tablets, 768px and up)*/
 /*Large devices (desktops, 992px and up)*/
 /*Extra large devices (large desktops, 1200px and up)*/

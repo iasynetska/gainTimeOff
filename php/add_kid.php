@@ -196,9 +196,10 @@
                                 <label for="add-file__real"><?php echo $lang['photo']?>:</label>
 
                                 <div class="form_add-file">
-                                    <input id="add-file__real" class="form__field field-100" type="file" name="photo" hidden="hidden" />
-                                    <button id="add-file__btn" class="form__btn button" type="button"><?php echo $lang['choose_file']?></button>
+                                    <input id="add-file__real" class="form__field field-100" onchange="addFileName()" type="file" name="photo" hidden="hidden" />
+                                    <button id="add-file__btn" class="form__btn button" onclick="clickInputFile()" type="button"><?php echo $lang['choose_file']?></button>
                                     <span id="add-file__text" class="form__text"><?php echo $lang['no_file']?></span>
+                                    <button class="clear" onclick="clearFile()" type="button">Clear</button>
 
                                     <?php
                                         if(isset($_SESSION['error_photo']))

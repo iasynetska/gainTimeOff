@@ -6,3 +6,8 @@ body#login_parent
 {
     @include body_main;
 }
+
+.login
+{
+    flex: 1 0 auto;
+}

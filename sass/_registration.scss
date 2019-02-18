@@ -6,3 +6,8 @@ body#registration
 {
     @include body_main;
 }
+
+.register
+{
+    flex: 1 0 auto;
+}

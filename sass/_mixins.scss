@@ -7,9 +7,8 @@
 
 @mixin form
 {
-    width: 300px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    max-width: 350px;
+    margin: 2rem auto;
     padding: 25px;
     color: $white-color;
     background-color: $bg-color;

@@ -1,13 +1,13 @@
 /****************
 HEADER
 *****************/
-.header,
+.header
 {
     position: fixed;
     top: 0;
-    right: 0;
     left: 0;
     z-index: 100;
+    width: 100%;
     background-color: $bg-color;
     border-bottom: 1px solid $link-color;
 }

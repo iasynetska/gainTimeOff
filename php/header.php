@@ -1,6 +1,6 @@
 <?php echo
 
-'<header class="header">
+'<header class="header flex-shrink-0">
     <nav class="top-nav">
         <div class="container-fluid">
             <div class="row">

@@ -30,10 +30,10 @@
                 include_once 'header.php';
             ?>
         
-            <main class="register d-flex flex-column flex-grow-1">
-                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+            <main class="register d-flex align-items-center justify-content-center">
+                <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-auto">
+                        <div class="col-auto flex-shrink-1">
                             <form id="formRegistration" class="form" action="./services/do_registration.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['registration']?>
@@ -181,8 +181,15 @@
         <script src="../js/validateForms.js"></script>
 
         <script>
-            window.onload = changeCaptchaSize();
-            window.addEventListener("resize", changeCaptchaSize);
+            $(document).ready(function() {
+    
+                $(window).on('resize', function() {
+                        resizeReCaptcha();
+                });
+
+                resizeReCaptcha();
+
+            });
         </script>
         
     </body>

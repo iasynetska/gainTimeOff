@@ -6,6 +6,11 @@ body#welcome
     @include body_main;
 }
 
+.user
+{
+    flex: 1 0 auto;
+}
+
 .user-card
 {
     cursor: pointer;

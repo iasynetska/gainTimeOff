@@ -1,11 +1,10 @@
-/*******************
-Global styling
-*******************/
+/*********************************
+Global styling (_interface.scss)
+**********************************/
 body,html
 {
     margin: 0;
     padding: 0;
-    height: 100%;
 }
 
 body
@@ -45,10 +44,9 @@ a
 
 .wrapper
 {
-    min-height: 100vh;
-    margin: 0 auto;
+    height: 100vh;
     padding-top: 50px;
-    padding-bottom: 50px;
+    box-sizing: border-box;
 }
 
 .form
@@ -106,6 +104,10 @@ input
 #reCaptcha
 {
     margin-top: 5px;
+    & > div
+    {
+        width: 200px !important;
+    }
 }
 
 .attention
@@ -127,6 +129,16 @@ input
 {
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+.hidden
+{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
 .icon

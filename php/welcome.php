@@ -40,10 +40,10 @@
                 include_once 'header.php';
             ?>
         
-            <main class="user d-flex flex-column flex-grow-1">
-                <div class="container-fluid d-flex flex-column align-items-center justify-content-center flex-grow-1">
+            <main class="user d-flex align-items-center justify-content-center">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
-                        <div class="col-auto">
+                        <div class="col-sm-6 col-md-4 align-items-stretch">
                             <div class="user-card" onclick="location.href='login_kid.php';">
                                 <div class="user-card__title">
                                     <?php echo $lang['kid']?>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-sm-6 col-md-4 align-items-stretch">
                             <div class="user-card" onclick="location.href='login_parent.php';">
                                 <div class="user-card__title">
                                     <?php echo $lang['parent']?>
@@ -76,5 +76,6 @@
             <?php
                 include_once 'footer_with_counter.php';
             ?>
+        </div>
     </body>
 </html>
