@@ -1,7 +1,7 @@
 /*******************
 DASHBOARD PARENT
 *******************/
-body#dashboard_parent_kids
+body#dashboard-parent__kids
 {
     margin: 0;
     background-color: #0d4861;
@@ -9,6 +9,7 @@ body#dashboard_parent_kids
 
 .dashboard
 {
+    flex: 1 0 auto;
     &-content
     {
         padding: 15px;
@@ -17,12 +18,94 @@ body#dashboard_parent_kids
     } 
 }
 
-.content-header
-{
-    text-align: right;
-    .logout-link
+.dashboard-menu {
+    padding: 10px;
+    color: $white-color;
+    &__links
     {
-        text-decoration: underline;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        & > li
+        {
+            margin: 0 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+    &__wrap-button
+    {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 100%;
+        cursor: pointer;
+        &:hover{
+            & .dashboard-menu__button,
+            & .dashboard-menu__button::before,
+            & .dashboard-menu__button::after
+            {
+                background-color: $link-color;
+            }
+        }
+    }
+    &__button
+    {
+        &,
+        &::before,
+        &::after
+        {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: $white-color;
+            border-radius: 2px;
+            transition: transform .4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &::before
+        {
+            content: '';
+            margin-top: -8px;
+        }
+        &::after
+        {
+            content: '';
+            margin-top: 8px;
+        }
+    }
+    &__content
+    {
+        text-align: right;
+        .logout-link
+        {
+            text-decoration: underline;
+        }
+    }
+}
+
+#dashboard-menu__toggle 
+{
+    display: none;
+    
+    &:checked + .dashboard-menu__wrap-button .dashboard-menu__button
+    {
+        background: rgba(255, 255, 255, 0);
+        
+        &::before
+        {
+            margin-top: 0px;
+            transform: rotate(135deg);
+        }
+        
+        &::after
+        {
+            margin-top: 0px;
+            transform: rotate(-135deg);
+        }
     }
 }
 
@@ -30,11 +113,14 @@ body#dashboard_parent_kids
 {
     &__block
     {
+	flex: 0 1 230px;
+        max-width: 230px;
+        padding: 25px 0;
+        text-align: center;
         background-color: $bg-color;
         border: 1px solid $link-color;
         border-radius: 20px;
         box-shadow: 10px 10px 15px 2px $bg-color; 
-        padding: 40px 50px 20px 50px;
         cursor: pointer;
         &:hover
         {
@@ -43,7 +129,7 @@ body#dashboard_parent_kids
         }
         &:active
         {
-            padding: 39px 49px 19px 49px;
+            box-shadow: 0px 0px $bg-color;
         }
     }
     &__text

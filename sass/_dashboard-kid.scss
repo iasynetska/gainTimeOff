@@ -15,7 +15,8 @@ body#dashboard_kid
         border-radius: 20px;
         box-shadow: 10px 10px 15px 2px $bg-color;
         padding: 20px;
-        width: 250px;
+        max-width: 250px;
+        flex: 0 1 250px;
         &__time
         {
             text-align: center;

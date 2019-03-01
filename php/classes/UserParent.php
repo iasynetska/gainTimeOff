@@ -35,10 +35,18 @@
                 
                 $arr_kids = $userKidDao->getKidsByParent($this);
                 
-                foreach($arr_kids as $kid)
+                if(empty($arr_kids))
                 {
-                    $this->kids[$kid->name] = $kid;
+                    $this->kids = $arr_kids;
                 }
+                else
+                {
+                    foreach($arr_kids as $kid)
+                    {
+                        $this->kids[$kid->name] = $kid;
+                    }
+                }
+                
             }
             
             return $this->kids;

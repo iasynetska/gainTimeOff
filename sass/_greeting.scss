@@ -7,7 +7,11 @@ body#greeting
     @include body_main;
 }
 
-.greeting .message
+.greeting
 {
-    @include form;
+    flex: 1 0 auto;
+    .message
+    {
+        @include form;
+    }
 }

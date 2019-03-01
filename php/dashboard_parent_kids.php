@@ -10,8 +10,6 @@
     
     include_once "lang_config.php";
     
-    
-    
     //check if authorised
     if (!isset($_SESSION['parent']))
     {
@@ -49,31 +47,44 @@
         <link rel="stylesheet" href="../css/style.css"/>
     </head>
     
-    <body id="dashboard_parent_kids">
+    <body id="dashboard-parent__kids">
         <div class="wrapper d-flex flex-column">
             <?php 
                 include_once 'header.php';
             ?>
 
-            <main class="dashboard d-flex flex-grow-1">
-                <?php
-                    include_once 'sidebar.php';
-                ?>
-                
-                <div class="dashboard-content flex-grow-1 d-flex flex-column">
-                    <div class="content-header">
-                        <div class="content-header__logout">
+            <main class="dashboard d-flex flex-column flex-wrap">                
+                <nav class="dashboard-menu d-flex flex-row justify-content-between align-items-center">
+                    <input id="dashboard-menu__toggle" type="checkbox" />
+                    <label class='dashboard-menu__wrap-button' for="dashboard-menu__toggle">
+                            <div class='dashboard-menu__button'></div>
+                    </label>
+
+                    <ul class="dashboard-menu__links">
+                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
+                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
+                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
+                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
+                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
+                    </ul>
+
+                    <div class="dashboard-menu__content">
+                        <div class="content__logout">
                             <?php
                                 echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
                                 echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
                             ?>
                         </div>
                     </div>
+		</nav>
+                
+                <div class="dashboard-content flex-grow-1 d-flex flex-column">
+                    
                     <?php 
-                        if(!isset($arr_kids)) 
+                        if(empty($arr_kids)) 
                         {
                             echo
-                            '<div class="content-main flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                            '<div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
                                 <div class="content-main__block"  onclick="location.href=\'add_kid.php\';">
                                     <img src="../img/plus-128.png" alt="Add kid">
                                     <div class="content-main__text">

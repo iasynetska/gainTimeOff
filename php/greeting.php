@@ -34,10 +34,10 @@
                 include_once 'header.php';
             ?>
 
-            <main class="greeting d-flex flex-column flex-grow-1">
-                <div class="container d-flex flex-column align-items-center justify-content-center flex-grow-1">
+            <main class="greeting d-flex align-items-center justify-content-center">
+                <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-auto">
+                        <div class="col-auto flex-shrink-1">
                             <div class="message">
                                 <p><?php echo sprintf($lang['greeting'], $_SESSION['name'])?></p> <br />
 
@@ -46,6 +46,7 @@
                                 ?>
 
                                 <button class="form__btn" onclick="location.href='login_parent.php';"><?php echo $lang['login_submit']?></button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@
             <main class="login d-flex align-items-center justify-content-center">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-auto flex-shrink-1">
+                        <div class="col flex-shrink-1">
                             <form id="formLoginParent" class="login-parent form" action="./services/do_login_parent.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['parent']?>

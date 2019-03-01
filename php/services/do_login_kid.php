@@ -3,7 +3,7 @@
     //check if Login and Password are passed
 //    if(!isset($_POST['login']) || !isset($_POST['password']))
 //    {
-//        header('Location: /gaintimeoff/php/login_parent.php');
+//        header('Location: /gaintimeoff/php/login_kid.php');
 //        exit();
 //    }
     
@@ -16,8 +16,6 @@
     session_start();
     
     include_once "../lang_config.php";
-    
-    
     
     $login = filter_input(INPUT_POST, 'login');
     $pass = filter_input(INPUT_POST, 'password');

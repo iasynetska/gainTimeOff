@@ -56,7 +56,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="content-main flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
                     <div class="content-info">
                         <div class="form__title"><?php echo $lang['your_time'];?></div>
                         <div class="content-info__time">

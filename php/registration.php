@@ -33,7 +33,7 @@
             <main class="register d-flex align-items-center justify-content-center">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-auto flex-shrink-1">
+                        <div class="col flex-shrink-1">
                             <form id="formRegistration" class="form" action="./services/do_registration.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['registration']?>
