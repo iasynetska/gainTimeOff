@@ -52,6 +52,7 @@
     border: 1px solid $link-color;
     border-radius: 5px; 
     outline: none;
+    cursor: pointer;
     &:hover
     {
         background: linear-gradient($link-color, $dark-color);

@@ -307,5 +307,5 @@ function clearFile()
     var inputFile = document.getElementById("add-file__real");
     var fileTxt = document.getElementById("add-file__text");
     inputFile.value = "";
-    fileTxt.innerHTML = "NoNoNo";
+    fileTxt.innerHTML = "&hellip;";
 }

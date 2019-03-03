@@ -42,7 +42,7 @@
         //dashboard
         "hello" => "Hello, ",
         "kids" => "Kids",
-        "add_kid" => "Add new kid",
+        "add_kid" => "Add kid",
         "logout" => "Log out",
         "time_to_play" => "Time to play",
         "delete" => "Delete",
@@ -68,7 +68,7 @@
         "err_date" => "The date format is not valid",
         "photo" => "Add a photo of your kid",
         "choose_file" => "Choose file",
-        "no_file" => "No file chosen",
+        "no_file" => "Empty",
         "err_check_option" => "No option selected!",
         "err_size" => "Maximum file size exceeded!",
         "err_partially_uploaded" => "The uploaded file was only partially uploaded!",

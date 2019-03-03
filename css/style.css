@@ -68,7 +68,8 @@ a {
     border: none;
     border: 1px solid #2EBBCE;
     border-radius: 5px;
-    outline: none; }
+    outline: none;
+    cursor: pointer; }
     .form__btn:hover {
       background: -webkit-gradient(linear, left top, left bottom, from(#2EBBCE), to(#02141e));
       background: linear-gradient(#2EBBCE, #02141e);
@@ -426,6 +427,10 @@ body#add_kid {
 
 .form__text {
   margin-left: 10px; }
+
+.add-file__delete {
+  margin: 5px 0;
+  cursor: pointer; }
 
 /*************************
 CREATE SUBJECTS AND MARKS

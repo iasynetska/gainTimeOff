@@ -33,14 +33,6 @@
         <meta name="author" content="">
         <title>Adding kid</title>
         
-        <style>
-            .error
-            {
-                color:red;
-                margin-bottom: 10px;
-            }
-	</style>
-        
         <!--Bootstrap Grid CSS & CSS-->
         <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
         
@@ -58,22 +50,14 @@
             <?php 
                 include_once 'header.php';
             ?>
-
-            <main class="adding d-flex flex-grow-1">
-                <?php
-                    include_once 'sidebar.php';
+            
+            <main class="dashboard d-flex flex-column flex-wrap">
+                <?php 
+                    include_once 'top_menu.php';
                 ?>
                 
                 <div class="dashboard-content flex-grow-1 d-flex flex-column">
-                    <div class="content-header">
-                        <div class="content-header__logout">
-                            <?php
-                                echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
-                                echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
-                            ?>
-                        </div>
-                    </div>
-                    <div class="content-main flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                    <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
                         <form id="formAddingKid" class="adding-kid form" action="./services/do_add_kid.php" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id)">
                             <div class="form__title">
                                 <?php echo $lang['add_kid']?>
@@ -195,11 +179,13 @@
                             <div class="form__section">
                                 <label for="add-file__real"><?php echo $lang['photo']?>:</label>
 
-                                <div class="form_add-file">
-                                    <input id="add-file__real" class="form__field field-100" onchange="addFileName()" type="file" name="photo" hidden="hidden" />
-                                    <button id="add-file__btn" class="form__btn button" onclick="clickInputFile()" type="button"><?php echo $lang['choose_file']?></button>
-                                    <span id="add-file__text" class="form__text"><?php echo $lang['no_file']?></span>
-                                    <button class="clear" onclick="clearFile()" type="button">Clear</button>
+                                <div class="form_add-file d-flex justify-content-between align-items-center flex-wrap">
+                                    <div>
+                                        <input id="add-file__real" class="form__field field-100" onchange="addFileName()" type="file" name="photo" hidden="hidden" />
+                                        <button id="add-file__btn flex-shrink-0" class="form__btn button" onclick="clickInputFile()" type="button"><?php echo $lang['choose_file']?></button>
+                                        <span id="add-file__text" class="form__text">&hellip;</span>
+                                    </div>
+                                        <img class="add-file__delete" src="../img/delete_file_32.png" onclick="clearFile()">
 
                                     <?php
                                         if(isset($_SESSION['error_photo']))

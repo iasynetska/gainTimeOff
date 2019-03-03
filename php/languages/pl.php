@@ -42,7 +42,7 @@
         //dashboard
         "hello" => "Witaj, ",
         "kids" => "Dzieci",
-        "add_kid" => "Dodaj nowe dziecko",
+        "add_kid" => "Dodaj dziecko",
         "logout" => "Wyloguj",
         "time_to_play" => "Czas na zabawę",
         "delete" => "Usuń",
@@ -68,7 +68,7 @@
         "err_date" => "Format daty jest nieprawidłowy",
         "photo" => "Dodaj zdjęcie swojego dziecka",
         "choose_file" => "Wybierz plik",
-        "no_file" => "Nie wybrano żadnego pliku",
+        "no_file" => "Puste",
         "err_check_option" => "Nie została zaznaczona żadna opcja!",
         "err_size" => "Przekroczony maksymalny rozmiar pliku!",
         "err_partially_uploaded" => "Odebrano tylko część pliku!",

@@ -54,123 +54,100 @@
             ?>
 
             <main class="dashboard d-flex flex-column flex-wrap">                
-                <nav class="dashboard-menu d-flex flex-row justify-content-between align-items-center">
-                    <input id="dashboard-menu__toggle" type="checkbox" />
-                    <label class='dashboard-menu__wrap-button' for="dashboard-menu__toggle">
-                            <div class='dashboard-menu__button'></div>
-                    </label>
-
-                    <ul class="dashboard-menu__links">
-                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
-                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
-                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
-                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
-                      <li onclick="location.href='dashboard_parent_kids.php';"><a href="dashboard_parent_kids.php"><?php echo $lang['kids']?></a></li>
-                    </ul>
-
-                    <div class="dashboard-menu__content">
-                        <div class="content__logout">
-                            <?php
-                                echo "<div class='logout-text'>".$lang['hello'].$parent->name."</div>";
-                                echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
-                            ?>
-                        </div>
-                    </div>
-		</nav>
+                <?php
+                    include_once 'top_menu.php';
+                ?>
                 
                 <div class="dashboard-content flex-grow-1 d-flex flex-column">
                     
-                    <?php 
-                        if(empty($arr_kids)) 
-                        {
-                            echo
-                            '<div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
-                                <div class="content-main__block"  onclick="location.href=\'add_kid.php\';">
-                                    <img src="../img/plus-128.png" alt="Add kid">
-                                    <div class="content-main__text">
-                                        <a href="add_kid.php">'.$lang["add_kid"].'</a>
-                                    </div>
+                    <?php if(empty($arr_kids)){ ?>
+                        <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
+                            <div class="content-main__block"  onclick="location.href='add_kid.php';">
+                                <img src="../img/plus-128.png" alt="Add_kid">
+                                <div class="content-main__text">
+                                    <a href="add_kid.php"><?php echo $lang['add_kid']?></a>
                                 </div>
-                            </div>';
-                        }
-                        else 
-                        {
-                            echo    
-                                '<div class="kids">
-                                    <div class="container">
-                                        <h1 class="kids-title">'.$lang["my_kids"].'</h1>
-                                        <div class="kids-new"><img class="kids-new__img" onclick="location.href=\'add_kid.php\';" src="../img/plus-32.png" alt="Add kid"></div>
-                                        <div class="kids-blocks d-flex flex-wrap justify-content-center">';
-                            foreach($arr_kids as $kid)
-                            {
-                                if($kid === reset($arr_kids))
-                                {
-                                    echo 
-                                            '<div id="'.$kid->name.'" class="kid active-profile d-flex flex-column justify-content-center align-items-center" onclick="changeActiveProfile(this.id)">';
-                                }
-                                else
-                                {
-                                    echo 
-                                            '<div id="'.$kid->name.'" class="kid d-flex flex-column justify-content-center align-items-center" onclick="changeActiveProfile(this.id)">';
-                                }
-                                echo 
-                                                '<div class="kid-delete">
-                                                    <i class="far fa-trash-alt icon" onclick="areYouSure(\''.$kid->name.'\')"></i>
-                                                </div>';
-                                if ($kid->photo === NULL)
-                                {
-                                    if ($kid->gender == "girl")
-                                    {
-                                        echo 
-                                                '<img src="../img/girl_small.png" alt="girl">';
-                                    }
-                                    else
-                                    {
-                                        echo 
-                                                '<img src="../img/boy_small.png" alt="boy">';
-                                    }
-                                }
-                                else
-                                {
-                                    echo 
-                                                '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="64" height="64"/>';
-                                }
-                                echo
-                                                '<div class="kid-name">'.$kid->name.'<i class="far fa-edit icon"></i></div>
-                                            </div><!-- /.kid -->';
-                            }
-                            echo
-                                        '</div><!-- /.kids-blocks -->
-                                    </div><!-- /.container -->    
-                                </div><!-- /.kids -->
-                            
-                                <table class="kids-table">
-                                    <tr>
-                                        <th colspan="3">XXX</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">'.$lang['time_to_play'].':XXX</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="33%">'.$lang['school_subjects'].'</td>
-                                        <td width="33%">'.$lang['tasks'].'</td>
-                                        <td width="33%">'.$lang['played_time'].'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'
-                                            .$lang['create_sub_and_marks'].'<br />
-                                            <img src="../img/plus-32.png" onclick="location.href=\'create_subjects_and_marks.php\';">
-                                        </td>
-                                        <td>
-                                            '.$lang['create_tasks'].'<br />
-                                            <img src="../img/plus-32.png" onclick="location.href=\'create_kid_profile.php\';">
-                                        </td>
-                                        <td>
-                                            '.$lang['played_time'].'
-                                        </td>
-                                    </tr>
-                                </table>';
-                        }
+                            </div>
+                        </div>
+                    <?php }
+//                        else 
+//                        {
+//                            echo    
+//                                '<div class="kids">
+//                                    <div class="container">
+//                                        <h1 class="kids-title">'.$lang["my_kids"].'</h1>
+//                                        <div class="kids-new"><img class="kids-new__img" onclick="location.href=\'add_kid.php\';" src="../img/plus-32.png" alt="Add kid"></div>
+//                                        <div class="kids-blocks d-flex flex-wrap justify-content-center">';
+//                            foreach($arr_kids as $kid)
+//                            {
+//                                if($kid === reset($arr_kids))
+//                                {
+//                                    echo 
+//                                            '<div id="'.$kid->name.'" class="kid active-profile d-flex flex-column justify-content-center align-items-center" onclick="changeActiveProfile(this.id)">';
+//                                }
+//                                else
+//                                {
+//                                    echo 
+//                                            '<div id="'.$kid->name.'" class="kid d-flex flex-column justify-content-center align-items-center" onclick="changeActiveProfile(this.id)">';
+//                                }
+//                                echo 
+//                                                '<div class="kid-delete">
+//                                                    <i class="far fa-trash-alt icon" onclick="areYouSure(\''.$kid->name.'\')"></i>
+//                                                </div>';
+//                                if ($kid->photo === NULL)
+//                                {
+//                                    if ($kid->gender == "girl")
+//                                    {
+//                                        echo 
+//                                                '<img src="../img/girl_small.png" alt="girl">';
+//                                    }
+//                                    else
+//                                    {
+//                                        echo 
+//                                                '<img src="../img/boy_small.png" alt="boy">';
+//                                    }
+//                                }
+//                                else
+//                                {
+//                                    echo 
+//                                                '<img src="data:image/jpeg;base64,'.$kid->photo.'"width="64" height="64"/>';
+//                                }
+//                                echo
+//                                                '<div class="kid-name">'.$kid->name.'<i class="far fa-edit icon"></i></div>
+//                                            </div><!-- /.kid -->';
+//                            }
+//                            echo
+//                                        '</div><!-- /.kids-blocks -->
+//                                    </div><!-- /.container -->    
+//                                </div><!-- /.kids -->
+//                            
+//                                <table class="kids-table">
+//                                    <tr>
+//                                        <th colspan="3">XXX</th>
+//                                    </tr>
+//                                    <tr>
+//                                        <td colspan="3">'.$lang['time_to_play'].':XXX</td>
+//                                    </tr>
+//                                    <tr>
+//                                        <td width="33%">'.$lang['school_subjects'].'</td>
+//                                        <td width="33%">'.$lang['tasks'].'</td>
+//                                        <td width="33%">'.$lang['played_time'].'</td>
+//                                    </tr>
+//                                    <tr>
+//                                        <td>'
+//                                            .$lang['create_sub_and_marks'].'<br />
+//                                            <img src="../img/plus-32.png" onclick="location.href=\'create_subjects_and_marks.php\';">
+//                                        </td>
+//                                        <td>
+//                                            '.$lang['create_tasks'].'<br />
+//                                            <img src="../img/plus-32.png" onclick="location.href=\'create_kid_profile.php\';">
+//                                        </td>
+//                                        <td>
+//                                            '.$lang['played_time'].'
+//                                        </td>
+//                                    </tr>
+//                                </table>';
+//                        }
                     ?>
                 </div>
             </main>
