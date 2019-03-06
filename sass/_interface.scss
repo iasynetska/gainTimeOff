@@ -26,20 +26,22 @@ a
 {
     list-style: none;
     text-decoration: none;
-    color: $white-color;
+    color: $color_white;
     &:hover
     {
-        color: $link-color;
+        color: $color_link;
     }
 }
 
-#active
+#link_active
 {
-    &-link
-    {
-        border-bottom: 2px solid $link-color;
-        text-shadow: 0 0 7px $dark-color;
-    }
+    border-bottom: 2px solid $color_link;
+    text-shadow: 0 0 7px $color_dark;
+}
+
+input
+{
+    outline:none;
 }
 
 .wrapper
@@ -56,9 +58,22 @@ a
     {
         @include form__title;
     }
+    &__label_required:after
+    {
+        content:" *";
+        color: $color_error;
+    }
     &__field
     {
         @include form__field;
+        &_width_100
+        {
+            width: 100%;
+        }
+        &_width_80
+        {
+            width: 80%;
+        }
     }
     &__btn
     {
@@ -66,7 +81,7 @@ a
     }
     &__error
     {
-        color: $attention-color;
+        color: $color_error;
         margin-bottom: 10px;
     }
     &__link
@@ -75,30 +90,15 @@ a
         text-decoration: underline;
         text-align: center;
     }
-}
-
-.field
-{
-    &-100
+    &__note
     {
-        width: 100%;
+        color: $color_error;
     }
-    &-80
+    &-add-file
     {
-        width: 80%;
+        margin-top: 5px;
+        margin-bottom: 10px;
     }
-}
-
-input
-{
-    outline:none;
-}
-
-
-.markerRequared:after
-{
-    content:" *";
-    color: $attention-color;
 }
 
 #reCaptcha
@@ -110,25 +110,14 @@ input
     }
 }
 
-.attention
-{
-    color: $attention-color;
-}
-
 #gender
 {
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 3px;
     text-align: center;
-    border: 1px solid $white-color;
+    border: 1px solid $color_white;
     border-radius: 5px; 
-}
-
-.form_add-file
-{
-    margin-top: 5px;
-    margin-bottom: 10px;
 }
 
 .hidden
@@ -146,7 +135,7 @@ input
     padding-left: 10px;
     &:hover
     {
-       color: $link-color;
+       color: $color_link;
     }
 }
 
@@ -155,7 +144,7 @@ table {
 }
 
 table, th, td {
-    background-color: $bg-color;
-    border: 1px solid $link-color;
+    background-color: $color_bg;
+    border: 1px solid $color_link;
     padding: 10px;
 }

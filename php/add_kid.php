@@ -53,7 +53,7 @@
             
             <main class="dashboard d-flex flex-column flex-wrap">
                 <?php 
-                    include_once 'top_menu.php';
+                    include_once 'top-menu.php';
                 ?>
                 
                 <div class="dashboard-content flex-grow-1 d-flex flex-column">
@@ -65,9 +65,9 @@
                             
                             <!--field Name-->
                             <div class="form__section">
-                                <label for="name" class="markerRequared"><?php echo $lang['name']?>:</label>
+                                <label for="name" class="form__label form__label_required"><?php echo $lang['name']?>:</label>
                                 
-                                <input id="name" class="form__field field-100 requared" type="text" value="<?php
+                                <input id="name" class="form__field form__field_width_100 required" type="text" value="<?php
                                     if(isset($_SESSION['tmp_name']))
                                     {
                                         echo $_SESSION['tmp_name'];
@@ -85,7 +85,7 @@
 
                             <!--field Gender-->
                             <div class="form__section">
-                                <div class="markerRequared"><?php echo $lang['choose_option']?></div>
+                                <div class="form__label form__label_required"><?php echo $lang['choose_option']?></div>
                                 
                                 <div id="gender">
                                     <input id="boy" type="radio" name="gender" value="boy" oninput="removeBorder('gender')" /><?php echo $lang['boy']?>
@@ -102,9 +102,9 @@
 
                             <!--field Login-->
                             <div class="form__section">
-                                <label for="login" class="markerRequared">Login:</label>
+                                <label for="login" class="form__label form__label_required">Login:</label>
                                 
-                                <input id="login" class="form__field field-100 requared" type="text" value="<?php
+                                <input id="login" class="form__field form__field_width_100 required" type="text" value="<?php
                                     if(isset($_SESSION['tmp_login']))
                                     {
                                         echo $_SESSION['tmp_login'];
@@ -132,9 +132,9 @@
                             <!--field Password-->
                             <div class="form__section">
                                 
-                                <label for="password" class="markerRequared"><?php echo $lang['password']?>:</label>
+                                <label for="password" class="form__label form__label_required"><?php echo $lang['password']?>:</label>
 
-                                <input id="password" class="form__field field-100 requared" type="password" value="<?php
+                                <input id="password" class="form__field form__field_width_100 required" type="password" value="<?php
                                     if(isset($_SESSION['tmp_password']))
                                     {
                                         echo $_SESSION['tmp_password'];
@@ -151,16 +151,16 @@
                                 
                             <!--field Confirm Password-->
                             <div class="form__section">
-                                <label for="confirmPassword" class="markerRequared"><?php echo $lang['confirm_password']?>:</label>
+                                <label for="confirmPassword" class="form__label form__label_required"><?php echo $lang['confirm_password']?>:</label>
                                 
-                                <input id="confirmPassword" class="form__field field-100 requared" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
+                                <input id="confirmPassword" class="form__field form__field_width_100 required" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
                             </div>
                             
                             <!--field Date of birthday-->
                             <div class="form__section">
                                 <label for="birthday"><?php echo $lang['date_of_birth']?>:</label>
 
-                                <input id="birthday" class="form__field field-100" type="date" value="<?php
+                                <input id="birthday" class="form__field form__field_width_100" type="date" value="<?php
                                     if(isset($_SESSION['tmp_date']))
                                         {
                                             echo $_SESSION['tmp_date'];
@@ -179,7 +179,7 @@
                             <div class="form__section">
                                 <label for="add-file__real"><?php echo $lang['photo']?>:</label>
 
-                                <div class="form_add-file d-flex justify-content-between align-items-center flex-wrap">
+                                <div class="form-add-file d-flex justify-content-between align-items-center flex-wrap">
                                     <div>
                                         <input id="add-file__real" class="form__field field-100" onchange="addFileName()" type="file" name="photo" hidden="hidden" />
                                         <button id="add-file__btn flex-shrink-0" class="form__btn button" onclick="clickInputFile()" type="button"><?php echo $lang['choose_file']?></button>
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
                             
-                            <span class="attention">*</span><small> - <?php echo $lang['required_field']?></small>
+                            <span class="form__note">&#42;</span><small> - <?php echo $lang['required_field']?></small>
                             
                             <input class="form__btn" type="submit" value="<?php echo $lang['save']?>" />
                         </form>

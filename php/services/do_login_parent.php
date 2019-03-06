@@ -29,7 +29,9 @@
     {
         $_SESSION['parent'] = $parent;
         header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
+        exit();
     } else {
         $_SESSION['error_login_password'] = $lang['err_login_password'];
         header('Location: /gaintimeoff/php/login_parent.php');
+        exit();
     }

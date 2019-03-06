@@ -37,9 +37,9 @@
                                     <?php echo $lang['kid']?>
                                 </div>
                                 
-                                <div class="form__sectin">
-                                    <label for="loginField" class="markerRequared">Login:</label>
-                                    <input id="loginField" class="form__field field-100 requared" type="text" value="<?php
+                                <div class="form__section">
+                                    <label for="loginField" class="form__label form__label_required">Login:</label>
+                                    <input id="loginField" class="form__field form__field_width_100 required" type="text" value="<?php
                                         if(isset($_SESSION['rem_login']))
                                         {
                                             echo $_SESSION['rem_login'];
@@ -48,9 +48,9 @@
                                     ?>" name="login" oninput="removeBorder(this.id)" autocomplete="on" autofocus/> 
                                 </div>
                                 
-                                <div class="form__sectin">
-                                    <label for="passwordField" class="markerRequared"><?php echo $lang['password']?>:</label>
-                                    <input id="passwordField" class="form__field field-100 requared" type="password" name="password" oninput="removeBorder(this.id)" />
+                                <div class="form__section">
+                                    <label for="passwordField" class="form__label form__label_required"><?php echo $lang['password']?>:</label>
+                                    <input id="passwordField" class="form__field form__field_width_100 required" type="password" name="password" oninput="removeBorder(this.id)" />
                                         <?php
                                             if(isset($_SESSION['error_login_password']))
                                             {
@@ -60,7 +60,7 @@
                                         ?>
                                 </div>
                                 
-                                <span class="attention">*</span><small> - <?php echo $lang['required_field']?></small>
+                                <span class="form__note">&#42;</span><small> - <?php echo $lang['required_field']?></small>
                                 
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
                             </form>

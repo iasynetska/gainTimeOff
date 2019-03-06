@@ -48,7 +48,7 @@
                                 <div class="user-card__title">
                                     <?php echo $lang['kid']?>
                                 </div>
-                                <div class="user-card__img">
+                                <div class="user-card__picture">
                                     <picture>
                                         <source media="(max-height: 680px)" srcset="../img/children_white_small.png">
                                         <img src="../img/children_white.png" alt="kid">
@@ -61,7 +61,7 @@
                                 <div class="user-card__title">
                                     <?php echo $lang['parent']?>
                                 </div>
-                                <div class="user-card__img">
+                                <div class="user-card__picture">
                                     <picture>
                                         <source media="(max-height: 680px)" srcset="../img/couple_white_small.png">
                                         <img src="../img/couple_white.png" alt="parent">

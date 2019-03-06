@@ -1,7 +1,7 @@
 @mixin body_main
 {
     margin: 0;
-    background: $reserve-bg url(../img/background.jpg) no-repeat top center fixed;
+    background: $color_bg_reserve url(../img/background.jpg) no-repeat top center fixed;
     background-size: cover;
 }
 
@@ -10,11 +10,11 @@
     max-width: 350px;
     margin: 2rem auto;
     padding: 25px;
-    color: $white-color;
-    background-color: $bg-color;
-    border: 1px solid $link-color;
+    color: $color_white;
+    background-color: $color_bg;
+    border: 1px solid $color_link;
     border-radius: 5px;
-    box-shadow: 10px 10px 15px 2px $bg-color; 
+    box-shadow: 10px 10px 15px 2px $color_bg; 
 }
 
 @mixin form__title
@@ -23,8 +23,8 @@
     padding-bottom: 10px;
     text-align: center;
     text-transform: uppercase;
-    color: $white-color; 
-    border-bottom: 1px solid $link-color;
+    color: $color_white; 
+    border-bottom: 1px solid $color_link;
 }
 
 @mixin form__field
@@ -33,7 +33,7 @@
     margin-bottom: 5px;
     padding: 5px;
     border: none;
-    border: 1px solid $link-color;
+    border: 1px solid $color_link;
     border-radius: 5px;  
 }
 
@@ -46,22 +46,22 @@
     font-family: 'Almendra-Regular', sans-serif;
     text-transform: uppercase;
     font-size: 16px;
-    color: $white-color;
-    background: $dark-color;
+    color: $color_white;
+    background: $color_dark;
     border: none;
-    border: 1px solid $link-color;
+    border: 1px solid $color_link;
     border-radius: 5px; 
     outline: none;
     cursor: pointer;
     &:hover
     {
-        background: linear-gradient($link-color, $dark-color);
+        background: linear-gradient($color_link, $color_dark);
         transition: all ease-out 0.2s;
         opacity: 0.9;
     }
     &:active
     {
         outline: none;
-        background: $dark-color;
+        background: $color_dark;
     }
 }

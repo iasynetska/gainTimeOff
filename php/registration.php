@@ -41,9 +41,9 @@
                                 
                                 <!--field Name-->
                                 <div class="form__section">
-                                    <label for="name" class="markerRequared"><?php echo $lang['name']?>:</label>
+                                    <label for="name" class="form__label form__label_required"><?php echo $lang['name']?>:</label>
 
-                                    <input id="name" class="form__field field-100 requared" type="text" value="<?php
+                                    <input id="name" class="form__field form__field_width_100 required" type="text" value="<?php
                                         if(isset($_SESSION['tmp_name']))
                                         {
                                             echo $_SESSION['tmp_name'];
@@ -60,9 +60,9 @@
                                 
                                 <!--field Login-->
                                 <div class="form__section">
-                                    <label for="login" class="markerRequared">Login:</label>
+                                    <label for="login" class="form__label form__label_required">Login:</label>
 
-                                    <input id="login" class="form__field field-100 requared" type="text" value="<?php
+                                    <input id="login" class="form__field form__field_width_100 required" type="text" value="<?php
                                         if(isset($_SESSION['tmp_login']))
                                         {
                                             echo $_SESSION['tmp_login'];
@@ -89,9 +89,9 @@
                                 
                                 <!--field E-mail-->
                                 <div class="form__section">
-                                    <label for="email" class="markerRequared">E-mail:</label>
+                                    <label for="email" class="form__label form__label_required">E-mail:</label>
 
-                                    <input id="email" class="form__field field-100 requared" type="email" value="<?php
+                                    <input id="email" class="form__field form__field_width_100 required" type="email" value="<?php
                                         if(isset($_SESSION['tmp_email']))
                                         {
                                             echo $_SESSION['tmp_email'];
@@ -113,9 +113,9 @@
                                 
                                 <!--field Password-->
                                 <div class="form__section">
-                                    <label for="password" class="markerRequared"><?php echo $lang['password']?>:</label>
+                                    <label for="password" class="form__label form__label_required"><?php echo $lang['password']?>:</label>
 
-                                    <input id="password" class="form__field field-100 requared" type="password" value="<?php
+                                    <input id="password" class="form__field form__field_width_100 required" type="password" value="<?php
                                         if(isset($_SESSION['tmp_password']))
                                         {
                                             echo $_SESSION['tmp_password'];
@@ -132,9 +132,9 @@
                                 
                                 <!--field Confirm Password-->
                                 <div class="form__section">
-                                    <label for="confirmPassword" class="markerRequared"><?php echo $lang['confirm_password']?>:</label>
+                                    <label for="confirmPassword" class="form__label form__label_required"><?php echo $lang['confirm_password']?>:</label>
 
-                                    <input id="confirmPassword" class="form__field field-100 requared" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
+                                    <input id="confirmPassword" class="form__field form__field_width_100 required" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
                                         <?php
                                             if(isset($_SESSION['error_confirm_password']))
                                             {
@@ -146,7 +146,7 @@
                                 
                                 <!--field reCaptcha-->
                                 <div class="form__section">
-                                    <div class="markerRequared"><?php echo $lang['not_robot']?>:</div>
+                                    <div class="form__label_required"><?php echo $lang['not_robot']?>:</div>
                                     <div id="reCaptcha" class="g-recaptcha" data-sitekey="6Ld-SlUUAAAAAHdMdJ978xjc3D6LFXfsYwYnMEeS" data-callback="selectReCaptcha"></div>
                                     <?php
                                         if(isset($_SESSION['error_robot']))
@@ -157,7 +157,7 @@
                                     ?>
                                 </div>
                                 
-                                <span class="attention">*</span><small> - <?php echo $lang['required_field']?></small>
+                                <span class="form__note">&#42;</span><small> - <?php echo $lang['required_field']?></small>
                                 
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['signup']?>" />
                                 

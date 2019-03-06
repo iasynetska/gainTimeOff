@@ -8,27 +8,26 @@ HEADER
     left: 0;
     z-index: 100;
     width: 100%;
-    background-color: $bg-color;
-    border-bottom: 1px solid $link-color;
+    background-color: $color_bg_reserve;
+    border-bottom: 1px solid $color_link;
 }
 
-.top-nav__logo
+.top-nav
 {
-    font-size: 1.2em;
-}
-
-.top-nav__lang
-{
-    & .slash
+    &__logo
     {
-        color: $white-color;
+        font-size: 1.2em;
     }
-    li
+    &__item
     {
         margin-right: 15px;
-        a
-        {
-            text-transform: uppercase;
-        }
+    }
+    &__link
+    {
+        text-transform: uppercase;
+    }
+    &__text
+    {
+        color: $color_white;
     }
 }

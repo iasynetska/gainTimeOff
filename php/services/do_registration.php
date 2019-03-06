@@ -101,6 +101,7 @@
         $_SESSION['tmp_password'] = $password;
         
         header('Location: ../registration.php');
+        exit();
     } 
     else 
     {       
@@ -125,6 +126,7 @@
         if($exist)
         {
             header('Location: /gaintimeoff/php/registration.php');
+            exit();
         }
         else
         {
@@ -140,6 +142,7 @@
 
             $_SESSION['name'] = $name;
             header('Location: ../greeting.php');
+            exit();
         }
     }
 ?>

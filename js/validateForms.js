@@ -50,7 +50,7 @@ function validateFormInputs(form)
         
         if(element.value.trim() === "")
         {
-            if (element.classList.contains("requared"))
+            if (element.classList.contains("required"))
             {
                 var errorName = "err_empty_field";
                 element.style.border = "1px solid red";
@@ -204,7 +204,7 @@ function validateDateField()
     var inputtedDate  = document.getElementById('birthday');
     var regDate = /^((19|20)\d{2})[/|-]((0[1-9])|1[0-2])[/|-]((0[1-9]|[12][0-9]|3[0-1]))$/;
     
-    if(inputtedDate !== null)
+    if(inputtedDate.value !== "")
     {
         if(!regDate.test(inputtedDate.value.trim()))
         {

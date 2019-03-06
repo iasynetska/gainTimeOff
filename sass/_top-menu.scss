@@ -1,0 +1,98 @@
+/*******************
+TOP-MENU
+*******************/
+.top-menu {
+    padding: 10px;
+    background: linear-gradient($color_link, $color_dark);
+    color: $color_white;
+    position: fixed;                          /* added to support older browsers */
+    position: sticky;
+    top: 50px;
+    &__list
+    {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        & > li
+        {
+            margin: 0 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+    &__wrap-button
+    {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 100%;
+        cursor: pointer;
+        &:hover{
+            & .top-menu__button,
+            & .top-menu__button::before,
+            & .top-menu__button::after
+            {
+                background-color: $color_link;
+            }
+        }
+    }
+    &__button
+    {
+        &,
+        &::before,
+        &::after
+        {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: $color_white;
+            border-radius: 2px;
+            transition: transform .4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &::before
+        {
+            content: '';
+            margin-top: -8px;
+        }
+        &::after
+        {
+            content: '';
+            margin-top: 8px;
+        }
+    }
+    &__block
+    {
+        text-align: right;
+    }
+}
+
+.block-content__link
+{
+    text-decoration: underline;
+}
+
+#top-menu__toggle 
+{
+    display: none;
+    
+    &:checked + .top-menu__wrap-button .top-menu__button
+    {
+        background: rgba(255, 255, 255, 0);
+        
+        &::before
+        {
+            margin-top: 0px;
+            transform: rotate(135deg);
+        }
+        
+        &::after
+        {
+            margin-top: 0px;
+            transform: rotate(-135deg);
+        }
+    }
+}

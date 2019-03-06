@@ -12,3 +12,4 @@
     
     session_unset();
     header('Location: ../welcome.php');
+    exit();

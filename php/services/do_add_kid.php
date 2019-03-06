@@ -162,6 +162,7 @@
         $_SESSION['tmp_date'] = $date;
         
         header('Location: /gaintimeoff/php/add_kid.php');
+        exit();
     }
     else 
     {       
@@ -184,6 +185,7 @@
         if($exist)
         {
             header('Location: /gaintimeoff/php/add_kid.php');
+            exit();
         }
         else
         {
@@ -203,5 +205,6 @@
             $parent->reloadKids();
 
             header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
+            exit();
         }
     }

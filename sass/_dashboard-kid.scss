@@ -10,10 +10,10 @@ body#dashboard_kid
 {
     &-info
     {
-        background-color: $bg-color;
-        border: 1px solid $link-color;
+        background-color: $color_bg;
+        border: 1px solid $color_link;
         border-radius: 20px;
-        box-shadow: 10px 10px 15px 2px $bg-color;
+        box-shadow: 10px 10px 15px 2px $color_bg;
         padding: 20px;
         max-width: 250px;
         flex: 0 1 250px;

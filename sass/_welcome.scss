@@ -19,12 +19,12 @@ body#welcome
     {
        @include form__title; 
     }
-    &__img
+    &__picture
     {
         text-align: center;
     }
     &:hover
     {
-        background: $dark-color;
+        background: $color_dark;
     }
 }
