@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col top-nav__logo d-flex align-items-center">
-                    <a href="welcome.php">GainTimeOff</a>
+                    <a href="//index.php">GainTimeOff</a>
                 </div>
                 <div class="col">
                     <ul class="top-nav__list d-flex justify-content-end">

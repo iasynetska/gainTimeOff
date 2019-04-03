@@ -28,9 +28,9 @@ function validateForm(formId)
     var fieldsValid = validateFormInputs(form);
     var reCaptchaValid = validateFormReCaptcha();
     var radioSelected = validateRadioButtons(form);
-    var dateValid = validateDateField();
+//    var dateValid = validateDateField();
     
-    return fieldsValid && reCaptchaValid && radioSelected && dateValid;
+    return fieldsValid && reCaptchaValid && radioSelected;
 }
 
 
@@ -198,24 +198,24 @@ function validateRadioButtons(form)
     return valid;
 }
 
-function validateDateField()
-{
-    var valid = true; 
-    var inputtedDate  = document.getElementById('birthday');
-    var regDate = /^((19|20)\d{2})[/|-]((0[1-9])|1[0-2])[/|-]((0[1-9]|[12][0-9]|3[0-1]))$/;
-    
-    if(inputtedDate.value !== "")
-    {
-        if(!regDate.test(inputtedDate.value.trim()))
-        {
-        errorName = "err_date";
-        inputtedDate.style.border = "1px solid red";
-        addErrorMessage(inputtedDate, errorName);
-        valid = false;
-        }
-    }
-    return valid;
-}
+//function validateDateField()
+//{
+//    var valid = true; 
+//    var inputtedDate  = document.getElementById('birthday');
+//    var regDate = /^((19|20)\d{2})[/|-]((0[1-9])|1[0-2])[/|-]((0[1-9]|[12][0-9]|3[0-1]))$/;
+//    
+//    if(inputtedDate.value !== "")
+//    {
+//        if(!regDate.test(inputtedDate.value.trim()))
+//        {
+//        errorName = "err_date";
+//        inputtedDate.style.border = "1px solid red";
+//        addErrorMessage(inputtedDate, errorName);
+//        valid = false;
+//        }
+//    }
+//    return valid;
+//}
 
 
 /**
@@ -262,7 +262,7 @@ function getErrorMessage(errorName)
                 throw this.responseText;
             }
         };
-        xhttp.open("GET", "services/error_message.php?errorName="+errorName, false);
+        xhttp.open("GET", "../core/error_message.php?errorName="+errorName, false);
         xhttp.send();
         arrErrorMessages.set(errorName, xhttp.responseText);
 

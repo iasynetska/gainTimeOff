@@ -1,14 +1,13 @@
 <?php
-
+    require_once '../core/appConfiguration.php';
     //auto-load Classes
-    spl_autoload_register(function ($class) 
+    spl_autoload_register(function ($classname) 
     {
-        require_once 'classes/' . $class . '.php';
+        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
     });
     
     session_start();
-    
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
     
     //check if authorised
     if (!isset($_SESSION['parent']))
@@ -34,17 +33,17 @@
         <title>Dashboard</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Fonts Awesome-->
 <!--        <link rel="stylesheet" href="../libs/font-awesome/css/fontawesome.min.css"/>-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
     </head>
     
     <body id="dashboard-parent__kids">
@@ -62,8 +61,8 @@
                     
                     <?php if(empty($arr_kids)){ ?>
                         <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
-                            <div class="content-main__block"  onclick="location.href='add_kid.php';">
-                                <img src="../img/plus-128.png" alt="Add_kid">
+                            <div class="content-main__block"  onclick="location.href='./add_kid.php';">
+                                <img src="../../img/plus-128.png" alt="Add_kid">
                                 <div class="content-main__text">
                                     <a href="add_kid.php"><?php echo $lang['add_kid']?></a>
                                 </div>

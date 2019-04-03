@@ -1,21 +1,20 @@
 <?php
-
+    require_once '../core/appConfiguration.php';
     //auto-load Classes
-    spl_autoload_register(function ($class) 
+    spl_autoload_register(function ($classname) 
     {
-        require_once 'classes/' . $class . '.php';
+        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
     });
     
     session_start();
-    
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
     
     
     
     //check if authorised
     if (!isset($_SESSION['kid']))
     {
-        header('Location: welcome.php');
+        header('Location: index.php');
         exit();
     }         
     
@@ -32,13 +31,13 @@
         <title>Log in for kid</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
     </head>
     
     <body id="dashboard_kid">
@@ -52,7 +51,7 @@
                     <div class="content-header__logout">
                         <?php
                             echo "<div class='logout-text'>".$lang['hello'].$kid->name."</div>";
-                            echo"<div class='logout-link'><a href='./services/do_logout.php'>".$lang['logout']."</a></div>";
+                            echo"<div class='logout-link'><a href='../controllers/do_logout.php'>".$lang['logout']."</a></div>";
                         ?>
                     </div>
                 </div>

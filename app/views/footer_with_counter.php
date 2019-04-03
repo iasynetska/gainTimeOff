@@ -1,5 +1,8 @@
-<?php echo
+<?php 
 
+use models\CustomerNumberServices;
+
+echo
 '<footer class="footer">
     <div class="container-fluid">
         <div class="row">

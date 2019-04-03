@@ -1,9 +1,9 @@
 <?php
+    require_once '../core/appConfiguration.php';
+    
     session_start();
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
 ?>
-
-
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -15,13 +15,13 @@
         <title>Log in for parent</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
     </head>
 
     <body id="login_parent">
@@ -34,7 +34,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col flex-shrink-1">
-                            <form id="formLoginParent" class="login-parent form" action="./services/do_login_parent.php" method="post" onsubmit="return validateForm(this.id)">
+                            <form id="formLoginParent" class="login-parent form" action="../controllers/do_login_parent.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['parent']?>
                                 </div>
@@ -66,7 +66,7 @@
                                 
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['login_submit']?>" />
 
-                                <a class="form__link" href="registration.php"><?php echo $lang['link_registration']?></a>
+                                <a class="form__link" href="./registration.php"><?php echo $lang['link_registration']?></a>
                             </form>
                         </div>
                     </div>  
@@ -79,6 +79,6 @@
         </div>
     
         <!--JavaScript-->
-        <script src="../js/validateForms.js"></script>
+        <script src="../../js/validateForms.js"></script>
     </body>
 </html>

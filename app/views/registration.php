@@ -1,6 +1,7 @@
 <?php 
-        session_start();
-	include_once "lang_config.php";
+    require_once '../core/appConfiguration.php';
+    session_start();
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -13,13 +14,13 @@
         <title>Registration</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -34,7 +35,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col flex-shrink-1">
-                            <form id="formRegistration" class="form" action="./services/do_registration.php" method="post" onsubmit="return validateForm(this.id)">
+                            <form id="formRegistration" class="form" action="../controllers/do_registration.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['registration']?>
                                 </div>
@@ -161,7 +162,7 @@
                                 
                                 <input id="subBtn" class="form__btn" type="submit" value="<?php echo $lang['signup']?>" />
                                 
-                                <a class="form__link" href="login_parent.php"><?php echo $lang['link_login']?></a>
+                                <a class="form__link" href="./login_parent.php"><?php echo $lang['link_login']?></a>
                             </form>
                         </div>
                     </div>  
@@ -176,9 +177,9 @@
         <!--Recaptcha-->
         <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
         
-        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
-        <script src="../js/common.js"></script>
-        <script src="../js/validateForms.js"></script>
+        <script src="../../libs/jquery/jquery-3.3.1.min.js"></script>
+        <script src="../..js/common.js"></script>
+        <script src="../..js/validateForms.js"></script>
 
         <script>
             $(document).ready(function() {

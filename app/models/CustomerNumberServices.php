@@ -1,0 +1,50 @@
+<?php
+
+namespace models;
+//require_once '../core/appConfiguration.php';
+use models\UserParentDao;
+use core\DbConnection;
+
+class CustomerNumberServices
+{
+
+    public static function incrementAndGetVisitorCounter(): int
+    {
+        if(!file_exists($GLOBALS['_BASE_PATH_'].'visitor_counter.txt'))
+        {
+            return false;
+        }
+        if(!$file_counter = fopen($GLOBALS['_BASE_PATH_'].'visitor_counter.txt', "r+"))
+        {
+            return false;
+        }
+        if(!flock($file_counter, LOCK_EX))
+        {
+            fclose($file_counter);
+            return false;
+        }
+        $counter = fgets($file_counter);
+        if(is_numeric($counter))
+        {
+            $result = (integer) ($counter + 1);
+            fseek($file_counter, 0);
+            fputs($file_counter, $result);
+        }
+        else
+        {
+            $result = false;
+        }
+        flock($file_counter, LOCK_UN);
+        fclose($file_counter);
+        return $result;
+    }
+
+
+    public static function getNumberOfRegisteredUsers(): int
+    {
+        $parentDao = new UserParentDao(DbConnection::getPDO());
+
+        return $parentDao->getNumberOfParents();
+
+    }
+}

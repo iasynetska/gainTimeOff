@@ -16,7 +16,7 @@
     <div class="top-menu__block">
         <div class="block-content">
             <div class="block-content__text">'.$lang['hello'].$parent->name.'</div>
-            <div class="block-content__link"><a href="./services/do_logout.php">'.$lang['logout'].'</a></div>
+            <div class="block-content__link"><a href="../controllers/do_logout.php">'.$lang['logout'].'</a></div>
         </div>
     </div>
 </div>';

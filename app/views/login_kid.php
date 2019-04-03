@@ -1,6 +1,8 @@
 <?php
+    require_once '../core/appConfiguration.php';
+    
     session_start();
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -13,13 +15,13 @@
         <title>Log in for kid</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
     </head>
     
     <body id="login_kid">
@@ -32,7 +34,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col flex-shrink-1">
-                            <form id="formLoginKid" class="login-kid form" action="./services/do_login_kid.php" method="post" onsubmit="return validateForm(this.id)">
+                            <form id="formLoginKid" class="login-kid form" action="../controllers/do_login_kid.php" method="post" onsubmit="return validateForm(this.id)">
                                 <div class="form__title">
                                     <?php echo $lang['kid']?>
                                 </div>
@@ -74,11 +76,8 @@
             ?>
         </div>
         
-        
-        <!--jQuery-->
-        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
         <!--JavaScript-->
-        <script src="../js/validateForms.js"></script>
+        <script src="../../js/validateForms.js"></script>
 
     </body>
 </html>
