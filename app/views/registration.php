@@ -178,8 +178,8 @@
         <script src='https://www.google.com/recaptcha/api.js?hl=<?php echo $lang['language']?>'></script>
         
         <script src="../../libs/jquery/jquery-3.3.1.min.js"></script>
-        <script src="../..js/common.js"></script>
-        <script src="../..js/validateForms.js"></script>
+        <script src="../../js/common.js"></script>
+        <script src="../../js/validateForms.js"></script>
 
         <script>
             $(document).ready(function() {

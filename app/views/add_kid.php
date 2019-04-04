@@ -1,21 +1,20 @@
 <?php
-
+    require_once '../core/appConfiguration.php';
     //auto-load Classes
-    spl_autoload_register(function ($class) 
+    spl_autoload_register(function ($classname)
     {
-        require_once 'classes/' . $class . '.php';
+        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
     });
     
     session_start();
     
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
     
-    
-    
+ 
     //check if authorised
     if (!isset($_SESSION['parent']))
     {
-        header('Location: welcome.php');
+        header('Location: /gaintimeoff/index.php');
         exit();
     }
     
@@ -34,13 +33,13 @@
         <title>Adding kid</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -58,7 +57,7 @@
                 
                 <div class="dashboard-content flex-grow-1 d-flex flex-column">
                     <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
-                        <form id="formAddingKid" class="adding-kid form" action="./services/do_add_kid.php" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id)">
+                        <form id="formAddingKid" class="adding-kid form" action="../controllers/do_add_kid.php" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id)">
                             <div class="form__title">
                                 <?php echo $lang['add_kid']?>
                             </div>
@@ -89,7 +88,7 @@
                                 
                                 <div id="gender">
                                     <input id="boy" type="radio" name="gender" value="boy" oninput="removeBorder('gender')" /><?php echo $lang['boy']?>
-                                    <input id="girl" type="radio" name="gender" value="girl" oninput="removeBorder(this.id)" /><?php echo $lang['girl']?><br />
+                                    <input id="girl" type="radio" name="gender" value="girl" oninput="removeBorder('gender')" /><?php echo $lang['girl']?><br />
                                     <?php
                                         if(isset($_SESSION['error_gender']))
                                         {
@@ -185,7 +184,7 @@
                                         <button id="add-file__btn flex-shrink-0" class="form__btn button" onclick="clickInputFile()" type="button"><?php echo $lang['choose_file']?></button>
                                         <span id="add-file__text" class="form__text">&hellip;</span>
                                     </div>
-                                        <img class="add-file__delete" src="../img/delete_file_32.png" onclick="clearFile()">
+                                        <img class="add-file__delete" src="../../img/delete_file_32.png" onclick="clearFile()">
 
                                     <?php
                                         if(isset($_SESSION['error_photo']))
@@ -212,8 +211,8 @@
         
         
         <!--jQuery-->
-        <script src="../libs/jquery/jquery-3.3.1.min.js"></script>
+        <script src="../../libs/jquery/jquery-3.3.1.min.js"></script>
         <!--JavaScript-->
-        <script src="../js/validateForms.js"></script>
+        <script src="../../js/validateForms.js"></script>
     </body>
 </html>

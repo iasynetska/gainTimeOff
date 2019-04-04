@@ -1,23 +1,25 @@
 <?php
-   
+    namespace controllers;
+    use models\UserParentDao;
+    use core\DbConnection;
+    use models\UserParent;
+    require_once '../core/appConfiguration.php';
+    
     /*auto-load Classes*/
-    spl_autoload_register(function ($class) 
+    spl_autoload_register(function ($classname) 
     {
-        require_once '../classes/' . $class . '.php';
+        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
     });
     
     session_start();
     
-    include_once "../lang_config.php";
-    
- 
-    
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
+
     $name = filter_input(INPUT_POST, 'name');
     $login = filter_input(INPUT_POST, 'login');
     $email = filter_input(INPUT_POST, 'email');
     $password = filter_input(INPUT_POST, 'password');
     $confirm_password = filter_input(INPUT_POST, 'confirm_password');
-    
     
     $error = false;
     
@@ -100,7 +102,7 @@
         $_SESSION['tmp_email'] = $email;
         $_SESSION['tmp_password'] = $password;
         
-        header('Location: ../registration.php');
+        header('Location: /gaintimeoff/app/views/registration.php');
         exit();
     } 
     else 
@@ -125,7 +127,7 @@
         
         if($exist)
         {
-            header('Location: /gaintimeoff/php/registration.php');
+            header('Location: /gaintimeoff/app/views/registration.php');
             exit();
         }
         else
@@ -141,7 +143,7 @@
             $parentDao->createUserParent($parent);
 
             $_SESSION['name'] = $name;
-            header('Location: ../greeting.php');
+            header('Location: /gaintimeoff/app/views/greeting.php');
             exit();
         }
     }

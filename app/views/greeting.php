@@ -1,12 +1,14 @@
 <?php 
+    require_once '../core/appConfiguration.php';
     session_start();
     if(!isset($_SESSION['name']))
     {
-        header('Location: login_parent.php');
+        header('Location: /gaintimeoff/app/views/login_parent.php');
         exit();
     }
     
-    include_once "lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
+    
 ?>
 
 <!DOCTYPE HTML>
@@ -19,13 +21,13 @@
         <title>Greeting</title>
         
         <!--Bootstrap Grid CSS & CSS-->
-        <link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/bootstrap-grid.min.css"/>
         
         <!--Adding Fonts-->
-        <link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/fonts.css"/>
         
         <!--Custom styles for this template-->
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
     </head>
     
     <body id="greeting">

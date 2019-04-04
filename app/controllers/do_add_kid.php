@@ -1,14 +1,19 @@
 <?php
-   
+    namespace controllers;
+    use models\UserKidDao;
+    use core\DbConnection;
+    use models\UserKid;
+    require_once '../core/appConfiguration.php';
+    
     /*auto-load Classes*/
-    spl_autoload_register(function ($class) 
+    spl_autoload_register(function ($classname) 
     {
-        require_once '../classes/' . $class . '.php';
+        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
     });
     
     session_start();
     
-    include_once "../lang_config.php";
+    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
     
  
     
@@ -161,7 +166,7 @@
         $_SESSION['tmp_password'] = $password;
         $_SESSION['tmp_date'] = $date;
         
-        header('Location: /gaintimeoff/php/add_kid.php');
+        header('Location: /gaintimeoff/app/views/add_kid.php');
         exit();
     }
     else 
@@ -184,7 +189,7 @@
       
         if($exist)
         {
-            header('Location: /gaintimeoff/php/add_kid.php');
+            header('Location: /gaintimeoff/app/views/add_kid.php');
             exit();
         }
         else
@@ -204,7 +209,7 @@
             
             $parent->reloadKids();
 
-            header('Location: /gaintimeoff/php/dashboard_parent_kids.php');
+            header('Location: /gaintimeoff/app/views/dashboard_parent_kids.php');
             exit();
         }
     }
