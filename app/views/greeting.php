@@ -1,5 +1,5 @@
 <?php 
-    require_once '../core/appConfiguration.php';
+    require_once '../core/AppConfig.php';
     session_start();
     if(!isset($_SESSION['name']))
     {

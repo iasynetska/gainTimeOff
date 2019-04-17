@@ -5,20 +5,7 @@ use \PDO;
 
 class DbConnection
 {
-    private static $dbType = 'mysql';
-
-    private static $host = 'localhost';
-
-    private static $encoding = 'utf8';
-
-    private static $user = 'root';
-
-    private static $password = '';
-
-    private static $dbName = 'gainTimeOff';
-
     private static $pdo;
-
 
     public static function getPDO(): PDO
     {
@@ -26,15 +13,15 @@ class DbConnection
         {
             $connectionParams = sprintf(
                     '%s:host=%s;dbname=%s;charset=%s', 
-                    self::$dbType, 
-                    self::$host, 
-                    self::$dbName, 
-                    self::$encoding);
+                    AppConfig::DB_TYPE, 
+                    AppConfig::DB_HOST, 
+                    AppConfig::DB_NAME, 
+                    AppConfig::DB_ENCODING);
 
             self::$pdo = new \PDO(
                     $connectionParams, 
-                    self::$user, 
-                    self::$password,
+                    AppConfig::DB_USER, 
+                    AppConfig::DB_PASSWORD,
                     [PDO::ATTR_EMULATE_PREPARES=>false, 
                         PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
         }

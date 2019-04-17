@@ -1,5 +1,5 @@
 <?php
-    $lang = array (
+    return array (
         "en" => "En",
         "pl" => "Pl",
         "parent" => "Parent",

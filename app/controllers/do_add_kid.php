@@ -3,7 +3,7 @@
     use models\UserKidDao;
     use core\DbConnection;
     use models\UserKid;
-    require_once '../core/appConfiguration.php';
+    require_once '../core/AppConfig.php';
     
     /*auto-load Classes*/
     spl_autoload_register(function ($classname) 

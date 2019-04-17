@@ -1,26 +1,26 @@
 <?php
-    require_once '../core/appConfiguration.php';
-    //auto-load Classes
-    spl_autoload_register(function ($classname) 
-    {
-        require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
-    });
-    
-    session_start();
-    include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
-    
-    //check if authorised
-    if (!isset($_SESSION['parent']))
-    {
-        header('Location: welcome.php');
-        exit();
-    }         
-    
-    $parent = $_SESSION['parent'];
-    
-    $arr_kids = $parent->getKids();
-    
-    $arr_kids_names = array_keys($arr_kids);
+require_once '../core/AppConfig.php';
+//auto-load Classes
+spl_autoload_register(function ($classname)
+{
+    require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
+});
+
+session_start();
+include_once $GLOBALS['_BASE_PATH_'] . 'core/lang_config.php';
+
+//check if authorised
+if (!isset($_SESSION['parent']))
+{
+    header('Location: welcome.php');
+    exit();
+}
+
+$parent = $_SESSION['parent'];
+
+$arr_kids = $parent->getKids();
+
+$arr_kids_names = array_keys($arr_kids);
 ?>
 
 <!DOCTYPE HTML>
