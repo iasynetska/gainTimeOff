@@ -53,7 +53,7 @@
     <body id="create_subjects">
         <div class="wrapper d-flex flex-column">
             <?php 
-                include_once 'header.php';
+                include_once 'header.html.php';
             ?>
 
             <main class="dashboard d-flex flex-grow-1">
@@ -89,7 +89,7 @@
             </main>
             
             <?php 
-                include_once 'footer.php';
+                include_once 'footer.html.php';
             ?> 
         </div>
                      

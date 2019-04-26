@@ -43,7 +43,7 @@
     <body id="dashboard_kid">
         <div class="wrapper d-flex flex-column">
             <?php 
-                include_once 'header.php';
+                include_once 'header.html.php';
             ?>
         
             <main class="dashboard-content d-flex flex-column flex-grow-1">
@@ -66,7 +66,7 @@
             </main>
 
             <?php 
-                include_once 'footer.php';
+                include_once 'footer.html.php';
             ?>
         </div>
 

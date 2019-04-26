@@ -10,10 +10,10 @@ spl_autoload_register(function ($classname)
 });
 session_start();
 
-$uri = $_SERVER['REQUEST_URI'];
+$uri = explode('?', $_SERVER['REQUEST_URI'])[0];
 $uriParts = explode('/', $uri);
 unset($uriParts[0]);
-if($uriParts[1] === 'gaintimeoff')
+if(strcasecmp($uriParts[1], 'gaintimeoff') == 0)
 {
     unset($uriParts[1]);
 }
@@ -21,7 +21,7 @@ $uriParts = array_values($uriParts);
 
 $controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'main';
 
-switch($controller)
+switch(strtolower($controller))
 {
     case 'main':
         $controller = 'Main';
@@ -38,7 +38,13 @@ switch($controller)
 }
 
 $controller = sprintf('\controllers\%sController', $controller);
+
+$action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
+$action = sprintf('%sAction', $action);
+
 $request = new Request($_GET, $_POST, $_SERVER, $_COOKIE, $_FILES, $_SESSION);
 $lang = new LangManager($request);
 $controller = new $controller($request, $lang);
+$controller->$action();
 
+$controller->render();

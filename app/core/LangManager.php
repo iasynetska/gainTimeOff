@@ -3,31 +3,43 @@ namespace core;
 
 class LangManager
 {
-    protected $request;
+    private $request;
+    private $langParams;
+    private $selectedLang;
     
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
     
-    private function getSelectedLang() 
+    public function getSelectedLang() 
     {
-        $lang = filter_input(INPUT_GET, 'lang');
-        
-        if(($lang==='en' || $lang==='pl') && $this->request->getSessionParam('lang')!==$lang)
+        if(!isset($this->selectedLang))
         {
-            $this->request->addSessionParam('lang', $lang);
+            $lang = filter_input(INPUT_GET, 'lang');
+            
+            if(($lang==='en' || $lang==='pl') && $this->request->getSessionParam('lang')!==$lang)
+            {
+                $this->request->addSessionParam('lang', $lang);
+            }
+            else if($this->request->getSessionParam('lang') === NULL)
+            {
+                $this->request->addSessionParam('lang', 'en');
+            }
+            
+            $this->selectedLang = $this->request->getSessionParam('lang');
         }
-        else if($this->request->getSessionParam('lang') === NULL)
-        {
-            $this->request->addSessionParam('lang', 'en');
-        }
-        return $this->request->getSessionParam('lang');
+        return $this->selectedLang;
     }
     
     public function getLangParams()
     {
-        $lang = $this->getSelectedLang();
-        return include (dirname(__DIR__, 1)). '/languages/' . $lang . '.php';
+        if(!isset($this->langParams))
+        {
+            $lang = $this->getSelectedLang();
+            $this->langParams = include (dirname(__DIR__, 1)). '/languages/' . $lang . '.php';
+        }
+        return $this->langParams; 
     }
+    
 }

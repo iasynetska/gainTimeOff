@@ -49,7 +49,7 @@ $arr_kids_names = array_keys($arr_kids);
     <body id="dashboard-parent__kids">
         <div class="wrapper d-flex flex-column">
             <?php 
-                include_once 'header.php';
+                include_once 'header.html.php';
             ?>
 
             <main class="dashboard d-flex flex-column flex-wrap">                
@@ -152,7 +152,7 @@ $arr_kids_names = array_keys($arr_kids);
             </main>
             
             <?php 
-                include_once 'footer.php';
+                include_once 'footer.html.php';
             ?> 
         </div>
                      

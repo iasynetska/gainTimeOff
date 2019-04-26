@@ -209,7 +209,7 @@ FOOTER
 /**************************
 LOGIN parent and kid
 **************************/
-body#login_kid,
+body#kidLogin,
 body#login_parent {
   margin: 0;
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
