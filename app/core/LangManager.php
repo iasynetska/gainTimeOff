@@ -16,7 +16,7 @@ class LangManager
     {
         if(!isset($this->selectedLang))
         {
-            $lang = filter_input(INPUT_GET, 'lang');
+            $lang = $this->request->getGetParam('lang');
             
             if(($lang==='en' || $lang==='pl') && $this->request->getSessionParam('lang')!==$lang)
             {

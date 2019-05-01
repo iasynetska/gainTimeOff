@@ -3,18 +3,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col top-nav__logo d-flex align-items-center">
-                    <a href="//index.php">GainTimeOff</a>
+                    <a href="/gaintimeoff">GainTimeOff</a>
                 </div>
                 <div class="col">
                     <ul class="top-nav__list d-flex justify-content-end">
                         <li class="top-nav__item">
-                            <a class="top-nav__link" id="<?= $langActive === 'en'?'link_active':''?>" href="./?lang=en"><?=$lg_en?></a>
+                            <a class="top-nav__link" id="<?= $langActive === 'en'?'link_active':''?>" href="?lang=en"><?=$lg_en?></a>
                         </li>
                         <li class="top-nav__item">
                             <div class="top-nav__text">&#124;</div>
                         </li>
                         <li class="top-nav__item">
-                            <a class="top-nav__link" id="<?= $langActive === 'pl'?'link_active':''?>" href="./?lang=pl"><?=$lg_pl?></a>
+                            <a class="top-nav__link" id="<?= $langActive === 'pl'?'link_active':''?>" href="?lang=pl"><?=$lg_pl?></a>
                         </li>
                     </ul>
                 </div>

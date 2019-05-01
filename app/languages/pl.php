@@ -10,6 +10,7 @@
         "lg_unknown" => "nieznany",
         
         //form Log in
+        "lg_login" => "Login",
         "lg_password" => "Hasło",
         "lg_confirm_password" => "Powtórz hasło",
         "lg_login_submit" => "Zaloguj się",

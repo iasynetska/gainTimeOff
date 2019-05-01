@@ -10,6 +10,7 @@
         "lg_unknown" => "unknown",
         
         //form Log in
+        "lg_login" => "Login",
         "lg_password" => "Password",
         "lg_confirm_password" => "Confirm password",
         "lg_login_submit" => "Log In",

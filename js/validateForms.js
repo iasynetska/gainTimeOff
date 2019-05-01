@@ -52,7 +52,7 @@ function validateFormInputs(form)
         {
             if (element.classList.contains("required"))
             {
-                var errorName = "err_empty_field";
+                var errorName = "lg_err_empty_field";
                 element.style.border = "1px solid red";
                 addErrorMessage(element, errorName);
                 valid = false;
@@ -67,7 +67,7 @@ function validateFormInputs(form)
                     var regName = /^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
                     if(!regName.test(name))
                     {
-                        errorName = "err_name_letters";
+                        errorName = "lg_err_name_letters";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -79,14 +79,14 @@ function validateFormInputs(form)
                     var checkLogin = /^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
                     if(login.length < 3 || login.length > 20)
                     {
-                        errorName = "err_login";
+                        errorName = "lg_err_login";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
                     }
                     else if(!checkLogin.test(login))
                     {
-                        errorName = "err_alnum_login";
+                        errorName = "lg_err_alnum_login";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -98,7 +98,7 @@ function validateFormInputs(form)
                     var regEmail = /^([A-z0-9_\-\.])+\@([A-z0-9_\-\.])+\.([A-z]{2,4})$/;
                     if(!regEmail.test(email))
                     {
-                        errorName = "err_email";
+                        errorName = "lg_err_email";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -109,7 +109,7 @@ function validateFormInputs(form)
                     var password = element.value;
                     if(password.length < 8 || password.length > 20)
                     {
-                        errorName = "err_password";
+                        errorName = "lg_err_password";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -121,7 +121,7 @@ function validateFormInputs(form)
                     var confirmPassword = element.value;
                     if(password !== confirmPassword)
                     {
-                        errorName = "err_confirm_password";
+                        errorName = "lg_err_confirm_password";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -149,7 +149,7 @@ function validateFormReCaptcha()
     {
         if(!reCaptchaSelected)
         {
-            errorName = "err_captcha";
+            errorName = "lg_err_captcha";
             addErrorMessage(reCaptcha, errorName);
             valid = false;
         }
@@ -188,7 +188,7 @@ function validateRadioButtons(form)
         
         if(!selected)
         {
-            errorName = "err_check_option";
+            errorName = "lg_err_check_option";
             radioButtonsWithSameName[0].parentNode.style.border = "1px solid red";
             addErrorMessage(radioButtonsWithSameName[0], errorName);
             valid = false;
@@ -208,7 +208,7 @@ function validateRadioButtons(form)
 //    {
 //        if(!regDate.test(inputtedDate.value.trim()))
 //        {
-//        errorName = "err_date";
+//        errorName = "lg_err_date";
 //        inputtedDate.style.border = "1px solid red";
 //        addErrorMessage(inputtedDate, errorName);
 //        valid = false;
@@ -262,7 +262,7 @@ function getErrorMessage(errorName)
                 throw this.responseText;
             }
         };
-        xhttp.open("GET", "../core/error_message.php?errorName="+errorName, false);
+        xhttp.open("GET", "/gaintimeoff/errormessage/get?errorName="+errorName, false);
         xhttp.send();
         arrErrorMessages.set(errorName, xhttp.responseText);
 

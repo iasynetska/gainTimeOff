@@ -10,13 +10,14 @@ class Controller
     protected $bodyId;
     protected $content;
     protected $langManager;
+    protected $dynamicJS = '';
     
-    public function __construct(Request $request, LangManager $lang)
+    public function __construct(Request $request, LangManager $langManager)
     {
         $this->request = $request;
         $this->title = '';
         $this->content = '';
-        $this->langManager = $lang;
+        $this->langManager = $langManager;
     }
     
     protected function build($template, array $params = [])
@@ -54,7 +55,8 @@ class Controller
                 'bodyId' => $this->bodyId,
                 'header' => $this->buildHeader(),
                 'content' => $this->content,
-                'footer' => $this->buildFooter()
+                'footer' => $this->buildFooter(),
+                'dynamicJS' => $this->dynamicJS
             ]
             );
     }

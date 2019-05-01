@@ -32,6 +32,9 @@ switch(strtolower($controller))
     case 'kid':
         $controller = 'Kid';
         break;
+    case 'errormessage':
+        $controller = 'ErrorMessage';
+        break;
     default:
         echo 'Page not found';
         break;
@@ -42,9 +45,9 @@ $controller = sprintf('\controllers\%sController', $controller);
 $action = isset($uriParts[1]) && $uriParts[1] !== '' ? $uriParts[1] : 'index';
 $action = sprintf('%sAction', $action);
 
-$request = new Request($_GET, $_POST, $_SERVER, $_COOKIE, $_FILES, $_SESSION);
-$lang = new LangManager($request);
-$controller = new $controller($request, $lang);
+$request = new Request($_GET, $_POST, $_COOKIE, $_FILES);
+$langManager = new LangManager($request);
+$controller = new $controller($request, $langManager);
 $controller->$action();
 
 $controller->render();

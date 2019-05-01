@@ -24,5 +24,6 @@
 			<?=$content?>
 			<?=$footer?>
         </div>
+        <?=$dynamicJS?>
     </body>
 </html>

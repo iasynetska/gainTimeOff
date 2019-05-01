@@ -8,14 +8,9 @@
                     </div>
                     
                     <div class="form__section">
-                        <label for="loginField" class="form__label form__label_required">Login:</label>
-                        <input id="loginField" class="form__field form__field_width_100 required" type="text" value="<?php
-                            if(isset($_SESSION['rem_login']))
-                            {
-                                echo $_SESSION['rem_login'];
-                                unset($_SESSION['rem_login']);
-                            }
-                        ?>" name="login" oninput="removeBorder(this.id)" autocomplete="on" autofocus/> 
+                        <label for="loginField" class="form__label form__label_required"><?=$lg_login?></label>
+                        <input id="loginField" class="form__field form__field_width_100 required" type="text" value="<?=$form_login?>" 
+                        	name="login" oninput="removeBorder(this.id)" autocomplete="on" autofocus/> 
                     </div>
                     
                     <div class="form__section">
