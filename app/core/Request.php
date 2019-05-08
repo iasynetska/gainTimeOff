@@ -3,6 +3,9 @@ namespace core;
 
 class Request
 {
+    const METHOD_GET = 'GET';
+    const METHOD_POST = 'POST';
+    
     private $get;
     private $post;
     private $cookie;
@@ -26,14 +29,14 @@ class Request
         $_SESSION[$key] = $param;
     }
     
+    public function removeSessionParam($key)
+    {
+        unset($_SESSION[$key]);
+    }
+    
     public function getServerParam($key)
     {
         return $this->getParam($_SERVER, $key);
-    }
-    
-    public function addServerParam($key, $param)
-    {
-        $_SERVER[$key] = $param;
     }
     
     public function getGetParam($key)
@@ -46,6 +49,11 @@ class Request
         $this->get[$key] = $param;
     }
     
+    public function isGet()
+    {
+        return $this->getServerParam('REQUEST_METHOD') === self::METHOD_GET;
+    }
+    
     public function getPostParam($key)
     {
         return $this->getParam($this->post, $key);
@@ -54,6 +62,11 @@ class Request
     public function addPostParam($key, $param)
     {
         $this->post[$key] = $param;
+    }
+    
+    public function isPost()
+    {
+        return $this->getServerParam('REQUEST_METHOD') === self::METHOD_POST;
     }
     
     public function getCookieParam($key)

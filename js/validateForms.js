@@ -259,14 +259,15 @@ function getErrorMessage(errorName)
         {
             if (this.readyState === 4 && this.status !== 200)
             {
-                throw this.responseText;
+                throw JSON.parse(this.responseText).message;
             }
         };
         xhttp.open("GET", "/gaintimeoff/errormessage/get?errorName="+errorName, false);
         xhttp.send();
-        arrErrorMessages.set(errorName, xhttp.responseText);
 
-        return xhttp.responseText;
+        var errorObject = JSON.parse(xhttp.responseText);
+        arrErrorMessages.set(errorName, errorObject.message);
+        return errorObject.message;
     }
 }
 

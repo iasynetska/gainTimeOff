@@ -5,6 +5,8 @@ class MainController extends Controller
 {
     public function indexAction()
     {
+        $this->checkRequestMethod($this->request::METHOD_GET);
+        
         $this->title = 'GainTimeOff';
         $this->bodyId = 'welcome';
         $this->content = $this->build(

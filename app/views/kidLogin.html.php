@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col flex-shrink-1">
-                <form id="formLoginKid" class="login-kid form" action="../controllers/do_login_kid.php" method="post" onsubmit="return validateForm(this.id)">
+                <form id="formLoginKid" class="login-kid form" action="/gaintimeoff/kid/doLogin" method="post" onsubmit="return validateForm(this.id)">
                     <div class="form__title">
                         <?=$lg_kid?>
                     </div>
@@ -16,13 +16,7 @@
                     <div class="form__section">
                         <label for="passwordField" class="form__label form__label_required"><?=$lg_password?>:</label>
                         <input id="passwordField" class="form__field form__field_width_100 required" type="password" name="password" oninput="removeBorder(this.id)" />
-                            <?php
-                                if(isset($_SESSION['error_login_password']))
-                                {
-                                    echo "<div class='form__error'>".$_SESSION['error_login_password']."</div>";
-                                    unset($_SESSION['error_login_password']);
-                                }
-                            ?>
+                    	<div class='form__error'><?=$lg_error?></div>
                     </div>
                     
                     <span class="form__note">&#42;</span><small> - <?=$lg_required_field?></small>

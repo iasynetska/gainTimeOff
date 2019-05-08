@@ -15,6 +15,6 @@ class RestController
     
     public function render()
     {
-        echo $this->content;
+        echo json_encode($this->content);
     }
 }

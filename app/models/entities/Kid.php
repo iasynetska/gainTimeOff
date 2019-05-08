@@ -1,17 +1,7 @@
 <?php
+namespace models\entities;
 
-namespace models;
-use models\User;
-
-/*auto-load Classes*/
-spl_autoload_register(function ($class) 
-{
-    require_once $GLOBALS['_BASE_PATH_'] . str_replace('\\', '/', $classname) . '.php';
-});
-
-
-
-class UserKid extends User
+class Kid extends User
 {
     public $gender;
 

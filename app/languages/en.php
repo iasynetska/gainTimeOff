@@ -41,7 +41,7 @@
         "lg_err_email_existing" => "This email is already in use!",
   
         //dashboard
-        "lg_hello" => "Hello, ",
+        "lg_hello" => "Hello",
         "lg_kids" => "Kids",
         "lg_add_kid" => "Add kid",
         "lg_logout" => "Log out",

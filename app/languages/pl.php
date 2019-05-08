@@ -41,7 +41,7 @@
         "lg_err_email_existing" => "Ten adres e-mail jest już w użyciu!",
 
         //dashboard
-        "lg_hello" => "Witaj, ",
+        "lg_hello" => "Witaj",
         "lg_kids" => "Dzieci",
         "lg_add_kid" => "Dodaj dziecko",
         "lg_logout" => "Wyloguj",

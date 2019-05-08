@@ -60,4 +60,24 @@ class Controller
             ]
             );
     }
+    
+    protected function checkRequestMethod(String $method)
+    {
+        $methodCorrect = false;
+        switch($method)
+        {
+            case $this->request::METHOD_POST:
+                $methodCorrect = $this->request->isPost();
+                break;
+            case $this->request::METHOD_GET:
+                $methodCorrect = $this->request->isGet();
+                break;
+        }
+        if(!$methodCorrect)
+        {
+            http_response_code(400);
+            echo sprintf("Request type - %s isn't support for uri: %s", $method, $this->request->getServerParam('REQUEST_URI'));
+            exit();
+        }
+    }
 }
