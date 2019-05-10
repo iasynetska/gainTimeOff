@@ -21,9 +21,9 @@ class KidController extends Controller
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/kidLogin.html.php',
             [
-                'lg_login' => $this->langManager->getLangParams()['lg_login'],
-                'form_login' => $this->request->getPostParam('login'),
                 'lg_kid' => $this->langManager->getLangParams()['lg_kid'],
+                'lg_login' => $this->langManager->getLangParams()['lg_login'],
+                'kid_login' => $this->request->getPostParam('login') ?? $this->request->getSessionParam('form_login'),
                 'lg_password' => $this->langManager->getLangParams()['lg_password'],
                 'lg_error' => $this->request->getSessionParam(self::LOGIN_FALSE_KEY) ? $this->langManager->getLangParams()['lg_err_login_password'] : '',
                 'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],
@@ -40,19 +40,19 @@ class KidController extends Controller
         $login = $this->request->getPostParam('login');
         $password = $this->request->getPostParam('password');
         
+        $this->request->addSessionParam('kid_login', $login);
+        
         $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
         $kid = $kidModel->login($login, $password);
         if($kid)
         {
             $this->request->addSessionParam(self::KID_KEY, $kid);
-            header('Location: /gaintimeoff/kid/dashboard');
-            exit();
+            $this->redirect('/gaintimeoff/kid/dashboard');
         }
         else
         {
             $this->request->addSessionParam(self::LOGIN_FALSE_KEY, true);
-            header('Location: /gaintimeoff/kid/login');
-            exit();
+            $this->redirect('/gaintimeoff/kid/login');
         }
     }
     
@@ -62,8 +62,7 @@ class KidController extends Controller
         
         if(!$this->request->getSessionParam(self::KID_KEY))
         {
-            header('Location: /gaintimeoff/kid/login');
-            exit();
+            $this->redirect('/gaintimeoff/kid/login');
         }
         
         $this->title = 'Kid dashboard';
@@ -82,7 +81,6 @@ class KidController extends Controller
     public function logoutAction()
     {
         $this->request->removeSessionParam(self::KID_KEY);
-        header('Location: /gaintimeoff');
-        exit();
+        $this->redirect('/gaintimeoff');
     }
 }

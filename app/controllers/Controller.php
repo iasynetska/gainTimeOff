@@ -20,6 +20,12 @@ class Controller
         $this->langManager = $langManager;
     }
     
+    protected function redirect($uri)
+    {
+        header(sprintf('Location: %s', $uri));
+        exit();
+    }
+    
     protected function build($template, array $params = [])
     {
         ob_start();

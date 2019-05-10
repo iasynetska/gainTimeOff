@@ -210,7 +210,7 @@ FOOTER
 LOGIN parent and kid
 **************************/
 body#kidLogin,
-body#login_parent {
+body#parentLogin {
   margin: 0;
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }
@@ -259,7 +259,7 @@ body#greeting {
 /*******************
 DASHBOARD PARENT
 *******************/
-body#dashboard-parent__kids {
+body#dashboard_parent {
   margin: 0;
   background-color: #0d4861; }
 

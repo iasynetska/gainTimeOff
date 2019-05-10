@@ -24,6 +24,7 @@
         //form Registration.php
         "lg_registration" => "Registration",
         "lg_name" => "Name",
+        "lg_email" => "E-mail",
         "lg_signup" => "Sign up",
         "lg_required_field" => "required field",
         "lg_language" => "en",
