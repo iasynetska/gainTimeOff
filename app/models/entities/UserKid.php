@@ -1,22 +1,15 @@
 <?php
 namespace models\entities;
 
-class Kid extends User
+class UserKid extends User
 {
     public $gender;
-
     public $date_of_birth;
-
     public $photo;
-
     public $parent_id;
-
     public $mins_to_play;
-
     private $subjects;
-
     private $marks;
-
     private $school_marks;
 
     public function __construct(

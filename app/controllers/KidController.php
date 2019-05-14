@@ -66,7 +66,7 @@ class KidController extends Controller
         }
         
         $this->title = 'Kid dashboard';
-        $this->bodyId = 'dashboard_kid';
+        $this->bodyId = 'kidDashboard';
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/kidDashboard.html.php',
             [

@@ -2,6 +2,11 @@
 namespace controllers;
 
 use core\DynamicJSProducer;
+use models\ParentModel;
+use core\DBDriver;
+use core\DbConnection;
+use models\KidModel;
+use core\LangManager;
 
 class ParentController extends Controller
 {
@@ -76,14 +81,12 @@ class ParentController extends Controller
         if($parent)
         {
             $this->request->addSessionParam(self::PARENT_KEY, $parent);
-            header('Location: /gaintimeoff/parent/dashboard');
-            exit();
+            $this->redirect('/gaintimeoff/parent/dashboard');
         }
         else
         {
             $this->request->addSessionParam(self::LOGIN_FALSE_KEY, true);
-            header('Location: /gaintimeoff/parent/login');
-            exit();
+            $this->redirect('/gaintimeoff/parent/login');
         }
     }
     
@@ -93,21 +96,121 @@ class ParentController extends Controller
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            header('Location: /gaintimeoff/parent/login');
-            exit();
+            $this->redirect('/gaintimeoff/parent/login');
         }
         
+        $parent = $this->request->getSessionParam(self::PARENT_KEY);
+        $kid = new KidModel(new DBDriver(DbConnection::getPDO()));
+        $kids = $kid->getKidsByParent($parent);
+                
         $this->title = 'Parent dashboard';
-        $this->bodyId = 'dashboard_parent';
-        $this->content = $this->build(
-            (dirname(__DIR__, 1)). '/views/parentDashboard.html.php',
+        $this->bodyId = 'parentDashboard';
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
+        
+        if($kids)
+        {
+            $this->content = $this->build(
+                (dirname(__DIR__, 1)). '/views/parentDashboardKids.html.php',
+                [
+                    'top_menu' => $this->buildTopMenu(),
+                    'lg_my_kids' => $this->langManager->getLangParams()['lg_my_kids'],
+                    'kidBlock' => $this->buildKidBlock($kids)
+                ]
+            );
+        }
+        else 
+        {
+            $this->content = $this->build(
+                (dirname(__DIR__, 1)). '/views/parentDashboardStart.html.php',
+                [
+                    'top_menu' => $this->buildTopMenu(),
+                    'lg_add_kid' => $this->langManager->getLangParams()['lg_add_kid']
+                ]
+            );
+        }
+    }
+    
+    private function buildTopMenu() 
+    {
+        return $this->build(
+            (dirname(__DIR__, 1)). '/views/topMenu.html.php',
             [
-                'top_menu' => $this->buildTopMenu()
+                'lg_kids' => $this->langManager->getLangParams()['lg_kids'],
+                'lg_add_kid' => $this->langManager->getLangParams()['lg_add_kid'],
+                'helloParent' => $this->langManager->getLangParams()['lg_hello'] . ', ' . $this->request->getSessionParam(self::PARENT_KEY)->name,
+                'lg_logout' => $this->langManager->getLangParams()['lg_logout']
             ]
             );
     }
     
-    public function buildTopMenu($param) {
-        ;
+    private function buildKidBlock(array $kids)
+    {
+        $kidBlock = '';
+        $kidActive = '';
+        
+        foreach($kids as $kid)
+        {
+            $kid === reset($kids) ? $kidActive = 'active-profile' : $kidActive = '';
+            $kidBlock .= $this->build(
+                (dirname(__DIR__, 1)). '/views/kidBlock.html.php',
+                [
+                    'kidName' => $kid->name,
+                    'kidActive' => $kidActive,
+                    'pathPhoto' => $this->getPathPhoto($kid)
+                ]
+                );
+        }
+        return $kidBlock;
+    }
+    
+    private function getPathPhoto($kid)
+    {
+        if($kid->photo === NULL)
+        {
+            return '/gaintimeoff/img/'.$kid->gender.'.png';
+        }
+        else 
+        {
+            return 'data:image/jpeg;base64,'.$kid->photo;
+        }
+    }
+    
+    public function addingKidAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_GET);
+        
+        if(!$this->request->getSessionParam(self::PARENT_KEY))
+        {
+            $this->redirect('/gaintimeoff/parent/login');
+        }
+        
+        $this->title = 'Adding Kid';
+        $this->bodyId = 'parentAddingKid';
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
+        $this->content = $this->build(
+            (dirname(__DIR__, 1)). '/views/parentAddingKid.html.php',
+            [
+                'top_menu' => $this->buildTopMenu(),
+                'lg_add_kid' => $this->langManager->getLangParams()['lg_add_kid'],
+                'lg_name' => $this->langManager->getLangParams()['lg_name'],
+                'lg_choose_option' => $this->langManager->getLangParams()['lg_choose_option'],
+                'lg_boy' => $this->langManager->getLangParams()['lg_boy'],
+                'lg_girl' => $this->langManager->getLangParams()['lg_girl'],
+                'lg_login' => $this->langManager->getLangParams()['lg_login'],
+                'lg_password' => $this->langManager->getLangParams()['lg_password'],
+                'lg_confirm_password' => $this->langManager->getLangParams()['lg_confirm_password'],
+                'lg_date_of_birth' => $this->langManager->getLangParams()['lg_date_of_birth'],
+                'lg_photo' => $this->langManager->getLangParams()['lg_photo'],
+                'lg_choose_file' => $this->langManager->getLangParams()['lg_choose_file'],
+                'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+        );
+    }
+    
+    public function logoutAction()
+    {
+        $this->request->removeSessionParam(self::PARENT_KEY);
+        $this->redirect('/gaintimeoff');
     }
 }

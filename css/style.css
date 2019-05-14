@@ -259,7 +259,7 @@ body#greeting {
 /*******************
 DASHBOARD PARENT
 *******************/
-body#dashboard_parent {
+body#parentDashboard {
   margin: 0;
   background-color: #0d4861; }
 
@@ -423,7 +423,7 @@ TOP-MENU
 /****************
 ADD KID
 *****************/
-body#add_kid {
+body#parentAddingKid {
   background-color: #0d4861; }
 
 .adding-kid .button {
@@ -467,7 +467,7 @@ body#create_subjects {
 /*******************
 DASHBOARD KID
 *******************/
-body#dashboard_kid {
+body#kidDashboard {
   margin: 0;
   background: #01131d url(../img/background.jpg) no-repeat top center fixed;
   background-size: cover; }

@@ -30,7 +30,7 @@ class Controller
     {
         ob_start();
         extract($params);
-        include_once $template;
+        include $template;
         
         return ob_get_clean();
     }
