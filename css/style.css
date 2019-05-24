@@ -92,6 +92,8 @@ input {
   .form__error {
     color: #FF0000;
     margin-bottom: 10px; }
+    .form__error > p {
+      margin: 0; }
   .form__link {
     display: block;
     text-decoration: underline;

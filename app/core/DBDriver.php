@@ -21,9 +21,15 @@ class DBDriver
         return $fetch === self::FETCH_ALL ? $stmt->fetchAll() : $stmt->fetch();
     }
     
-    public function insert()
+    public function insert($table, array $params)
     {
-        ;
+        $columns = sprintf('(%s)', implode(', ', array_keys($params)));
+        $masks = sprintf('(:%s)', implode(', :', array_keys($params)));
+        
+        $sql = sprintf('INSERT INTO %s %s VALUES %s', $table, $columns, $masks);
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
     }
     
     public function update()

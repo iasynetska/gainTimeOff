@@ -83,6 +83,10 @@ input
     {
         color: $color_error;
         margin-bottom: 10px;
+        > p
+        {
+        	margin: 0;
+        }
     }
     &__link
     {

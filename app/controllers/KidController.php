@@ -5,6 +5,7 @@ use core\DynamicJSProducer;
 use models\KidModel;
 use core\DBDriver;
 use core\DbConnection;
+use core\Validator;
 
 class KidController extends Controller
 {
@@ -23,7 +24,7 @@ class KidController extends Controller
             [
                 'lg_kid' => $this->langManager->getLangParams()['lg_kid'],
                 'lg_login' => $this->langManager->getLangParams()['lg_login'],
-                'kid_login' => $this->request->getPostParam('login') ?? $this->request->getSessionParam('form_login'),
+                'kid_login' => $this->request->getSessionParam('kid_login') ?? '',
                 'lg_password' => $this->langManager->getLangParams()['lg_password'],
                 'lg_error' => $this->request->getSessionParam(self::LOGIN_FALSE_KEY) ? $this->langManager->getLangParams()['lg_err_login_password'] : '',
                 'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],

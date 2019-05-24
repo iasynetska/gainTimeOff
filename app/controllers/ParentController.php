@@ -5,8 +5,10 @@ use core\DynamicJSProducer;
 use models\ParentModel;
 use core\DBDriver;
 use core\DbConnection;
+use core\Validator;
 use models\KidModel;
-use core\LangManager;
+use \Exception;
+use core\Exceptions\ValidatorException;
 
 class ParentController extends Controller
 {
@@ -25,7 +27,7 @@ class ParentController extends Controller
             [
                 'lg_parent' => $this->langManager->getLangParams()['lg_parent'],
                 'lg_login' => $this->langManager->getLangParams()['lg_login'],
-                'parent_login' => $this->request->getPostParam('login') ? $this->request->getPostParam('login') : $this->request->getSessionParam('parent_login'),
+                'parent_login' => $this->request->getSessionParam('parent_login') ?? '',
                 'lg_password' => $this->langManager->getLangParams()['lg_password'],
                 'lg_error' => $this->request->getSessionParam(self::LOGIN_FALSE_KEY) ? $this->langManager->getLangParams()['lg_err_login_password'] : '',
                 'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],
@@ -39,7 +41,6 @@ class ParentController extends Controller
     public function registrationAction()
     {
         $this->checkRequestMethod($this->request::METHOD_GET);
-        
         $this->title = 'Parent registration';
         $this->bodyId = 'registration';
         $this->dynamicJS = DynamicJSProducer::produceJSLinks(
@@ -55,16 +56,29 @@ class ParentController extends Controller
             [
                 'lg_registration' => $this->langManager->getLangParams()['lg_registration'],
                 'lg_name' => $this->langManager->getLangParams()['lg_name'],
+                'parent_name' => $this->request->getSessionParam('parent_name') ?? '',
+                'error_name' => isset($this->request->getSessionParam('errors')['name']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['name']) : '',
                 'lg_login' => $this->langManager->getLangParams()['lg_login'],
+                'parent_login' => $this->request->getSessionParam('parent_login') ?? '',
+                'error_login' => isset($this->request->getSessionParam('errors')['login']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['login']) : '',
                 'lg_email' => $this->langManager->getLangParams()['lg_email'],
+                'parent_email' => $this->request->getSessionParam('parent_email') ?? '',
+                'error_email' => isset($this->request->getSessionParam('errors')['email']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['email']) : '',
                 'lg_password' => $this->langManager->getLangParams()['lg_password'],
+                'parent_password' => $this->request->getSessionParam('parent_password') ?? '',
                 'lg_confirm_password' => $this->langManager->getLangParams()['lg_confirm_password'],
+                'error_password' => isset($this->request->getSessionParam('errors')['password']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['password']) : '',
+                'error_confirm_password' => '',
                 'lg_not_robot' => $this->langManager->getLangParams()['lg_not_robot'],
+                'error_reCaptcha' => isset($this->request->getSessionParam('errors')['g-recaptcha-response']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['g-recaptcha-response']) : '',
                 'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],
                 'lg_signup' => $this->langManager->getLangParams()['lg_signup'],
                 'lg_link_login' => $this->langManager->getLangParams()['lg_link_login']
             ]
             );
+        $this->request->removeSessionParam(self::LOGIN_FALSE_KEY);
+        $this->request->removeSessionParam(self::PARENT_KEY);
+        $this->request->removeSessionParam('errors');
     }
     
     public function doLoginAction()
@@ -88,6 +102,60 @@ class ParentController extends Controller
             $this->request->addSessionParam(self::LOGIN_FALSE_KEY, true);
             $this->redirect('/gaintimeoff/parent/login');
         }
+    }
+    
+    public function doRegistrationAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_POST);
+        
+        $name = $this->request->getPostParam('name');
+        $login = $this->request->getPostParam('login');
+        $email = $this->request->getPostParam('email');
+        $password = $this->request->getPostParam('password');
+        $reCaptchaResponse = $this->request->getPostParam('g-recaptcha-response');
+        
+        $this->request->addSessionParam('parent_name', $name);
+        $this->request->addSessionParam('parent_login', $login);
+        $this->request->addSessionParam('parent_email', $email);
+        $this->request->addSessionParam('parent_password', $password);
+        
+        $parentModel = new ParentModel(new DBDriver(DbConnection::getPDO()));
+
+        try 
+        {            
+            $parentModel->addParent([
+                'name' => $name,
+                'login' => $login,
+                'email' => $email,
+                'password' => $password,
+                'g-recaptcha-response' => $reCaptchaResponse
+            ]);
+
+            $this->redirect('/gaintimeoff/parent/greeting');
+        } 
+        catch (ValidatorException $e) 
+        {
+            $errors = $e->getErrors();
+            $this->request->addSessionParam('errors', $errors);
+            $this->redirect('/gaintimeoff/parent/registration');
+        }     
+    }
+    
+    public function greetingAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_GET);
+        
+        $this->title = 'Greeting';
+        $this->bodyId = 'greeting';
+        
+        $this->content = $this->build(
+            (dirname(__DIR__, 1)). '/views/parentGreeting.html.php',
+            [
+                'lg_greeting' => $this->langManager->getLangParams()['lg_greeting'],
+                'parentName' => $this->request->getSessionParam('parent_name'),
+                'lg_login_form' => $this->langManager->getLangParams()['lg_login_form'],
+            ]
+            );
     }
     
     public function dashboardAction()
