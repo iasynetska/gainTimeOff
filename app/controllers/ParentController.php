@@ -79,6 +79,9 @@ class ParentController extends Controller
         $this->request->removeSessionParam(self::LOGIN_FALSE_KEY);
         $this->request->removeSessionParam(self::PARENT_KEY);
         $this->request->removeSessionParam('errors');
+        $this->request->removeSessionParam('parent_name');
+        $this->request->removeSessionParam('parent_login');
+        $this->request->removeSessionParam('parent_email');
     }
     
     public function doLoginAction()
@@ -117,7 +120,6 @@ class ParentController extends Controller
         $this->request->addSessionParam('parent_name', $name);
         $this->request->addSessionParam('parent_login', $login);
         $this->request->addSessionParam('parent_email', $email);
-        $this->request->addSessionParam('parent_password', $password);
         
         $parentModel = new ParentModel(new DBDriver(DbConnection::getPDO()));
 

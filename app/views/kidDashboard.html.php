@@ -1,5 +1,5 @@
 <main class="dashboard-content d-flex flex-column flex-grow-1">
-    <div class="content-header">
+    <div class="content-header d-flex justify-content-end">
         <div class="content-header__logout">
         	<div class="logout-text"><?=$helloKid?></div>
         	<div class="logout-link"><a href="/gaintimeoff/kid/logout"><?=$lg_logout?></a></div>

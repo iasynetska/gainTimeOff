@@ -38,7 +38,7 @@
                     <div class="form__section">
                         <label for="password" class="form__label form__label_required"><?=$lg_password?>:</label>
 
-                        <input id="password" class="form__field form__field_width_100 required" type="password" value="<?=$parent_password?>"
+                        <input id="password" class="form__field form__field_width_100 required" type="password"
                         	name="password" oninput="removeBorder(this.id)" /> <br />
                         <div class='form__error'><?=$error_password?></div>  
                     </div>

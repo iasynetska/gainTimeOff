@@ -103,7 +103,7 @@ class Validator
     
     private function checkReCaptcha($param)
     {
-        $secret = "6Ld-SlUUAAAAALPqKT2lokYnL76iiTcFOKsiPmhQ";
+        $secret = file_get_contents(dirname(__DIR__, 1).'/reCaptchaKey.txt');
         $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$param);
         $result = json_decode($check);
         return $result->success;
