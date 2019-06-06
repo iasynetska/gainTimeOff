@@ -66,7 +66,6 @@ class Controller
                 ]
             );
         }
-        $b = $errorMessage;
         return $errorMessage;
     }
     

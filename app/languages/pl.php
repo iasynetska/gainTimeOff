@@ -72,6 +72,7 @@
         "lg_photo" => "Dodaj zdjęcie swojego dziecka",
         "lg_choose_file" => "Wybierz plik",
         "lg_no_file" => "Puste",
+        "lg_err_name_existing" => "Juz masz dziecko z takim imieniem!",
         "lg_err_check_option" => "Nie została zaznaczona żadna opcja!",
         "lg_err_size" => "Przekroczony maksymalny rozmiar pliku!",
         "lg_err_partially_uploaded" => "Odebrano tylko część pliku!",

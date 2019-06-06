@@ -5,7 +5,7 @@ use core\DynamicJSProducer;
 use models\KidModel;
 use core\DBDriver;
 use core\DbConnection;
-use core\Validator;
+use core\Exceptions\ValidatorException;
 
 class KidController extends Controller
 {
@@ -77,6 +77,45 @@ class KidController extends Controller
                 'kidMins' => $this->request->getSessionParam(self::KID_KEY)->mins_to_play
             ]
             );
+    }
+    
+    public function doAddingKidAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_POST);
+        
+        $name = $this->request->getPostParam('name');
+        $gender = $this->request->getPostParam('gender');
+        $login = $this->request->getPostParam('login');
+        $password = $this->request->getPostParam('password');
+        $date = $this->request->getPostParam('date_of_birth');
+        $photoFile = $this->request->getFileParam('photo');
+        
+        $this->request->addSessionParam('kid_name', $name);
+        $this->request->addSessionParam('kid_login', $login);
+        $this->request->addSessionParam('date_of_birth', $date);
+        
+        $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
+        
+        try
+        {
+            $kidModel->addKid([
+                'name' => $name,
+                'gender' => $gender,
+                'login' => $login,
+                'password' => $password,
+                'date_of_birth' => $date,
+                'photo' => $photoFile,
+                'parent_id' => $this->request->getSessionParam('parent')->getId()
+            ]);
+            
+            $this->redirect('/gaintimeoff/parent/dashboard');
+        }
+        catch (ValidatorException $e) 
+        {
+            $errors = $e->getErrors();
+            $this->request->addSessionParam('errors', $errors);
+            $this->redirect('/gaintimeoff/parent/adding-kid');
+        }
     }
     
     public function logoutAction()

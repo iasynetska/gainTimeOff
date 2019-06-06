@@ -130,13 +130,16 @@ input {
   .icon:hover {
     color: #2EBBCE; }
 
-table {
-  border-collapse: collapse; }
+select {
+  font-family: 'Almendra-Regular', sans-serif; }
 
-table, th, td {
-  background-color: rgba(4, 27, 40, 0.9);
-  border: 1px solid #2EBBCE;
-  padding: 10px; }
+option {
+  font-family: 'Almendra-Regular', sans-serif;
+  font-size: 16px; }
+  option:first-child {
+    font-weight: bold;
+    font-family: 'Almendra-Regular', sans-serif;
+    background-color: #2EBBCE; }
 
 /*******************
 WELCOME.php
@@ -312,12 +315,9 @@ body#parentDashboard {
     .kids-new__img:hover {
       cursor: pointer; }
 
-.kids-blocks .active-profile {
+.kids-block .active-profile {
   -webkit-filter: none;
   filter: none; }
-
-.kids-table {
-  margin-top: 30px; }
 
 .kid {
   margin: 10px;
@@ -352,6 +352,7 @@ TOP-MENU
   /* added to support older browsers */
   position: -webkit-sticky;
   position: sticky;
+  z-index: 1000;
   top: 50px; }
   .top-menu__list {
     display: -webkit-box;

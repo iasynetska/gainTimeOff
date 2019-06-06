@@ -9,6 +9,7 @@ class Validator
     private $rules;
     private $model;
     public $errors = [];
+    public $photoFile = false;
     
     public function __construct(array $rules, BaseModel $model)
     {
@@ -30,6 +31,19 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_letters';
             }
             
+            if(isset($rules['isNameKidUnique']) && $rules['isNameKidUnique'] && !isset($this->errors['name']))
+            {
+                if($this->model->isKidExisting('name', $params[$fieldName], $params['parent_id']))
+                {
+                    $this->errors[$fieldName][] ='lg_err_name_existing';
+                }
+            }
+            
+            if(isset($rules['selectGender']) && $rules['selectGender'] && !($params[$fieldName]==='girl' || $params[$fieldName]==='boy'))
+            {
+                $this->errors[$fieldName][] = 'lg_error_gender';
+            }
+            
             if(isset($rules['lengthFrom3to20']) && !$this->isLengthMatch($params[$fieldName], $rules['lengthFrom3to20']))
             {
                 $this->errors[$fieldName][] = 'lg_err_length_3to20';
@@ -45,31 +59,63 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_alnum';
             }
             
+            if(isset($rules['isLoginUnique']) && $rules['isLoginUnique'] && !isset($this->errors['login']))
+            {
+                if($this->model->isExisting('login', $params[$fieldName]))
+                {
+                    $this->errors[$fieldName][] ='lg_err_login_existing';
+                }
+            }
+            
             if(isset($rules['emailFormat']) && !$this->isEmailCorrect($params[$fieldName]))
             {
                 $this->errors[$fieldName][] = 'lg_err_email';
+            }
+            
+            if(isset($rules['isEmailUnique']) && $rules['isEmailUnique'] && !isset($this->errors['email']))
+            {
+                if($this->model->isExisting('email', $params[$fieldName]))
+                {
+                    $this->errors[$fieldName][] ='lg_err_email_existing';
+                }
             }
             
             if(isset($rules['not_robot']) && $rules['not_robot'] && !$this->checkReCaptcha($params[$fieldName]))
             {
                 $this->errors[$fieldName][] = 'lg_err_captcha';
             }
-        }
-        
-        if (!isset($this->errors['login']))
-        {
-            if($this->model->isExisting('login', $params['login']))
+            
+            if(isset($rules['date_of_birth']) && $rules['date_of_birth'] && !$this->isDateCorrect($params[$fieldName]))
             {
-                $this->errors['login'][] ='lg_err_login_existing';
+                $this->errors[$fieldName][] = 'lg_err_date';
             }
-        }
-        
-        if (!isset($this->errors['email']))
-        {
-            if($this->model->isExisting('email', $params['email']))
+            
+            if(isset($rules['checkFileForCorrectness']) && $rules['checkFileForCorrectness'] && $params[$fieldName]['error'] == UPLOAD_ERR_OK)
             {
-                $this->errors['email'][] ='lg_err_email_existing';
+                switch($params[$fieldName]['error'])
+                {
+                    case UPLOAD_ERR_INI_SIZE :
+                    case UPLOAD_ERR_FORM_SIZE :
+                        $this->errors[$fieldName] = 'lg_err_size';
+                        break;
+                        
+                    case UPLOAD_ERR_PARTIAL :
+                        $this->errors[$fieldName] = 'lg_err_partially_uploaded';
+                        break;
+                        
+                    case UPLOAD_ERR_NO_TMP_DIR:
+                        $this->errors[$fieldName] = 'lg_err_tmp_folder';
+                        break;
+                        
+                    case UPLOAD_ERR_CANT_WRITE:
+                        $this->errors[$fieldName] = 'lg_err_cant_write';
+                        break;
+                        
+                    case UPLOAD_ERR_EXTENSION:
+                        $this->errors[$fieldName] = 'lg_err_extension_PHP';
+                }
             }
+            
         }
         
         if(!empty($this->errors))
@@ -107,5 +153,18 @@ class Validator
         $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$param);
         $result = json_decode($check);
         return $result->success;
+    }
+    
+    private function isDateCorrect($date)
+    {
+        if(!empty($date))
+        {
+            $date_array = explode("-", $date);
+            $year = $date_array[0];
+            $month = $date_array[1];
+            $day = $date_array[2];
+            
+            return checkdate($month, $day, $year);
+        }
     }
 }

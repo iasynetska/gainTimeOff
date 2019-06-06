@@ -72,6 +72,7 @@
         "lg_photo" => "Add a photo of your kid",
         "lg_choose_file" => "Choose file",
         "lg_no_file" => "Empty",
+        "lg_err_name_existing" => "You already have a kid with that name!",
         "lg_err_check_option" => "No option selected!",
         "lg_err_size" => "Maximum file size exceeded!",
         "lg_err_partially_uploaded" => "The uploaded file was only partially uploaded!",

@@ -16,11 +16,13 @@ class ParentModel extends BaseModel
         
         'login' => [
             'lengthFrom3to20' => [3, 20],
-            'alphanumeric' => TRUE
+            'alphanumeric' => TRUE,
+            'isLoginUnique' => TRUE
         ],
         
         'email' => [
-            'emailFormat' => TRUE
+            'emailFormat' => TRUE,
+            'isEmailUnique' => TRUE
         ],
         
         'password' => [

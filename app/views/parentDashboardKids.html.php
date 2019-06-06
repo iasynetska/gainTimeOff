@@ -4,11 +4,11 @@
     <div class="dashboard-content flex-grow-1 d-flex flex-column">
 		<div class="kids">
 			<div class="container">
-				<h1 class="kids-title"><?=$lg_my_kids?></h1>
+				<h1 class="kids-title"><?=$kidsTitle?></h1>
 				<div class="kids-new">
-					<img class="kids-new__img" onclick="location.href='./adding-kid';" src="/gaintimeoff/img/plus-32.png" alt="Add kid">
+					<img class="kids-new__img" src="/gaintimeoff/img/plus-32.png" alt="Add kid" onclick="location.href='./adding-kid';" >
 				</div>
-				<div class="kids-blocks d-flex flex-wrap justify-content-center">
+				<div class="kids-block d-flex flex-wrap justify-content-center">
 					<?=$kidBlock?>
 				</div>
 			</div>

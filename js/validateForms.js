@@ -28,7 +28,6 @@ function validateForm(formId)
     var fieldsValid = validateFormInputs(form);
     var reCaptchaValid = validateFormReCaptcha();
     var radioSelected = validateRadioButtons(form);
-//    var dateValid = validateDateField();
     
     return fieldsValid && reCaptchaValid && radioSelected;
 }
@@ -67,7 +66,7 @@ function validateFormInputs(form)
                     var regName = /^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
                     if(!regName.test(name))
                     {
-                        errorName = "lg_err_name_letters";
+                        errorName = "lg_err_letters";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -79,14 +78,14 @@ function validateFormInputs(form)
                     var checkLogin = /^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
                     if(login.length < 3 || login.length > 20)
                     {
-                        errorName = "lg_err_login";
+                        errorName = "lg_err_length_3to20";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
                     }
                     else if(!checkLogin.test(login))
                     {
-                        errorName = "lg_err_alnum_login";
+                        errorName = "lg_err_alnum";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;
@@ -109,7 +108,7 @@ function validateFormInputs(form)
                     var password = element.value;
                     if(password.length < 8 || password.length > 20)
                     {
-                        errorName = "lg_err_password";
+                        errorName = "lg_err_length_8to20";
                         element.style.border = "1px solid red";
                         addErrorMessage(element, errorName);
                         valid = false;

@@ -5,9 +5,7 @@ use core\DynamicJSProducer;
 use models\ParentModel;
 use core\DBDriver;
 use core\DbConnection;
-use core\Validator;
 use models\KidModel;
-use \Exception;
 use core\Exceptions\ValidatorException;
 
 class ParentController extends Controller
@@ -171,8 +169,8 @@ class ParentController extends Controller
         
         $parent = $this->request->getSessionParam(self::PARENT_KEY);
         $kid = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $kids = $kid->getKidsByParent($parent);
-                
+        $kids = $kid->getKidsByParent($parent);  
+        
         $this->title = 'Parent dashboard';
         $this->bodyId = 'parentDashboard';
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
@@ -183,8 +181,10 @@ class ParentController extends Controller
                 (dirname(__DIR__, 1)). '/views/parentDashboardKids.html.php',
                 [
                     'top_menu' => $this->buildTopMenu(),
-                    'lg_my_kids' => $this->langManager->getLangParams()['lg_my_kids'],
-                    'kidBlock' => $this->buildKidBlock($kids)
+                    'kidsTitle' => $this->langManager->getLangParams()['lg_my_kids'],
+                    'kidBlock' => $this->buildKidBlock($kids),
+                    'timeTitle' => $this->langManager->getLangParams()['lg_time_to_play'],
+                    'timeKid' => $kids[0]->mins_to_play
                 ]
             );
         }
@@ -194,7 +194,7 @@ class ParentController extends Controller
                 (dirname(__DIR__, 1)). '/views/parentDashboardStart.html.php',
                 [
                     'top_menu' => $this->buildTopMenu(),
-                    'lg_add_kid' => $this->langManager->getLangParams()['lg_add_kid']
+                    'kidAdd' => $this->langManager->getLangParams()['lg_add_kid']
                 ]
             );
         }
@@ -263,19 +263,32 @@ class ParentController extends Controller
                 'top_menu' => $this->buildTopMenu(),
                 'lg_add_kid' => $this->langManager->getLangParams()['lg_add_kid'],
                 'lg_name' => $this->langManager->getLangParams()['lg_name'],
+                'kid_name' => $this->request->getSessionParam('kid_name') ?? '',
+                'error_name' => isset($this->request->getSessionParam('errors')['name']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['name']) : '',
                 'lg_choose_option' => $this->langManager->getLangParams()['lg_choose_option'],
                 'lg_boy' => $this->langManager->getLangParams()['lg_boy'],
                 'lg_girl' => $this->langManager->getLangParams()['lg_girl'],
+                'error_gender' => isset($this->request->getSessionParam('errors')['gender']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['gender']) : '',
                 'lg_login' => $this->langManager->getLangParams()['lg_login'],
+                'kid_login' => $this->request->getSessionParam('kid_login') ?? '',
+                'error_login' => isset($this->request->getSessionParam('errors')['login']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['login']) : '',
                 'lg_password' => $this->langManager->getLangParams()['lg_password'],
+                'error_password' => isset($this->request->getSessionParam('errors')['password']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['password']) : '',
                 'lg_confirm_password' => $this->langManager->getLangParams()['lg_confirm_password'],
                 'lg_date_of_birth' => $this->langManager->getLangParams()['lg_date_of_birth'],
+                'date_of_birth' => $this->request->getSessionParam('date_of_birth') ?? '',
+                'error_date_of_birth' => isset($this->request->getSessionParam('errors')['date_of_birth']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['date_of_birth']) : '',
                 'lg_photo' => $this->langManager->getLangParams()['lg_photo'],
                 'lg_choose_file' => $this->langManager->getLangParams()['lg_choose_file'],
+                'error_photo' => isset($this->request->getSessionParam('errors')['photo']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['photo']) : '',
                 'lg_required_field' => $this->langManager->getLangParams()['lg_required_field'],
                 'lg_save' => $this->langManager->getLangParams()['lg_save']
             ]
-        );
+            );
+        $this->request->removeSessionParam('errors');
+        $this->request->removeSessionParam('kid_name');
+        $this->request->removeSessionParam('kid_login');
+        $this->request->removeSessionParam('date_of_birth');
     }
     
     public function logoutAction()
