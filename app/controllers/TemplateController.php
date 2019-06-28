@@ -1,11 +1,12 @@
 <?php
 namespace controllers;
 
-class RestController extends AbstractController
+class TemplateController extends AbstractController
 {
     protected $content;
+    
     public function render()
     {
-        echo json_encode($this->content);
+        echo $this->content;
     }
 }

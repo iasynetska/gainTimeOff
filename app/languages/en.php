@@ -21,7 +21,7 @@
         "lg_err_login_password" => "Wrong Login or Password!",
         "lg_err_default" => "Something went wrong. Error is undefined.",
         
-        //form Registration.php
+        //form Registration
         "lg_registration" => "Registration",
         "lg_name" => "Name",
         "lg_email" => "E-mail",
@@ -54,7 +54,7 @@
         "lg_edit" => "Edit",
         "lg_save" => "save",
         "lg_my_kids" => "My kids",
-        "lg_school_subjects" =>"School subjects and marks",
+        "lg_school_subjects" =>"Subjects",
         "lg_tasks" => "Tasks",
         "lg_played_time" => "Played time",
         "lg_create_sub_and_marks" => "Create new subjects and marks",
@@ -63,7 +63,7 @@
         //dashboard kid
         "lg_your_time" => "Your time for game",
         
-        //add_kid
+        //adding kid
         "lg_choose_option" => "Choose an option",
         "lg_boy" => "Boy",
         "lg_girl" => "Girl",
@@ -82,19 +82,17 @@
         "lg_err_extension_PHP" => "A PHP extension stopped the file upload! Please, contact the administration of the website!",
         "lg_err_unknown" => "Oops! Something went wrong, please try again!",
         
-        //create_subjects_and_marks
+        //create subjects and marks
         "lg_add_subjects_title" => "Add school subjects",
         "lg_add_marks_title" => "Add school marks and play time for them",
         "lg_add" => "Add",
+        "lg_subjects_title" => "School subjects and marks",
         
-        //create_kid_profile
+        //create kid profile
         "lg_back_dashboard" => "Back to dashboard",
         "lg_add_subjects_title" => "Add subjects",
         "lg_subject" => "Subject",
         
-        //add_tasks
-        "lg_add_tasks_title" => "Add tasks and play time for them",
-        
-        //add_remarks
-        "lg_add_remarks_title" => "Add remarks and play time for them"
+        //add tasks
+        "lg_add_tasks_title" => "Add tasks and play time for them"
     );

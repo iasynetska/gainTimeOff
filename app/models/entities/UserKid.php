@@ -1,6 +1,12 @@
 <?php
 namespace models\entities;
 
+use models\SubjectModel;
+use models\MarkModel;
+use models\TaskModel;
+use core\DBDriver;
+use core\DbConnection;
+
 class UserKid extends User
 {
     public $gender;
@@ -10,7 +16,8 @@ class UserKid extends User
     public $mins_to_play;
     private $subjects;
     private $marks;
-    private $school_marks;
+    private $schoolMarks;
+    private $tasks;
 
     public function __construct(
         string $name, 
@@ -30,5 +37,91 @@ class UserKid extends User
         $this->photo = $photo;
         $this->parent_id = $parent_id;
         $this->mins_to_play = $mins_to_play;
+    }
+    
+    public function getKidSubjects(): ?array
+    {
+        if(!isset($this->subjects))
+        {
+            $subjectModel = new SubjectModel(new DBDriver(DbConnection::getPDO()));
+            $arr_subjects = $subjectModel->getSubjectsByKid($this);
+            
+            if(empty($arr_subjects))
+            {
+                $this->subjects = $arr_subjects;
+            }
+            else
+            {
+                foreach($arr_subjects as $subject)
+                {
+                    $this->subjects[$subject->name] = $subject;
+                }
+            }
+        }
+        return $this->subjects;
+    }
+    
+    public function getKidMarks(): ?array
+    {
+        if(!isset($this->marks))
+        {
+            $markModel = new MarkModel(new DBDriver(DbConnection::getPDO()));
+            $arr_marks = $markModel->getMarksByKid($this);
+            
+            if(empty($arr_marks))
+            {
+                $this->marks = $arr_marks;
+            }
+            else
+            {
+                foreach($arr_marks as $mark)
+                {
+                    $this->marks[$mark->name] = $mark;
+                }
+            }
+        }
+        return $this->marks;
+    }
+    
+    public function getKidTasks(): ?array
+    {
+        if(!isset($this->tasks))
+        {
+            $taskModel = new TaskModel(new DBDriver(DbConnection::getPDO()));
+            $arr_tasks = $taskModel->getTasksByKid($this);
+            
+            if(empty($arr_tasks))
+            {
+                $this->tasks = $arr_tasks;
+            }
+            else
+            {
+                foreach($arr_tasks as $task)
+                {
+                    $this->tasks[$task->name] = $task;
+                }
+            }
+        }
+        return $this->tasks;
+    }
+    
+    public function getSubjects()
+    {
+        return $this->subjects;
+    }
+    
+    public function getMarks()
+    {
+        return $this->marks;
+    }
+    
+    public function getSchoolMarks()
+    {
+        return $this->schoolMarks;
+    }
+    
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 }

@@ -54,7 +54,8 @@ CREATE TABLE tasks (
     minutes time NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (kid_id) REFERENCES user_kids (id)
+    FOREIGN KEY (kid_id) REFERENCES user_kids (id),
+	active bit DEFAULT true NOT NULL
 );
 
 /*Create new table school_marks*/

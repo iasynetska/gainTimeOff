@@ -35,9 +35,12 @@ switch($controller)
     case 'errormessage':
         $controller = 'ErrorMessage';
         break;
-    default:
-        echo 'Page not found';
+    case 'kidtemplate':
+        $controller = 'KidTemplate';
         break;
+    default:
+        http_response_code(404);
+        exit;
 }
 
 $controller = sprintf('\controllers\%sController', $controller);

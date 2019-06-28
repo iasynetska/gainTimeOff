@@ -1,3 +1,4 @@
+var arrItemsKid = new Map();  
 /**
  * Resize reCAPTCHA to fit width of container
 **/
@@ -29,7 +30,38 @@ function changeActiveProfile(idKid)
 
     var newActiveProfile = document.getElementById(idKid);
     newActiveProfile.classList.add("active-profile");
+    document.getElementById("items").innerHTML = getItemsKid(idKid);
 }
+
+/**
+ * Getting html code of items block from server.
+ * @param kidName - name of the kid.
+ * @returns  html code of items block from server.
+**/
+function getItemsKid(kidName)
+{
+	if(arrItemsKid.has(kidName))
+    {
+        return arrItemsKid.get(kidName);
+    }
+	else
+    {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function()
+        {
+            if (this.readyState === 4 && this.status !== 200)
+            {
+                throw JSON.parse(this.responseText).message;
+            }
+        };
+        xhttp.open("GET", "/gaintimeoff/kidtemplate/items?kidName="+kidName, false);
+        xhttp.send();
+
+        arrItemsKid.set(kidName, xhttp.responseText);
+        return xhttp.responseText;
+    }
+}
+
 
 
 //Confirmation box

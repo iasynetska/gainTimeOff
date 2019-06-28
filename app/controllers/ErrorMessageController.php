@@ -1,21 +1,12 @@
 <?php
 namespace controllers;
-use core\Request;
-use core\LangManager;
 use core\dto\ErrorMessage;
 
 class ErrorMessageController extends RestController
-{
-    private $langManager;
-    
-    public function __construct(Request $request, LangManager $langManager)
-    {
-        parent::__construct($request);
-        $this->langManager = $langManager;
-    }
-    
+{    
     public function getAction()
     {
+        $this->checkRequestMethod($this->request::METHOD_GET);
         $errorName = $this->request->getGetParam('errorName');
         
         $errorMessage = $this->langManager->getLangParams()[$errorName];

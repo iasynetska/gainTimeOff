@@ -21,7 +21,7 @@
         "lg_err_login_password" => "Nieprawidłowe Login lub Hasło!",
         "lg_err_default" => "Coś poszło nie tak. Błąd jest niezdefiniowany.",
         
-        //form Registration.php
+        //form Registration
         "lg_registration" => "Rejestracja",
         "lg_name" => "Imię",
         "lg_email" => "E-mail",
@@ -54,7 +54,7 @@
         "lg_edit" => "Edytować",
         "lg_save" => "zapisać",
         "lg_my_kids" => "Moje dzieci",
-        "lg_school_subjects" =>"Przedmioty szkolne i ocene",
+        "lg_school_subjects" =>"Przedmioty",
         "lg_tasks" => "Zadania",
         "lg_played_time" => "Zagrany czas",
         "lg_create_sub_and_marks" => "Stwórz nowe przedmioty i ocene",
@@ -63,7 +63,7 @@
         //dashboard kid
         "lg_your_time" => "Twój czas na grę",
         
-        //add_kid
+        //adding kid
         "lg_choose_option" => "Wybierz opcję",
         "lg_boy" => "Chłopiec",
         "lg_girl" => "Dziewczyna",
@@ -82,19 +82,17 @@
         "lg_err_extension_PHP" => "Nie udało się zapisać pliku na dysku serwera! Proszę skontaktować się z administracją strony internetowej!",
         "lg_err_unknown" => "Ups! Coś poszło nie tak, spróbuj ponownie!",        
         
-        //create_subjects_and_marks
+        //create subjects and marks
         "lg_add_subjects_title" => "Dodaj nowe przedmioty szkolne",
         "lg_add_marks_title" => "Dodaj oceny szkolne i czas gry dla nich",
         "lg_add" => "Dodaj",
+        "lg_subjects_title" => "Przedmioty szkolne i ocene",
         
-        //create_kid_profile
+        //create kid profile
         "lg_back_dashboard" => "Powrót do głównej deski",
         "lg_add_subjects_title" => "Dodaj nazwy przedmiotów",
         "lg_subject" => "Nazwa przedmiotu",
         
-        //add_tasks
-        "lg_add_tasks_title" => "Dodaj zadania i czas gry dla nich",
-        
-        //add_remarks
-        "lg_add_remarks_title" => "Dodaj uwagi i czas gry dla nich"
+        //add tasks
+        "lg_add_tasks_title" => "Dodaj zadania i czas gry dla nich"
     );

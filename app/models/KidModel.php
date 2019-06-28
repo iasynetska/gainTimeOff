@@ -7,7 +7,7 @@ use models\entities\UserParent;
 use core\DBDriver;
 use core\Validator;
 
-class KidModel extends BaseModel
+class KidModel extends UserModel
 {
     protected $rules = [
         'name' => [
@@ -132,7 +132,7 @@ class KidModel extends BaseModel
                 $result['parent_id'], 
                 $result['mins_to_play'], 
                 $result['id']);
-            array_push($arr_kids, $kid);
+            $arr_kids[$result['name']] = $kid;
         }
         return $arr_kids;
     }

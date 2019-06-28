@@ -5,10 +5,9 @@ use core\DynamicJSProducer;
 use models\ParentModel;
 use core\DBDriver;
 use core\DbConnection;
-use models\KidModel;
 use core\Exceptions\ValidatorException;
 
-class ParentController extends Controller
+class ParentController extends FullHtmlController
 {
     const LOGIN_FALSE_KEY = 'loginFalse';
     const PARENT_KEY = 'parent';
@@ -167,13 +166,15 @@ class ParentController extends Controller
             $this->redirect('/gaintimeoff/parent/login');
         }
         
-        $parent = $this->request->getSessionParam(self::PARENT_KEY);
-        $kid = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $kids = $kid->getKidsByParent($parent);  
+        $parent = $this->request->getSessionParam(self::PARENT_KEY);  
         
         $this->title = 'Parent dashboard';
         $this->bodyId = 'parentDashboard';
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
+        $kids = $parent->getKids();
+        $subjectsFirstKid = $kids['Julia']->getKidSubjects();
+        $marksFirstKid = $kids['Julia']->getKidMarks();
+        $tasksFirstKid = $kids['Julia']->getKidTasks();
         
         if($kids)
         {
@@ -183,8 +184,7 @@ class ParentController extends Controller
                     'top_menu' => $this->buildTopMenu(),
                     'kidsTitle' => $this->langManager->getLangParams()['lg_my_kids'],
                     'kidBlock' => $this->buildKidBlock($kids),
-                    'timeTitle' => $this->langManager->getLangParams()['lg_time_to_play'],
-                    'timeKid' => $kids[0]->mins_to_play
+                    'itemsBlock' => $this->buildItemsBlock(reset($kids))
                 ]
             );
         }
@@ -231,6 +231,20 @@ class ParentController extends Controller
                 );
         }
         return $kidBlock;
+    }
+    
+    private function buildItemsBlock($kid)
+    {
+        $itemsBlock = $this->build(
+            (dirname(__DIR__, 1)). '/views/parentDashboardItems.html.php',
+            [
+                'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
+                'timeKid' => $kid->mins_to_play,
+                'lg_school_subjects' => $this->langManager->getLangParams()['lg_school_subjects'],
+                'lg_tasks' => $this->langManager->getLangParams()['lg_tasks']
+            ]
+            );
+        return $itemsBlock;
     }
     
     private function getPathPhoto($kid)
@@ -291,8 +305,36 @@ class ParentController extends Controller
         $this->request->removeSessionParam('date_of_birth');
     }
     
+    public function addingSubjectsMarksAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_GET);
+        
+        if(!$this->request->getSessionParam(self::PARENT_KEY))
+        {
+            $this->redirect('/gaintimeoff/parent/login');
+        }
+        
+        $kid = $this->request->getSessionParam('kids')[0];
+        $this->title = 'Adding Subjects and Marks';
+        $this->bodyId = 'parentAddingSubjects';
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
+        
+        $this->content = $this->build(
+            (dirname(__DIR__, 1)). '/views/parentAddingSubjectsMarks.html.php',
+            [
+                'top_menu' => $this->buildTopMenu(),
+                'titleSubject' => $this->langManager->getLangParams()['lg_subjects_title'],
+                'kidName' => $kid->name,
+                'pathPhoto' => $this->getPathPhoto($kid),
+                'kidName' => $kid->name,
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+            );
+    }
+    
     public function logoutAction()
     {
+        $this->request->removeSessionParam('kids');
         $this->request->removeSessionParam(self::PARENT_KEY);
         $this->redirect('/gaintimeoff');
     }

@@ -13,5 +13,8 @@
 				</div>
 			</div>
 		</div>
+		<div id="items" class="items">
+			<?=$itemsBlock?>
+		</div>
     </div>
 </main>

@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 
-class MainController extends Controller
+class MainController extends FullHtmlController
 {
     public function indexAction()
     {

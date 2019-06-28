@@ -1,19 +1,19 @@
 <?php
-
 namespace models\entities;
 
-class User
+class Mark 
 {
     public $name;
-    public $login;
-    public $password;
+    public $minutes;
+    public $kid_id;
+    public $active;
     private $id;
-
-
+    
     public function __construct(
         string $name, 
-        string $login, 
-        string $password, 
+        $minutes, 
+        int $kid_id,
+        int $active,
         int $id=NULL
     ){
         if(isset($id))
@@ -21,14 +21,13 @@ class User
             $this->id = $id;
         }
         $this->name = $name;
-        $this->login = $login;
-        $this->password = $password;
+        $this->minutes = $minutes;
+        $this->kid_id = $kid_id;
+        $this->active = $active;
     }
-
-
-    public function getId(): int
+    
+    public function getId():int 
     {
         return $this->id;	
     }
-
 }

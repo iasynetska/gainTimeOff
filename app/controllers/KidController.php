@@ -7,7 +7,7 @@ use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
 
-class KidController extends Controller
+class KidController extends FullHtmlController
 {
     const LOGIN_FALSE_KEY = 'loginFalse';
     const KID_KEY = 'kid';

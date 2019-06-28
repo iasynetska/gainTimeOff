@@ -6,7 +6,7 @@ use models\entities\User;
 use core\DBDriver;
 use core\Validator;
 
-class ParentModel extends BaseModel
+class ParentModel extends UserModel
 {
     protected $rules = [
         'name' => [

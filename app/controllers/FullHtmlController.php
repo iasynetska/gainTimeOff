@@ -3,13 +3,11 @@ namespace controllers;
 use core\Request;
 use core\LangManager;
 
-class Controller
+class FullHtmlController extends AbstractController
 {
-    protected $request;
     protected $title;
     protected $bodyId;
     protected $content;
-    protected $langManager;
     protected $dynamicJS = '';
     
     public function __construct(Request $request, LangManager $langManager)
