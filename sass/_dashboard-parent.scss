@@ -140,7 +140,8 @@ body#parentDashboard
     {
     	width: 100%;
     }
-    &-subjects
+    &-subjects,
+    &-tasks
     {
     	width: 100%;
     	&__list
@@ -163,5 +164,11 @@ body#parentDashboard
     &-marks
     {
     	margin-top: 20px;
+    	width: 100%;
+    	text-align: center; 
+    	&__title
+    	{
+    		text-align: left;    		
+    	}
     }
 }

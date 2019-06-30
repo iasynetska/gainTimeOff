@@ -57,8 +57,10 @@
         "lg_school_subjects" =>"Przedmioty",
         "lg_tasks" => "Zadania",
         "lg_played_time" => "Zagrany czas",
-        "lg_create_sub_and_marks" => "Stwórz nowe przedmioty i ocene",
-        "lg_create_tasks" => "Stwórz nowe zadania",
+        "lg_create_new" => "Stwórz nowe",
+        "lg_select_subject" => "Wybierz przedmiot",
+        "lg_select_mark" => "Wybierz ocenę",
+        "lg_select_task" => "Wybierz zadanie",
         
         //dashboard kid
         "lg_your_time" => "Twój czas na grę",

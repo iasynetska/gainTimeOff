@@ -57,8 +57,10 @@
         "lg_school_subjects" =>"Subjects",
         "lg_tasks" => "Tasks",
         "lg_played_time" => "Played time",
-        "lg_create_sub_and_marks" => "Create new subjects and marks",
-        "lg_create_tasks" => "Create new tasks",
+        "lg_create_new" => "Create new",
+        "lg_select_subject" => "Select subject",
+        "lg_select_mark" => "Select mark",
+        "lg_select_task" => "Select task",
         
         //dashboard kid
         "lg_your_time" => "Your time for game",

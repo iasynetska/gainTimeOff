@@ -104,24 +104,4 @@ class UserKid extends User
         }
         return $this->tasks;
     }
-    
-    public function getSubjects()
-    {
-        return $this->subjects;
-    }
-    
-    public function getMarks()
-    {
-        return $this->marks;
-    }
-    
-    public function getSchoolMarks()
-    {
-        return $this->schoolMarks;
-    }
-    
-    public function getTasks()
-    {
-        return $this->tasks;
-    }
 }

@@ -28,6 +28,9 @@ a {
 input {
   outline: none; }
 
+fieldset {
+  border: none; }
+
 .wrapper {
   height: 100vh;
   padding-top: 50px;
@@ -370,9 +373,9 @@ body#parentDashboard {
     border-bottom: 1px solid #FFFFFF; }
   .item-time {
     width: 100%; }
-  .item-subjects {
+  .item-subjects, .item-tasks {
     width: 100%; }
-    .item-subjects__list {
+    .item-subjects__list, .item-tasks__list {
       width: 185px;
       outline: none;
       border: 0;
@@ -384,7 +387,11 @@ body#parentDashboard {
     .item-new__img:hover {
       cursor: pointer; }
   .item-marks {
-    margin-top: 20px; }
+    margin-top: 20px;
+    width: 100%;
+    text-align: center; }
+    .item-marks__title {
+      text-align: left; }
 
 /**************************
 ADDING SUBJECTS AND MARKS 
