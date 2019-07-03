@@ -2,7 +2,7 @@
 	<div class="items-time d-flex flex-column justify-content-center align-items-center">
 		<div class="item-title"><?=$lg_time_to_play?></div>
 		<div class="item-time d-flex justify-content-around">
-			<div class="items-time__display"><?=$timeKid?></div>
+			<div class="items-time__display"><?=$kidTime?></div>
 			<img class="item-new__img" src="/gaintimeoff/img/setTime-32.png" onclick="location.href='./set-time';">	
 		</div>
 	</div>
@@ -10,7 +10,7 @@
 		<div class="item d-flex flex-column justify-content-center align-items-center">
 			<div class="item-title"><?=$lg_school_subjects?></div>
 			<?php if(empty($subjects)):?>
-    			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks';">
+    			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
     			<div class="item-add"><?=$lg_create_new?></div>
 			<?php else:?>
     			<div class="item-subjects d-flex justify-content-between">
@@ -20,7 +20,7 @@
         		    	<option value = "<?=$subject->name?>"><?=$subject->name?></option>
     		    	<?php endforeach;?>
     		    	</select>
-      				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subject';">
+      				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
     			</div>
     			
     			<div class="item-marks">
@@ -28,12 +28,13 @@
      				<fieldset>
          				<div class="item-marks__elements">
          					<?php foreach($marks as $mark):?>
-             				<input id="<?=$mark->name?>" type="radio" name="mark" value="<?=$mark->name?>" />
-             				<label for="6"><?=$mark->name?></label>
+                 				<input id="<?=$mark->name?>" type="radio" name="mark" value="<?=$mark->name?>" />
+                 				<label for="6"><?=$mark->name?></label>
              				<?php endforeach;?>
          				</div>
      				</fieldset>
     			</div>
+    			<input class="form__btn" type="submit" value="<?=$lg_save?>" />
 			<?php endif;?>
 		</div>
 		
@@ -52,6 +53,7 @@
     		    	</select>
       				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subject';">
     			</div>
+    			<input class="form__btn" type="submit" value="<?=$lg_save?>" />
 			<?php endif;?>
 		</div>
 	</div>

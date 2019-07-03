@@ -85,14 +85,13 @@
         "lg_err_unknown" => "Ups! Coś poszło nie tak, spróbuj ponownie!",        
         
         //create subjects and marks
-        "lg_add_subjects_title" => "Dodaj nowe przedmioty szkolne",
-        "lg_add_marks_title" => "Dodaj oceny szkolne i czas gry dla nich",
+        "lg_add_subjects_title" => "Dodaj nowe przedmioty",
+        "lg_add_marks_title" => "Dodaj nowe oceny",
         "lg_add" => "Dodaj",
         "lg_subjects_title" => "Przedmioty szkolne i ocene",
         
         //create kid profile
         "lg_back_dashboard" => "Powrót do głównej deski",
-        "lg_add_subjects_title" => "Dodaj nazwy przedmiotów",
         "lg_subject" => "Nazwa przedmiotu",
         
         //add tasks

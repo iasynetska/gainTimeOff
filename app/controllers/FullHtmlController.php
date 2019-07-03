@@ -39,6 +39,8 @@ class FullHtmlController extends AbstractController
             (dirname(__DIR__, 1)). '/views/header.html.php',
             [
                 'langActive' => $this->langManager->getSelectedLang(),
+                'enLink' => $this->langManager->generateLangLinkParams('en'),
+                'plLink' => $this->langManager->generateLangLinkParams('pl'),
                 'lg_en' => $this->langManager->getLangParams()['lg_en'],
                 'lg_pl' => $this->langManager->getLangParams()['lg_pl']
             ]

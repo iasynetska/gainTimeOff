@@ -85,14 +85,13 @@
         "lg_err_unknown" => "Oops! Something went wrong, please try again!",
         
         //create subjects and marks
-        "lg_add_subjects_title" => "Add school subjects",
-        "lg_add_marks_title" => "Add school marks and play time for them",
+        "lg_add_subjects_title" => "Add new subjects",
+        "lg_add_marks_title" => "Add new marks",
         "lg_add" => "Add",
         "lg_subjects_title" => "School subjects and marks",
         
         //create kid profile
         "lg_back_dashboard" => "Back to dashboard",
-        "lg_add_subjects_title" => "Add subjects",
         "lg_subject" => "Subject",
         
         //add tasks

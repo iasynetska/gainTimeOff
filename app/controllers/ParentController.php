@@ -232,29 +232,22 @@ class ParentController extends FullHtmlController
     
     private function buildItemsBlock($kid)
     {
-        $subjects = $kid->getKidSubjects();
-        if(empty($marks)){
-            $a = 100;
-        }else{
-            foreach($subjects as $subject)
-            {
-                $b = $subject->name;
-            }
-        }
         $itemsBlock = $this->build(
             (dirname(__DIR__, 1)). '/views/parentDashboardItems.html.php',
             [
                 'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
-                'timeKid' => $kid->mins_to_play,
+                'kidTime' => $kid->mins_to_play,
                 'lg_school_subjects' => $this->langManager->getLangParams()['lg_school_subjects'],
                 'lg_create_new' =>$this->langManager->getLangParams()['lg_create_new'],
                 'subjects' => $kid->getKidSubjects(),
+                'kidName' => $kid->name,
                 'lg_select_subject' => $this->langManager->getLangParams()['lg_select_subject'],
                 'lg_select_mark' => $this->langManager->getLangParams()['lg_select_mark'],
                 'marks' => $kid->getKidMarks(),
                 'lg_tasks' => $this->langManager->getLangParams()['lg_tasks'],
                 'tasks' => $kid->getKidTasks(),
-                'lg_select_task' => $this->langManager->getLangParams()['lg_select_task']
+                'lg_select_task' => $this->langManager->getLangParams()['lg_select_task'],
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
             ]
             );
         return $itemsBlock;
@@ -327,7 +320,9 @@ class ParentController extends FullHtmlController
             $this->redirect('/gaintimeoff/parent/login');
         }
         
-        $kid = $this->request->getSessionParam('kids')[0];
+        $kidName = $this->request->getGetParam('kidName');
+        $kid = $this->request->getSessionParam(self::PARENT_KEY)->getKids()[$kidName];
+        
         $this->title = 'Adding Subjects and Marks';
         $this->bodyId = 'parentAddingSubjects';
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
@@ -339,7 +334,8 @@ class ParentController extends FullHtmlController
                 'titleSubject' => $this->langManager->getLangParams()['lg_subjects_title'],
                 'kidName' => $kid->name,
                 'pathPhoto' => $this->getPathPhoto($kid),
-                'kidName' => $kid->name,
+                'lg_add_subjects_title' => $this->langManager->getLangParams()['lg_add_subjects_title'],
+                'lg_add_marks_title' => $this->langManager->getLangParams()['lg_add_marks_title'],
                 'lg_save' => $this->langManager->getLangParams()['lg_save']
             ]
             );
