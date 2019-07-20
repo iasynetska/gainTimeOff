@@ -15,6 +15,7 @@ class SubjectModel extends BaseModel
             'isSubjectUnique' => TRUE
         ]
     ];
+    
     public function __construct(DBDriver $dbDriver)
     {
         parent::__construct($dbDriver, 'subjects');
@@ -33,7 +34,7 @@ class SubjectModel extends BaseModel
     
     public function getSubjectsByKid(UserKid $kid): ?array
     {
-        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id", $this->nameTable);
+        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id ORDER BY subject", $this->nameTable);
         $subjects_result = $this->dbDriver->select($sql, ['kid_id' => $kid->getId()], DBDriver::FETCH_ALL);
         
         if(!$subjects_result)
@@ -52,5 +53,20 @@ class SubjectModel extends BaseModel
             $arr_subjecs[$result['subject']] = $subject;
         }
         return $arr_subjecs;
+    }
+    
+    public function isSubjectExisting(string $nameColumn, string $valueColumn, int $kid_id): bool
+    {
+        $sql = sprintf("SELECT * FROM %s WHERE %s =:valueColumn && %s =:valueKidId", $this->nameTable, $nameColumn, 'kid_id');
+        $items = $this->dbDriver->select($sql, ['valueColumn'=> $valueColumn, 'valueKidId'=>$kid_id], DBDriver::FETCH_ALL);
+        $itemsCount = count($items);
+        return $itemsCount > 0;
+    }
+    
+    public function addSubject(array $params)
+    {
+        $this->validator->validate($params);
+        
+        $this->addItem($params);
     }
 }

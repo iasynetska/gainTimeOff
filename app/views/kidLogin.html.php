@@ -10,12 +10,12 @@
                     <div class="form__section">
                         <label for="loginField" class="form__label form__label_required"><?=$lg_login?></label>
                         <input id="loginField" class="form__field form__field_width_100 required" type="text" value="<?=$kid_login?>" 
-                        	name="login" oninput="removeBorder(this.id)" autocomplete="on" autofocus/> 
+                        	name="login" oninput="removeBorderStyle(this)" autocomplete="on" autofocus/> 
                     </div>
                     
                     <div class="form__section">
                         <label for="passwordField" class="form__label form__label_required"><?=$lg_password?>:</label>
-                        <input id="passwordField" class="form__field form__field_width_100 required" type="password" name="password" oninput="removeBorder(this.id)" />
+                        <input id="passwordField" class="form__field form__field_width_100 required" type="password" name="password" oninput="removeBorderStyle(this)" />
                     	<div class='form__error'><?=$lg_error?></div>
                     </div>
                     

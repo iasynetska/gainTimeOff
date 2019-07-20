@@ -12,7 +12,7 @@
                         <label for="name" class="form__label form__label_required"><?=$lg_name?>:</label>
 
                         <input id="name" class="form__field form__field_width_100 required" type="text" value="<?=$parent_name?>"
-                        	name="name" oninput="removeBorder(this.id)" />
+                        	name="name" oninput="removeBorderStyle(this)" />
                         <div class='form__error'><?=$error_name?></div> 
                     </div>
                     
@@ -21,7 +21,7 @@
                         <label for="login" class="form__label form__label_required"><?=$lg_login?>:</label>
 
                         <input id="login" class="form__field form__field_width_100 required" type="text" value="<?=$parent_login?>" 
-                        	name="login" oninput="removeBorder(this.id)" /> <br />
+                        	name="login" oninput="removeBorderStyle(this)" /> <br />
                         <div class='form__error'><?=$error_login?></div>
                     </div>
                     
@@ -30,7 +30,7 @@
                         <label for="email" class="form__label form__label_required"><?=$lg_email?>:</label>
 
                         <input id="email" class="form__field form__field_width_100 required" type="email" value="<?=$parent_email?>" 
-                        	name="email" oninput="removeBorder(this.id)" /> <br />
+                        	name="email" oninput="removeBorderStyle(this)" /> <br />
                         <div class='form__error'><?=$error_email?></div> 
                     </div>
                     
@@ -39,7 +39,7 @@
                         <label for="password" class="form__label form__label_required"><?=$lg_password?>:</label>
 
                         <input id="password" class="form__field form__field_width_100 required" type="password"
-                        	name="password" oninput="removeBorder(this.id)" /> <br />
+                        	name="password" oninput="removeBorderStyle(this)" /> <br />
                         <div class='form__error'><?=$error_password?></div>  
                     </div>
                     
@@ -47,7 +47,7 @@
                     <div class="form__section">
                         <label for="confirmPassword" class="form__label form__label_required"><?=$lg_confirm_password?>:</label>
 
-                        <input id="confirmPassword" class="form__field form__field_width_100 required" type="password" name="confirm_password" oninput="removeBorder(this.id)" />
+                        <input id="confirmPassword" class="form__field form__field_width_100 required" type="password" name="confirm_password" oninput="removeBorderStyle(this)" />
                         <div class='form__error'><?=$error_confirm_password?></div> 
                     </div>
                     

@@ -10,7 +10,7 @@ class ParentModel extends UserModel
 {
     protected $rules = [
         'name' => [
-            'not_empty' => TRUE,
+            'lengthFrom2to20' => [2, 20],
             'regex' => TRUE
         ],
         

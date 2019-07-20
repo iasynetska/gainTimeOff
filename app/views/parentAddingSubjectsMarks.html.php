@@ -13,32 +13,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="items">
-			<div class="container d-flex flex-wrap justify-content-center align-items-center">
-        		<form id="formAddingSubjects" class="form item" action="/gaintimeoff/kid/do-adding-sub" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id)">
-        			<div class="form__title">
-                    	<?=$lg_add_subjects_title?>
-					</div>
-					<div class="item-subjects d-flex justify-content-between">
-    					<input class="#" type="text" name="subList"/>
-    					<img class="item-new__img" src="/gaintimeoff/img/checked-32.png" onclick="location.href='#';">
-                	</div>
-                	<input class="form__btn" type="submit" value="<?=$lg_save?>" />
-                	<div>
-                		<div class="item-marks__title">Subjects:</div>
-                		<ul>
-                			<li>Polski</li>
-                			<li>Polski</li>
-                			<li>Polski</li>
-                		</ul>
-                	</div>
-                </form>
-                <form id="formAddingMarks" class="form item" action="/gaintimeoff/kid/do-adding-sub" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id)">
-                	<div class="form__title">
-                    	<?=$lg_add_marks_title?>
-					</div>
-                	<input class="form__btn" type="submit" value="<?=$lg_save?>" />
-                </form>
+		<div class="items-block d-flex flex-wrap justify-content-center">
+			<div id="subjects" class="item d-flex flex-column justify-content-center align-items-center">
+				<?=$subjectBlock?>
+			</div>
+            <div class="item d-flex flex-column align-items-center">
+                <div class="item-title"><?=$lg_add_marks_title?></div>
+            	<input class="form__btn" type="submit" value="<?=$lg_save?>" />
             </div>
         </div>
     </div>

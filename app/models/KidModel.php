@@ -11,7 +11,7 @@ class KidModel extends UserModel
 {
     protected $rules = [
         'name' => [
-            'not_empty' => TRUE,
+            'lengthFrom2to20' => [2, 20],
             'regex' => TRUE,
             'isNameKidUnique' => TRUE
         ],
@@ -38,6 +38,7 @@ class KidModel extends UserModel
             'checkFileForCorrectness' => TRUE
         ]
     ];
+    
     public function __construct(DBDriver $dbDriver)
     {
         parent::__construct($dbDriver, 'kids');
@@ -111,7 +112,7 @@ class KidModel extends UserModel
     
     public function getKidsByParent(UserParent $parent): ?array
     {
-        $sql = sprintf("SELECT * FROM %s WHERE parent_id=:parent_id", $this->nameTable);
+        $sql = sprintf("SELECT * FROM %s WHERE parent_id=:parent_id ORDER BY name", $this->nameTable);
         $kids_result = $this->dbDriver->select($sql, ['parent_id' => $parent->getId()], DBDriver::FETCH_ALL);
         
         if(!$kids_result)

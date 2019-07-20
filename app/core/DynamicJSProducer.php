@@ -4,7 +4,6 @@ namespace core;
 class DynamicJSProducer
 {
     const JS_COMMON = '/gaintimeoff/js/common.js';
-    const JS_VALIDATE_FORM = '/gaintimeoff/js/validateForms.js';
     const JS_JQUERY = '/gaintimeoff/js/jquery-3.3.1.min.js';
     const JS_RECAPTCHA = 'https://www.google.com/recaptcha/api.js?hl=%s';
     

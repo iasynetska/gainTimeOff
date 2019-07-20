@@ -32,11 +32,17 @@ switch($controller)
     case 'kid':
         $controller = 'Kid';
         break;
+    case 'restsubject':
+        $controller = 'RestSubject';
+        break;
     case 'errormessage':
         $controller = 'ErrorMessage';
         break;
     case 'kidtemplate':
         $controller = 'KidTemplate';
+        break;
+    case 'subjecttemplate':
+        $controller = 'SubjectTemplate';
         break;
     default:
         http_response_code(404);

@@ -18,7 +18,7 @@ class KidController extends FullHtmlController
         
         $this->title = 'Kid login';
         $this->bodyId = 'kidLogin';
-        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/kidLogin.html.php',
             [
@@ -96,6 +96,8 @@ class KidController extends FullHtmlController
         
         $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
         
+        $parent = $this->request->getSessionParam('parent');
+        
         try
         {
             $kidModel->addKid([
@@ -105,9 +107,10 @@ class KidController extends FullHtmlController
                 'password' => $password,
                 'date_of_birth' => $date,
                 'photo' => $photoFile,
-                'parent_id' => $this->request->getSessionParam('parent')->getId()
+                'parent_id' => $parent->getId()
             ]);
             
+            $parent->resetKids();
             $this->redirect('/gaintimeoff/parent/dashboard');
         }
         catch (ValidatorException $e) 

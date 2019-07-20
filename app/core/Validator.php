@@ -31,6 +31,14 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_letters';
             }
             
+            if(isset($rules['isSubjectUnique']) && $rules['isSubjectUnique'] && !isset($this->errors['subject']))
+            {
+                if($this->model->isSubjectExisting('subject', $params[$fieldName], $params['kid_id']))
+                {
+                    $this->errors[$fieldName][] ='lg_err_sub_existing';
+                }
+            }
+            
             if(isset($rules['isNameKidUnique']) && $rules['isNameKidUnique'] && !isset($this->errors['name']))
             {
                 if($this->model->isKidExisting('name', $params[$fieldName], $params['parent_id']))
@@ -41,7 +49,12 @@ class Validator
             
             if(isset($rules['selectGender']) && $rules['selectGender'] && !($params[$fieldName]==='girl' || $params[$fieldName]==='boy'))
             {
-                $this->errors[$fieldName][] = 'lg_error_gender';
+                $this->errors[$fieldName][] = 'lg_err_empty';
+            }
+            
+            if(isset($rules['lengthFrom2to20']) && !$this->isLengthMatch($params[$fieldName], $rules['lengthFrom2to20']))
+            {
+                $this->errors[$fieldName][] = 'lg_err_length_2to20';
             }
             
             if(isset($rules['lengthFrom3to20']) && !$this->isLengthMatch($params[$fieldName], $rules['lengthFrom3to20']))
@@ -138,7 +151,7 @@ class Validator
     {
         $min = $rules[0];
         $max = $rules[1];
-        return strlen($param)>$min && strlen($param)<$max;
+        return strlen($param)>=$min && strlen($param)<=$max;
     }
     
     private function isEmailCorrect($email)

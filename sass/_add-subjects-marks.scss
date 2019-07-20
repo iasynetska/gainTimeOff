@@ -6,3 +6,45 @@ body#parentAddingSubjects
     margin: 0;
     background-color: #0d4861;
 }
+
+.item
+{
+	&-list
+	{
+		& ul
+		{
+			margin: 0;
+		}
+		& li
+		{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			list-style-type: circle;
+			border-bottom: 1px #2EBBCE dotted;
+			&:first-child
+			{
+				margin-top: 10px;
+			}
+			& img
+			{
+				float: right;
+				cursor:pointer;
+			}
+		}
+	}
+}
+
+
+
+#subjects
+{
+	& #inputSubject
+	{
+		margin: 0;
+	}
+	& .item__error
+	{
+		margin-top: 5px;
+		color: $color_error;
+	}
+}

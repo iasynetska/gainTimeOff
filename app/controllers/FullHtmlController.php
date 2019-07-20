@@ -51,24 +51,7 @@ class FullHtmlController extends AbstractController
     {
         return $this->build((dirname(__DIR__, 1)). '/views/footer.html.php');
     }
-    
-    protected function buildErrorMessage(array $errors)
-    {
-        $errorMessage = '';
-        
-        foreach($errors as $error)
-        {
-            $a = $this->langManager->getLangParams($error);
-            $errorMessage .= $this->build(
-                (dirname(__DIR__, 1)). '/views/errorMessage.html.php',
-                [
-                    'errorMessage' => $this->langManager->getLangParams()[$error]
-                ]
-            );
-        }
-        return $errorMessage;
-    }
-    
+         
     public function render()
     {
         echo $this->build(

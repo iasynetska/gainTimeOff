@@ -31,6 +31,7 @@
         "lg_not_robot" => "Please show you're not a robot",
         "lg_err_empty" => "The field is required!",
         "lg_err_letters" => "Only Latin and Polish letters with spaces are allowed!",
+        "lg_err_length_2to20" => "The field must have between 2 and 20 characters!",
         "lg_err_length_3to20" => "The field must have between 3 and 20 characters!",
         "lg_err_alnum" => "The field may only consist of letters and numbers!",
         "lg_err_email" => "Provide a valid email address!",
@@ -38,6 +39,7 @@
         "lg_err_confirm_password" => "The entered passwords are not identical!",
         "lg_err_captcha" => "Confirm that you are not a robot!",
         "lg_err_login_existing" => "This login is already taken!",
+        "lg_err_sub_existing" => "This subject already exists!",
         "lg_err_email_existing" => "This email is already in use!",
         "lg_greeting" => "Hello %s! <p>Thank you for registering.</p> <p>Now you can log in with your login and password.</p>",
         "lg_login_form" => "Login form",
@@ -86,9 +88,14 @@
         
         //create subjects and marks
         "lg_add_subjects_title" => "Add new subjects",
+        "lg_new_subject" => "New subject",
         "lg_add_marks_title" => "Add new marks",
         "lg_add" => "Add",
         "lg_subjects_title" => "School subjects and marks",
+        "lg_err_no_new_sub" => "There are no new subjects",
+        "lg_sub_exist" => "Existing subjects",
+        "lg_err_sub_exist" => "Subject already exists",
+        "lg_err_sub_replay" => "This subject is already written down",
         
         //create kid profile
         "lg_back_dashboard" => "Back to dashboard",

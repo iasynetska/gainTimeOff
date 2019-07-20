@@ -373,6 +373,8 @@ body#parentDashboard {
     border-bottom: 1px solid #FFFFFF; }
   .item-time {
     width: 100%; }
+  .item-subjects__adding img {
+    margin-left: 10px; }
   .item-subjects, .item-tasks {
     width: 100%; }
     .item-subjects__list, .item-tasks__list {
@@ -392,6 +394,8 @@ body#parentDashboard {
     text-align: center; }
     .item-marks__title {
       text-align: left; }
+    .item-marks__adding img {
+      margin-left: 10px; }
 
 /**************************
 ADDING SUBJECTS AND MARKS 
@@ -399,6 +403,27 @@ ADDING SUBJECTS AND MARKS
 body#parentAddingSubjects {
   margin: 0;
   background-color: #0d4861; }
+
+.item-list ul {
+  margin: 0; }
+
+.item-list li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  list-style-type: circle;
+  border-bottom: 1px #2EBBCE dotted; }
+  .item-list li:first-child {
+    margin-top: 10px; }
+  .item-list li img {
+    float: right;
+    cursor: pointer; }
+
+#subjects #inputSubject {
+  margin: 0; }
+
+#subjects .item__error {
+  margin-top: 5px;
+  color: #FF0000; }
 
 /*******************
 TOP-MENU

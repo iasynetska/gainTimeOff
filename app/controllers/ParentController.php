@@ -18,7 +18,7 @@ class ParentController extends FullHtmlController
         
         $this->title = 'Parent login';
         $this->bodyId = 'parentLogin';
-        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/parentLogin.html.php',
             [
@@ -43,7 +43,6 @@ class ParentController extends FullHtmlController
         $this->dynamicJS = DynamicJSProducer::produceJSLinks(
             [
                 sprintf(DynamicJSProducer::JS_RECAPTCHA, $this->langManager->getSelectedLang()),
-                DynamicJSProducer::JS_VALIDATE_FORM, 
                 DynamicJSProducer::JS_COMMON, 
                 DynamicJSProducer::JS_JQUERY
             ]
@@ -242,6 +241,8 @@ class ParentController extends FullHtmlController
                 'subjects' => $kid->getKidSubjects(),
                 'kidName' => $kid->name,
                 'lg_select_subject' => $this->langManager->getLangParams()['lg_select_subject'],
+                'lg_add_subjects_title' => $this->langManager->getLangParams()['lg_add_subjects_title'],
+                'lg_add_marks_title' => $this->langManager->getLangParams()['lg_add_marks_title'],
                 'lg_select_mark' => $this->langManager->getLangParams()['lg_select_mark'],
                 'marks' => $kid->getKidMarks(),
                 'lg_tasks' => $this->langManager->getLangParams()['lg_tasks'],
@@ -276,7 +277,7 @@ class ParentController extends FullHtmlController
         
         $this->title = 'Adding Kid';
         $this->bodyId = 'parentAddingKid';
-        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/parentAddingKid.html.php',
             [
@@ -311,6 +312,7 @@ class ParentController extends FullHtmlController
         $this->request->removeSessionParam('date_of_birth');
     }
     
+    
     public function addingSubjectsMarksAction()
     {
         $this->checkRequestMethod($this->request::METHOD_GET);
@@ -320,12 +322,13 @@ class ParentController extends FullHtmlController
             $this->redirect('/gaintimeoff/parent/login');
         }
         
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
+        
         $kidName = $this->request->getGetParam('kidName');
         $kid = $this->request->getSessionParam(self::PARENT_KEY)->getKids()[$kidName];
         
         $this->title = 'Adding Subjects and Marks';
         $this->bodyId = 'parentAddingSubjects';
-        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_VALIDATE_FORM]);
         
         $this->content = $this->build(
             (dirname(__DIR__, 1)). '/views/parentAddingSubjectsMarks.html.php',
@@ -334,11 +337,30 @@ class ParentController extends FullHtmlController
                 'titleSubject' => $this->langManager->getLangParams()['lg_subjects_title'],
                 'kidName' => $kid->name,
                 'pathPhoto' => $this->getPathPhoto($kid),
-                'lg_add_subjects_title' => $this->langManager->getLangParams()['lg_add_subjects_title'],
+                'subjectBlock' => $this->buildSubjectBlock($kid),
                 'lg_add_marks_title' => $this->langManager->getLangParams()['lg_add_marks_title'],
                 'lg_save' => $this->langManager->getLangParams()['lg_save']
             ]
             );
+        $this->request->removeSessionParam('errors');
+    }
+    
+    private function buildSubjectBlock($kid)
+    {
+        $subjectBlock = $this->build(
+            (dirname(__DIR__, 1)). '/views/subjectBlock.html.php',
+            [
+                'lg_add_subjects_title' => $this->langManager->getLangParams()['lg_add_subjects_title'],
+                'lg_new_subject' => $this->langManager->getLangParams()['lg_new_subject'],
+                'error_subject' => isset($this->request->getSessionParam('errors')['subject']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['subject']) : '',
+                'lg_school_subjects' => $this->langManager->getLangParams()['lg_school_subjects'],
+                'subjects' => $kid->getKidSubjects(),
+                'lg_sub_exist' => $this->langManager->getLangParams()['lg_sub_exist'],
+                'kidName' => $kid->name,
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+            );
+        return $subjectBlock;
     }
     
     public function logoutAction()

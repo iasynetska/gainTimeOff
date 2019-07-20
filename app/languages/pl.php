@@ -31,6 +31,7 @@
         "lg_not_robot" => "Pokaż, że nie jesteś robotem",
         "lg_err_empty" => "Pole jest wymagane!",
         "lg_err_letters" => "Tylko łacińskie i polskie litery razem ze spacjami są dozwolone!",
+        "lg_err_length_2to20" => "Pole musi posiadać od 2 do 20 znaków!",
         "lg_err_length_3to20" => "Pole musi posiadać od 3 do 20 znaków!",
         "lg_err_alnum" => "Pole może składać się tylko z liter i cyfr (bez polskich znaków)!",
         "lg_err_email" => "Podaj poprawny adres e-mail!",
@@ -38,6 +39,7 @@
         "lg_err_confirm_password" => "Podane hasła nie są identyczne!",
         "lg_err_captcha" => "Potwierdź, że nie jesteś robotem!",
         "lg_err_login_existing" => "Podany login jest już zajęty!",
+        "lg_err_sub_existing" => "Podany przedmiot już istnieje!",
         "lg_err_email_existing" => "Ten adres e-mail jest już w użyciu!",
         "lg_greeting" => "Dzień dobry, %s! <p>Dziękujemy za rejestrację.</p> <p>Teraz możesz zalogować się za pomocą swojego loginu i hasła.</p>",
         "lg_login_form" => "Forma loginu",
@@ -86,9 +88,14 @@
         
         //create subjects and marks
         "lg_add_subjects_title" => "Dodaj nowe przedmioty",
+        "lg_new_subject" => "Nowy przedmiot",
         "lg_add_marks_title" => "Dodaj nowe oceny",
         "lg_add" => "Dodaj",
-        "lg_subjects_title" => "Przedmioty szkolne i ocene",
+        "lg_subjects_title" => "Przedmioty szkolne i oceny",
+        "lg_err_no_new_sub" => "Nie ma nowych przedmiotów",
+        "lg_sub_exist" => "Istniejące przedmioty",
+        "lg_err_sub_exist" => "Przedmiot już istnieje",
+        "lg_err_sub_replay" => "Ten przedmiot już jest zapisany",
         
         //create kid profile
         "lg_back_dashboard" => "Powrót do głównej deski",

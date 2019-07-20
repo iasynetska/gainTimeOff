@@ -140,6 +140,13 @@ body#parentDashboard
     {
     	width: 100%;
     }
+    &-subjects
+    {
+    	&__adding img
+    	{
+    		margin-left: 10px;
+    	}
+    }
     &-subjects,
     &-tasks
     {
@@ -169,6 +176,10 @@ body#parentDashboard
     	&__title
     	{
     		text-align: left;    		
+    	}
+    	&__adding img
+    	{
+    		margin-left: 10px;
     	}
     }
 }
