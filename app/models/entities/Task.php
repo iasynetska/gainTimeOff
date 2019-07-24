@@ -4,13 +4,13 @@ namespace models\entities;
 class Task 
 {        
     public $name;
-    public $minutes;
+    public $gameTime;
     public $kid_id;
     private $id;
     
     public function __construct(
         string $name,
-        $minutes,
+        $gameTime,
         int $kid_id,
         int $id=NULL
         ){
@@ -19,7 +19,7 @@ class Task
                 $this->id = $id;
             }
             $this->name = $name;
-            $this->minutes = $minutes;
+            $this->gameTime = $gameTime;
             $this->kid_id = $kid_id;
     }
     

@@ -9,7 +9,9 @@ use models\entities\UserKid;
 class TaskModel extends BaseModel
 {
     protected $rules = [        
-        'task' => [
+        'name' => [
+            'lengthFrom2to20' => [2, 20],
+            'alphanumeric' => TRUE,
             'isTaskUnique' => TRUE
         ]
     ];
@@ -22,8 +24,8 @@ class TaskModel extends BaseModel
     protected function createEntity(array $fields): Task
     {
         return new Task(
-            $fields['task'],
-            $fields['minutes'],
+            $fields['name'],
+            $fields['gameTime'],
             $fields['kid_id'],
             $fields['active'],
             $fields['id']
@@ -44,13 +46,28 @@ class TaskModel extends BaseModel
         foreach ($tasks_result as $result)
         {
             $task = new Task(
-                $result['task'],
-                $result['minutes'],
+                $result['name'],
+                $result['gameTime'],
                 $result['kid_id'],
                 $result['active'],
                 $result['id']);
-            $arr_tasks[$result['task']] = $task;
+            $arr_tasks[$result['name']] = $task;
         }
         return $arr_tasks;
+    }
+    
+    public function isTaskExisting(string $nameColumn, string $valueColumn, int $kid_id): bool
+    {
+        $sql = sprintf("SELECT * FROM %s WHERE %s =:valueColumn && %s =:valueKidId", $this->nameTable, $nameColumn, 'kid_id');
+        $items = $this->dbDriver->select($sql, ['valueColumn'=> $valueColumn, 'valueKidId'=>$kid_id], DBDriver::FETCH_ALL);
+        $itemsCount = count($items);
+        return $itemsCount > 0;
+    }
+    
+    public function addTask(array $params)
+    {
+        $this->validator->validate($params);
+        
+        $this->addItem($params);
     }
 }

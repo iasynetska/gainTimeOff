@@ -1,0 +1,41 @@
+/**************************
+ADDING SUBJECTS AND MARKS 
+***************************/
+body#parentAddingTasks
+{
+    margin: 0;
+    background-color: #0d4861;
+}
+
+#tasks
+{
+	width: 400px;
+	& #inputTask
+	{
+		margin: 0;
+	}
+	& .item__error
+	{
+		margin-top: 5px;
+		color: $color_error;
+	}
+}
+
+#formTask
+{
+	& #inputTask
+	{
+		width: 55%;
+	}
+	& #inputTime
+	{
+		width: 30%;
+	}
+	& input
+	{
+		padding: 5px;
+    	border: none;
+    	border: 1px solid $color_link;
+    	border-radius: 5px;
+	}
+}

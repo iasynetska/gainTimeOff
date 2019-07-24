@@ -35,7 +35,15 @@ class Validator
             {
                 if($this->model->isSubjectExisting('subject', $params[$fieldName], $params['kid_id']))
                 {
-                    $this->errors[$fieldName][] ='lg_err_sub_existing';
+                    $this->errors[$fieldName][] ='lg_err_el_existing';
+                }
+            }
+            
+            if(isset($rules['isTaskUnique']) && $rules['isTaskUnique'] && !isset($this->errors['task']))
+            {
+                if($this->model->isTaskExisting('name', $params[$fieldName], $params['kid_id']))
+                {
+                    $this->errors[$fieldName][] ='lg_err_el_existing';
                 }
             }
             

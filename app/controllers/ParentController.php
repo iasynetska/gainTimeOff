@@ -363,6 +363,54 @@ class ParentController extends FullHtmlController
         return $subjectBlock;
     }
     
+    public function addingTasksAction()
+    {
+        $this->checkRequestMethod($this->request::METHOD_GET);
+        
+        if(!$this->request->getSessionParam(self::PARENT_KEY))
+        {
+            $this->redirect('/gaintimeoff/parent/login');
+        }
+        
+        $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
+        
+        $kidName = $this->request->getGetParam('kidName');
+        $kid = $this->request->getSessionParam(self::PARENT_KEY)->getKids()[$kidName];
+        
+        $this->title = 'Adding Tasks';
+        $this->bodyId = 'parentAddingTasks';
+        
+        $this->content = $this->build(
+            (dirname(__DIR__, 1)). '/views/parentAddingTasks.html.php',
+            [
+                'top_menu' => $this->buildTopMenu(),
+                'titleTasks' => $this->langManager->getLangParams()['lg_tasks_title'],
+                'kidName' => $kid->name,
+                'pathPhoto' => $this->getPathPhoto($kid),
+                'taskBlock' => $this->buildTaskBlock($kid),
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+            );
+        $this->request->removeSessionParam('errors');
+    }
+    
+    private function buildTaskBlock($kid)
+    {
+        $taskBlock = $this->build(
+            (dirname(__DIR__, 1)). '/views/taskBlock.html.php',
+            [
+                'lg_add_tasks_title' => $this->langManager->getLangParams()['lg_add_tasks_title'],
+                'lg_new_task' => $this->langManager->getLangParams()['lg_new_task'],
+                'error_task' => isset($this->request->getSessionParam('errors')['task']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['task']) : '',
+                'tasks' => $kid->getKidTasks(),
+                'lg_task_exist' => $this->langManager->getLangParams()['lg_task_exist'],
+                'kidName' => $kid->name,
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+            );
+        return $taskBlock;
+    }
+    
     public function logoutAction()
     {
         $this->request->removeSessionParam('kids');

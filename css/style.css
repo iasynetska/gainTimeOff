@@ -425,6 +425,33 @@ body#parentAddingSubjects {
   margin-top: 5px;
   color: #FF0000; }
 
+/**************************
+ADDING SUBJECTS AND MARKS 
+***************************/
+body#parentAddingTasks {
+  margin: 0;
+  background-color: #0d4861; }
+
+#tasks {
+  width: 400px; }
+  #tasks #inputTask {
+    margin: 0; }
+  #tasks .item__error {
+    margin-top: 5px;
+    color: #FF0000; }
+
+#formTask #inputTask {
+  width: 55%; }
+
+#formTask #inputTime {
+  width: 30%; }
+
+#formTask input {
+  padding: 5px;
+  border: none;
+  border: 1px solid #2EBBCE;
+  border-radius: 5px; }
+
 /*******************
 TOP-MENU
 *******************/

@@ -55,7 +55,7 @@
 		<div class="item d-flex flex-column align-items-center">
 			<div class="item-title"><?=$lg_tasks?></div>
 			<?php if(empty($tasks)):?>
-    			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-task';">
+    			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-tasks?kidName=<?=$kidName?>';">
     			<div class="item-add"><?=$lg_create_new?></div>
 			<?php else:?>
     			<div class="item-tasks d-flex justify-content-between">
@@ -65,7 +65,7 @@
         		    	<option value = "<?=$task->name?>"><?=$task->name?></option>
     		    	<?php endforeach;?>
     		    	</select>
-      				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subject';">
+      				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-tasks?kidName=<?=$kidName?>';">
     			</div>
     			<input class="form__btn" type="submit" value="<?=$lg_save?>" />
 			<?php endif;?>

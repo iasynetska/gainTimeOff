@@ -109,4 +109,9 @@ class UserKid extends User
     {
         unset($this->subjects);
     }
+    
+    public function resetTasks()
+    {
+        unset($this->tasks);
+    }
 }

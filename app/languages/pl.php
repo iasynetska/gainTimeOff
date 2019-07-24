@@ -92,15 +92,18 @@
         "lg_add_marks_title" => "Dodaj nowe oceny",
         "lg_add" => "Dodaj",
         "lg_subjects_title" => "Przedmioty szkolne i oceny",
-        "lg_err_no_new_sub" => "Nie ma nowych przedmiotów",
+        "lg_err_no_new_el" => "Nie ma nowych elementów",
         "lg_sub_exist" => "Istniejące przedmioty",
-        "lg_err_sub_exist" => "Przedmiot już istnieje",
-        "lg_err_sub_replay" => "Ten przedmiot już jest zapisany",
+        "lg_err_el_exist" => "Element już istnieje",
+        "lg_err_el_replay" => "Ten element już jest zapisany",
+        
+        //create tasks
+        "lg_tasks_title" => "Zadania",
+        "lg_add_tasks_title" => "Dodaj nowe zadania",
+        "lg_new_task" => "Nowe zadanie",
+        "lg_task_exist" => "Istniejące zadania",
         
         //create kid profile
         "lg_back_dashboard" => "Powrót do głównej deski",
-        "lg_subject" => "Nazwa przedmiotu",
-        
-        //add tasks
-        "lg_add_tasks_title" => "Dodaj zadania i czas gry dla nich"
+        "lg_subject" => "Nazwa przedmiotu"
     );

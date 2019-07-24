@@ -92,15 +92,18 @@
         "lg_add_marks_title" => "Add new marks",
         "lg_add" => "Add",
         "lg_subjects_title" => "School subjects and marks",
-        "lg_err_no_new_sub" => "There are no new subjects",
+        "lg_err_no_new_el" => "There are no new elements",
         "lg_sub_exist" => "Existing subjects",
-        "lg_err_sub_exist" => "Subject already exists",
-        "lg_err_sub_replay" => "This subject is already written down",
+        "lg_err_el_exist" => "Element already exists",
+        "lg_err_el_replay" => "This element is already written down",
+        
+        //create tasks
+        "lg_tasks_title" => "Tasks",
+        "lg_add_tasks_title" => "Add new tasks",
+        "lg_new_task" => "New task",
+        "lg_task_exist" => "Existing tasks",
         
         //create kid profile
         "lg_back_dashboard" => "Back to dashboard",
-        "lg_subject" => "Subject",
-        
-        //add tasks
-        "lg_add_tasks_title" => "Add tasks and play time for them"
+        "lg_subject" => "Subject"
     );

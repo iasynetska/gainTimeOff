@@ -392,13 +392,14 @@ function getItemsKid(kidName)
 
 
 /**
- * Creating new element into list of subjects/tasks.
+ * Creating new subject element into list of subjects.
  * Before processing value is trimmed
  * @param inputId - id of input element which get name of new subject.
 **/
-function createNewElement(inputId)
+function createNewSubElement(inputId)
 {	
-	var errorDivs = document.getElementsByClassName("item__error");
+	var form = document.getElementById(inputId).parentElement;
+	var errorDivs = form.getElementsByClassName("item__error");
 	removeListElements(errorDivs);
 	
 	var input = document.getElementById(inputId);
@@ -406,7 +407,7 @@ function createNewElement(inputId)
 	
 	if(checkItemName(input))
 	{
-		var ul = document.getElementById("itemList");
+		var ul = document.getElementById("subList");
 		var li = document.createElement("li"); 
 		li.classList.add("item__new");
 		li.appendChild(document.createTextNode(input.value));
@@ -423,8 +424,51 @@ function createNewElement(inputId)
 
 
 /**
- * Checking new Subject name.
- * @param input - input element which get name of new subject.
+ * Creating new element into list of tasks/marks.
+ * Before processing value is trimmed
+ * @param inputId - id of input element which get name of new subject.
+**/
+function createNewElement(itemIdInput, timeIdInput)
+{
+	var form = document.getElementById(inputId).parentElement;
+	var errorDivs = form.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var inputItem = document.getElementById(itemIdInput);
+	inputItem.value = inputItem.value.trim();
+	
+	var inputTime = document.getElementById(timeIdInput);
+	inputTime.value = inputTime.value.trim();
+	
+	if(inputTime.value === "")
+	{
+		addRedBorderStyle(inputTime);
+		addErrorMessage(inputTime.parentElement, "lg_err_empty_field", "item__error");
+	}
+	
+	if(checkItemName(inputItem) && isTimeFormat(inputTime.value))
+	{
+		var ul = document.getElementById("itemList");
+		var li = document.createElement("li"); 
+		li.classList.add("item__new");
+ 		var value = inputItem.value + " " + "\u2192" + " "+ inputTime.value;
+		li.appendChild(document.createTextNode(value));
+		var img = document.createElement("img");
+		img.src = "/gaintimeoff/img/delete-16.png";
+		img.addEventListener("click", function() {
+			deleteElement(this.parentElement);
+		});
+		li.appendChild(img);
+		ul.appendChild(li); 
+		inputItem.value = "";
+		inputTime.value = "";
+	}
+}
+
+
+/**
+ * Checking name of new element.
+ * @param input - input element which get name of new item.
  * @returns result of checking. true - check was successful, false - check failed.
 **/
 function checkItemName(input)
@@ -452,13 +496,13 @@ function checkItemName(input)
 	else if(checkRepeatedItem(input.value, newItemsArr))
 	{		
 		addRedBorderStyle(input);
-		addErrorMessage(input.parentElement, "lg_err_sub_replay", "item__error");
+		addErrorMessage(input.parentElement, "lg_err_el_replay", "item__error");
 		itemNameIsCorrect = false;
 	}
 	else if(!checkUniqueItem(input.value, existingItemsArr))
 	{
 		addRedBorderStyle(input);
-		addErrorMessage(input.parentElement, "lg_err_sub_exist", "item__error");
+		addErrorMessage(input.parentElement, "lg_err_el_exist", "item__error");
 		itemNameIsCorrect = false;
 	}
 	
@@ -532,6 +576,25 @@ function isEmailFormat(value)
 
 
 /**
+ * Checking time format.
+ * @param value - string for checking.
+ * @returns result of checking. true - time is correct, 
+ * 								false - time isn't correct.
+**/
+function isTimeFormat(value)
+{
+	if(value === "")
+	{
+		return false;
+	}
+	else
+	{
+		var checkValue = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+	    return checkValue.test(value);
+	}
+}
+
+/**
  * Checking repeated of elements.
  *  @param value - string for checking.
  * @param - list with elements
@@ -546,7 +609,7 @@ function checkRepeatedItem(value, itemsList)
 	}
 	else
 	{
-		if(itemsList.some(el => el.innerText.toLowerCase() === value.toLowerCase()))
+		if(itemsList.some(el => el.innerText.split("\u2192")[0].trim().toLowerCase() === value.toLowerCase()))
 		{
 			return true;
 		}
@@ -589,7 +652,7 @@ function handleSubjectsChange(kidName)
 	if(subjects.length == 0)
 	{
 		var element = document.getElementById("formSubject");
-		addErrorMessage(element, 'lg_err_no_new_sub', "item__error");
+		addErrorMessage(element, 'lg_err_no_new_el', "item__error");
 	}
 	else
 	{
@@ -647,4 +710,80 @@ function addSubjects(kidName, subjects)
     xhttp.open("POST", "/gaintimeoff/restsubject/do-adding-subject", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjects="+subjectsJSON);
+}
+
+
+function handleTasksChange(kidName)
+{
+	var errorDivs = document.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var tasks = document.getElementsByClassName("item__new");
+	if(tasks.length == 0)
+	{
+		var element = document.getElementById("formTask");
+		addErrorMessage(element, 'lg_err_no_new_el', "item__error");
+	}
+	else
+	{
+		var tasksList = [];
+		for(var i=0; i<tasks.length; i++) 
+		{
+			var taskName = tasks[i].innerText.split("\u2192")[0].trim();
+			var taskTime = tasks[i].innerText.split("\u2192")[1].trim();
+			
+			var task = new Object();
+			task.name = taskName;
+			task.gameTime = taskTime;
+			tasksList.push(task);
+		}
+		addTasks(kidName, tasksList);
+		document.getElementById("tasks").innerHTML = getTaskBlock(kidName);
+	}
+	
+}
+
+
+/**
+ * Adding new Task to database.
+ * @param kidName - name of the kid.
+ * @param tasks - list with new tasks.
+**/
+function addTasks(kidName, tasks)
+{
+	var tasksJSON = JSON.stringify(tasks);
+	
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    	if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("POST", "/gaintimeoff/resttask/do-adding-task", false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidName="+kidName+"&tasks="+tasksJSON);
+}
+
+
+/**
+ * Getting html code of task block from server.
+ * @param kidName - name of the kid.
+ * @returns  html code of task block from server.
+**/
+function getTaskBlock(kidName)
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+	    if (this.readyState === 4 && this.status !== 200)
+	    {
+	        throw JSON.parse(this.responseText).message;
+	    }
+	};
+	xhttp.open("GET", "/gaintimeoff/tasktemplate/tasks?kidName="+kidName, false);
+	xhttp.send();
+	
+	return xhttp.responseText;
 }

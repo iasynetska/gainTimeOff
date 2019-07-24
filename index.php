@@ -35,6 +35,9 @@ switch($controller)
     case 'restsubject':
         $controller = 'RestSubject';
         break;
+    case 'resttask':
+        $controller = 'RestTask';
+        break;
     case 'errormessage':
         $controller = 'ErrorMessage';
         break;
@@ -44,7 +47,9 @@ switch($controller)
     case 'subjecttemplate':
         $controller = 'SubjectTemplate';
         break;
-    default:
+    case 'tasktemplate':
+        $controller = 'TaskTemplate';
+        break;
         http_response_code(404);
         exit;
 }
