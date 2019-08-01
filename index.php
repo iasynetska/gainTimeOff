@@ -35,6 +35,9 @@ switch($controller)
     case 'restsubject':
         $controller = 'RestSubject';
         break;
+    case 'restmark':
+        $controller = 'RestMark';
+        break;
     case 'resttask':
         $controller = 'RestTask';
         break;
@@ -46,6 +49,9 @@ switch($controller)
         break;
     case 'subjecttemplate':
         $controller = 'SubjectTemplate';
+        break;
+    case 'marktemplate':
+        $controller = 'MarkTemplate';
         break;
     case 'tasktemplate':
         $controller = 'TaskTemplate';

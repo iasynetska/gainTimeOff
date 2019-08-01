@@ -16,13 +16,13 @@ body#parentAddingTasks
 	}
 	& .item__error
 	{
-		margin-top: 5px;
 		color: $color_error;
 	}
 }
 
 #formTask
 {
+	margin-bottom: 5px;
 	& #inputTask
 	{
 		width: 55%;

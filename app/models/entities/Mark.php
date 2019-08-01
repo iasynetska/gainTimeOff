@@ -4,7 +4,7 @@ namespace models\entities;
 class Mark 
 {
     public $name;
-    public $minutes;
+    public $gameTime;
     public $kid_id;
     public $active;
     private $id;

@@ -3,13 +3,13 @@ namespace models\entities;
 
 class Subject 
 {
-    public $subject;
+    public $name;
     public $kid_id;
     public $active;
     private $id;
     
     public function __construct(
-        string $subject,
+        string $name,
         int $active,
         int $kid_id,
         int $id=NULL
@@ -18,7 +18,7 @@ class Subject
             {
                 $this->id = $id;
             }
-            $this->subject = $subject;
+            $this->name = $name;
             $this->kid_id = $kid_id;
             $this->active = $active;
     }

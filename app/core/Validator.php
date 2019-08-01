@@ -33,7 +33,15 @@ class Validator
             
             if(isset($rules['isSubjectUnique']) && $rules['isSubjectUnique'] && !isset($this->errors['subject']))
             {
-                if($this->model->isSubjectExisting('subject', $params[$fieldName], $params['kid_id']))
+                if($this->model->isSubjectExisting('name', $params[$fieldName], $params['kid_id']))
+                {
+                    $this->errors[$fieldName][] ='lg_err_el_existing';
+                }
+            }
+            
+            if(isset($rules['isMarkUnique']) && $rules['isMarkUnique'] && !isset($this->errors['mark']))
+            {
+                if($this->model->isMarkExisting('name', $params[$fieldName], $params['kid_id']))
                 {
                     $this->errors[$fieldName][] ='lg_err_el_existing';
                 }
@@ -58,6 +66,11 @@ class Validator
             if(isset($rules['selectGender']) && $rules['selectGender'] && !($params[$fieldName]==='girl' || $params[$fieldName]==='boy'))
             {
                 $this->errors[$fieldName][] = 'lg_err_empty';
+            }
+            
+            if(isset($rules['lengthFrom1to2']) && !$this->isLengthMatch($params[$fieldName], $rules['lengthFrom1to2']))
+            {
+                $this->errors[$fieldName][] = 'lg_err_length_1to2';
             }
             
             if(isset($rules['lengthFrom2to20']) && !$this->isLengthMatch($params[$fieldName], $rules['lengthFrom2to20']))
@@ -86,6 +99,11 @@ class Validator
                 {
                     $this->errors[$fieldName][] ='lg_err_login_existing';
                 }
+            }
+            
+            if(isset($rules['timeFormat']) && !$this->isTimeCorrect($params[$fieldName]))
+            {
+                $this->errors[$fieldName][] = 'lg_err_time';
             }
             
             if(isset($rules['emailFormat']) && !$this->isEmailCorrect($params[$fieldName]))
@@ -149,7 +167,7 @@ class Validator
     {
         $options = array(
             'options'=>array(
-            'regexp'=>'/^[A-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/'
+            'regexp'=>'/^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/'
             )
         );
         return filter_var($param, FILTER_VALIDATE_REGEXP, $options);
@@ -166,6 +184,16 @@ class Validator
     {
         $sanitizedEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
         return filter_var($sanitizedEmail, FILTER_VALIDATE_EMAIL) && $sanitizedEmail===$email;
+    }
+    
+    private function isTimeCorrect($param)
+    {
+        $options = array(
+            'options'=>array(
+                'regexp'=>'/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/'
+            )
+        );
+        return filter_var($param, FILTER_VALIDATE_REGEXP, $options);
     }
     
     private function checkReCaptcha($param)

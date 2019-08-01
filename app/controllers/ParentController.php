@@ -338,8 +338,7 @@ class ParentController extends FullHtmlController
                 'kidName' => $kid->name,
                 'pathPhoto' => $this->getPathPhoto($kid),
                 'subjectBlock' => $this->buildSubjectBlock($kid),
-                'lg_add_marks_title' => $this->langManager->getLangParams()['lg_add_marks_title'],
-                'lg_save' => $this->langManager->getLangParams()['lg_save']
+                'markBlock' => $this->buildMarkBlock($kid),
             ]
             );
         $this->request->removeSessionParam('errors');
@@ -409,6 +408,23 @@ class ParentController extends FullHtmlController
             ]
             );
         return $taskBlock;
+    }
+    
+    private function buildMarkBlock($kid)
+    {
+        $markBlock = $this->build(
+            (dirname(__DIR__, 1)). '/views/markBlock.html.php',
+            [
+                'lg_add_marks_title' => $this->langManager->getLangParams()['lg_add_marks_title'],
+                'lg_new_mark' => $this->langManager->getLangParams()['lg_new_mark'],
+                'error_mark' => isset($this->request->getSessionParam('errors')['mark']) ? $this->buildErrorMessage($this->request->getSessionParam('errors')['mark']) : '',
+                'marks' => $kid->getKidMarks(),
+                'lg_mark_exist' => $this->langManager->getLangParams()['lg_mark_exist'],
+                'kidName' => $kid->name,
+                'lg_save' => $this->langManager->getLangParams()['lg_save']
+            ]
+            );
+        return $markBlock;
     }
     
     public function logoutAction()

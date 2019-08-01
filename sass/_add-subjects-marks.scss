@@ -34,6 +34,12 @@ body#parentAddingSubjects
 	}
 }
 
+#subjects,
+#marks
+{
+	width: 400px;
+}
+
 #subjects
 {
 	& #inputSubject
@@ -42,7 +48,43 @@ body#parentAddingSubjects
 	}
 	& .item__error
 	{
-		margin-top: 5px;
+		color: $color_error;
+	}
+}
+
+#formMark
+{
+	margin-bottom: 5px;
+	& #inputMark
+	{
+		width: 55%;
+	}
+	& #inputTime
+	{
+		width: 30%;
+	}
+	& input
+	{
+		padding: 5px;
+    	border: none;
+    	border: 1px solid $color_link;
+    	border-radius: 5px;
+	}
+}
+
+#formSubject
+{
+	margin-bottom: 5px;
+}
+
+#marks
+{
+	& #inputMark
+	{
+		margin: 0;
+	}
+	& .item__error
+	{
 		color: $color_error;
 	}
 }

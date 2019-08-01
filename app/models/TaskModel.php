@@ -13,6 +13,11 @@ class TaskModel extends BaseModel
             'lengthFrom2to20' => [2, 20],
             'alphanumeric' => TRUE,
             'isTaskUnique' => TRUE
+        ],
+        
+        'gameTime' => [
+            'timeFormat' => TRUE,
+            'not_empty' => TRUE
         ]
     ];
     public function __construct(DBDriver $dbDriver)
@@ -34,7 +39,7 @@ class TaskModel extends BaseModel
     
     public function getTasksByKid(UserKid $kid): ?array
     {
-        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id", $this->nameTable);
+        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id ORDER BY name", $this->nameTable);
         $tasks_result = $this->dbDriver->select($sql, ['kid_id' => $kid->getId()], DBDriver::FETCH_ALL);
         
         if(!$tasks_result)

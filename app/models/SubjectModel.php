@@ -9,7 +9,7 @@ use models\entities\UserKid;
 class SubjectModel extends BaseModel
 {
     protected $rules = [        
-        'subject' => [
+        'name' => [
             'lengthFrom2to20' => [2, 20],
             'alphanumeric' => TRUE,
             'isSubjectUnique' => TRUE
@@ -25,7 +25,7 @@ class SubjectModel extends BaseModel
     protected function createEntity(array $fields): Subject
     {
         return new Subject(
-            $fields['subject'],
+            $fields['name'],
             $fields['kid_id'],
             $fields['active'],
             $fields['id']
@@ -34,7 +34,7 @@ class SubjectModel extends BaseModel
     
     public function getSubjectsByKid(UserKid $kid): ?array
     {
-        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id ORDER BY subject", $this->nameTable);
+        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id ORDER BY name", $this->nameTable);
         $subjects_result = $this->dbDriver->select($sql, ['kid_id' => $kid->getId()], DBDriver::FETCH_ALL);
         
         if(!$subjects_result)
@@ -46,11 +46,11 @@ class SubjectModel extends BaseModel
         foreach ($subjects_result as $result)
         {
             $subject = new Subject(
-                $result['subject'],
+                $result['name'],
                 $result['active'],
                 $result['kid_id'],
                 $result['id']);
-            $arr_subjecs[$result['subject']] = $subject;
+            $arr_subjecs[$result['name']] = $subject;
         }
         return $arr_subjecs;
     }

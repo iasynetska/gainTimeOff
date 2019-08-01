@@ -29,7 +29,7 @@ CREATE TABLE user_kids (
 /*Create new table subjects*/
 CREATE TABLE subjects (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
-    subject varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (kid_id) REFERENCES user_kids (id),
@@ -39,8 +39,8 @@ CREATE TABLE subjects (
 /*Create new table marks*/
 CREATE TABLE marks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
-    mark int NOT NULL,
-    minutes time NOT NULL,
+    name int NOT NULL,
+    gameTime; time NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (kid_id) REFERENCES user_kids (id),

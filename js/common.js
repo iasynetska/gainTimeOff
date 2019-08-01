@@ -398,8 +398,8 @@ function getItemsKid(kidName)
 **/
 function createNewSubElement(inputId)
 {	
-	var form = document.getElementById(inputId).parentElement;
-	var errorDivs = form.getElementsByClassName("item__error");
+	var blockForm = document.getElementById(inputId).parentElement.parentElement;
+	var errorDivs = blockForm.getElementsByClassName("item__error");
 	removeListElements(errorDivs);
 	
 	var input = document.getElementById(inputId);
@@ -407,7 +407,7 @@ function createNewSubElement(inputId)
 	
 	if(checkItemName(input))
 	{
-		var ul = document.getElementById("subList");
+		var ul = document.getElementById("subNewList");
 		var li = document.createElement("li"); 
 		li.classList.add("item__new");
 		li.appendChild(document.createTextNode(input.value));
@@ -430,8 +430,8 @@ function createNewSubElement(inputId)
 **/
 function createNewElement(itemIdInput, timeIdInput)
 {
-	var form = document.getElementById(inputId).parentElement;
-	var errorDivs = form.getElementsByClassName("item__error");
+	var blockForm = document.getElementById(itemIdInput).parentElement.parentElement;
+	var errorDivs = blockForm.getElementsByClassName("item__error");
 	removeListElements(errorDivs);
 	
 	var inputItem = document.getElementById(itemIdInput);
@@ -440,13 +440,7 @@ function createNewElement(itemIdInput, timeIdInput)
 	var inputTime = document.getElementById(timeIdInput);
 	inputTime.value = inputTime.value.trim();
 	
-	if(inputTime.value === "")
-	{
-		addRedBorderStyle(inputTime);
-		addErrorMessage(inputTime.parentElement, "lg_err_empty_field", "item__error");
-	}
-	
-	if(checkItemName(inputItem) && isTimeFormat(inputTime.value))
+	if(checkItemName(inputItem) && isTimeFormat(inputTime))
 	{
 		var ul = document.getElementById("itemList");
 		var li = document.createElement("li"); 
@@ -481,10 +475,10 @@ function checkItemName(input)
 	var existingItems = document.getElementsByClassName("item-list__existing");
 	var existingItemsArr = Array.from(existingItems);
 	
-	if(!isLengthMatch(input.value, 2, 20))
-	{		
+	if(!isLengthMatch(input.value, input.min, input.max))
+	{
 		addRedBorderStyle(input);
-		addErrorMessage(input.parentElement, "lg_err_length_2to20", "item__error");
+		addErrorMessage(input.parentElement, input.min==="1"?"lg_err_length_1to2":"lg_err_length_2to20", "item__error");
 		itemNameIsCorrect = false;
 	}
 	else if(!isOnlyLettersNums(input.value))
@@ -581,17 +575,25 @@ function isEmailFormat(value)
  * @returns result of checking. true - time is correct, 
  * 								false - time isn't correct.
 **/
-function isTimeFormat(value)
+function isTimeFormat(element)
 {
-	if(value === "")
+	var timeFormatIsCorrect = true;
+	var checkValue = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+	
+	if(element.value === "")
 	{
-		return false;
+		addRedBorderStyle(element);
+		addErrorMessage(element.parentElement, "lg_err_empty", "item__error");
+		timeFormatIsCorrect = false;
 	}
-	else
+	else if(!checkValue.test(element.value))
 	{
-		var checkValue = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
-	    return checkValue.test(value);
+		addRedBorderStyle(element);
+		addErrorMessage(element.parentElement, "lg_err_time", "item__error");
+		timeFormatIsCorrect = false;
 	}
+	
+	return timeFormatIsCorrect;
 }
 
 /**
@@ -710,6 +712,82 @@ function addSubjects(kidName, subjects)
     xhttp.open("POST", "/gaintimeoff/restsubject/do-adding-subject", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjects="+subjectsJSON);
+}
+
+
+function handleMarksChange(kidName)
+{
+	var errorDivs = document.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var marks = document.getElementsByClassName("item__new");
+	if(marks.length == 0)
+	{
+		var element = document.getElementById("formMark");
+		addErrorMessage(element, 'lg_err_no_new_el', "item__error");
+	}
+	else
+	{
+		var marksList = [];
+		for(var i=0; i<marks.length; i++) 
+		{
+			var markName = marks[i].innerText.split("\u2192")[0].trim();
+			var markTime = marks[i].innerText.split("\u2192")[1].trim();
+			
+			var mark = new Object();
+			mark.name = markName;
+			mark.gameTime = markTime;
+			marksList.push(mark);
+		}
+		addMarks(kidName, marksList);
+		document.getElementById("marks").innerHTML = getMarkBlock(kidName);
+	}
+	
+}
+
+
+/**
+ * Getting html code of mark block from server.
+ * @param kidName - name of the kid.
+ * @returns  html code of mark block from server.
+**/
+function getMarkBlock(kidName)
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+	    if (this.readyState === 4 && this.status !== 200)
+	    {
+	        throw JSON.parse(this.responseText).message;
+	    }
+	};
+	xhttp.open("GET", "/gaintimeoff/marktemplate/marks?kidName="+kidName, false);
+	xhttp.send();
+	
+	return xhttp.responseText;
+}
+
+
+/**
+ * Adding new Mark to database.
+ * @param kidName - name of the kid.
+ * @param marks - list with new marks.
+**/
+function addMarks(kidName, marks)
+{
+	var marksJSON = JSON.stringify(marks);
+	
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    	if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("POST", "/gaintimeoff/restmark/do-adding-mark", false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidName="+kidName+"&marks="+marksJSON);
 }
 
 

@@ -8,9 +8,16 @@ use models\entities\UserKid;
 
 class MarkModel extends BaseModel
 {
-    protected $rules = [        
-        'mark' => [
+    protected $rules = [
+        'name' => [
+            'lengthFrom1to2' => [1, 2],
+            'alphanumeric' => TRUE,
             'isMarkUnique' => TRUE
+        ],
+        
+        'gameTime' => [
+            'timeFormat' => TRUE,
+            'not_empty' => TRUE
         ]
     ];
     public function __construct(DBDriver $dbDriver)
@@ -22,8 +29,8 @@ class MarkModel extends BaseModel
     protected function createEntity(array $fields): Mark
     {
         return new Mark(
-            $fields['mark'],
-            $fields['minutes'],
+            $fields['name'],
+            $fields['gameTime'],
             $fields['kid_id'],
             $fields['active'],
             $fields['id']
@@ -32,7 +39,7 @@ class MarkModel extends BaseModel
     
     public function getMarksByKid(UserKid $kid): ?array
     {
-        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id", $this->nameTable);
+        $sql = sprintf("SELECT * FROM %s WHERE kid_id=:kid_id ORDER BY name DESC", $this->nameTable);
         $marks_result = $this->dbDriver->select($sql, ['kid_id' => $kid->getId()], DBDriver::FETCH_ALL);
         
         if(!$marks_result)
@@ -44,13 +51,28 @@ class MarkModel extends BaseModel
         foreach ($marks_result as $result)
         {
             $mark = new Mark(
-                $result['mark'],
-                $result['minutes'],
+                $result['name'],
+                $result['gameTime'],
                 $result['kid_id'],
                 $result['active'],
                 $result['id']);
-            $arr_marks[$result['mark']] = $mark;
+            $arr_marks[$result['name']] = $mark;
         }
         return $arr_marks;
+    }
+    
+    public function isMarkExisting(string $nameColumn, string $valueColumn, int $kid_id): bool
+    {
+        $sql = sprintf("SELECT * FROM %s WHERE %s =:valueColumn && %s =:valueKidId", $this->nameTable, $nameColumn, 'kid_id');
+        $items = $this->dbDriver->select($sql, ['valueColumn'=> $valueColumn, 'valueKidId'=>$kid_id], DBDriver::FETCH_ALL);
+        $itemsCount = count($items);
+        return $itemsCount > 0;
+    }
+    
+    public function addMark(array $params)
+    {
+        $this->validator->validate($params);
+        
+        $this->addItem($params);
     }
 }

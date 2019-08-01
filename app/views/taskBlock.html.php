@@ -1,7 +1,7 @@
 <div class="item-title"><?=$lg_add_tasks_title?></div>
 <div id = "inputTaskBlock" class="item-tasks d-flex flex-column">
     <div id="formTask" class="d-flex justify-content-between">
-    	<input id="inputTask" placeholder="<?=$lg_new_task?>" type="text" name="taskList" oninput="removeBorderStyle(this)" />
+    	<input id="inputTask" placeholder="<?=$lg_new_task?>" type="text" name="task" min="2" max="20" oninput="removeBorderStyle(this)" />
     	<input id="inputTime" type="time" name="taskList" oninput="removeBorderStyle(this)" />
     	<img class="item-new__img" src="/gaintimeoff/img/checked-32.png" onclick="createNewElement('inputTask', 'inputTime')">
     </div>

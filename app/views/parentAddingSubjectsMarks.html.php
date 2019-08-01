@@ -1,9 +1,9 @@
 <main class="dashboard d-flex flex-column flex-wrap">                
     <?=$top_menu?>
     
-    <div class="dashboard-content flex-grow-1 d-flex flex-column">
-		<div class="kids">
-			<div class="container">
+    <div class="container dashboard-content">
+		<div class="row justify-content-center">
+			<div class="col flex-shrink-1">
 				<h1 class="kids-title"><?=$titleSubject?></h1>
 				<div class="kids-block d-flex flex-wrap justify-content-center">
 					<div id="<?=$kidName?>" class="kid active-profile d-flex flex-column justify-content-center align-items-center">
@@ -13,14 +13,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="items-block d-flex flex-wrap justify-content-center">
-			<div id="subjects" class="item d-flex flex-column justify-content-center align-items-center">
-				<?=$subjectBlock?>
+		<div class="row justify-content-center">
+			<div class="col flex-shrink-1">
+        		<div class="items-block d-flex flex-wrap justify-content-center">
+        			<div id="subjects" class="item d-flex flex-column align-items-center">
+        				<?=$subjectBlock?>
+        			</div>
+        			<div id="marks" class="item d-flex flex-column align-items-center">
+        				<?=$markBlock?>
+        			</div>
+                </div>
 			</div>
-            <div class="item d-flex flex-column align-items-center">
-                <div class="item-title"><?=$lg_add_marks_title?></div>
-            	<input class="form__btn" type="submit" value="<?=$lg_save?>" />
-            </div>
-        </div>
+     	</div>
     </div>
 </main>

@@ -54,7 +54,7 @@ class UserKid extends User
             {
                 foreach($arr_subjects as $subject)
                 {
-                    $this->subjects[$subject->subject] = $subject;
+                    $this->subjects[$subject->name] = $subject;
                 }
             }
         }
@@ -108,6 +108,11 @@ class UserKid extends User
     public function resetSubjects()
     {
         unset($this->subjects);
+    }
+    
+    public function resetMarks()
+    {
+        unset($this->marks);
     }
     
     public function resetTasks()

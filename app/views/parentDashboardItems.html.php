@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div class="items-block d-flex flex-wrap justify-content-center">
-		<div class="item d-flex flex-column justify-content-center align-items-center">
+		<div class="item d-flex flex-column align-items-center">
 			<div class="item-title"><?=$lg_school_subjects?></div>
 			<?php if(empty($subjects) && empty($marks)):?>
     			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
@@ -23,7 +23,7 @@
         		    	<select class="item-subjects__list">
         		    	<option value = "0"><?=$lg_select_subject?></option>
             		    <?php foreach($subjects as $subject):?>
-            		    	<option value = "<?=$subject->subject?>"><?=$subject->subject?></option>
+            		    	<option value = "<?=$subject->name?>"><?=$subject->name?></option>
         		    	<?php endforeach;?>
         		    	</select>
           				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">

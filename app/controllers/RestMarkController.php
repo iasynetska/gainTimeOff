@@ -1,32 +1,33 @@
 <?php 
 namespace controllers;
 
-use models\SubjectModel;
+use models\MarkModel;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
 
-class RestSubjectController extends RestController
+class RestMarkController extends RestController
 {
     const ACTIVE = 1;
     
-    public function doAddingSubjectAction()
+    public function doAddingMarkAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
         $kidName = $this->request->getPostParam('kidName');
         $kid = $this->request->getSessionParam('parent')->getKids()[$kidName];
-        $subjects = $this->request->getPostParam('subjects');     
-        $subjects = json_decode($subjects);
+        $marks = $this->request->getPostParam('marks');     
+        $marks = json_decode($marks);
         
-        $SubjectModel = new SubjectModel(new DBDriver(DbConnection::getPDO()));
+        $MarkModel = new MarkModel(new DBDriver(DbConnection::getPDO()));
         
-        foreach ($subjects as $subject)
+        foreach ($marks as $mark)
         {
             try
             {
-                $SubjectModel->addSubject([
-                    'name' => $subject,
+                $MarkModel->addMark([
+                    'name' => $mark->name,
+                    'gameTime' => $mark->gameTime,
                     'active' => self::ACTIVE,
                     'kid_id' => $kid->getId()
                 ]);
@@ -39,6 +40,6 @@ class RestSubjectController extends RestController
             }
         }
         
-        $kid->resetSubjects();
+        $kid->resetMarks();
     }
 }
