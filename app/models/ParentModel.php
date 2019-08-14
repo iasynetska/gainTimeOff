@@ -8,6 +8,8 @@ use core\Validator;
 
 class ParentModel extends UserModel
 {
+    protected $validator;
+    
     protected $rules = [
         'name' => [
             'lengthFrom2to20' => [2, 20],

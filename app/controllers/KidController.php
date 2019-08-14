@@ -6,6 +6,7 @@ use models\KidModel;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
+use models\TimeToPlayModel;
 
 class KidController extends FullHtmlController
 {
@@ -74,7 +75,7 @@ class KidController extends FullHtmlController
                 'helloKid' => $this->langManager->getLangParams()['lg_hello'] . ', ' . $this->request->getSessionParam(self::KID_KEY)->name,
                 'lg_logout' => $this->langManager->getLangParams()['lg_logout'],
                 'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
-                'kidMins' => $this->request->getSessionParam(self::KID_KEY)->mins_to_play
+                'kidMins' => $this->request->getSessionParam(self::KID_KEY)->time_to_play
             ]
             );
     }
@@ -107,7 +108,8 @@ class KidController extends FullHtmlController
                 'password' => $password,
                 'date_of_birth' => $date,
                 'photo' => $photoFile,
-                'parent_id' => $parent->getId()
+                'parent_id' => $parent->getId(),
+                'time_to_play' => 0
             ]);
             
             $parent->resetKids();
@@ -119,6 +121,10 @@ class KidController extends FullHtmlController
             $this->request->addSessionParam('errors', $errors);
             $this->redirect('/gaintimeoff/parent/adding-kid');
         }
+        
+        $this->request->removeSessionParam('kid_name');
+        $this->request->removeSessionParam('kid_login');
+        $this->request->removeSessionParam('date_of_birth');
     }
     
     public function logoutAction()

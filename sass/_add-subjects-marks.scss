@@ -46,10 +46,6 @@ body#parentAddingSubjects
 	{
 		margin: 0;
 	}
-	& .item__error
-	{
-		color: $color_error;
-	}
 }
 
 #formMark
@@ -82,9 +78,5 @@ body#parentAddingSubjects
 	& #inputMark
 	{
 		margin: 0;
-	}
-	& .item__error
-	{
-		color: $color_error;
 	}
 }

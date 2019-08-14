@@ -1,9 +1,11 @@
 <?php
 namespace models\entities;
 
+use models\KidModel;
 use models\SubjectModel;
 use models\MarkModel;
 use models\TaskModel;
+
 use core\DBDriver;
 use core\DbConnection;
 
@@ -13,7 +15,7 @@ class UserKid extends User
     public $date_of_birth;
     public $photo;
     public $parent_id;
-    public $mins_to_play;
+    public $time_to_play;
     private $subjects;
     private $marks;
     private $schoolMarks;
@@ -27,7 +29,7 @@ class UserKid extends User
         $date_of_birth, 
         $photo, 
         int $parent_id, 
-        $mins_to_play=0, 
+        $time_to_play=0, 
         int $id=NULL
     ){
         parent::__construct($name, $login, $password, $id);
@@ -36,7 +38,7 @@ class UserKid extends User
         $this->date_of_birth = $date_of_birth;
         $this->photo = $photo;
         $this->parent_id = $parent_id;
-        $this->mins_to_play = $mins_to_play;
+        $this->time_to_play = $time_to_play;
     }
     
     public function getKidSubjects(): ?array

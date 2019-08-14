@@ -6,6 +6,7 @@ use models\ParentModel;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
+use core\TimeConverter;
 
 class ParentController extends FullHtmlController
 {
@@ -235,7 +236,7 @@ class ParentController extends FullHtmlController
             (dirname(__DIR__, 1)). '/views/parentDashboardItems.html.php',
             [
                 'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
-                'kidTime' => $kid->mins_to_play,
+                'kidTime' => TimeConverter::convertSecondsToTimeFormat($kid->time_to_play),
                 'lg_school_subjects' => $this->langManager->getLangParams()['lg_school_subjects'],
                 'lg_create_new' =>$this->langManager->getLangParams()['lg_create_new'],
                 'subjects' => $kid->getKidSubjects(),

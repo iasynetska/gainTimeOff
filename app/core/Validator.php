@@ -88,6 +88,11 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_length_8to20';
             }
             
+            if(isset($rules['isNumeric']) && $rules['isNumeric'] && !is_numeric($params[$fieldName]))
+            {
+                $this->errors[$fieldName][] = 'lg_err_num';
+            }
+            
             if(isset($rules['alphanumeric']) && $rules['alphanumeric'] && !ctype_alnum($params[$fieldName]))
             {
                 $this->errors[$fieldName][] = 'lg_err_alnum';
@@ -101,10 +106,10 @@ class Validator
                 }
             }
             
-            if(isset($rules['timeFormat']) && !$this->isTimeCorrect($params[$fieldName]))
-            {
-                $this->errors[$fieldName][] = 'lg_err_time';
-            }
+//             if(isset($rules['dateFormat']) && !$this->isDateTimeCorrect($params[$fieldName]))
+//             {
+//                 $this->errors[$fieldName][] = 'lg_err_date';
+//             }
             
             if(isset($rules['emailFormat']) && !$this->isEmailCorrect($params[$fieldName]))
             {
@@ -124,7 +129,7 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_captcha';
             }
             
-            if(isset($rules['date_of_birth']) && $rules['date_of_birth'] && !$this->isDateCorrect($params[$fieldName]))
+            if(isset($rules['dateFormat']) && $rules['dateFormat'] && !$this->isDateCorrect($params[$fieldName]))
             {
                 $this->errors[$fieldName][] = 'lg_err_date';
             }
@@ -186,15 +191,15 @@ class Validator
         return filter_var($sanitizedEmail, FILTER_VALIDATE_EMAIL) && $sanitizedEmail===$email;
     }
     
-    private function isTimeCorrect($param)
-    {
-        $options = array(
-            'options'=>array(
-                'regexp'=>'/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/'
-            )
-        );
-        return filter_var($param, FILTER_VALIDATE_REGEXP, $options);
-    }
+//     private function isDateTimeCorrect($param)
+//     {
+//         $options = array(
+//             'options'=>array(
+//                 'regexp'=>'/^([12]\d{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/'
+//             )
+//         );
+//         return filter_var($param, FILTER_VALIDATE_REGEXP, $options);
+//     }
     
     private function checkReCaptcha($param)
     {

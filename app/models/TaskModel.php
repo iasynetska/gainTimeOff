@@ -8,6 +8,8 @@ use models\entities\UserKid;
 
 class TaskModel extends BaseModel
 {
+    protected $validator;
+    
     protected $rules = [        
         'name' => [
             'lengthFrom2to20' => [2, 20],
@@ -16,7 +18,7 @@ class TaskModel extends BaseModel
         ],
         
         'gameTime' => [
-            'timeFormat' => TRUE,
+            'isNumeric' => TRUE,
             'not_empty' => TRUE
         ]
     ];

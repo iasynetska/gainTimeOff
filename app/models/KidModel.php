@@ -6,9 +6,12 @@ use models\entities\User;
 use models\entities\UserParent;
 use core\DBDriver;
 use core\Validator;
+use core\TimeConverter;
 
 class KidModel extends UserModel
 {
+    protected $validator;
+    
     protected $rules = [
         'name' => [
             'lengthFrom2to20' => [2, 20],
@@ -71,7 +74,7 @@ class KidModel extends UserModel
             'date_of_birth' => '',
             'photo' => '',
             'parent_id' => '',
-            'mins_to_play' => ''
+            'time_to_play' => ''
         );
         $insertParams = array_intersect_key($params, $insertParams);
         $insertParams['password'] = password_hash($insertParams['password'], PASSWORD_DEFAULT);
@@ -105,7 +108,7 @@ class KidModel extends UserModel
             $fields['date_of_birth'], 
             $fields['photo'], 
             $fields['parent_id'], 
-            $fields['mins_to_play'], 
+            $fields['time_to_play'], 
             $fields['id']
         );
     }
@@ -131,10 +134,23 @@ class KidModel extends UserModel
                 $result['date_of_birth'], 
                 $result['photo'],
                 $result['parent_id'], 
-                $result['mins_to_play'], 
+                $result['time_to_play'], 
                 $result['id']);
             $arr_kids[$result['name']] = $kid;
         }
         return $arr_kids;
+    }
+    
+    public function changeKidTime(UserKid $kid, $gameTime)
+    {
+        $kidTime = $kid->time_to_play;
+        $newTime = $kidTime + $gameTime;
+        
+        $params = array('time_to_play' => $newTime);
+        $paramsCondition = array('id' => $kid->getId());
+        
+        $this->updateItem($params, $paramsCondition);
+        
+        $kid->time_to_play = $newTime;
     }
 }

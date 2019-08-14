@@ -1,26 +1,29 @@
 <?php
 namespace models\entities;
 
-class DoneTask
+class TimeToPlay
 {
-    public $task_id;
+    public $time;
     public $date;
+    public $kid_id;
     private $id;
     
     public function __construct(
-        int $task_id,
+        int $time,
         $date,
+        int $kid_id,
         int $id=NULL
         ){
             if(isset($id))
             {
                 $this->id = $id;
             }
-            $this->task_id = $task_id;
+            $this->time = $time;
             $this->date = $date;
+            $this->kid_id = $kid_id;
     }
     
-    public function getId(): int
+    public function getId():int
     {
         return $this->id;
     }

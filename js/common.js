@@ -865,3 +865,87 @@ function getTaskBlock(kidName)
 	
 	return xhttp.responseText;
 }
+
+//function myFunction(subjectsListId, marksListId, kidName)
+//{
+//	var selectedMark = null;
+//	var subjectsListDiv = document.getElementById(subjectsListId);
+//	var selectedSubject = document.getElementById(subjectsListId).value;
+//	var marksListDiv = document.getElementById(marksListId);
+//	var marks = document.getElementsByName("mark");
+//	
+//	for(var i=0; i<marks.length; i++)
+//	{
+//		var b = marks[i];
+//		if(marks[i].checked)
+//		{
+//			var selectedMark = marks[i].value;
+//			break;
+//		}
+//	}
+//	
+//	if(selectedSubject === "0")
+//	{
+//		addRedBorderStyle(subjectsListDiv);
+//		addErrorMessage(marksListDiv.parentElement, 'lg_select_subject', "item__error");
+//	}
+//	
+//	if(selectedMark === null)
+//	{
+//		addRedBorderStyle(marksListDiv);
+//		addErrorMessage(marksListDiv.parentElement, 'lg_select_mark', "item__error");
+//	}
+//}
+
+function addComplitedTask(kidName)
+{
+	var taskBlock = document.getElementById("taskBlock");
+	var errorDivs = taskBlock.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var tasksList = document.getElementById("tasksList");
+	var selectedTask = tasksList.value;
+	
+	if(selectedTask === "0")
+	{
+		addRedBorderStyle(tasksList);
+		addErrorMessage(tasksList.parentElement, 'lg_select_task', "item__error");
+	}
+	else
+	{
+		saveDoneTask(kidName, selectedTask);
+		document.getElementById("kidTime").innerHTML = getKidTime(kidName);
+		tasksList.selectedIndex = 0;
+	}
+}
+
+function saveDoneTask(kidName, taskName)
+{	
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    	if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("POST", "/gaintimeoff/resttask/save-done-task", false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidName="+kidName+"&taskName="+taskName);
+}
+
+function getKidTime(kidName)
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+	    if (this.readyState === 4 && this.status !== 200)
+	    {
+	        throw JSON.parse(this.responseText).message;
+	    }
+	};
+	xhttp.open("GET", "/gaintimeoff/timetemplate/time?kidName="+kidName, false);
+	xhttp.send();
+	
+	return xhttp.responseText;
+}

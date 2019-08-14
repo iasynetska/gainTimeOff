@@ -26,4 +26,9 @@ class BaseModel
     {
         return $this->dbDriver->insert($this->nameTable, $params);
     }
+    
+    public function updateItem(array $params, $paramsCondition)
+    {
+        return $this->dbDriver->update($this->nameTable, $params, $paramsCondition);
+    }
 }

@@ -32,7 +32,6 @@ abstract class UserModel extends BaseModel
         {
             return NULL;
         }
-        
     }
     
     abstract protected function createEntity(array $fields): User;

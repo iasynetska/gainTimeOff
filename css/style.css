@@ -144,6 +144,9 @@ option {
     font-family: 'Almendra-Regular', sans-serif;
     background-color: #2EBBCE; }
 
+.item__error {
+  color: #FF0000; }
+
 /*******************
 WELCOME.php
 *******************/
@@ -424,9 +427,6 @@ body#parentAddingSubjects {
 #subjects #inputSubject {
   margin: 0; }
 
-#subjects .item__error {
-  color: #FF0000; }
-
 #formMark {
   margin-bottom: 5px; }
   #formMark #inputMark {
@@ -445,9 +445,6 @@ body#parentAddingSubjects {
 #marks #inputMark {
   margin: 0; }
 
-#marks .item__error {
-  color: #FF0000; }
-
 /**************************
 ADDING SUBJECTS AND MARKS 
 ***************************/
@@ -459,8 +456,6 @@ body#parentAddingTasks {
   width: 400px; }
   #tasks #inputTask {
     margin: 0; }
-  #tasks .item__error {
-    color: #FF0000; }
 
 #formTask {
   margin-bottom: 5px; }

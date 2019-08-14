@@ -8,6 +8,8 @@ use models\entities\UserKid;
 
 class SubjectModel extends BaseModel
 {
+    protected $validator;
+    
     protected $rules = [        
         'name' => [
             'lengthFrom2to20' => [2, 20],

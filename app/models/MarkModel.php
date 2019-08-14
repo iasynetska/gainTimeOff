@@ -8,6 +8,8 @@ use models\entities\UserKid;
 
 class MarkModel extends BaseModel
 {
+    protected $validator;
+    
     protected $rules = [
         'name' => [
             'lengthFrom1to2' => [1, 2],
@@ -16,7 +18,7 @@ class MarkModel extends BaseModel
         ],
         
         'gameTime' => [
-            'timeFormat' => TRUE,
+            'isNumeric' => TRUE,
             'not_empty' => TRUE
         ]
     ];

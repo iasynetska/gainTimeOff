@@ -32,9 +32,27 @@ class DBDriver
         $stmt->execute($params);
     }
     
-    public function update()
+    public function update($table, array $params, array $paramsCondition, $operator='AND')
     {
-        ;
+        $set = array();
+        $condition = array();
+        
+        while(list($key)=each($params)) {
+            $set[] = $key . ' = :' . $key;
+        }
+        
+        $setValues = implode($set, ',');
+        
+        while(list($key)=each($paramsCondition)) {
+            $condition[] = $key . ' = :' . $key;
+        }
+        
+        $setCondition = implode($condition, $operator);
+        
+        $sql = sprintf('UPDATE %s SET %s WHERE %s', $table, $setValues, $setCondition);
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(array_merge($params, $paramsCondition));
     }
     
     public function delete()
