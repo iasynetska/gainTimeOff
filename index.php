@@ -41,6 +41,9 @@ switch($controller)
     case 'resttask':
         $controller = 'RestTask';
         break;
+    case 'resttime':
+        $controller = 'RestTime';
+        break;
     case 'errormessage':
         $controller = 'ErrorMessage';
         break;

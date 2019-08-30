@@ -139,6 +139,27 @@ body#parentDashboard
     &-time
     {
     	width: 100%;
+    	text-align: center;
+    	&__playing
+    	{
+    		& *
+    		{
+    			margin: 5px;
+    		}
+    		& input
+    		{
+    			padding: 5px;
+    			height: 24px;
+		    	border: none;
+		    	border: 1px solid $color_link;
+		    	border-radius: 5px;
+		    	cursor: pointer;
+    		}
+    		& img
+    		{
+    			cursor: pointer;
+    		}
+    	}
     }
     &-subjects
     {

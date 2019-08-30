@@ -949,3 +949,36 @@ function getKidTime(kidName)
 	
 	return xhttp.responseText;
 }
+
+
+function handleTimePlay(kidName)
+{
+	var timeBlock = document.getElementById("timeBlock");
+	var errorDivs = timeBlock.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var inputTime = document.getElementById("inputTime");
+	inputTime.value = inputTime.value.trim();
+	
+	if(isTimeFormat(inputTime))
+	{
+		saveTimePlayed(kidName, inputTime.value);
+		document.getElementById("kidTime").innerHTML = getKidTime(kidName);
+		inputTime.value = "";
+	}
+}
+
+function saveTimePlayed(kidName, timePlayed)
+{	
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    	if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("POST", "/gaintimeoff/resttime/save-time-played", false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidName="+kidName+"&timePlayed="+timePlayed);
+}

@@ -375,7 +375,19 @@ body#parentDashboard {
     text-transform: uppercase;
     border-bottom: 1px solid #FFFFFF; }
   .item-time {
-    width: 100%; }
+    width: 100%;
+    text-align: center; }
+    .item-time__playing * {
+      margin: 5px; }
+    .item-time__playing input {
+      padding: 5px;
+      height: 24px;
+      border: none;
+      border: 1px solid #2EBBCE;
+      border-radius: 5px;
+      cursor: pointer; }
+    .item-time__playing img {
+      cursor: pointer; }
   .item-subjects__adding img {
     margin-left: 10px; }
   .item-subjects, .item-tasks {

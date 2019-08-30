@@ -1,9 +1,16 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
-	<div id="time" class="items-time d-flex flex-column justify-content-center align-items-center">
+	<div id="timeBlock" class="items-time d-flex flex-column justify-content-center align-items-center">
 		<div class="item-title"><?=$lg_time_to_play?></div>
-		<div class="item-time d-flex justify-content-around">
-			<div id="kidTime" class="items-time__display"><?=$kidTime?></div>
-			<img class="item-new__img" src="/gaintimeoff/img/setTime-32.png" onclick="location.href='./set-time';">	
+		<div class="item-time ">
+			<div class="d-flex justify-content-around">
+    			<div id="kidTime" class="items-time__display"><?=$kidTime?></div>
+    			<img class="item-time__img" src="/gaintimeoff/img/setTime-32.png" onclick="location.href='./set-time';">	
+    		</div>
+    		<div class="item-time__playing d-flex justify-content-center">
+    			<div><?=$lg_time_played?>:</div>
+    			<input id="inputTime" type="time" name="timeForGame" oninput="removeBorderStyle(this)" />
+    			<img class="item-time__img" src="/gaintimeoff/img/updated-24.png" onclick="handleTimePlay('<?=$kidName?>')">
+			</div>
 		</div>
 	</div>
 	<div class="items-block d-flex flex-wrap justify-content-center">

@@ -2,7 +2,7 @@
 <div id = "inputTaskBlock" class="item-tasks d-flex flex-column">
     <div id="formTask" class="d-flex justify-content-between">
     	<input id="inputTask" placeholder="<?=$lg_new_task?>" type="text" name="task" min="2" max="20" oninput="removeBorderStyle(this)" />
-    	<input id="inputTime" type="time" name="taskList" oninput="removeBorderStyle(this)" />
+    	<input id="inputTime" type="time" name="timeForTask" oninput="removeBorderStyle(this)" />
     	<img class="item-new__img" src="/gaintimeoff/img/checked-32.png" onclick="createNewElement('inputTask', 'inputTime')">
     </div>
 	<div class='item__error'><?=$error_task?></div>

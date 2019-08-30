@@ -5,6 +5,7 @@ use models\MarkModel;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
+use core\TimeConverter;
 
 class RestMarkController extends RestController
 {
@@ -27,7 +28,7 @@ class RestMarkController extends RestController
             {
                 $MarkModel->addMark([
                     'name' => $mark->name,
-                    'gameTime' => $mark->gameTime,
+                    'gameTime' => TimeConverter::convertStrToSeconds($mark->gameTime),
                     'active' => self::ACTIVE,
                     'kid_id' => $kid->getId()
                 ]);

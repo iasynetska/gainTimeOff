@@ -9,6 +9,7 @@ use core\DbConnection;
 use core\Exceptions\ValidatorException;
 use models\TimeToPlayModel;
 use core\TimeConverter;
+use \Exception;
 
 class RestTaskController extends RestController
 {
@@ -64,6 +65,8 @@ class RestTaskController extends RestController
         
         try
         {
+            DbConnection::getPDO()->beginTransaction();
+            
             $timeToPlayModel->addTime([
                 'time' => $task->gameTime,
                 'date' => $currentDate,
@@ -75,13 +78,21 @@ class RestTaskController extends RestController
                 'date' => $currentDate
             ]);
             
-            $kidModel->changeKidTime($kid, $task->gameTime);   
+            $kidModel->changeKidTime($kid, $task->gameTime); 
+            
+            DbConnection::getPDO()->commit();
         }
         catch (ValidatorException $e)
         {
             $errors = $e->getErrors();
             $this->request->addSessionParam('errors', $errors);
-            $this->redirect('/gaintimeoff/parent/dashboard');
+            DbConnection::getPDO()->rollBack();
+        }
+        catch (Exception $e)
+        {
+            DbConnection::getPDO()->rollBack();
+            http_response_code(400);
+            throw $e->getMessage();
         }
     }
 }

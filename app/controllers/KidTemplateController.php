@@ -16,6 +16,7 @@ class KidTemplateController extends TemplateController
             [
                 'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
                 'kidTime' => TimeConverter::convertSecondsToTimeFormat($kid->time_to_play),
+                'lg_time_played' => $this->langManager->getLangParams()['lg_time_played'],
                 'lg_school_subjects' => $this->langManager->getLangParams()['lg_school_subjects'],
                 'lg_create_new' =>$this->langManager->getLangParams()['lg_create_new'],
                 'subjects' => $kid->getKidSubjects(),
