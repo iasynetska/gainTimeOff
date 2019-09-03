@@ -1,3 +1,5 @@
+<?php use core\TimeConverter?>
+
 <div class="container d-flex flex-column justify-content-center align-items-center">
 	<div id="timeBlock" class="items-time d-flex flex-column justify-content-center align-items-center">
 		<div class="item-title"><?=$lg_time_to_play?></div>
@@ -14,7 +16,7 @@
 		</div>
 	</div>
 	<div class="items-block d-flex flex-wrap justify-content-center">
-		<div class="item d-flex flex-column align-items-center">
+		<div  id="subjectBlock" class="item d-flex flex-column align-items-center">
 			<div class="item-title"><?=$lg_school_subjects?></div>
 			<?php if(empty($subjects) && empty($marks)):?>
     			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
@@ -26,14 +28,16 @@
     					<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
 					</div>
 				<?php else:?>
-        			<div class="item-subjects d-flex justify-content-between">
-        		    	<select id="subjectsList" class="item-subjects__list">
-        		    	<option value = "0"><?=$lg_select_subject?></option>
-            		    <?php foreach($subjects as $subject):?>
-            		    	<option value = "<?=$subject->name?>"><?=$subject->name?></option>
-        		    	<?php endforeach;?>
-        		    	</select>
-          				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
+        			<div class="item-subjects">
+        				<div class="section d-flex justify-content-between">
+        					<select id="subjectsList" class="item-subjects__list" oninput="removeBorderStyle(this)">
+            		    	<option value = "0"><?=$lg_select_subject?></option>
+                		    <?php foreach($subjects as $subject):?>
+                		    	<option value = "<?=$subject->name?>"><?=$subject->name?></option>
+            		    	<?php endforeach;?>
+            		    	</select>
+              				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
+        				</div>
         			</div>
     			<?php endif;?>
     			<div class="item-marks">
@@ -46,15 +50,15 @@
      				<fieldset>
          				<div id="marksList" class="item-marks__elements">
          					<?php foreach($marks as $mark):?>
-                 				<input id="<?=$mark->name?>" type="radio" name="mark" value="<?=$mark->name?>" />
-                 				<label for="<?=$mark->name?>"><?=$mark->name?></label>
+                 				<input id="<?=$mark->name?>" type="radio" name="mark" value="<?=$mark->name?>" onclick="removeBorderStyle(this.parentElement);" />
+                 				<label title="<?=TimeConverter::convertSecondsToTimeFormat($mark->gameTime)?>" for="<?=$mark->name?>"><?=$mark->name?></label>
              				<?php endforeach;?>
          				</div>
      				</fieldset>
  				<?php endif;?>
     			</div>
     			<?php if(!empty($subjects) && !empty($marks)):?>
-    				<input class="form__btn" type="submit" value="<?=$lg_save?>" onclick="myFunction('subjectsList', 'marksList', '<?=$kidName?>')" />
+    				<input class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addGotMark('<?=$kidName?>');" />
 				<?php endif;?>
 			<?php endif;?>
 		</div>
@@ -70,13 +74,13 @@
         		    	<select id="tasksList" class="item-tasks__list" oninput="removeBorderStyle(this)">
             		    	<option value = "0"><?=$lg_select_task?></option>
                 		    <?php foreach($tasks as $task):?>
-                		    	<option value = "<?=$task->name?>"><?=$task->name?></option>
+                		    	<option value = "<?=$task->name?>"><?=$task->name?>&nbsp;&#8594;&nbsp;<?=TimeConverter::convertSecondsToTimeFormat($task->gameTime)?></option>
             		    	<?php endforeach;?>
         		    	</select>
           				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-tasks?kidName=<?=$kidName?>';">
       				</div>
     			</div>
-    			<input id="btnSaveTask" class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addComplitedTask('<?=$kidName?>')" />
+    			<input id="btnSaveTask" class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addComplitedTask('<?=$kidName?>');" />
 			<?php endif;?>
 		</div>
 	</div>

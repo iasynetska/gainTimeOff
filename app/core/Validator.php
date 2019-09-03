@@ -93,7 +93,7 @@ class Validator
                 $this->errors[$fieldName][] = 'lg_err_num';
             }
             
-            if(isset($rules['alphanumeric']) && $rules['alphanumeric'] && !ctype_alnum($params[$fieldName]))
+            if(isset($rules['alphanumeric']) && $rules['alphanumeric'] && !ctype_alnum(str_replace(' ','',$params[$fieldName])))
             {
                 $this->errors[$fieldName][] = 'lg_err_alnum';
             }
@@ -105,11 +105,6 @@ class Validator
                     $this->errors[$fieldName][] ='lg_err_login_existing';
                 }
             }
-            
-//             if(isset($rules['dateFormat']) && !$this->isDateTimeCorrect($params[$fieldName]))
-//             {
-//                 $this->errors[$fieldName][] = 'lg_err_date';
-//             }
             
             if(isset($rules['emailFormat']) && !$this->isEmailCorrect($params[$fieldName]))
             {
@@ -220,5 +215,6 @@ class Validator
             
             return checkdate($month, $day, $year);
         }
+        return TRUE;
     }
 }

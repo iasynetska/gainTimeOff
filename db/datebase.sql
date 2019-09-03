@@ -59,7 +59,7 @@ CREATE TABLE tasks (
 );
 
 /*Create new table school_marks*/
-CREATE TABLE school_marks (
+CREATE TABLE got_marks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     subject_id int NOT NULL,
     mark_id int NOT NULL,

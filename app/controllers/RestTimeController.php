@@ -3,10 +3,10 @@ namespace controllers;
 
 use core\DBDriver;
 use core\DbConnection;
+use core\Exceptions\ValidatorException;
+use core\TimeConverter;
 use models\KidModel;
 use models\TimeToPlayModel;
-use core\TimeConverter;
-use core\Exceptions\ValidatorException;
 
 class RestTimeController extends RestController
 {

@@ -1,9 +1,9 @@
 <?php
 namespace models\entities;
 
-use models\KidModel;
-use core\DBDriver;
 use core\DbConnection;
+use core\DBDriver;
+use models\KidModel;
 
 class UserParent extends User
 {

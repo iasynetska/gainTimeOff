@@ -1,15 +1,15 @@
 <?php 
 namespace controllers;
 
-use models\TaskModel;
-use models\DoneTaskModel;
-use models\KidModel;
+use \Exception;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
-use models\TimeToPlayModel;
 use core\TimeConverter;
-use \Exception;
+use models\DoneTaskModel;
+use models\KidModel;
+use models\TaskModel;
+use models\TimeToPlayModel;
 
 class RestTaskController extends RestController
 {

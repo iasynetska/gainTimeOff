@@ -2,8 +2,7 @@
 
 namespace models;
 //require_once '../core/appConfiguration.php';
-use models\UserParentDao;
-use core\DbConnection;
+
 
 class CustomerNumberServices
 {
@@ -40,11 +39,11 @@ class CustomerNumberServices
     }
 
 
-    public static function getNumberOfRegisteredUsers(): int
-    {
-        $parentDao = new UserParentDao(DbConnection::getPDO());
+//     public static function getNumberOfRegisteredUsers(): int
+//     {
+//         $parentDao = new UserParentDao(DbConnection::getPDO());
 
-        return $parentDao->getNumberOfParents();
+//         return $parentDao->getNumberOfParents();
 
-    }
+//     }
 }

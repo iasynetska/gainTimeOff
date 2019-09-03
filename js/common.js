@@ -866,36 +866,78 @@ function getTaskBlock(kidName)
 	return xhttp.responseText;
 }
 
-//function myFunction(subjectsListId, marksListId, kidName)
-//{
-//	var selectedMark = null;
-//	var subjectsListDiv = document.getElementById(subjectsListId);
-//	var selectedSubject = document.getElementById(subjectsListId).value;
-//	var marksListDiv = document.getElementById(marksListId);
-//	var marks = document.getElementsByName("mark");
-//	
-//	for(var i=0; i<marks.length; i++)
-//	{
-//		var b = marks[i];
-//		if(marks[i].checked)
-//		{
-//			var selectedMark = marks[i].value;
-//			break;
-//		}
-//	}
-//	
-//	if(selectedSubject === "0")
-//	{
-//		addRedBorderStyle(subjectsListDiv);
-//		addErrorMessage(marksListDiv.parentElement, 'lg_select_subject', "item__error");
-//	}
-//	
-//	if(selectedMark === null)
-//	{
-//		addRedBorderStyle(marksListDiv);
-//		addErrorMessage(marksListDiv.parentElement, 'lg_select_mark', "item__error");
-//	}
-//}
+function addGotMark(kidName)
+{
+	var subjectBlock = document.getElementById("subjectBlock");
+	var errorDivs = subjectBlock.getElementsByClassName("item__error");
+	removeListElements(errorDivs);
+	
+	var subjectsList = document.getElementById("subjectsList");
+	var selectedSubject = subjectsList.value;
+	
+	var marksListDiv = document.getElementById("marksList");
+	var marks = document.getElementsByName("mark");
+	var selectedMark = null;
+	
+	for(var i=0; i<marks.length; i++)
+	{
+		if(marks[i].checked)
+		{
+			var selectedMark = marks[i].value;
+			break;
+		}
+	}
+	
+	if(selectedSubject !== "0" && selectedMark !== null)
+	{
+		saveGotMark(kidName, selectedSubject, selectedMark);
+		document.getElementById("kidTime").innerHTML = getKidTime(kidName);
+		subjectsList.selectedIndex = 0;
+		for(var i=0; i<marks.length; i++)
+		{
+			marks[i].checked = false;
+			break;
+		}
+	}
+	else
+	{
+		showErrorMessageIfSubjectNotSelected(subjectsList, selectedSubject);
+		showErrorMessageIfMarkNotSelected(marksListDiv, selectedMark);
+	}
+}
+
+function showErrorMessageIfSubjectNotSelected(subjectsList, selectedSubject)
+{
+	if(selectedSubject === "0")
+	{
+		addRedBorderStyle(subjectsList);
+		addErrorMessage(subjectsList.parentElement, 'lg_err_select_subject', "item__error");
+	}
+}
+
+function showErrorMessageIfMarkNotSelected(marksListDiv, selectedMark)
+{
+	if(selectedMark === null)
+	{
+		addRedBorderStyle(marksListDiv);
+		addErrorMessage(marksListDiv.parentElement, 'lg_err_select_mark', "item__error");
+	}
+}
+
+function saveGotMark(kidName, subjectName, markName)
+{
+	var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+    	if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("POST", "/gaintimeoff/restmark/save-got-mark", false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("kidName="+kidName+"&subjectName="+subjectName+"&markName="+markName);
+}
 
 function addComplitedTask(kidName)
 {
@@ -909,7 +951,7 @@ function addComplitedTask(kidName)
 	if(selectedTask === "0")
 	{
 		addRedBorderStyle(tasksList);
-		addErrorMessage(tasksList.parentElement, 'lg_select_task', "item__error");
+		addErrorMessage(tasksList.parentElement, 'lg_err_select_task', "item__error");
 	}
 	else
 	{

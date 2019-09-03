@@ -1,3 +1,5 @@
+<?php use core\TimeConverter?>
+
 <div class="item-title"><?=$lg_add_tasks_title?></div>
 <div id = "inputTaskBlock" class="item-tasks d-flex flex-column">
     <div id="formTask" class="d-flex justify-content-between">
@@ -20,7 +22,7 @@
 		<div class="item-list">
     		<ul>
     			<?php foreach($tasks as $task):?>
-	    			<li class="item-list__existing"><?=$task->name?></li>
+	    			<li class="item-list__existing" title="<?=TimeConverter::convertSecondsToTimeFormat($task->gameTime)?>"><?=$task->name?></li>
     			<?php endforeach;?>
     		</ul>
 		</div>

@@ -1,9 +1,9 @@
 <?php
 namespace models;
 
-use models\entities\Mark;
 use core\DBDriver;
 use core\Validator;
+use models\entities\Mark;
 use models\entities\UserKid;
 
 class MarkModel extends BaseModel

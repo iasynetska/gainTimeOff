@@ -1,19 +1,17 @@
 <?php
 namespace models\entities;
 
-class SchoolMark
+class GotMark
 {
     public $subject_id;
     public $mark_id;
     public $date;
-    public $note;
     private $id;
     
     public function __construct(
         int $subject_id,
         int $mark_id,
         $date,
-        string $note,
         int $id=NULL
         ){
             if(isset($id))
@@ -23,7 +21,6 @@ class SchoolMark
             $this->subject_id = $subject_id;
             $this->mark_id = $mark_id;
             $this->date = $date;
-            $this->note = $note;
     }
     
     public function getId():int

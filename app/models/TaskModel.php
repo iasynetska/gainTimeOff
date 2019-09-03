@@ -1,9 +1,9 @@
 <?php
 namespace models;
 
-use models\entities\Task;
 use core\DBDriver;
 use core\Validator;
+use models\entities\Task;
 use models\entities\UserKid;
 
 class TaskModel extends BaseModel

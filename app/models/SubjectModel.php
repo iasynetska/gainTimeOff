@@ -1,9 +1,9 @@
 <?php
 namespace models;
 
-use models\entities\Subject;
 use core\DBDriver;
 use core\Validator;
+use models\entities\Subject;
 use models\entities\UserKid;
 
 class SubjectModel extends BaseModel

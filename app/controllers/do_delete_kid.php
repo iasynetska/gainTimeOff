@@ -23,7 +23,7 @@
     $kidName = filter_input(INPUT_GET, 'name');
     $kid = $parent->getKids()[$kidName];
     
-    $kidDao = new UserKidDao(DbConnection::getPDO());
+//     $kidDao = new UserKidDao(DbConnection::getPDO());
     
     $kidDao->deleteUserKid($kid);
     

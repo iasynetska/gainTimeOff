@@ -67,6 +67,9 @@
         "lg_select_subject" => "Wybierz przedmiot",
         "lg_select_mark" => "Wybierz ocenę",
         "lg_select_task" => "Wybierz zadanie",
+        "lg_err_select_subject" => "Wybierz przedmiot!",
+        "lg_err_select_mark" => "Wybierz ocenę!",
+        "lg_err_select_task" => "Wybierz zadanie!",
         
         //dashboard kid
         "lg_your_time" => "Twój czas na grę",

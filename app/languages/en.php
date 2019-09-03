@@ -67,6 +67,9 @@
         "lg_select_subject" => "Select subject",
         "lg_select_mark" => "Select mark",
         "lg_select_task" => "Select task",
+        "lg_err_select_subject" => "Select subject!",
+        "lg_err_select_mark" => "Select mark!",
+        "lg_err_select_task" => "Select task!",
         
         //dashboard kid
         "lg_your_time" => "Your time for game",

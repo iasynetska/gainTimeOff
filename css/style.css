@@ -468,6 +468,8 @@ body#parentAddingTasks {
   width: 400px; }
   #tasks #inputTask {
     margin: 0; }
+  #tasks .item-list ul li {
+    cursor: pointer; }
 
 #formTask {
   margin-bottom: 5px; }

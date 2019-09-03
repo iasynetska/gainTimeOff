@@ -1,10 +1,10 @@
 <?php 
 namespace controllers;
 
-use models\SubjectModel;
 use core\DBDriver;
 use core\DbConnection;
 use core\Exceptions\ValidatorException;
+use models\SubjectModel;
 
 class RestSubjectController extends RestController
 {

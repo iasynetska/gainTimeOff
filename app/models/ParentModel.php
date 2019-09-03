@@ -1,8 +1,8 @@
 <?php
 namespace models;
 
-use models\entities\UserParent;
 use models\entities\User;
+use models\entities\UserParent;
 use core\DBDriver;
 use core\Validator;
 

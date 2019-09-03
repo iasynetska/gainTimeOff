@@ -1,13 +1,11 @@
 <?php
 namespace models\entities;
 
-use models\KidModel;
-use models\SubjectModel;
 use models\MarkModel;
+use models\SubjectModel;
 use models\TaskModel;
-
-use core\DBDriver;
 use core\DbConnection;
+use core\DBDriver;
 
 class UserKid extends User
 {

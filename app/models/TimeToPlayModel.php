@@ -1,8 +1,8 @@
 <?php
 namespace models;
 
-use models\entities\TimeToPlay;
 use core\DBDriver;
+use models\entities\TimeToPlay;
 
 class TimeToPlayModel extends BaseModel
 {    

@@ -1,12 +1,11 @@
 <?php
 namespace models;
 
-use models\entities\DoneTask;
 use core\DBDriver;
-use core\Validator;
+use models\entities\DoneTask;
 
 class DoneTaskModel extends BaseModel
-{    
+{
     public function __construct(DBDriver $dbDriver)
     {
         parent::__construct($dbDriver, 'done_tasks');
@@ -22,7 +21,7 @@ class DoneTaskModel extends BaseModel
     }
     
     public function addDoneTask(array $params)
-    {        
-        $this->dbDriver->insert('done_tasks', $params);
+    {
+        $this->dbDriver->insert($this->nameTable, $params);
     }
 }

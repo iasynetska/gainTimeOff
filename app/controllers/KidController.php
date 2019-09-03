@@ -1,12 +1,12 @@
 <?php
 namespace controllers;
 
-use core\DynamicJSProducer;
-use models\KidModel;
 use core\DBDriver;
 use core\DbConnection;
+use core\DynamicJSProducer;
 use core\Exceptions\ValidatorException;
-use models\TimeToPlayModel;
+use core\TimeConverter;
+use models\KidModel;
 
 class KidController extends FullHtmlController
 {
@@ -75,7 +75,7 @@ class KidController extends FullHtmlController
                 'helloKid' => $this->langManager->getLangParams()['lg_hello'] . ', ' . $this->request->getSessionParam(self::KID_KEY)->name,
                 'lg_logout' => $this->langManager->getLangParams()['lg_logout'],
                 'lg_time_to_play' => $this->langManager->getLangParams()['lg_time_to_play'],
-                'kidMins' => $this->request->getSessionParam(self::KID_KEY)->time_to_play
+                'kidMins' => TimeConverter::convertSecondsToTimeFormat($this->request->getSessionParam(self::KID_KEY)->time_to_play)
             ]
             );
     }

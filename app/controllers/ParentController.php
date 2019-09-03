@@ -1,12 +1,12 @@
 <?php
 namespace controllers;
 
-use core\DynamicJSProducer;
-use models\ParentModel;
 use core\DBDriver;
 use core\DbConnection;
+use core\DynamicJSProducer;
 use core\Exceptions\ValidatorException;
 use core\TimeConverter;
+use models\ParentModel;
 
 class ParentController extends FullHtmlController
 {
@@ -423,7 +423,7 @@ class ParentController extends FullHtmlController
                 'marks' => $kid->getKidMarks(),
                 'lg_mark_exist' => $this->langManager->getLangParams()['lg_mark_exist'],
                 'kidName' => $kid->name,
-                'lg_save' => $this->langManager->getLangParams()['lg_save']
+                'lg_save' => $this->langManager->getLangParams()['lg_save'],
             ]
             );
         return $markBlock;

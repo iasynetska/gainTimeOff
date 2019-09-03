@@ -1,12 +1,11 @@
 <?php
 namespace models;
 
-use models\entities\UserKid;
-use models\entities\User;
-use models\entities\UserParent;
 use core\DBDriver;
 use core\Validator;
-use core\TimeConverter;
+use models\entities\User;
+use models\entities\UserKid;
+use models\entities\UserParent;
 
 class KidModel extends UserModel
 {

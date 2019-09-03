@@ -11,7 +11,7 @@ class Mark
     
     public function __construct(
         string $name, 
-        $minutes, 
+        int $gameTime, 
         int $kid_id,
         int $active,
         int $id=NULL
@@ -21,7 +21,7 @@ class Mark
             $this->id = $id;
         }
         $this->name = $name;
-        $this->minutes = $minutes;
+        $this->gameTime = $gameTime;
         $this->kid_id = $kid_id;
         $this->active = $active;
     }

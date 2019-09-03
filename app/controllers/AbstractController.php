@@ -1,7 +1,8 @@
 <?php
 namespace controllers;
-use core\Request;
+
 use core\LangManager;
+use core\Request;
 
 abstract class AbstractController
 {

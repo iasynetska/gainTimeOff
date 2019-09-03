@@ -1,5 +1,6 @@
 <?php
 namespace controllers;
+
 use core\dto\ErrorMessage;
 
 class ErrorMessageController extends RestController

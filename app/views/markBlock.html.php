@@ -1,3 +1,5 @@
+<?php use core\TimeConverter?>
+
 <div class="item-title"><?=$lg_add_marks_title?></div>
 <div id = "inputMarkBlock" class="item-marks d-flex flex-column">
     <div id="formMark" class="d-flex justify-content-between">
@@ -20,7 +22,7 @@
 		<div class="item-list">
     		<ul>
     			<?php foreach($marks as $mark):?>
-	    			<li class="item-list__existing"><?=$mark->name?> . " " . "\u2192" . <?=$mark->name?>/li>
+	    			<li class="item-list__existing"><?=$mark->name?>&nbsp;&#8594;&nbsp;<?=TimeConverter::convertSecondsToTimeFormat($mark->gameTime)?></li>
     			<?php endforeach;?>
     		</ul>
 		</div>
