@@ -70,6 +70,7 @@
         "lg_err_select_subject" => "Wybierz przedmiot!",
         "lg_err_select_mark" => "Wybierz ocenę!",
         "lg_err_select_task" => "Wybierz zadanie!",
+        "lg_confirm_delete" => "Naprawdę chcesz usunąć profil?",
         
         //dashboard kid
         "lg_your_time" => "Twój czas na grę",
@@ -114,5 +115,13 @@
         
         //create kid profile
         "lg_back_dashboard" => "Powrót do głównej deski",
-        "lg_subject" => "Nazwa przedmiotu"
+        "lg_subject" => "Nazwa przedmiotu",
+        
+        //Kid's profile settings
+        "lg_kid_profile_settings" => "Ustawienia profilu dziecka",
+        "lg_personal_data" => "Dane osobiste",
+        "lg_photo_title" => "Zdjęcie",
+        "lg_time" => "Czas",
+        "lg_marks" => "Oceny",
+        "lg_tasks" => "Zadania"
     );

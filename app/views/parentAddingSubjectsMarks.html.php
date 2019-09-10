@@ -8,7 +8,7 @@
 				<div class="kids-block d-flex flex-wrap justify-content-center">
 					<div id="<?=$kidName?>" class="kid active-profile d-flex flex-column justify-content-center align-items-center">
                         <img src="<?=$pathPhoto?>" alt="photo" width="64" height="64"/>
-                        <div class="kid-name"><?=$kidName?><i class="far fa-edit icon"></i></div>
+                        <div class="kid-name"><?=$kidName?><i class="far fa-edit icon" onclick="location.href='./kid-profile-settings?kidName=<?=$kidName?>';"></i></div>
                     </div>
 				</div>
 			</div>

@@ -70,6 +70,7 @@
         "lg_err_select_subject" => "Select subject!",
         "lg_err_select_mark" => "Select mark!",
         "lg_err_select_task" => "Select task!",
+        "lg_confirm_delete" => "You really want to delete profile?",
         
         //dashboard kid
         "lg_your_time" => "Your time for game",
@@ -114,5 +115,13 @@
         
         //create kid profile
         "lg_back_dashboard" => "Back to dashboard",
-        "lg_subject" => "Subject"
+        "lg_subject" => "Subject",
+        
+        //Kid's profile settings
+        "lg_kid_profile_settings" => "Kid's profile settings",
+        "lg_personal_data" => "Personal data",
+        "lg_photo_title" => "Photo",
+        "lg_time" => "Time",
+        "lg_marks" => "Marks",
+        "lg_tasks" => "Tasks"
     );

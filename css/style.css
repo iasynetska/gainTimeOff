@@ -412,6 +412,13 @@ body#parentDashboard {
       margin-left: 10px; }
 
 /**************************
+KID PROFILE
+***************************/
+body#parentKidSettings {
+  margin: 0;
+  background-color: #0d4861; }
+
+/**************************
 ADDING SUBJECTS AND MARKS 
 ***************************/
 body#parentAddingSubjects {
