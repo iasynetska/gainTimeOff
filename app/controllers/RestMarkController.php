@@ -4,6 +4,7 @@ namespace controllers;
 use \Exception;
 use core\DBDriver;
 use core\DbConnection;
+use core\GotMarkDBDriver;
 use core\Exceptions\ValidatorException;
 use core\TimeConverter;
 use models\GotMarkModel;
@@ -15,7 +16,7 @@ class RestMarkController extends RestController
 {
     const ACTIVE = 1;
     
-    public function doAddingMarkAction()
+    public function doSavingMarkAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -30,7 +31,7 @@ class RestMarkController extends RestController
         {
             try
             {
-                $MarkModel->addMark([
+                $MarkModel->saveMark([
                     'name' => $mark->name,
                     'gameTime' => TimeConverter::convertStrToSeconds($mark->gameTime),
                     'active' => self::ACTIVE,
@@ -61,20 +62,20 @@ class RestMarkController extends RestController
         $currentDate = date('Y/m/d');
         
         $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $gotMarkModel = new GotMarkModel(new DBDriver(DbConnection::getPDO()));
+        $gotMarkModel = new GotMarkModel(new GotMarkDBDriver(DbConnection::getPDO()));
         $timeToPlayModel = new TimeToPlayModel(new DBDriver(DbConnection::getPDO()));
         
         try
         {
             DbConnection::getPDO()->beginTransaction();
             
-            $timeToPlayModel->addTime([
+            $timeToPlayModel->saveTime([
                 'time' => $mark->gameTime,
                 'date' => $currentDate,
                 'kid_id' => $kid->getId()
             ]);
             
-            $gotMarkModel->addGotMark([
+            $gotMarkModel->saveGotMark([
                 'subject_id' => $subject->getId(),
                 'mark_id' => $mark->getId(),
                 'date' => $currentDate

@@ -4,19 +4,20 @@ namespace controllers;
 use core\LangManager;
 use core\Request;
 
-class FullHtmlController extends AbstractController
+class HtmlController extends AbstractController
 {
     protected $title;
     protected $bodyId;
+    protected $jsFunction;
     protected $content;
     protected $dynamicJS = '';
     
     public function __construct(Request $request, LangManager $langManager)
     {
-        $this->request = $request;
+        parent::__construct($request, $langManager);
         $this->title = '';
+        $this->jsFunction = '';
         $this->content = '';
-        $this->langManager = $langManager;
     }
     
     protected function redirect($uri)
@@ -60,31 +61,12 @@ class FullHtmlController extends AbstractController
             [
                 'title' => $this->title,
                 'bodyId' => $this->bodyId,
+                'jsFunction' => $this->jsFunction,
                 'header' => $this->buildHeader(),
                 'content' => $this->content,
                 'footer' => $this->buildFooter(),
                 'dynamicJS' => $this->dynamicJS
             ]
             );
-    }
-    
-    protected function checkRequestMethod(String $method)
-    {
-        $methodCorrect = false;
-        switch($method)
-        {
-            case $this->request::METHOD_POST:
-                $methodCorrect = $this->request->isPost();
-                break;
-            case $this->request::METHOD_GET:
-                $methodCorrect = $this->request->isGet();
-                break;
-        }
-        if(!$methodCorrect)
-        {
-            http_response_code(400);
-            echo sprintf("Request type - %s isn't support for uri: %s", $method, $this->request->getServerParam('REQUEST_URI'));
-            exit();
-        }
     }
 }

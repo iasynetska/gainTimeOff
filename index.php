@@ -19,18 +19,24 @@ if($uriParts[1] === 'gaintimeoff')
 }
 $uriParts = array_values($uriParts);
 
-$controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'main';
+$controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'homepage';
 
 switch($controller)
 {
-    case 'main':
-        $controller = 'Main';
+    case 'homepage':
+        $controller = 'HomePage';
         break;
     case 'parent':
         $controller = 'Parent';
         break;
     case 'kid':
         $controller = 'Kid';
+        break;
+    case 'kidblock':
+        $controller = 'KidBlock';
+        break;
+    case 'restkid':
+        $controller = 'RestKid';
         break;
     case 'restsubject':
         $controller = 'RestSubject';
@@ -44,20 +50,20 @@ switch($controller)
     case 'resttime':
         $controller = 'RestTime';
         break;
-    case 'errormessage':
-        $controller = 'ErrorMessage';
+    case 'message':
+        $controller = 'Message';
         break;
-    case 'kidtemplate':
-        $controller = 'KidTemplate';
+    case 'timeblock':
+        $controller = 'TimeBlock';
         break;
-    case 'subjecttemplate':
-        $controller = 'SubjectTemplate';
+    case 'subjectblock':
+        $controller = 'SubjectBlock';
         break;
-    case 'marktemplate':
-        $controller = 'MarkTemplate';
+    case 'markblock':
+        $controller = 'MarkBlock';
         break;
-    case 'tasktemplate':
-        $controller = 'TaskTemplate';
+    case 'taskblock':
+        $controller = 'TaskBlock';
         break;
         http_response_code(404);
         exit;

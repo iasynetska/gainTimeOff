@@ -3,6 +3,7 @@ namespace models;
 
 use core\DBDriver;
 use models\entities\TimeToPlay;
+use models\entities\UserKid;
 
 class TimeToPlayModel extends BaseModel
 {    
@@ -21,8 +22,14 @@ class TimeToPlayModel extends BaseModel
             );
     }
     
-    public function addTime(array $params)
+    public function saveTime(array $params)
     {
-        $this->addItem($params);
+        $this->saveItem($params);
+    }
+    
+    public function deleteTimeToPlayByKid(UserKid $kid)
+    {
+        $paramsCondition = array('kid_id' => $kid->getId());
+        $this->deleteItem($paramsCondition);
     }
 }

@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="/gaintimeoff/css/style.css"/>
     </head>
     
-    <body id="<?=$bodyId?>">
+    <body id="<?=$bodyId?>" onload="<?=$jsFunction?>">
         <div class="wrapper d-flex flex-column">
 			<?=$header?>
 			<?=$content?>

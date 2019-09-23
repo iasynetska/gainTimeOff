@@ -85,7 +85,6 @@ body#parentDashboard
     box-shadow: 5px 4px 9px 1px $color_bg;
     &:hover
     {
-        cursor: pointer;
         background-color: $color_dark; 
     }
     &-delete
@@ -94,9 +93,17 @@ body#parentDashboard
         width: 100%;
         text-align: right;
     }
+    & img
+    {
+    	cursor: pointer;
+    }
     &-name
     {
         margin-top: 10px;
+    }
+    & .icon
+    {
+    	cursor: pointer;
     }
 }
 

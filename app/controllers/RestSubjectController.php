@@ -10,7 +10,7 @@ class RestSubjectController extends RestController
 {
     const ACTIVE = 1;
     
-    public function doAddingSubjectAction()
+    public function doSavingSubjectAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -25,7 +25,7 @@ class RestSubjectController extends RestController
         {
             try
             {
-                $SubjectModel->addSubject([
+                $SubjectModel->saveSubject([
                     'name' => $subject,
                     'active' => self::ACTIVE,
                     'kid_id' => $kid->getId()

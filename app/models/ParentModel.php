@@ -42,12 +42,12 @@ class ParentModel extends UserModel
         $this->validator = new Validator($this->rules, $this);
     }
     
-    public function addParent(array $params)
+    public function saveParent(array $params)
     {
         $this->validator->validate($params);
 
         $insertParams = $this->prepareInsertParams($params);
-        $this->addItem($insertParams);
+        $this->saveItem($insertParams);
     }
     
     private function prepareInsertParams(array $params)

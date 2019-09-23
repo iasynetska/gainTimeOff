@@ -4,9 +4,10 @@ namespace controllers;
 use \Exception;
 use core\DBDriver;
 use core\DbConnection;
+use core\ComplitedTaskDBDriver;
 use core\Exceptions\ValidatorException;
 use core\TimeConverter;
-use models\DoneTaskModel;
+use models\ComplitedTaskModel;
 use models\KidModel;
 use models\TaskModel;
 use models\TimeToPlayModel;
@@ -15,7 +16,7 @@ class RestTaskController extends RestController
 {
     const ACTIVE = 1;
     
-    public function doAddingTaskAction()
+    public function doSavingTaskAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -30,7 +31,7 @@ class RestTaskController extends RestController
         {
             try
             {
-                $TaskModel->addTask([
+                $TaskModel->saveTask([
                     'name' => $task->name,
                     'gameTime' => TimeConverter::convertStrToSeconds($task->gameTime),
                     'active' => self::ACTIVE,
@@ -49,7 +50,7 @@ class RestTaskController extends RestController
     }
     
     
-    public function saveDoneTaskAction()
+    public function saveComplitedTaskAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -60,20 +61,20 @@ class RestTaskController extends RestController
         $currentDate = date('Y/m/d');
         
         $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $doneTaskModel = new DoneTaskModel(new DBDriver(DbConnection::getPDO()));
+        $complitedTaskModel = new ComplitedTaskModel(new ComplitedTaskDBDriver(DbConnection::getPDO()));
         $timeToPlayModel = new TimeToPlayModel(new DBDriver(DbConnection::getPDO()));
         
         try
         {
             DbConnection::getPDO()->beginTransaction();
             
-            $timeToPlayModel->addTime([
+            $timeToPlayModel->saveTime([
                 'time' => $task->gameTime,
                 'date' => $currentDate,
                 'kid_id' => $kid->getId()
             ]);
             
-            $doneTaskModel->addDoneTask([
+            $complitedTaskModel->saveComplitedTask([
                 'task_id' => $task->getId(),
                 'date' => $currentDate
             ]);

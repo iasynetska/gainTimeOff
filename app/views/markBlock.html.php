@@ -3,8 +3,8 @@
 <div class="item-title"><?=$lg_add_marks_title?></div>
 <div id = "inputMarkBlock" class="item-marks d-flex flex-column">
     <div id="formMark" class="d-flex justify-content-between">
-    	<input id="inputMark" placeholder="<?=$lg_new_mark?>" type="text" name="mark" min="1" max="2" maxlength="2" oninput="removeBorderStyle(this)" />
-    	<input id="inputTime" type="time" name="timeForMarks" oninput="removeBorderStyle(this)" />
+    	<input id="inputMark" placeholder="<?=$lg_new_mark?>" type="text" name="mark" min="1" max="2" maxlength="2" oninput="deleteBorderStyle(this)" />
+    	<input id="inputTime" type="time" name="timeForMarks" oninput="deleteBorderStyle(this)" />
     	<img class="item-new__img" src="/gaintimeoff/img/checked-32.png" onclick="createNewElement('inputMark', 'inputTime')">
     </div>
 	<div class='item__error'><?=$error_mark?></div>
@@ -15,7 +15,7 @@
 		</ul>
 	</div>
 </div>
-<input class="form__btn" type="button" value="<?=$lg_save?>" onclick="handleMarksChange('<?=$kidName?>')" />
+<input class="form__btn" type="button" value="<?=$lg_save?>" onclick="handlerSavingNewMarks('<?=$kidName?>')" />
 <div class="item-marks list-marks__old">
 	<?php if(!empty($marks)):?>
 		<div class="item-marks__title"><?=$lg_mark_exist?>&#58;</div>

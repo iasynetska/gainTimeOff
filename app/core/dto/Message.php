@@ -1,7 +1,7 @@
 <?php
 namespace core\dto;
 
-class ErrorMessage
+class Message
 {
     public $message;
     

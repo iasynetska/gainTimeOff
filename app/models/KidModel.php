@@ -47,12 +47,12 @@ class KidModel extends UserModel
         $this->validator = new Validator($this->rules, $this);
     }
     
-    public function addKid(array $params)
+    public function saveKid(array $params)
     {
         $this->validator->validate($params);
         
         $insertParams = $this->prepareInsertParams($params);
-        $this->addItem($insertParams);
+        $this->saveItem($insertParams);
     }
     
     public function isKidExisting(string $nameColumn, string $valueColumn, int $parent_id): bool
@@ -112,15 +112,15 @@ class KidModel extends UserModel
         );
     }
     
-    public function getKidsByParent(UserParent $parent): ?array
+    public function getKidsByParent(UserParent $parent): array
     {
         $sql = sprintf("SELECT * FROM %s WHERE parent_id=:parent_id ORDER BY name", $this->nameTable);
         $kids_result = $this->dbDriver->select($sql, ['parent_id' => $parent->getId()], DBDriver::FETCH_ALL);
         
-        if(!$kids_result)
-        {
-            return NULL;
-        }
+//         if(!$kids_result)
+//         {
+//             return NULL;
+//         }
         
         $arr_kids = [];
         foreach ($kids_result as $result)
@@ -151,5 +151,11 @@ class KidModel extends UserModel
         $this->updateItem($params, $paramsCondition);
         
         $kid->time_to_play = $newTime;
+    }
+    
+    public function deleteKid(UserKid $kid)
+    {
+        $paramsCondition = array('id' => $kid->getId());
+        $this->deleteItem($paramsCondition);
     }
 }

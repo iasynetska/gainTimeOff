@@ -65,10 +65,16 @@ class SubjectModel extends BaseModel
         return $itemsCount > 0;
     }
     
-    public function addSubject(array $params)
+    public function saveSubject(array $params)
     {
         $this->validator->validate($params);
         
-        $this->addItem($params);
+        $this->saveItem($params);
+    }
+    
+    public function deleteSubjectsByKid(UserKid $kid)
+    {
+        $paramsCondition = array('kid_id' => $kid->getId());
+        $this->deleteItem($paramsCondition);
     }
 }

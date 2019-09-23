@@ -9,7 +9,7 @@ use models\KidModel;
 use models\TimeToPlayModel;
 
 class RestTimeController extends RestController
-{
+{    
     public function saveTimePlayedAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
@@ -25,7 +25,7 @@ class RestTimeController extends RestController
         
         try
         {            
-            $timeToPlayModel->addTime([
+            $timeToPlayModel->saveTime([
                 'time' => $timePlayed,
                 'date' => $currentDate,
                 'kid_id' => $kid->getId()

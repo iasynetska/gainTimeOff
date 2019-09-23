@@ -1,7 +1,7 @@
 <?php
 namespace models\entities;
 
-class DoneTask
+class ComplitedTask
 {
     public $task_id;
     public $date;

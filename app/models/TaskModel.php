@@ -71,10 +71,16 @@ class TaskModel extends BaseModel
         return $itemsCount > 0;
     }
     
-    public function addTask(array $params)
+    public function saveTask(array $params)
     {
         $this->validator->validate($params);
         
-        $this->addItem($params);
+        $this->saveItem($params);
+    }
+    
+    public function deleteTasksByKid(UserKid $kid)
+    {
+        $paramsCondition = array('kid_id' => $kid->getId());
+        $this->deleteItem($paramsCondition);
     }
 }

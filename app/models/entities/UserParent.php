@@ -23,7 +23,7 @@ class UserParent extends User
         $this->email = $email;
     }
     
-    public function getKids(): ?array
+    public function getKids(): array
     {
         if(!isset($this->kids))
         {

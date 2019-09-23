@@ -8,13 +8,25 @@
 				<div class="kids-new">
 					<img class="kids-new__img" src="/gaintimeoff/img/plus-32.png" alt="Add kid" onclick="location.href='./adding-kid';" >
 				</div>
-				<div class="kids-block d-flex flex-wrap justify-content-center">
+				<div id="kidsBlock" class="kids-block d-flex flex-wrap justify-content-center">
 					<?=$kidBlock?>
 				</div>
 			</div>
 		</div>
-		<div id="items" class="items">
-			<?=$itemsBlock?>
+		<div id="itemsBlock" class="items">
+			<div class="container d-flex flex-column justify-content-center align-items-center">
+				<div id="kidTimeBlock" class="items-time d-flex flex-column justify-content-center align-items-center">
+					<?=$dashboardTimeBlock?>
+				</div>
+			</div>
+			<div class="items-block d-flex flex-wrap justify-content-center">
+				<div  id="kidSubjectBlock" class="item d-flex flex-column align-items-center">
+					<?=$dashboardSubjectBlock?>
+				</div>
+				<div id="kidTaskBlock" class="item d-flex flex-column align-items-center">
+					<?=$dashboardTaskBlock?>
+				</div>
+			</div>
 		</div>
     </div>
 </main>

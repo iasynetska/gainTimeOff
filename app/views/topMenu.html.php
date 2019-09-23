@@ -11,12 +11,6 @@
         <li onclick="location.href=\'add_kid.php\';">
         	<a href="/gaintimeoff/parent/adding-kid"><?=$lg_add_kid?></a>
     	</li>
-        <li onclick="location.href=\'dashboard_parent_kids.php\';">
-        	<a href="/gaintimeoff/parent/dashboard"><?=$lg_kids?></a>
-    	</li>
-        <li onclick="location.href=\'dashboard_parent_kids.php\';">
-        	<a href="/gaintimeoff/parent/dashboard"><?=$lg_kids?></a>
-    	</li>
     </ul>
 
     <div class="top-menu__block">

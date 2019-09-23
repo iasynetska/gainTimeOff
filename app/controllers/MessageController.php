@@ -1,24 +1,24 @@
 <?php
 namespace controllers;
 
-use core\dto\ErrorMessage;
+use core\dto\Message;
 
-class ErrorMessageController extends RestController
+class MessageController extends RestController
 {    
     public function getAction()
     {
         $this->checkRequestMethod($this->request::METHOD_GET);
-        $errorName = $this->request->getGetParam('errorName');
+        $messageName = $this->request->getGetParam('messageName');
         
-        $errorMessage = $this->langManager->getLangParams()[$errorName];
-        if(isset($errorMessage))
+        $message = $this->langManager->getLangParams()[$messageName];
+        if(isset($message))
         {
-            $this->content = new ErrorMessage($errorMessage);
+            $this->content = new Message($message);
         }
         else
         {
             http_response_code(406);
-            $this->content = new ErrorMessage($this->langManager->getLangParams()['lg_err_default']);
+            $this->content = new Message($this->langManager->getLangParams()['lg_err_default']);
         }
     }
 }

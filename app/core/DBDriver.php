@@ -6,7 +6,7 @@ class DBDriver
     const FETCH_ALL = 'all';
     const FETCH_ONE = 'one';
     
-    private $pdo;
+    protected $pdo;
     
     public function __construct(\PDO $pdo) 
     {
@@ -32,7 +32,7 @@ class DBDriver
         $stmt->execute($params);
     }
     
-    public function update($table, array $params, array $paramsCondition, $operator='AND')
+    public function update($table, array $params, array $paramsCondition, $operator)
     {
         $set = array();
         $condition = array();
@@ -55,8 +55,19 @@ class DBDriver
         $stmt->execute(array_merge($params, $paramsCondition));
     }
     
-    public function delete()
+    public function delete($table, array $paramsCondition, $operator)
     {
-        ;
+        $condition = array();
+        
+        while(list($key)=each($paramsCondition)) {
+            $condition[] = $key . ' = :' . $key;
+        }
+        
+        $setCondition = implode($condition, $operator);
+        
+        $sql = sprintf('DELETE FROM %s WHERE %s', $table, $setCondition);
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($paramsCondition);
     }
 }

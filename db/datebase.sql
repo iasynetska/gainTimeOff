@@ -69,8 +69,8 @@ CREATE TABLE got_marks (
     FOREIGN KEY (mark_id) REFERENCES marks (id)
 );
 
-/*Create new table done_tasks*/
-CREATE TABLE done_tasks (
+/*Create new table complited_tasks*/
+CREATE TABLE complited_tasks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     task_id int NOT NULL,
     date date NOT NULL,

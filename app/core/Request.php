@@ -29,7 +29,7 @@ class Request
         $_SESSION[$key] = $param;
     }
     
-    public function removeSessionParam($key)
+    public function deleteSessionParam($key)
     {
         unset($_SESSION[$key]);
     }
@@ -57,6 +57,11 @@ class Request
     public function isGet()
     {
         return $this->getServerParam('REQUEST_METHOD') === self::METHOD_GET;
+    }
+    
+    public function isGetParam($key)
+    {
+        return isset($this->get[$key]);
     }
     
     public function getPostParam($key)

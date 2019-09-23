@@ -8,7 +8,7 @@ use core\Exceptions\ValidatorException;
 use core\TimeConverter;
 use models\KidModel;
 
-class KidController extends FullHtmlController
+class KidController extends HtmlController
 {
     const LOGIN_FALSE_KEY = 'loginFalse';
     const KID_KEY = 'kid';
@@ -32,7 +32,7 @@ class KidController extends FullHtmlController
                 'lg_login_submit' => $this->langManager->getLangParams()['lg_login_submit']
             ]
             );
-        $this->request->removeSessionParam(self::LOGIN_FALSE_KEY);
+        $this->request->deleteSessionParam(self::LOGIN_FALSE_KEY);
     }
     
     public function doLoginAction()
@@ -68,9 +68,9 @@ class KidController extends FullHtmlController
         }
         
         $this->title = 'Kid dashboard';
-        $this->bodyId = 'kidDashboard';
+        $this->bodyId = 'kidPageDashboard';
         $this->content = $this->build(
-            (dirname(__DIR__, 1)). '/views/kidDashboard.html.php',
+            (dirname(__DIR__, 1)). '/views/kidPageDashboard.html.php',
             [
                 'helloKid' => $this->langManager->getLangParams()['lg_hello'] . ', ' . $this->request->getSessionParam(self::KID_KEY)->name,
                 'lg_logout' => $this->langManager->getLangParams()['lg_logout'],
@@ -101,7 +101,7 @@ class KidController extends FullHtmlController
         
         try
         {
-            $kidModel->addKid([
+            $kidModel->saveKid([
                 'name' => $name,
                 'gender' => $gender,
                 'login' => $login,
@@ -122,14 +122,14 @@ class KidController extends FullHtmlController
             $this->redirect('/gaintimeoff/parent/adding-kid');
         }
         
-        $this->request->removeSessionParam('kid_name');
-        $this->request->removeSessionParam('kid_login');
-        $this->request->removeSessionParam('date_of_birth');
+        $this->request->deleteSessionParam('kid_name');
+        $this->request->deleteSessionParam('kid_login');
+        $this->request->deleteSessionParam('date_of_birth');
     }
     
     public function logoutAction()
     {
-        $this->request->removeSessionParam(self::KID_KEY);
+        $this->request->deleteSessionParam(self::KID_KEY);
         $this->redirect('/gaintimeoff');
     }
 }

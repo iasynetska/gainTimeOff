@@ -1,8 +1,8 @@
 <?php
 namespace controllers;
 
-class MainController extends FullHtmlController
-{
+class HomePageController extends HtmlController
+{    
     public function indexAction()
     {
         $this->checkRequestMethod($this->request::METHOD_GET);

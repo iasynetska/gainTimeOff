@@ -44,20 +44,20 @@ abstract class AbstractController
         }
     }
     
-    protected function buildErrorMessage(array $errors)
+    protected function buildMessage(array $messages)
     {
-        $errorMessage = '';
+        $message = '';
         
-        foreach($errors as $error)
+        foreach($messages as $message)
         {
-            $errorMessage .= $this->build(
-                (dirname(__DIR__, 1)). '/views/errorMessage.html.php',
+            $message .= $this->build(
+                (dirname(__DIR__, 1)). '/views/message.html.php',
                 [
-                    'errorMessage' => $this->langManager->getLangParams()[$error]
+                    'message' => $this->langManager->getLangParams()[$message]
                 ]
                 );
         }
-        return $errorMessage;
+        return $message;
     }
     
     abstract public function render();

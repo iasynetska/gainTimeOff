@@ -22,13 +22,18 @@ class BaseModel
         return $itemsCount > 0;
     }
     
-    public function addItem(array $params)
+    public function saveItem(array $params)
     {
         return $this->dbDriver->insert($this->nameTable, $params);
     }
     
-    public function updateItem(array $params, $paramsCondition)
+    public function updateItem(array $params, array $paramsCondition, $operator='AND')
     {
-        return $this->dbDriver->update($this->nameTable, $params, $paramsCondition);
+        return $this->dbDriver->update($this->nameTable, $params, $paramsCondition, $operator);
+    }
+    
+    public function deleteItem(array $paramsCondition, $operator='AND')
+    {
+        return $this->dbDriver->delete($this->nameTable, $paramsCondition, $operator);
     }
 }

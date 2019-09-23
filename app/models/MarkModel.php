@@ -71,10 +71,16 @@ class MarkModel extends BaseModel
         return $itemsCount > 0;
     }
     
-    public function addMark(array $params)
+    public function saveMark(array $params)
     {
         $this->validator->validate($params);
         
-        $this->addItem($params);
+        $this->saveItem($params);
+    }
+    
+    public function deleteMarksByKid(UserKid $kid)
+    {
+        $paramsCondition = array('kid_id' => $kid->getId());
+        $this->deleteItem($paramsCondition);
     }
 }

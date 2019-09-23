@@ -1,12 +1,13 @@
 <?php
 namespace models;
 
-use core\DBDriver;
+use core\GotMarkDBDriver;
 use models\entities\GotMark;
+use models\entities\UserKid;
 
 class GotMarkModel extends BaseModel
 {
-    public function __construct(DBDriver $dbDriver)
+    public function __construct(GotMarkDBDriver $dbDriver)
     {
         parent::__construct($dbDriver, 'got_marks');
     }
@@ -21,8 +22,13 @@ class GotMarkModel extends BaseModel
             );
     }
     
-    public function addGotMark(array $params)
+    public function saveGotMark(array $params)
     {
-        $this->dbDriver->insert($this->nameTable, $params);
+        $this->saveItem($params);
+    }
+    
+    public function deleteGotMarksByKId(UserKid $kid)
+    {
+        $this->dbDriver->deleteGotMarksByKid($this->nameTable, $kid->getId());
     }
 }

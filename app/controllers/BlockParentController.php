@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 
-class TemplateController extends AbstractController
+class BlockParentController extends ParentController
 {
     protected $content;
     
