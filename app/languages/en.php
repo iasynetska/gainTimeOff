@@ -44,6 +44,8 @@
         "lg_err_login_existing" => "This login is already taken!",
         "lg_err_sub_existing" => "This subject already exists!",
         "lg_err_email_existing" => "This email is already in use!",
+        "lg_err_time" => "Provide a valid time!",
+        "lg_err_time_zero" => "Provide a time other than zero!",
         "lg_greeting" => "Hello %s! <p>Thank you for registering.</p> <p>Now you can log in with your login and password.</p>",
         "lg_login_form" => "Login form",
   

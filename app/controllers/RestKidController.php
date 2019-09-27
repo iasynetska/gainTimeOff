@@ -1,8 +1,9 @@
 <?php
 namespace controllers;
 
-use core\Exceptions\ValidatorException;
+use \Exception;
 use models\KidFacade;
+use core\dto\Message;
 
 class RestKidController extends  RestController
 {
@@ -18,9 +19,10 @@ class RestKidController extends  RestController
         {
             $kidFacade->deleteKidAndRelativeItems($kid);
         }
-        catch (ValidatorException $e)
+        catch (Exception $e)
         {
-            
+            $this->content = new Message($e->getMessage());
+            http_response_code(500);
         }
     }
 }

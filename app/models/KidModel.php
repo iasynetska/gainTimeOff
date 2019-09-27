@@ -116,12 +116,7 @@ class KidModel extends UserModel
     {
         $sql = sprintf("SELECT * FROM %s WHERE parent_id=:parent_id ORDER BY name", $this->nameTable);
         $kids_result = $this->dbDriver->select($sql, ['parent_id' => $parent->getId()], DBDriver::FETCH_ALL);
-        
-//         if(!$kids_result)
-//         {
-//             return NULL;
-//         }
-        
+                
         $arr_kids = [];
         foreach ($kids_result as $result)
         {

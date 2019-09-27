@@ -22,6 +22,7 @@ class MarkModel extends BaseModel
             'not_empty' => TRUE
         ]
     ];
+    
     public function __construct(DBDriver $dbDriver)
     {
         parent::__construct($dbDriver, 'marks');

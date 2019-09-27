@@ -44,6 +44,8 @@
         "lg_err_login_existing" => "Podany login jest już zajęty!",
         "lg_err_sub_existing" => "Podany przedmiot już istnieje!",
         "lg_err_email_existing" => "Ten adres e-mail jest już w użyciu!",
+        "lg_err_time" => "Podaj poprawny czas!",
+        "lg_err_time_zero" => "Podaj czas inny niż zero!",
         "lg_greeting" => "Dzień dobry, %s! <p>Dziękujemy za rejestrację.</p> <p>Teraz możesz zalogować się za pomocą swojego loginu i hasła.</p>",
         "lg_login_form" => "Forma loginu",
         

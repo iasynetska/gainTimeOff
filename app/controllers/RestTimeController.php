@@ -1,12 +1,11 @@
 <?php 
 namespace controllers;
 
-use core\DBDriver;
-use core\DbConnection;
+use \Exception;
 use core\Exceptions\ValidatorException;
 use core\TimeConverter;
-use models\KidModel;
-use models\TimeToPlayModel;
+use core\dto\Message;
+use models\TimeFacade;
 
 class RestTimeController extends RestController
 {    
@@ -18,25 +17,21 @@ class RestTimeController extends RestController
         $kid = $this->request->getSessionParam('parent')->getKids()[$kidName];
         $timePlayed = $this->request->getPostParam('timePlayed');
         $timePlayed = (-1) * abs(TimeConverter::convertStrToSeconds($timePlayed));
-        $currentDate = date('Y/m/d');
-        
-        $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $timeToPlayModel = new TimeToPlayModel(new DBDriver(DbConnection::getPDO()));
+        $timeFacade = new TimeFacade();
         
         try
         {            
-            $timeToPlayModel->saveTime([
-                'time' => $timePlayed,
-                'date' => $currentDate,
-                'kid_id' => $kid->getId()
-            ]);
-            
-            $kidModel->changeKidTime($kid, $timePlayed);
+            $timeFacade->saveTimeAndChangeKidTime($kid, $timePlayed);
         }
         catch (ValidatorException $e)
         {
             $errors = $e->getErrors();
             $this->request->addSessionParam('errors', $errors);
+        }
+        catch (Exception $e)
+        {
+            $this->content = new Message($e->getMessage());
+            http_response_code(500);
         }
     }
 }

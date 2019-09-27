@@ -4,13 +4,11 @@ namespace controllers;
 use \Exception;
 use core\DBDriver;
 use core\DbConnection;
-use core\ComplitedTaskDBDriver;
 use core\Exceptions\ValidatorException;
 use core\TimeConverter;
-use models\ComplitedTaskModel;
-use models\KidModel;
+use core\dto\Message;
 use models\TaskModel;
-use models\TimeToPlayModel;
+use models\TaskFacade;
 
 class RestTaskController extends RestController
 {
@@ -58,42 +56,16 @@ class RestTaskController extends RestController
         $kid = $this->request->getSessionParam('parent')->getKids()[$kidName];
         $taskName = $this->request->getPostParam('taskName');
         $task = $kid->getKidTasks()[$taskName];
-        $currentDate = date('Y/m/d');
-        
-        $kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $complitedTaskModel = new ComplitedTaskModel(new ComplitedTaskDBDriver(DbConnection::getPDO()));
-        $timeToPlayModel = new TimeToPlayModel(new DBDriver(DbConnection::getPDO()));
+        $taskFacade = new TaskFacade();
         
         try
         {
-            DbConnection::getPDO()->beginTransaction();
-            
-            $timeToPlayModel->saveTime([
-                'time' => $task->gameTime,
-                'date' => $currentDate,
-                'kid_id' => $kid->getId()
-            ]);
-            
-            $complitedTaskModel->saveComplitedTask([
-                'task_id' => $task->getId(),
-                'date' => $currentDate
-            ]);
-            
-            $kidModel->changeKidTime($kid, $task->gameTime); 
-            
-            DbConnection::getPDO()->commit();
-        }
-        catch (ValidatorException $e)
-        {
-            $errors = $e->getErrors();
-            $this->request->addSessionParam('errors', $errors);
-            DbConnection::getPDO()->rollBack();
+           $taskFacade->saveComplitedTaskAndChangeKidTime($kid, $task);
         }
         catch (Exception $e)
         {
-            DbConnection::getPDO()->rollBack();
-            http_response_code(400);
-            throw $e->getMessage();
+            $this->content = new Message($e->getMessage());
+            http_response_code(500);
         }
     }
 }

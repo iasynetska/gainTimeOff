@@ -100,9 +100,9 @@ function isLengthMatch(text, min, max)
 **/
 function isOnlyLetters(text)
 {
-    var checkText = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
+    var textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
     
-    return checkText.test(text);
+    return textFormat.test(text);
 }
 
 
@@ -114,9 +114,9 @@ function isOnlyLetters(text)
 **/
 function isOnlyLettersNums(text)
 {
-    var checkText = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż0-9\s]+$/g;
+    var textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż0-9\s]+$/g;
     
-    return checkText.test(text);
+    return textFormat.test(text);
 }
 
 
@@ -126,11 +126,11 @@ function isOnlyLettersNums(text)
  * @returns result of checking. true - email address is correct, 
  * 								false - email address isn't correct.
 **/
-function isEmailFormat(email)
+function isEmailFormatCorrectly(email)
 {
-    var checkEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    var emailFormat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     
-    return checkEmail.test(email);
+    return emailFormat.test(email);
 }
 
 
@@ -140,10 +140,10 @@ function isEmailFormat(email)
  * @returns result of checking. true - time is correct, 
  * 								false - time isn't correct.
 **/
-function isTimeFormat(element)
+function isTimeValidForSave(element)
 {
 	var timeFormatIsCorrect = true;
-	var checkValue = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+	var timeFormat = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
 	
 	if(element.value === "")
 	{
@@ -151,10 +151,16 @@ function isTimeFormat(element)
 		addMessage(element.parentElement, "lg_err_empty", "item__error");
 		timeFormatIsCorrect = false;
 	}
-	else if(!checkValue.test(element.value))
+	else if(!timeFormat.test(element.value))
 	{
 		addRedBorderStyle(element);
 		addMessage(element.parentElement, "lg_err_time", "item__error");
+		timeFormatIsCorrect = false;
+	}
+	else if(element.value === "00:00")
+	{
+		addRedBorderStyle(element);
+		addMessage(element.parentElement, "lg_err_time_zero", "item__error");
 		timeFormatIsCorrect = false;
 	}
 	
@@ -301,7 +307,7 @@ function validateFormInputs(form)
                     break;
                     
                 case "email":
-                    if(!isEmailFormat(element.value))
+                    if(!isEmailFormatCorrectly(element.value))
                     {
                         addRedBorderStyle(element);
                         addMessage(element, "lg_err_email", "form__error");
@@ -629,17 +635,23 @@ function addGotMark(kidName)
 	
 	if(selectedSubject !== "0" && selectedMark !== null)
 	{
-		saveGotMark(kidName, selectedSubject, selectedMark);
-		var kidTimeBlock = getKidTimeBlock(kidName);
-		document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
-		arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
-		subjectsList.selectedIndex = 0;
-		for(var i=0; i<marks.length; i++)
+		try
 		{
-			marks[i].checked = false;
-			break;
+			saveGotMark(kidName, selectedSubject, selectedMark);
+			var kidTimeBlock = getKidTimeBlock(kidName);
+			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
+			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
+			subjectsList.selectedIndex = 0;
+			for(var i=0; i<marks.length; i++)
+			{
+				marks[i].checked = false;
+				break;
+			}
 		}
-		
+		catch(error)
+		{
+			alert(error);
+		}
 	}
 	else
 	{
@@ -688,16 +700,13 @@ function showMessageIfMarkNotSelected(marksListDiv, selectedMark)
 function saveGotMark(kidName, subjectName, markName)
 {
 	var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-    	if (this.readyState === 4 && this.status !== 200)
-        {
-            throw JSON.parse(this.responseText).message;
-        }
-    };
     xhttp.open("POST", "/gaintimeoff/restmark/save-got-mark", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjectName="+subjectName+"&markName="+markName);
+    if(xhttp.status!==200)
+	{
+    	throw JSON.parse(xhttp.responseText).message;
+	}
 }
 
 
@@ -721,11 +730,18 @@ function addComplitedTask(kidName)
 	}
 	else
 	{
-		saveComplitedTask(kidName, selectedTask);
-		var kidTimeBlock = getKidTimeBlock(kidName);
-		document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
-		arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
-		tasksList.selectedIndex = 0;
+		try
+		{
+			saveComplitedTask(kidName, selectedTask);
+			var kidTimeBlock = getKidTimeBlock(kidName);
+			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
+			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
+			tasksList.selectedIndex = 0;
+		}
+		catch(error)
+		{
+			alert(error);
+		}
 	}
 }
 
@@ -738,16 +754,13 @@ function addComplitedTask(kidName)
 function saveComplitedTask(kidName, taskName)
 {	
 	var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-    	if (this.readyState === 4 && this.status !== 200)
-        {
-            throw JSON.parse(this.responseText).message;
-        }
-    };
     xhttp.open("POST", "/gaintimeoff/resttask/save-complited-task", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&taskName="+taskName);
+    if(xhttp.status!==200)
+	{
+    	throw JSON.parse(xhttp.responseText).message;
+	}
 }
 
 
@@ -764,13 +777,21 @@ function handlerTimePlay(kidName)
 	var inputTime = document.getElementById("inputTime");
 	inputTime.value = inputTime.value.trim();
 	
-	if(isTimeFormat(inputTime))
+	try
 	{
-		saveTimePlayed(kidName, inputTime.value);
-		var kidTimeBlock = getKidTimeBlock(kidName);
-		document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
-		arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
+		if(isTimeValidForSave(inputTime))
+		{
+			saveTimePlayed(kidName, inputTime.value);
+			var kidTimeBlock = getKidTimeBlock(kidName);
+			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
+			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
+		}
 	}
+	catch(error)
+	{
+		alert(error);
+	}
+	
 }
 
 
@@ -782,16 +803,13 @@ function handlerTimePlay(kidName)
 function saveTimePlayed(kidName, timePlayed)
 {	
 	var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-    	if (this.readyState === 4 && this.status !== 200)
-        {
-            throw JSON.parse(this.responseText).message;
-        }
-    };
     xhttp.open("POST", "/gaintimeoff/resttime/save-time-played", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&timePlayed="+timePlayed);
+    if(xhttp.status!==200)
+	{
+    	throw JSON.parse(xhttp.responseText).message;
+	}
 }
 
 
@@ -803,17 +821,24 @@ function handlerDeletingProfile(kidName)
 {
     if (confirm(getMessage("lg_confirm_delete")))
     {
-        deleteKidProfile(kidName);
-        var kidBlock = getKidBlock();
-        if(kidBlock !== '')
+    	try
     	{
-        	document.getElementById("kidsBlock").innerHTML = getKidBlock();
-            getKidItemsBlock(document.getElementById("kidsBlock").firstElementChild.id);
+    		deleteKidProfile(kidName);
+            var kidBlock = getKidBlock();
+            if(kidBlock !== '')
+        	{
+            	document.getElementById("kidsBlock").innerHTML = getKidBlock();
+                getKidItemsBlock(document.getElementById("kidsBlock").firstElementChild.id);
+        	}
+            else
+        	{
+                window.location.href = "/gaintimeoff/parent/dashboard";
+        	}
     	}
-        else
-    	{
-            window.location.href = "/gaintimeoff/parent/dashboard";
-    	}
+        catch(error)
+        {
+        	alert(error);
+        }
     }
 }
 
@@ -825,16 +850,15 @@ function handlerDeletingProfile(kidName)
 function deleteKidProfile(kidName)
 {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-        if (this.readyState === 4 && this.status === 200)
-        {
-        	
-        };
-    };
+
     xhttp.open("POST", "/gaintimeoff/restkid/do-deleting-kid", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName);
+    if(xhttp.status!==200)
+	{
+    	throw JSON.parse(xhttp.responseText).message;
+	}
+    
 };
 
 
@@ -911,7 +935,7 @@ function createNewElement(itemIdInput, timeIdInput)
 	var inputTime = document.getElementById(timeIdInput);
 	inputTime.value = inputTime.value.trim();
 	
-	if(checkItemName(inputItem) && isTimeFormat(inputTime))
+	if(checkItemName(inputItem) && isTimeValidForSave(inputTime))
 	{
 		var ul = document.getElementById("itemList");
 		var li = document.createElement("li"); 
