@@ -8,7 +8,9 @@ Project is created with:
 * CSS3
 * JavaScript
 * Bootstrap
+* MySQL
 
 ## Patterns
 * MVC
 * Facade
+* Singleton
