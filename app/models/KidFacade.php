@@ -2,17 +2,17 @@
 namespace models;
 
 use core\DbConnection;
-use core\ComplitedTaskDBDriver;
+use core\CompletedTaskDBDriver;
 use core\Request;
 use models\entities\UserKid;
-use core\GotMarkDBDriver;
+use core\ReceivedMarkDBDriver;
 use core\DBDriver;
 
 class KidFacade
 {
     private $request;
-    private $complitedTaskModel;
-    private $gotMarkModel;
+    private $completedTaskModel;
+    private $receivedMarkModel;
     private $kidModel;
     private $markModel;
     private $subjectModel;
@@ -22,8 +22,8 @@ class KidFacade
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->complitedTaskModel = new ComplitedTaskModel(new ComplitedTaskDBDriver(DbConnection::getPDO()));
-        $this->gotMarkModel = new GotMarkModel(new GotMarkDBDriver(DbConnection::getPDO()));
+        $this->completedTaskModel = new CompletedTaskModel(new CompletedTaskDBDriver(DbConnection::getPDO()));
+        $this->receivedMarkModel = new ReceivedMarkModel(new ReceivedMarkDBDriver(DbConnection::getPDO()));
         $this->kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
         $this->markModel = new MarkModel(new DBDriver(DbConnection::getPDO()));
         $this->markModel = new MarkModel(new DBDriver(DbConnection::getPDO()));
@@ -36,8 +36,8 @@ class KidFacade
     {
         DbConnection::getPDO()->beginTransaction();
         
-        $this->complitedTaskModel->deleteComplitedTasksByKid($kid);
-        $this->gotMarkModel->deleteGotMarksByKId($kid);
+        $this->completedTaskModel->deleteCompletedTasksByKid($kid);
+        $this->receivedMarkModel->deleteReceivedMarksByKId($kid);
         $this->timeToPlayModel->deleteTimeToPlayByKid($kid);
         $this->taskModel->deleteTasksByKid($kid);
         $this->markModel->deleteMarksByKid($kid);

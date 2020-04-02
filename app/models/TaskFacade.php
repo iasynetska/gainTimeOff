@@ -5,23 +5,23 @@ use core\DbConnection;
 use core\DBDriver;
 use models\entities\Task;
 use models\entities\UserKid;
-use core\ComplitedTaskDBDriver;
+use core\CompletedTaskDBDriver;
 use Exception;
 
 class TaskFacade
 {
     private $kidModel;
-    private $complitedTaskModel;
+    private $completedTaskModel;
     private $timeToPlayModel;
     
     public function __construct()
     {
         $this->kidModel = new KidModel(new DBDriver(DbConnection::getPDO()));
-        $this->complitedTaskModel = new ComplitedTaskModel(new ComplitedTaskDBDriver(DbConnection::getPDO()));
+        $this->completedTaskModel = new CompletedTaskModel(new CompletedTaskDBDriver(DbConnection::getPDO()));
         $this->timeToPlayModel = new TimeToPlayModel(new DBDriver(DbConnection::getPDO()));
     }
     
-    public function saveComplitedTaskAndChangeKidTime(UserKid $kid, Task $task)
+    public function saveCompletedTaskAndChangeKidTime(UserKid $kid, Task $task)
     {
         try {
             DbConnection::getPDO()->beginTransaction();
@@ -32,7 +32,7 @@ class TaskFacade
                 'kid_id' => $kid->getId()
             ]);
             
-            $this->complitedTaskModel->saveComplitedTask([
+            $this->completedTaskModel->saveCompletedTask([
                 'task_id' => $task->getId(),
                 'date' => date('Y/m/d')
             ]);

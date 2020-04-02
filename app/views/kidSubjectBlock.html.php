@@ -41,6 +41,6 @@
 	<?php endif;?>
 	</div>
 	<?php if(!empty($subjects) && !empty($marks)):?>
-		<input class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addGotMark('<?=$kidName?>');" />
+		<input class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addReceivedMark('<?=$kidName?>');" />
 	<?php endif;?>
 <?php endif;?>

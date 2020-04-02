@@ -1,8 +1,8 @@
 /*Create new datebase*/
 CREATE DATABASE gainTimeOff; 
 
-/*Create new table user_parents*/
-CREATE TABLE user_parents (
+/*Create new table parents*/
+CREATE TABLE parents (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     name varchar(255) NOT NULL,
     login varchar(255) NOT NULL UNIQUE,
@@ -11,8 +11,8 @@ CREATE TABLE user_parents (
     PRIMARY KEY (id)
 );
 
-/*Create new table user_kids*/
-CREATE TABLE user_kids (
+/*Create new table kids*/
+CREATE TABLE kids (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     name varchar(255) NOT NULL,
     gender varchar(50) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE user_kids (
     parent_id int NOT NULL,
     time_to_play int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (parent_id) REFERENCES user_parents (id)
+    FOREIGN KEY (parent_id) REFERENCES parents (id)
 );
 
 /*Create new table subjects*/
@@ -32,7 +32,7 @@ CREATE TABLE subjects (
     name varchar(255) NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (kid_id) REFERENCES user_kids (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id),
     active bit DEFAULT true NOT NULL
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE marks (
     gameTime int NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (kid_id) REFERENCES user_kids (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id),
     active bit DEFAULT true NOT NULL
 );
 
@@ -54,12 +54,12 @@ CREATE TABLE tasks (
     gameTime int NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (kid_id) REFERENCES user_kids (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id),
 	active bit DEFAULT true NOT NULL
 );
 
 /*Create new table school_marks*/
-CREATE TABLE got_marks (
+CREATE TABLE received_marks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     subject_id int NOT NULL,
     mark_id int NOT NULL,
@@ -69,8 +69,8 @@ CREATE TABLE got_marks (
     FOREIGN KEY (mark_id) REFERENCES marks (id)
 );
 
-/*Create new table complited_tasks*/
-CREATE TABLE complited_tasks (
+/*Create new table completed_tasks*/
+CREATE TABLE completed_tasks (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
     task_id int NOT NULL,
     date date NOT NULL,
@@ -85,5 +85,5 @@ CREATE TABLE time_to_play (
     date date NOT NULL,
     kid_id int NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (kid_id) REFERENCES user_kids (id)
+    FOREIGN KEY (kid_id) REFERENCES kids (id)
 );

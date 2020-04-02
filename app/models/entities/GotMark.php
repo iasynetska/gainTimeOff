@@ -1,7 +1,7 @@
 <?php
 namespace models\entities;
 
-class GotMark
+class ReceivedMark
 {
     public $subject_id;
     public $mark_id;

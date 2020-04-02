@@ -73,6 +73,23 @@
         "lg_err_select_mark" => "Wybierz ocenę!",
         "lg_err_select_task" => "Wybierz zadanie!",
         "lg_confirm_delete" => "Naprawdę chcesz usunąć profil?",
+        "lg_select_month" => "Wybierz miesiąc",
+        "lg_name_months" => [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "lg_select_year" => "Wybierz rok",
+        "lg_err_select_year" => "Wybierz rok dla raportu!",
         
         //dashboard kid
         "lg_your_time" => "Twój czas na grę",

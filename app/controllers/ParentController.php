@@ -8,6 +8,7 @@ use core\Exceptions\ValidatorException;
 use core\TimeConverter;
 use models\ParentModel;
 use models\entities\UserKid;
+use models\ReportReceivedMarksModel;
 
 class ParentController extends HtmlController
 {
@@ -185,7 +186,8 @@ class ParentController extends HtmlController
                     'kidBlock' => $this->buildDashboardKidBlock($kids),
                     'dashboardTimeBlock' => $this->buildDashboardTimeBlock(reset($kids)),
                     'dashboardSubjectBlock' => $this->buildDashboardSubjectBlock(reset($kids)),
-                    'dashboardTaskBlock' => $this->buildDashboardTaskBlock(reset($kids))
+                    'dashboardTaskBlock' => $this->buildDashboardTaskBlock(reset($kids)),
+                    'dashboardReportReceivedMarksBlock' => $this->buildDashboardReportReceivedMarksBlock(reset($kids))
                 ]
             );
         }
@@ -282,6 +284,26 @@ class ParentController extends HtmlController
             ]
             );
         return $kidTaskBlock;
+    }
+
+    protected function buildDashboardReportReceivedMarksBlock(UserKid $kid, String $startDate = "", String $endDate = "")
+    {
+        $startDate = $startDate === "" ? date("Y") . "-01-01" : $startDate;
+        $endDate = $endDate === "" ? date("Y") + 1 . "-01-01" : $endDate;
+
+        $reportReceivedMarksModel = new ReportReceivedMarksModel(new DBDriver(DbConnection::getPDO()));
+        $kidReportReceivedMarksBlock = $this->build(
+            (dirname(__DIR__, 1)) . '/views/kidReportReceivedMarksBlock.html.php',
+            [
+                'lg_select_month' => $this->langManager->getLangParams()['lg_select_month'],
+                'lg_name_months' => $this->langManager->getLangParams()['lg_name_months'],
+                'lg_select_year' => $this->langManager->getLangParams()['lg_select_year'],
+                'kidName' => $kid->name,
+                'lg_marks' => $this->langManager->getLangParams()['lg_marks'],
+                'receivedMarks' => $reportReceivedMarksModel->getReportReceivedMarks($kid, $startDate, $endDate)
+            ]
+        );
+        return $kidReportReceivedMarksBlock;
     }
     
     private function getPathPhoto($kid)

@@ -368,7 +368,8 @@ body#parentDashboard {
   .item-subjects__adding img {
     margin-left: 10px; }
   .item-subjects, .item-tasks {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 10px; }
     .item-subjects__list, .item-tasks__list {
       width: 185px;
       outline: none;
@@ -386,6 +387,52 @@ body#parentDashboard {
       text-align: left; }
     .item-marks__adding img {
       margin-left: 10px; }
+
+#kidReportReceivedMarksBlock {
+  margin-top: 10px; }
+  #kidReportReceivedMarksBlock .item-title {
+    width: 150px; }
+
+.items-report {
+  width: 100%;
+  max-width: 560px; }
+
+.item-report {
+  width: 100%; }
+  .item-report__list {
+    margin-right: 10px;
+    width: 150px;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer; }
+  .item-report .item__error {
+    text-align: center; }
+
+.table-marks {
+  width: 100%;
+  max-width: 560px;
+  margin: 10px;
+  border-collapse: collapse;
+  border: 2px solid #2EBBCE;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 5px 4px 9px 1px rgba(4, 27, 40, 0.9); }
+  .table-marks td, .table-marks th {
+    padding: 15px;
+    text-align: left;
+    background-color: rgba(4, 27, 40, 0.9);
+    border-bottom: 2px solid #2EBBCE; }
+  .table-marks .column-subject {
+    width: 30%; }
+  .table-marks .column-mark {
+    width: 60%;
+    border-right: 1px dotted #2EBBCE; }
+  .table-marks .column-average {
+    width: 10%; }
+
+#btnSaveTask {
+  margin-top: auto; }
 
 /**************************
 KID PROFILE

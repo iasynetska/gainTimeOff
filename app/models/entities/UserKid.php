@@ -16,7 +16,6 @@ class UserKid extends User
     public $time_to_play;
     private $subjects;
     private $marks;
-    private $schoolMarks;
     private $tasks;
 
     public function __construct(

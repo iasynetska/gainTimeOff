@@ -48,7 +48,7 @@ class RestTaskController extends RestController
     }
     
     
-    public function saveComplitedTaskAction()
+    public function saveCompletedTaskAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -60,7 +60,7 @@ class RestTaskController extends RestController
         
         try
         {
-           $taskFacade->saveComplitedTaskAndChangeKidTime($kid, $task);
+           $taskFacade->saveCompletedTaskAndChangeKidTime($kid, $task);
         }
         catch (Exception $e)
         {

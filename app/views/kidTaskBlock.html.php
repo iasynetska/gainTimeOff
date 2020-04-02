@@ -16,5 +16,5 @@
 			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-tasks?kidName=<?=$kidName?>';">
 		</div>
 	</div>
-	<input id="btnSaveTask" class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addComplitedTask('<?=$kidName?>');" />
+	<input id="btnSaveTask" class="form__btn" type="submit" value="<?=$lg_save?>" onclick="addCompletedTask('<?=$kidName?>');" />
 <?php endif;?>

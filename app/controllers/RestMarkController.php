@@ -47,7 +47,7 @@ class RestMarkController extends RestController
         $kid->resetMarks();
     }
     
-    public function saveGotMarkAction()
+    public function saveReceivedMarkAction()
     {
         $this->checkRequestMethod($this->request::METHOD_POST);
         
@@ -62,7 +62,7 @@ class RestMarkController extends RestController
         
         try
         {
-            $markFacade->saveGotMarkAndChangeKidTime($kid, $subject, $mark);
+            $markFacade->saveReceivedMarkAndChangeKidTime($kid, $subject, $mark);
         }
         catch (Exception $e)
         {

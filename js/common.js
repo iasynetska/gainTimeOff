@@ -1,6 +1,6 @@
-var arrItemsKid = new Map();
-var arrMessages = new Map();  
-var reCaptchaSelected = false;
+const arrItemsKid = new Map();
+const arrMessages = new Map();
+const reCaptchaSelected = false;
 
 
 /**
@@ -8,7 +8,7 @@ var reCaptchaSelected = false;
  */
 function selectReCaptcha()
 {
-    reCaptchaSelected = true;
+    let reCaptchaSelected = true;
 }
 
 
@@ -17,12 +17,13 @@ function selectReCaptcha()
 **/
 function resizeReCaptcha() 
 {      
-    var width = $( ".g-recaptcha" ).parent().width();
+    const width = $( ".g-recaptcha" ).parent().width();
+    let scale;
   
   if (width < 302) {
-      var scale = width / 302;
+      scale = width / 302;
   } else {
-      var scale = 1;
+      scale = 1;
   }
   
   $( ".g-recaptcha" ).css("transform", "scale(" + scale + ")");
@@ -95,12 +96,12 @@ function isLengthMatch(text, min, max)
 /**
  * Checking text for letters only.
  * @param text - string for checking.
- * @returns result of checking. true - text contains only letters, 
+ * @returns boolean of checking. true - text contains only letters,
  * 								false - text contains not allowed symbols.
 **/
 function isOnlyLetters(text)
 {
-    var textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
+    const textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż\s]+$/g;
     
     return textFormat.test(text);
 }
@@ -109,12 +110,12 @@ function isOnlyLetters(text)
 /**
  * Checking text for letters and numbers only.
  * @param text - string for checking.
- * @returns result of checking. true - text contains only letters and numbers, 
+ * @returns boolean of checking. true - text contains only letters and numbers,
  * 								false - text contains not allowed symbols.
 **/
 function isOnlyLettersNums(text)
 {
-    var textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż0-9\s]+$/g;
+    const textFormat = /^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż0-9\s]+$/g;
     
     return textFormat.test(text);
 }
@@ -123,12 +124,12 @@ function isOnlyLettersNums(text)
 /**
  * Checking email format.
  * @param email - string for checking.
- * @returns result of checking. true - email address is correct, 
+ * @returns boolean of checking. true - email address is correct,
  * 								false - email address isn't correct.
 **/
 function isEmailFormatCorrectly(email)
 {
-    var emailFormat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    const emailFormat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     
     return emailFormat.test(email);
 }
@@ -137,13 +138,13 @@ function isEmailFormatCorrectly(email)
 /**
  * Checking time format.
  * @param element - HTML element.
- * @returns result of checking. true - time is correct, 
+ * @returns boolean of checking. true - time is correct,
  * 								false - time isn't correct.
 **/
 function isTimeValidForSave(element)
 {
-	var timeFormatIsCorrect = true;
-	var timeFormat = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+	let timeFormatIsCorrect = true;
+	const timeFormat = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
 	
 	if(element.value === "")
 	{
@@ -176,8 +177,7 @@ function isTimeValidForSave(element)
 **/
 function addMessage(element, messageName, className)
 {      
-   var divError = document.createElement("div");
-   divError.setAttribute("id", "err_"+element.id);
+   const divError = document.createElement("div");
    divError.setAttribute("class", className);
    element.parentNode.appendChild(divError);
    
@@ -205,7 +205,7 @@ function getMessage(messageName)
    }
    else
    {
-       var xhttp = new XMLHttpRequest();
+       const xhttp = new XMLHttpRequest();
        xhttp.onreadystatechange = function() 
        {
            if (this.readyState === 4 && this.status !== 200)
@@ -216,7 +216,7 @@ function getMessage(messageName)
        xhttp.open("GET", "/gaintimeoff/message/get?messageName="+messageName, false);
        xhttp.send();
 
-       var messageObject = JSON.parse(xhttp.responseText);
+       const messageObject = JSON.parse(xhttp.responseText);
        arrMessages.set(messageName, messageObject.message);
        return messageObject.message;
    }
@@ -234,14 +234,14 @@ function getMessage(messageName)
  */
 function validateForm(formId)
 {
-    var form = document.getElementById(formId);
+    const form = document.getElementById(formId);
     
-    var errorDivs = form.getElementsByClassName("form__error");
+    const errorDivs = form.getElementsByClassName("form__error");
     deleteListElements(errorDivs);
         
-    var fieldsValid = validateFormInputs(form);
-    var reCaptchaValid = validateFormReCaptcha();
-    var radioSelected = validateRadioButtons(form);
+    const fieldsValid = validateFormInputs(form);
+    const reCaptchaValid = validateFormReCaptcha();
+    const radioSelected = validateRadioButtons(form);
     
     return fieldsValid && reCaptchaValid && radioSelected;
 }
@@ -255,12 +255,12 @@ function validateForm(formId)
  **/
 function validateFormInputs(form)
 {
-    var valid = true;
-    var formElements = form.elements;
+    let valid = true;
+    const formElements = form.elements;
     
-    for(var i=0; i<formElements.length; i++)
+    for(let i=0; i<formElements.length; i++)
     {
-        var element = formElements.item(i);
+        let element = formElements.item(i);
         element.value = element.value.trim();
         
         if(element.value === "")
@@ -325,8 +325,8 @@ function validateFormInputs(form)
                     break;
                     
                 case "confirmPassword":
-                    var password = document.getElementById("password").value;
-                    var confirmPassword = element.value;
+                    const password = document.getElementById("password").value;
+                    const confirmPassword = element.value;
                     if(password !== confirmPassword)
                     {
                         addRedBorderStyle(element);
@@ -345,13 +345,13 @@ function validateFormInputs(form)
 
 /**
   * Checking reCaptcha of submitted form
-  * @returns Result of validation. true - valid, 
+  * @returns boolean of validation. true - valid,
   * 							   false - not valid.
  **/
 function validateFormReCaptcha()
 {
-    var valid = true; 
-    var reCaptcha = document.getElementById("reCaptcha");
+    let valid = true;
+    const reCaptcha = document.getElementById("reCaptcha");
     
     if(reCaptcha !== null)
     {
@@ -368,14 +368,14 @@ function validateFormReCaptcha()
 /**
  * Checking fields of forms.
  * @param form - submitted form.
- * @returns Result of validation. true - valid, 
+ * @returns boolean of validation. true - valid,
  * 								  false - not valid.
  */
 function validateRadioButtons(form)
 {
-    var valid = true;
-    var formElements = form.elements;
-    var radioButtons = new Map();
+    let valid = true;
+    const formElements = form.elements;
+    const radioButtons = new Map();
     
     for (var i=0; i<formElements.length; i++) 
     {
@@ -394,8 +394,8 @@ function validateRadioButtons(form)
     
     for (let radioButtonsWithSameName of radioButtons.values())
     {
-        var selected = false;
-        for (var j=0; j<radioButtonsWithSameName.length; j++)
+        let selected = false;
+        for (let j=0; j<radioButtonsWithSameName.length; j++)
         {
             selected |= radioButtonsWithSameName[j].checked;
         }
@@ -417,7 +417,7 @@ function validateRadioButtons(form)
  */
 function clickInputFile()
 {
-    var fileReal = document.getElementById("add-file__real");
+    const fileReal = document.getElementById("add-file__real");
     fileReal.click();
 }
 
@@ -427,9 +427,9 @@ function clickInputFile()
 **/
 function addFileName()
 {
-    var fileReal = document.getElementById("add-file__real");
-    var fileTxt = document.getElementById("add-file__text");
-    var fileTxtValue = document.getElementById("add-file__text").textContent;
+    const fileReal = document.getElementById("add-file__real");
+    const fileTxt = document.getElementById("add-file__text");
+    const fileTxtValue = document.getElementById("add-file__text").textContent;
     
     if (fileReal.value) 
     {
@@ -447,8 +447,8 @@ function addFileName()
 **/
 function clearFile()
 {
-    var inputFile = document.getElementById("add-file__real");
-    var fileTxt = document.getElementById("add-file__text");
+    const inputFile = document.getElementById("add-file__real");
+    const fileTxt = document.getElementById("add-file__text");
     inputFile.value = "";
     fileTxt.innerHTML = "&hellip;";
 }
@@ -462,15 +462,16 @@ function clearFile()
 
 function getFirstKidBlocks()
 {
-	var kidsBlock = document.getElementById("kidsBlock");
+	const kidsBlock = document.getElementById("kidsBlock");
 	if(kidsBlock)
 	{
-		var kidName = kidsBlock.firstElementChild.id;
-		var kidTimeBlock = document.getElementById("kidTimeBlock").innerHTML;
-		var kidSubjectBlock = document.getElementById("kidSubjectBlock").innerHTML;
-		var kidTaskBlock = document.getElementById("kidTaskBlock").innerHTML;
-		
-		addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock);
+		const kidName = kidsBlock.firstElementChild.id;
+		const kidTimeBlock = document.getElementById("kidTimeBlock").innerHTML;
+		const kidSubjectBlock = document.getElementById("kidSubjectBlock").innerHTML;
+		const kidTaskBlock = document.getElementById("kidTaskBlock").innerHTML;
+		const kidReportReceivedMarksBlock = document.getElementById("kidReportReceivedMarksBlock").innerHTML;
+
+		addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock, kidReportReceivedMarksBlock);
 	}
 }
 
@@ -481,13 +482,13 @@ function getFirstKidBlocks()
 **/
 function moveActiveProfile(kidElement)
 {
-    var kids = document.getElementsByClassName("kid");
-    for(var i=0; i<kids.length; i++)
+    const kids = document.getElementsByClassName("kid");
+    for(let i=0; i<kids.length; i++)
     {
         kids[i].classList.remove("active-profile");
     }
 
-    var newActiveProfile = kidElement;
+    const newActiveProfile = kidElement;
     newActiveProfile.classList.add("active-profile");
     
     getKidItemsBlock(kidElement.id);
@@ -505,19 +506,23 @@ function getKidItemsBlock(kidName)
 		document.getElementById("kidTimeBlock").innerHTML = arrItemsKid.get(kidName).kidTimeBlock;
 		document.getElementById("kidSubjectBlock").innerHTML = arrItemsKid.get(kidName).kidSubjectBlock;
 		document.getElementById("kidTaskBlock").innerHTML = arrItemsKid.get(kidName).kidTaskBlock;
+		document.getElementById("kidReportReceivedMarksBlock").innerHTML = arrItemsKid.get(kidName).kidReportReceivedMarksBlock;
     }
 	else
 	{
-		var kidTimeBlock = getKidTimeBlock(kidName);
+		const kidTimeBlock = getKidTimeBlock(kidName);
 		document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
 		
-		var kidSubjectBlock = getKidSubjectBlock(kidName);
+		const kidSubjectBlock = getKidSubjectBlock(kidName);
 		document.getElementById("kidSubjectBlock").innerHTML = kidSubjectBlock;
 		
-		var kidTaskBlock = getKidTaskBlock(kidName);
+		const kidTaskBlock = getKidTaskBlock(kidName);
 		document.getElementById("kidTaskBlock").innerHTML = kidTaskBlock;
+
+        const kidReportReceivedMarksBlock = getKidReportReceivedMarksBlock(kidName);
+        document.getElementById("kidReportReceivedMarksBlock").innerHTML = kidReportReceivedMarksBlock;
 		
-		addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock);
+		addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock, kidReportReceivedMarksBlock);
 	}
 }
 
@@ -525,11 +530,11 @@ function getKidItemsBlock(kidName)
 /**
  * Get Time block of kid by AJAX request.
  * @param kidName - name of kid.
- * @returns HTML code of Time block.
+ * @returns string html code of Time block.
  */
 function getKidTimeBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -547,11 +552,11 @@ function getKidTimeBlock(kidName)
 /**
  * Get Subject block of kid by AJAX request.
  * @param kidName - name of kid.
- * @returns HTML code of Subject block.
+ * @returns string html code of Subject block.
  */
 function getKidSubjectBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -569,11 +574,11 @@ function getKidSubjectBlock(kidName)
 /**
  * Get Task block of kid by AJAX request.
  * @param kidName - name of kid.
- * @returns HTML code of Task block.
+ * @returns string html code of Task block.
  */
 function getKidTaskBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -589,46 +594,134 @@ function getKidTaskBlock(kidName)
 
 
 /**
+ * Get report received marks block of kid by AJAX request.
+ * @param kidName - name of kid.
+ * @returns string html code of Mark block.
+ */
+function getKidReportReceivedMarksBlock(kidName, startDate='', endDate='')
+{
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+        if (this.readyState === 4 && this.status !== 200)
+        {
+            throw JSON.parse(this.responseText).message;
+        }
+    };
+    xhttp.open("GET", "/gaintimeoff/reportreceivedmarksblock/get-dashboard-report-received-marks-block?kidName="+kidName+"&startDate="+startDate+"&endDate="+endDate, false);
+    xhttp.send();
+
+    return xhttp.responseText;
+}
+
+
+function getReportReceivedMarks(kidName) {
+    const kidReportReceivedMarksBlock = document.getElementById("kidReportReceivedMarksBlock");
+    const errorDivs = kidReportReceivedMarksBlock.getElementsByClassName("item__error");
+    deleteListElements(errorDivs);
+
+    const monthsList = document.getElementById("monthsList");
+    const selectedMonth = monthsList.value;
+
+    const yearsList = document.getElementById("yearsList");
+    const selectedYear = yearsList.value;
+
+    if(selectedYear !== "0")
+    {
+        let startDate = [];
+        let endDate = [];
+        if(selectedMonth !== "0") {
+            startDate = [selectedYear, selectedMonth, '01'];
+            endDate = [selectedYear, parseInt(selectedMonth)+1, '01'];
+        } else {
+            startDate = [selectedYear, '01', '01'];
+            endDate = [parseInt(selectedYear)+1, '01', '01'];
+        }
+
+        try {
+            const reportReceivedMarksBlock = getKidReportReceivedMarksBlock(kidName, startDate.join("-"), endDate.join("-"));
+            kidReportReceivedMarksBlock.innerHTML = reportReceivedMarksBlock;
+            document.getElementById("monthsList").selectedIndex = selectedMonth;
+
+            const yearsOptions = document.getElementById("yearsList").options;
+            for(let i = 1; i<yearsOptions.length; i++) {
+                yearsOptions[i].selected = false;
+                if(yearsOptions[i].value === selectedYear) {
+                    yearsOptions[i].selected = true;
+                }
+            }
+
+            let x = 10;
+
+        } catch(error) {
+            alert(error);
+        }
+    }
+    else
+    {
+        showMessageIfYearNotSelected(yearsList, selectedYear);
+    }
+}
+
+
+/**
+ * Show warning message if Year isn't selected.
+ * @param yearsList - list of years.
+ * @param selectedYear - selected year.
+ */
+function showMessageIfYearNotSelected(yearsList, selectedYear)
+{
+    if(selectedYear === "0")
+    {
+        addRedBorderStyle(yearsList);
+        addMessage(yearsList.parentElement, 'lg_err_select_year', "item__error");
+    }
+}
+
+
+/**
  * Adding new kid's object to array arrItemsKid.
  * @param kidName - name of kid.
- * @param kidTimeBlock - HTML code of Time block.
- * @param kidSubjectBlock - HTML code of Subject block.
- * @param kidTaskBlock - HTML code of Task block.
+ * @param kidTimeBlock - html code of Time block.
+ * @param kidSubjectBlock - html code of Subject block.
+ * @param kidTaskBlock - html code of Task block.
  */
-function addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock)
+function addObjectToArrItemsKid(kidName, kidTimeBlock, kidSubjectBlock, kidTaskBlock, kidReportReceivedMarksBlock)
 {
-	var kidItems = {
-		  'kidTimeBlock': kidTimeBlock,
-		  'kidSubjectBlock': kidSubjectBlock,
-		  'kidTaskBlock': kidTaskBlock
-		};
+	const kidItems = {
+        'kidTimeBlock': kidTimeBlock,
+        'kidSubjectBlock': kidSubjectBlock,
+        'kidTaskBlock': kidTaskBlock,
+        'kidReportReceivedMarksBlock': kidReportReceivedMarksBlock
+
+    };
 	
 	arrItemsKid.set(kidName, kidItems);
 }
 
 
 /**
- * Adding got mark of kid.
+ * Adding received mark of kid.
  * @param kidName - name of kid.
  */
-function addGotMark(kidName)
+function addReceivedMark(kidName)
 {
-	var subjectBlock = document.getElementById("kidSubjectBlock");
-	var errorDivs = kidSubjectBlock.getElementsByClassName("item__error");
+	const kidSubjectBlock = document.getElementById("kidSubjectBlock");
+	const errorDivs = kidSubjectBlock.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var subjectsList = document.getElementById("subjectsList");
-	var selectedSubject = subjectsList.value;
+	const subjectsList = document.getElementById("subjectsList");
+	const selectedSubject = subjectsList.value;
 	
-	var marksListDiv = document.getElementById("marksList");
-	var marks = document.getElementsByName("mark");
-	var selectedMark = null;
+	const marksListDiv = document.getElementById("marksList");
+	const marks = document.getElementsByName("mark");
+	let selectedMark = null;
 	
-	for(var i=0; i<marks.length; i++)
+	for(let i=0; i<marks.length; i++)
 	{
 		if(marks[i].checked)
 		{
-			var selectedMark = marks[i].value;
+			selectedMark = marks[i].value;
 			break;
 		}
 	}
@@ -637,15 +730,22 @@ function addGotMark(kidName)
 	{
 		try
 		{
-			saveGotMark(kidName, selectedSubject, selectedMark);
-			var kidTimeBlock = getKidTimeBlock(kidName);
+			saveReceivedMark(kidName, selectedSubject, selectedMark);
+			const kidTimeBlock = getKidTimeBlock(kidName);
 			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
 			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
+            const currentYear = new Date().getFullYear();
+            const startDate = [currentYear, '01', '01'];
+            const endDate = [currentYear+1, '01', '01'];
+            const kidReportReceivedMarksBlock = getKidReportReceivedMarksBlock(kidName, startDate.join("-"), endDate.join("-"));
+            document.getElementById("kidReportReceivedMarksBlock").innerHTML = kidReportReceivedMarksBlock;
 			subjectsList.selectedIndex = 0;
-			for(var i=0; i<marks.length; i++)
+			for(let i=0; i<marks.length; i++)
 			{
-				marks[i].checked = false;
-				break;
+			    if(marks[i].checked === true) {
+                    marks[i].checked = false;
+                    break;
+                }
 			}
 		}
 		catch(error)
@@ -692,15 +792,15 @@ function showMessageIfMarkNotSelected(marksListDiv, selectedMark)
 
 
 /**
- * Saving new got mark to database.
+ * Saving new received mark to database.
  * @param kidName - name of kid.
  * @param subjectName - name of subject.
  * @param markName - name of mark.
  */
-function saveGotMark(kidName, subjectName, markName)
+function saveReceivedMark(kidName, subjectName, markName)
 {
-	var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/gaintimeoff/restmark/save-got-mark", false);
+	const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/gaintimeoff/restmark/save-received-mark", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjectName="+subjectName+"&markName="+markName);
     if(xhttp.status!==200)
@@ -711,17 +811,17 @@ function saveGotMark(kidName, subjectName, markName)
 
 
 /**
- * Adding complited task of kid.
+ * Adding completed task of kid.
  * @param kidName - name of kid.
  */
-function addComplitedTask(kidName)
+function addCompletedTask(kidName)
 {
-	var taskBlock = document.getElementById("kidTaskBlock");
-	var errorDivs = taskBlock.getElementsByClassName("item__error");
+	const taskBlock = document.getElementById("kidTaskBlock");
+	const errorDivs = taskBlock.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var tasksList = document.getElementById("tasksList");
-	var selectedTask = tasksList.value;
+	const tasksList = document.getElementById("tasksList");
+	const selectedTask = tasksList.value;
 	
 	if(selectedTask === "0")
 	{
@@ -732,8 +832,8 @@ function addComplitedTask(kidName)
 	{
 		try
 		{
-			saveComplitedTask(kidName, selectedTask);
-			var kidTimeBlock = getKidTimeBlock(kidName);
+			saveCompletedTask(kidName, selectedTask);
+			const kidTimeBlock = getKidTimeBlock(kidName);
 			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
 			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
 			tasksList.selectedIndex = 0;
@@ -747,14 +847,14 @@ function addComplitedTask(kidName)
 
 
 /**
- * Saving new complited task to database.
+ * Saving new completed task to database.
  * @param kidName - name of kid.
  * @param taskName - name of task.
  */
-function saveComplitedTask(kidName, taskName)
+function saveCompletedTask(kidName, taskName)
 {	
-	var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/gaintimeoff/resttask/save-complited-task", false);
+	const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/gaintimeoff/resttask/save-completed-task", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&taskName="+taskName);
     if(xhttp.status!==200)
@@ -770,11 +870,10 @@ function saveComplitedTask(kidName, taskName)
  */
 function handlerTimePlay(kidName)
 {
-	var kidTimeBlock = document.getElementById("kidTimeBlock");
-	var errorDivs = kidTimeBlock.getElementsByClassName("item__error");
+	const errorDivs = kidTimeBlock.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var inputTime = document.getElementById("inputTime");
+	const inputTime = document.getElementById("inputTime");
 	inputTime.value = inputTime.value.trim();
 	
 	try
@@ -782,7 +881,7 @@ function handlerTimePlay(kidName)
 		if(isTimeValidForSave(inputTime))
 		{
 			saveTimePlayed(kidName, inputTime.value);
-			var kidTimeBlock = getKidTimeBlock(kidName);
+			const kidTimeBlock = getKidTimeBlock(kidName);
 			document.getElementById("kidTimeBlock").innerHTML = kidTimeBlock;
 			arrItemsKid.get(kidName).kidTimeBlock = kidTimeBlock;
 		}
@@ -802,7 +901,7 @@ function handlerTimePlay(kidName)
  */
 function saveTimePlayed(kidName, timePlayed)
 {	
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/gaintimeoff/resttime/save-time-played", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&timePlayed="+timePlayed);
@@ -824,7 +923,7 @@ function handlerDeletingProfile(kidName)
     	try
     	{
     		deleteKidProfile(kidName);
-            var kidBlock = getKidBlock();
+            const kidBlock = getKidBlock();
             if(kidBlock !== '')
         	{
             	document.getElementById("kidsBlock").innerHTML = getKidBlock();
@@ -849,7 +948,7 @@ function handlerDeletingProfile(kidName)
  */
 function deleteKidProfile(kidName)
 {
-    var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
 
     xhttp.open("POST", "/gaintimeoff/restkid/do-deleting-kid", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -859,16 +958,16 @@ function deleteKidProfile(kidName)
     	throw JSON.parse(xhttp.responseText).message;
 	}
     
-};
+}
 
 
 /**
  * Getting html code of kid's block from server.
- * @returns  html code of kid's block from server.
+ * @returns  string html code of kid's block from server.
 **/
 function getKidBlock()
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -893,20 +992,20 @@ function getKidBlock()
 **/
 function createNewSubElement(inputId)
 {	
-	var blockForm = document.getElementById(inputId).parentElement.parentElement;
-	var errorDivs = blockForm.getElementsByClassName("item__error");
+	const blockForm = document.getElementById(inputId).parentElement.parentElement;
+	const errorDivs = blockForm.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var input = document.getElementById(inputId);
+	const input = document.getElementById(inputId);
 	input.value = input.value.trim();
 	
 	if(checkItemName(input))
 	{
-		var ul = document.getElementById("subNewList");
-		var li = document.createElement("li"); 
+		const ul = document.getElementById("subNewList");
+		const li = document.createElement("li");
 		li.classList.add("item__new");
 		li.appendChild(document.createTextNode(input.value));
-		var img = document.createElement("img");
+		const img = document.createElement("img");
 		img.src = "/gaintimeoff/img/delete-16.png";
 		img.addEventListener("click", function() {
 			deleteElement(this.parentElement);
@@ -921,28 +1020,29 @@ function createNewSubElement(inputId)
 /**
  * Creating new element into list of tasks/marks.
  * Before processing value is trimmed
- * @param inputId - id of input element which get name of new subject.
+ * @param itemIdInput
+ * @param timeIdInput
 **/
 function createNewElement(itemIdInput, timeIdInput)
 {
-	var blockForm = document.getElementById(itemIdInput).parentElement.parentElement;
-	var errorDivs = blockForm.getElementsByClassName("item__error");
+	const blockForm = document.getElementById(itemIdInput).parentElement.parentElement;
+	const errorDivs = blockForm.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var inputItem = document.getElementById(itemIdInput);
+	const inputItem = document.getElementById(itemIdInput);
 	inputItem.value = inputItem.value.trim();
 	
-	var inputTime = document.getElementById(timeIdInput);
+	const inputTime = document.getElementById(timeIdInput);
 	inputTime.value = inputTime.value.trim();
 	
 	if(checkItemName(inputItem) && isTimeValidForSave(inputTime))
 	{
-		var ul = document.getElementById("itemList");
-		var li = document.createElement("li"); 
+		const ul = document.getElementById("itemList");
+		const li = document.createElement("li");
 		li.classList.add("item__new");
- 		var value = inputItem.value + " " + "\u2192" + " "+ inputTime.value;
+ 		const value = inputItem.value + " " + "\u2192" + " "+ inputTime.value;
 		li.appendChild(document.createTextNode(value));
-		var img = document.createElement("img");
+		const img = document.createElement("img");
 		img.src = "/gaintimeoff/img/delete-16.png";
 		img.addEventListener("click", function() {
 			deleteElement(this.parentElement);
@@ -958,17 +1058,17 @@ function createNewElement(itemIdInput, timeIdInput)
 /**
  * Checking name of new element.
  * @param input - input element which get name of new item.
- * @returns result of checking. true - check was successful, false - check failed.
+ * @returns boolean of checking. true - check was successful, false - check failed.
 **/
 function checkItemName(input)
 {
-	var itemNameIsCorrect = true;
+	let itemNameIsCorrect = true;
 	
-	var newItems = document.getElementsByClassName("item__new");
-	var newItemsArr = Array.from(newItems);
+	const newItems = document.getElementsByClassName("item__new");
+	const newItemsArr = Array.from(newItems);
 	
-	var existingItems = document.getElementsByClassName("item-list__existing");
-	var existingItemsArr = Array.from(existingItems);
+	const existingItems = document.getElementsByClassName("item-list__existing");
+	const existingItemsArr = Array.from(existingItems);
 	
 	if(!isLengthMatch(input.value, input.min, input.max))
 	{
@@ -1002,8 +1102,8 @@ function checkItemName(input)
 /**
  * Checking repeated of elements.
  *  @param value - string for checking.
- * @param - list with elements
- * @returns result of checking. true - element is repeated, 
+ *  @param itemsList - list with elements
+ * @returns boolean of checking. true - element is repeated,
  * 								false - element isn't repeated.
 **/
 function checkRepeatedItem(value, itemsList)
@@ -1025,9 +1125,9 @@ function checkRepeatedItem(value, itemsList)
 
 /**
  * Checking unique of element.
- * @param item - element for checking.
- * @param - list with existing elements.
- * @returns result of checking. true - element is unique, 
+ * @param value - element for checking.
+ * @param itemsList - list with existing elements.
+ * @returns boolean of checking. true - element is unique,
  * 								false - element isn't unique.
 **/
 function checkUniqueItem(value, itemsList)
@@ -1053,19 +1153,19 @@ function checkUniqueItem(value, itemsList)
  */
 function handlerSavingNewSubjects(kidName)
 {
-	var errorDivs = document.getElementsByClassName("item__error");
+	const errorDivs = document.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var subjects = document.getElementsByClassName("item__new");
+	const subjects = document.getElementsByClassName("item__new");
 	if(subjects.length == 0)
 	{
-		var element = document.getElementById("formSubject");
+		const element = document.getElementById("formSubject");
 		addMessage(element, 'lg_err_no_new_el', "item__error");
 	}
 	else
 	{
-		var subjectsList = [];
-		for(var i=0; i<subjects.length; i++) 
+		const subjectsList = [];
+		for(let i=0; i<subjects.length; i++)
 		{
 			subjectsList.push(subjects[i].innerText);
 		}
@@ -1083,9 +1183,9 @@ function handlerSavingNewSubjects(kidName)
 **/
 function saveSubjects(kidName, subjects)
 {
-	var subjectsJSON = JSON.stringify(subjects);
+	const subjectsJSON = JSON.stringify(subjects);
 	
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
     {
     	if (this.readyState === 4 && this.status !== 200)
@@ -1102,11 +1202,11 @@ function saveSubjects(kidName, subjects)
 /**
  * Getting html code of subject block from server.
  * @param kidName - name of the kid.
- * @returns  html code of subject block from server.
+ * @returns  string html code of subject block from server.
 **/
 function getSubjectBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -1127,24 +1227,24 @@ function getSubjectBlock(kidName)
  */
 function handlerSavingNewMarks(kidName)
 {
-	var errorDivs = document.getElementsByClassName("item__error");
+	const errorDivs = document.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var marks = document.getElementsByClassName("item__new");
+	const marks = document.getElementsByClassName("item__new");
 	if(marks.length == 0)
 	{
-		var element = document.getElementById("formMark");
+		const element = document.getElementById("formMark");
 		addMessage(element, 'lg_err_no_new_el', "item__error");
 	}
 	else
 	{
-		var marksList = [];
-		for(var i=0; i<marks.length; i++) 
+		const marksList = [];
+		for(let i=0; i<marks.length; i++)
 		{
-			var markName = marks[i].innerText.split("\u2192")[0].trim();
-			var markTime = marks[i].innerText.split("\u2192")[1].trim();
+			const markName = marks[i].innerText.split("\u2192")[0].trim();
+			const markTime = marks[i].innerText.split("\u2192")[1].trim();
 			
-			var mark = new Object();
+			const mark = new Object();
 			mark.name = markName;
 			mark.gameTime = markTime;
 			marksList.push(mark);
@@ -1163,9 +1263,9 @@ function handlerSavingNewMarks(kidName)
 **/
 function saveMarks(kidName, marks)
 {
-	var marksJSON = JSON.stringify(marks);
+	const marksJSON = JSON.stringify(marks);
 	
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
     {
     	if (this.readyState === 4 && this.status !== 200)
@@ -1182,11 +1282,11 @@ function saveMarks(kidName, marks)
 /**
  * Getting html code of mark block from server by AJAX request.
  * @param kidName - name of the kid.
- * @returns  html code of mark block from server.
+ * @returns  string html code of mark block from server.
 **/
 function getMarkBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)
@@ -1207,24 +1307,24 @@ function getMarkBlock(kidName)
  */
 function handlerSavingNewTasks(kidName)
 {
-	var errorDivs = document.getElementsByClassName("item__error");
+	const errorDivs = document.getElementsByClassName("item__error");
 	deleteListElements(errorDivs);
 	
-	var tasks = document.getElementsByClassName("item__new");
+	const tasks = document.getElementsByClassName("item__new");
 	if(tasks.length == 0)
 	{
-		var element = document.getElementById("formTask");
+		const element = document.getElementById("formTask");
 		addMessage(element, 'lg_err_no_new_el', "item__error");
 	}
 	else
 	{
-		var tasksList = [];
-		for(var i=0; i<tasks.length; i++) 
+		const tasksList = [];
+		for(let i=0; i<tasks.length; i++)
 		{
-			var taskName = tasks[i].innerText.split("\u2192")[0].trim();
-			var taskTime = tasks[i].innerText.split("\u2192")[1].trim();
+			const taskName = tasks[i].innerText.split("\u2192")[0].trim();
+			const taskTime = tasks[i].innerText.split("\u2192")[1].trim();
 			
-			var task = new Object();
+			const task = new Object();
 			task.name = taskName;
 			task.gameTime = taskTime;
 			tasksList.push(task);
@@ -1243,9 +1343,9 @@ function handlerSavingNewTasks(kidName)
 **/
 function saveTasks(kidName, tasks)
 {
-	var tasksJSON = JSON.stringify(tasks);
+	const tasksJSON = JSON.stringify(tasks);
 	
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
     {
     	if (this.readyState === 4 && this.status !== 200)
@@ -1262,11 +1362,11 @@ function saveTasks(kidName, tasks)
 /**
  * Getting html code of task block from server by AJAX request.
  * @param kidName - name of the kid.
- * @returns  html code of task block from server.
+ * @returns  string html code of task block from server.
 **/
 function getTaskBlock(kidName)
 {
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
 	    if (this.readyState === 4 && this.status !== 200)

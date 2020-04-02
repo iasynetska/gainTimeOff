@@ -13,12 +13,12 @@ class DBDriver
         $this->pdo = $pdo;
     }
     
-    public function select($sql, array $params = [], $fetch = self::FETCH_ALL) 
+    public function select($sql, array $params = [], $fetch = self::FETCH_ALL, $fetchStyle = NULL)
     {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
         
-        return $fetch === self::FETCH_ALL ? $stmt->fetchAll() : $stmt->fetch();
+        return $fetch === self::FETCH_ALL ? $stmt->fetchAll($fetchStyle) : $stmt->fetch($fetchStyle);
     }
     
     public function insert($table, array $params)

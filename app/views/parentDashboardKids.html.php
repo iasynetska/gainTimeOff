@@ -19,7 +19,7 @@
 					<?=$dashboardTimeBlock?>
 				</div>
 			</div>
-			<div class="items-block d-flex flex-wrap justify-content-center">
+			<div class="container items-block d-flex flex-wrap justify-content-center">
 				<div  id="kidSubjectBlock" class="item d-flex flex-column align-items-center">
 					<?=$dashboardSubjectBlock?>
 				</div>
@@ -27,6 +27,11 @@
 					<?=$dashboardTaskBlock?>
 				</div>
 			</div>
+            <div class="container d-flex flex-column justify-content-center align-items-center">
+                <div id="kidReportReceivedMarksBlock" class="items-report d-flex flex-column align-items-center">
+                    <?=$dashboardReportReceivedMarksBlock?>
+                </div>
+            </div>
 		</div>
     </div>
 </main>

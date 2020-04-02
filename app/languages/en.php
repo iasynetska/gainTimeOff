@@ -73,6 +73,23 @@
         "lg_err_select_mark" => "Select mark!",
         "lg_err_select_task" => "Select task!",
         "lg_confirm_delete" => "You really want to delete profile?",
+        "lg_select_month" => "Select month",
+        "lg_name_months" => [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ],
+        "lg_select_year" => "Select year",
+        "lg_err_select_year" => "Choose year for report!",
         
         //dashboard kid
         "lg_your_time" => "Your time for game",

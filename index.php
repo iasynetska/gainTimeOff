@@ -65,6 +65,9 @@ switch($controller)
     case 'taskblock':
         $controller = 'TaskBlock';
         break;
+    case 'reportreceivedmarksblock':
+        $controller = 'ReportReceivedMarksBlock';
+        break;
         http_response_code(404);
         exit;
 }

@@ -45,8 +45,8 @@ class LangManager
     public function generateLangLinkParams($lang) {
         $getParameters = $this->request->getGetParams();
         $getParameters['lang'] = $lang;
-        $buildParametres = http_build_query($getParameters);
-        return '?' . $buildParametres;
+        $buildParameters = http_build_query($getParameters);
+        return '?' . $buildParameters;
     }
     
 }
