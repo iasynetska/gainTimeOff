@@ -40,7 +40,7 @@ class RestMarkController extends RestController
             {
                 $errors = $e->getErrors();
                 $this->request->addSessionParam('errors', $errors);
-                $this->redirect('/gaintimeoff/parent/adding-subjects-marks');
+                $this->redirect('/parent/adding-subjects-marks');
             }
         }
         

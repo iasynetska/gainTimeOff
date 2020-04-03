@@ -3,7 +3,7 @@
     
     <div class="dashboard-content flex-grow-1 d-flex flex-column">
         <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">
-            <form id="formAddingKid" class="adding-kid form" action="/gaintimeoff/kid/do-adding-kid" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id);">
+            <form id="formAddingKid" class="adding-kid form" action="/kid/do-adding-kid" method="post" enctype = "multipart/form-data" onsubmit="return validateForm(this.id);">
                 <div class="form__title">
                     <?=$lg_add_kid?>
                 </div>

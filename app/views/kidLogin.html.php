@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col flex-shrink-1">
-                <form id="formLoginKid" class="login-kid form" action="/gaintimeoff/kid/do-login" method="post" onsubmit="return validateForm(this.id)">
+                <form id="formLoginKid" class="login-kid form" action="/kid/do-login" method="post" onsubmit="return validateForm(this.id)">
                     <div class="form__title">
                         <?=$lg_kid?>
                     </div>

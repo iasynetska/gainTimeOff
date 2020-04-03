@@ -2,7 +2,7 @@
     <div class="content-header d-flex justify-content-end">
         <div class="content-header__logout">
         	<div class="logout-text"><?=$helloKid?></div>
-        	<div class="logout-link"><a href="/gaintimeoff/kid/logout"><?=$lg_logout?></a></div>
+        	<div class="logout-link"><a href="/kid/logout"><?=$lg_logout?></a></div>
         </div>
     </div>
     <div class="content-main flex-grow-1 d-flex justify-content-center align-items-center">

@@ -40,7 +40,7 @@ class RestTaskController extends RestController
             {
                 $errors = $e->getErrors();
                 $this->request->addSessionParam('errors', $errors);
-                $this->redirect('/gaintimeoff/parent/adding-tasks');
+                $this->redirect('/parent/adding-tasks');
             }
         }
         

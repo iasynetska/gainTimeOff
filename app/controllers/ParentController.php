@@ -97,12 +97,12 @@ class ParentController extends HtmlController
         if($parent)
         {
             $this->request->addSessionParam(self::PARENT_KEY, $parent);
-            $this->redirect('/gaintimeoff/parent/dashboard');
+            $this->redirect('/parent/dashboard');
         }
         else
         {
             $this->request->addSessionParam(self::LOGIN_FALSE_KEY, true);
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
     }
     
@@ -132,13 +132,13 @@ class ParentController extends HtmlController
                 'g-recaptcha-response' => $reCaptchaResponse
             ]);
 
-            $this->redirect('/gaintimeoff/parent/greeting');
+            $this->redirect('/parent/greeting');
         } 
         catch (ValidatorException $e) 
         {
             $errors = $e->getErrors();
             $this->request->addSessionParam('errors', $errors);
-            $this->redirect('/gaintimeoff/parent/registration');
+            $this->redirect('/parent/registration');
         }     
     }
     
@@ -165,7 +165,7 @@ class ParentController extends HtmlController
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
         
         $parent = $this->request->getSessionParam(self::PARENT_KEY);  
@@ -324,7 +324,7 @@ class ParentController extends HtmlController
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
         
         $this->title = 'Adding Kid';
@@ -371,7 +371,7 @@ class ParentController extends HtmlController
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
         
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
@@ -437,7 +437,7 @@ class ParentController extends HtmlController
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
         
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
@@ -485,7 +485,7 @@ class ParentController extends HtmlController
         
         if(!$this->request->getSessionParam(self::PARENT_KEY))
         {
-            $this->redirect('/gaintimeoff/parent/login');
+            $this->redirect('/parent/login');
         }
         
         $this->dynamicJS = DynamicJSProducer::produceJSLinks([DynamicJSProducer::JS_COMMON]);
@@ -532,6 +532,6 @@ class ParentController extends HtmlController
     {
         $this->request->deleteSessionParam('kids');
         $this->request->deleteSessionParam(self::PARENT_KEY);
-        $this->redirect('/gaintimeoff');
+        $this->redirect('/');
     }
 }

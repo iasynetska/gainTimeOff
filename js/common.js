@@ -213,7 +213,7 @@ function getMessage(messageName)
                throw JSON.parse(this.responseText).message;
            }
        };
-       xhttp.open("GET", "/gaintimeoff/message/get?messageName="+messageName, false);
+       xhttp.open("GET", "/message/get?messageName="+messageName, false);
        xhttp.send();
 
        const messageObject = JSON.parse(xhttp.responseText);
@@ -542,7 +542,7 @@ function getKidTimeBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/timeblock/get-dashboard-time-block?kidName="+kidName, false);
+	xhttp.open("GET", "/timeblock/get-dashboard-time-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -564,7 +564,7 @@ function getKidSubjectBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/subjectblock/get-dashboard-subject-block?kidName="+kidName, false);
+	xhttp.open("GET", "/subjectblock/get-dashboard-subject-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -586,7 +586,7 @@ function getKidTaskBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/taskblock/get-dashboard-task-block?kidName="+kidName, false);
+	xhttp.open("GET", "/taskblock/get-dashboard-task-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -608,7 +608,7 @@ function getKidReportReceivedMarksBlock(kidName, startDate='', endDate='')
             throw JSON.parse(this.responseText).message;
         }
     };
-    xhttp.open("GET", "/gaintimeoff/reportreceivedmarksblock/get-dashboard-report-received-marks-block?kidName="+kidName+"&startDate="+startDate+"&endDate="+endDate, false);
+    xhttp.open("GET", "/reportreceivedmarksblock/get-dashboard-report-received-marks-block?kidName="+kidName+"&startDate="+startDate+"&endDate="+endDate, false);
     xhttp.send();
 
     return xhttp.responseText;
@@ -800,7 +800,7 @@ function showMessageIfMarkNotSelected(marksListDiv, selectedMark)
 function saveReceivedMark(kidName, subjectName, markName)
 {
 	const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/gaintimeoff/restmark/save-received-mark", false);
+    xhttp.open("POST", "/restmark/save-received-mark", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjectName="+subjectName+"&markName="+markName);
     if(xhttp.status!==200)
@@ -854,7 +854,7 @@ function addCompletedTask(kidName)
 function saveCompletedTask(kidName, taskName)
 {	
 	const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/gaintimeoff/resttask/save-completed-task", false);
+    xhttp.open("POST", "/resttask/save-completed-task", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&taskName="+taskName);
     if(xhttp.status!==200)
@@ -902,7 +902,7 @@ function handlerTimePlay(kidName)
 function saveTimePlayed(kidName, timePlayed)
 {	
 	const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/gaintimeoff/resttime/save-time-played", false);
+    xhttp.open("POST", "/resttime/save-time-played", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&timePlayed="+timePlayed);
     if(xhttp.status!==200)
@@ -931,7 +931,7 @@ function handlerDeletingProfile(kidName)
         	}
             else
         	{
-                window.location.href = "/gaintimeoff/parent/dashboard";
+                window.location.href = "/parent/dashboard";
         	}
     	}
         catch(error)
@@ -950,7 +950,7 @@ function deleteKidProfile(kidName)
 {
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("POST", "/gaintimeoff/restkid/do-deleting-kid", false);
+    xhttp.open("POST", "/restkid/do-deleting-kid", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName);
     if(xhttp.status!==200)
@@ -975,7 +975,7 @@ function getKidBlock()
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/kidblock/get-dashboard-kid-block", false);
+	xhttp.open("GET", "/kidblock/get-dashboard-kid-block", false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -1193,7 +1193,7 @@ function saveSubjects(kidName, subjects)
             throw JSON.parse(this.responseText).message;
         }
     };
-    xhttp.open("POST", "/gaintimeoff/restsubject/do-saving-subject", false);
+    xhttp.open("POST", "/restsubject/do-saving-subject", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&subjects="+subjectsJSON);
 }
@@ -1214,7 +1214,7 @@ function getSubjectBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/subjectblock/get-adding-subject-block?kidName="+kidName, false);
+	xhttp.open("GET", "/subjectblock/get-adding-subject-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -1273,7 +1273,7 @@ function saveMarks(kidName, marks)
             throw JSON.parse(this.responseText).message;
         }
     };
-    xhttp.open("POST", "/gaintimeoff/restmark/do-saving-mark", false);
+    xhttp.open("POST", "/restmark/do-saving-mark", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&marks="+marksJSON);
 }
@@ -1294,7 +1294,7 @@ function getMarkBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/markblock/get-adding-mark-block?kidName="+kidName, false);
+	xhttp.open("GET", "/markblock/get-adding-mark-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;
@@ -1353,7 +1353,7 @@ function saveTasks(kidName, tasks)
             throw JSON.parse(this.responseText).message;
         }
     };
-    xhttp.open("POST", "/gaintimeoff/resttask/do-saving-task", false);
+    xhttp.open("POST", "/resttask/do-saving-task", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("kidName="+kidName+"&tasks="+tasksJSON);
 }
@@ -1374,7 +1374,7 @@ function getTaskBlock(kidName)
 	        throw JSON.parse(this.responseText).message;
 	    }
 	};
-	xhttp.open("GET", "/gaintimeoff/taskblock/get-adding-task-block?kidName="+kidName, false);
+	xhttp.open("GET", "/taskblock/get-adding-task-block?kidName="+kidName, false);
 	xhttp.send();
 	
 	return xhttp.responseText;

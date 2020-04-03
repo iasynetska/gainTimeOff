@@ -6,17 +6,17 @@
 
 	<ul class="top-menu__list">
 		<li onclick="location.href=./dashboard_parent_kids.php/';">
-			<a href="/gaintimeoff/parent/dashboard"><?=$lg_kids?></a>
+			<a href="/parent/dashboard"><?=$lg_kids?></a>
       	</li>
         <li onclick="location.href=\'add_kid.php\';">
-        	<a href="/gaintimeoff/parent/adding-kid"><?=$lg_add_kid?></a>
+        	<a href="/parent/adding-kid"><?=$lg_add_kid?></a>
     	</li>
     </ul>
 
     <div class="top-menu__block">
         <div class="block-content">
             <div class="block-content__text"><?=$helloParent?></div>
-            <div class="block-content__link"><a href="/gaintimeoff/parent/logout"><?=$lg_logout?></a></div>
+            <div class="block-content__link"><a href="/parent/logout"><?=$lg_logout?></a></div>
         </div>
     </div>
 </div>

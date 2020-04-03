@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col top-nav__logo d-flex align-items-center">
-                    <a href="/gaintimeoff">GainTimeOff</a>
+                    <a href="/">GainTimeOff</a>
                 </div>
                 <div class="col">
                     <ul class="top-nav__list d-flex justify-content-end">

@@ -43,7 +43,7 @@
             		    	<?php endforeach;?>
             			</ul>
         			<?php endif;?>
-        			<a class="form__link" href="/gaintimeoff/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_subjects_title?></a>
+        			<a class="form__link" href="/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_subjects_title?></a>
                 </div>
                 <div class="form items-block d-flex flex-wrap flex-column justify-content-start">
         			<h3 class="kids-title"><?=$lg_marks?></h3>
@@ -54,7 +54,7 @@
             		    	<?php endforeach;?>
             			</ul>
         			<?php endif;?>
-        			<a class="form__link" href="/gaintimeoff/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_marks_title?></a>
+        			<a class="form__link" href="/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_marks_title?></a>
                 </div>
                 <div class="form items-block d-flex flex-wrap flex-column justify-content-start">
         			<h3 class="kids-title"><?=$lg_tasks?></h3>
@@ -65,7 +65,7 @@
             		    	<?php endforeach;?>
             			</ul>
         			<?php endif;?>
-        			<a class="form__link" href="/gaintimeoff/parent/adding-tasks?kidName=<?=$kidName?>"><?=$lg_add_tasks_title?></a>
+        			<a class="form__link" href="/parent/adding-tasks?kidName=<?=$kidName?>"><?=$lg_add_tasks_title?></a>
                 </div>
 			</div>
      	</div>

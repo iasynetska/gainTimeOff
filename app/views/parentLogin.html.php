@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col flex-shrink-1">
-                <form id="formLoginParent" class="login-parent form" action="/gaintimeoff/parent/do-login" method="post" onsubmit="return validateForm(this.id)">
+                <form id="formLoginParent" class="login-parent form" action="/parent/do-login" method="post" onsubmit="return validateForm(this.id)">
                     <div class="form__title">
                         <?=$lg_parent?>
                     </div>
@@ -23,7 +23,7 @@
                     
                     <input id="subBtn" class="form__btn" type="submit" value="<?=$lg_login_submit?>" />
 
-                    <a class="form__link" href="/gaintimeoff/parent/registration"><?=$lg_link_registration?></a>
+                    <a class="form__link" href="/parent/registration"><?=$lg_link_registration?></a>
                 </form>
             </div>
         </div>  

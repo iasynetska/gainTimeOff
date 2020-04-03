@@ -49,12 +49,12 @@ class KidController extends HtmlController
         if($kid)
         {
             $this->request->addSessionParam(self::KID_KEY, $kid);
-            $this->redirect('/gaintimeoff/kid/dashboard');
+            $this->redirect('/kid/dashboard');
         }
         else
         {
             $this->request->addSessionParam(self::LOGIN_FALSE_KEY, true);
-            $this->redirect('/gaintimeoff/kid/login');
+            $this->redirect('/kid/login');
         }
     }
     
@@ -64,7 +64,7 @@ class KidController extends HtmlController
         
         if(!$this->request->getSessionParam(self::KID_KEY))
         {
-            $this->redirect('/gaintimeoff/kid/login');
+            $this->redirect('/kid/login');
         }
         
         $this->title = 'Kid dashboard';
@@ -113,13 +113,13 @@ class KidController extends HtmlController
             ]);
             
             $parent->resetKids();
-            $this->redirect('/gaintimeoff/parent/dashboard');
+            $this->redirect('/parent/dashboard');
         }
         catch (ValidatorException $e) 
         {
             $errors = $e->getErrors();
             $this->request->addSessionParam('errors', $errors);
-            $this->redirect('/gaintimeoff/parent/adding-kid');
+            $this->redirect('/parent/adding-kid');
         }
         
         $this->request->deleteSessionParam('kid_name');
@@ -130,6 +130,6 @@ class KidController extends HtmlController
     public function logoutAction()
     {
         $this->request->deleteSessionParam(self::KID_KEY);
-        $this->redirect('/gaintimeoff');
+        $this->redirect('/');
     }
 }

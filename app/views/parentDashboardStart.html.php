@@ -6,7 +6,7 @@
             <div class="content-main__block"  onclick="location.href='./adding-kid';">
                 <img src="/img/plus-128.png" alt="Add_kid">
                 <div class="content-main__text">
-                	<a href="/gaintimeoff/parent/add-kid"><?=$kidAdd?></a>
+                	<a href="/parent/add-kid"><?=$kidAdd?></a>
                 </div>
             </div>
         </div>

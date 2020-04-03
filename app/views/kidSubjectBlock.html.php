@@ -26,7 +26,7 @@
 	<div class="item-marks">
 	<?php if(empty($marks)):?>
 		<div class="item-marks__adding d-flex align-items-center">
-			<a class="form__link" href="/gaintimeoff/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_marks_title?></a>
+			<a class="form__link" href="/parent/adding-subjects-marks?kidName=<?=$kidName?>"><?=$lg_add_marks_title?></a>
 		</div>
 	<?php else:?>
 		<div class="item-marks__title"><?=$lg_select_mark?>&#58;</div>

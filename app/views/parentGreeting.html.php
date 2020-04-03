@@ -4,7 +4,7 @@
             <div class="col-auto flex-shrink-1">
                 <div class="message">
                     <p><?=sprintf($lg_greeting, $parentName)?></p> <br />
-                    <a class="form__link" href="/gaintimeoff/parent/login"><?=$lg_login_form?></a>
+                    <a class="form__link" href="/parent/login"><?=$lg_login_form?></a>
                 </div>
             </div>
         </div>
