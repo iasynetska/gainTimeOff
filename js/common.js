@@ -1,6 +1,6 @@
 const arrItemsKid = new Map();
 const arrMessages = new Map();
-const reCaptchaSelected = false;
+let reCaptchaSelected = false;
 
 
 /**
@@ -8,7 +8,7 @@ const reCaptchaSelected = false;
  */
 function selectReCaptcha()
 {
-    let reCaptchaSelected = true;
+    reCaptchaSelected = true;
 }
 
 
@@ -1006,7 +1006,7 @@ function createNewSubElement(inputId)
 		li.classList.add("item__new");
 		li.appendChild(document.createTextNode(input.value));
 		const img = document.createElement("img");
-		img.src = "/gaintimeoff/img/delete-16.png";
+		img.src = "/img/delete-16.png";
 		img.addEventListener("click", function() {
 			deleteElement(this.parentElement);
 		});
@@ -1043,7 +1043,7 @@ function createNewElement(itemIdInput, timeIdInput)
  		const value = inputItem.value + " " + "\u2192" + " "+ inputTime.value;
 		li.appendChild(document.createTextNode(value));
 		const img = document.createElement("img");
-		img.src = "/gaintimeoff/img/delete-16.png";
+		img.src = "/img/delete-16.png";
 		img.addEventListener("click", function() {
 			deleteElement(this.parentElement);
 		});

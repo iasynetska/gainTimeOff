@@ -17,7 +17,7 @@
             }
             ?>
         </select>
-        <img class="" src="/gaintimeoff/img/checked-32.png" onclick="getReportReceivedMarks('<?=$kidName?>');">
+        <img class="" src="/img/checked-32.png" onclick="getReportReceivedMarks('<?=$kidName?>');">
     </div>
 </div>
 

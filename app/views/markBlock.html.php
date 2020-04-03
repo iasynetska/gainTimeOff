@@ -5,7 +5,7 @@
     <div id="formMark" class="d-flex justify-content-between">
     	<input id="inputMark" placeholder="<?=$lg_new_mark?>" type="text" name="mark" min="1" max="2" maxlength="2" oninput="deleteBorderStyle(this)" />
     	<input id="inputTime" type="time" name="timeForMarks" oninput="deleteBorderStyle(this)" />
-    	<img class="item-new__img" src="/gaintimeoff/img/checked-32.png" onclick="createNewElement('inputMark', 'inputTime')">
+    	<img class="item-new__img" src="/img/checked-32.png" onclick="createNewElement('inputMark', 'inputTime')">
     </div>
 	<div class='item__error'><?=$error_mark?></div>
 </div> 

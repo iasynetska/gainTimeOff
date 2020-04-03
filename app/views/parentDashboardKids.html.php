@@ -6,7 +6,7 @@
 			<div class="container">
 				<h1 class="kids-title"><?=$kidsTitle?></h1>
 				<div class="kids-new">
-					<img class="kids-new__img" src="/gaintimeoff/img/plus-32.png" alt="Add kid" onclick="location.href='./adding-kid';" >
+					<img class="kids-new__img" src="/img/plus-32.png" alt="Add kid" onclick="location.href='./adding-kid';" >
 				</div>
 				<div id="kidsBlock" class="kids-block d-flex flex-wrap justify-content-center">
 					<?=$kidBlock?>

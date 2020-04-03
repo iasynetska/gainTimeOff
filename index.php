@@ -13,10 +13,10 @@ session_start();
 $uri = strtolower(explode('?', $_SERVER['REQUEST_URI'])[0]);
 $uriParts = explode('/', $uri);
 unset($uriParts[0]);
-if($uriParts[1] === 'gaintimeoff')
-{
-    unset($uriParts[1]);
-}
+//if($uriParts[1] === 'gaintimeoff')
+//{
+//    unset($uriParts[1]);
+//}
 $uriParts = array_values($uriParts);
 
 $controller = isset($uriParts[0]) && $uriParts[0] !== '' ? $uriParts[0] : 'homepage';

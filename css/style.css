@@ -368,8 +368,7 @@ body#parentDashboard {
   .item-subjects__adding img {
     margin-left: 10px; }
   .item-subjects, .item-tasks {
-    width: 100%;
-    margin-bottom: 10px; }
+    width: 100%; }
     .item-subjects__list, .item-tasks__list {
       width: 185px;
       outline: none;

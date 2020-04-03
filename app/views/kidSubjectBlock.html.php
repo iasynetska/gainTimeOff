@@ -2,13 +2,13 @@
 
 <div class="item-title"><?=$lg_school_subjects?></div>
 <?php if(empty($subjects) && empty($marks)):?>
-	<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
+	<img class="item-new__img" src="/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
 	<div class="item-add"><?=$lg_create_new?></div>
 <?php else:?>
 	<?php if(empty($subjects)):?>
 		<div class="item-subjects__adding d-flex align-items-center">
 			<div class="item-marks__title"><?=$lg_add_subjects_title?>&#58;</div>
-			<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
+			<img class="item-new__img" src="/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
 		</div>
 	<?php else:?>
 		<div class="item-subjects">
@@ -19,7 +19,7 @@
     		    	<option value = "<?=$subject->name?>"><?=$subject->name?></option>
 		    	<?php endforeach;?>
 		    	</select>
-  				<img class="item-new__img" src="/gaintimeoff/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
+  				<img class="item-new__img" src="/img/plus-32.png" onclick="location.href='./adding-subjects-marks?kidName=<?=$kidName?>';">
 			</div>
 		</div>
 	<?php endif;?>

@@ -69,7 +69,7 @@
                             <button id="add-file__btn flex-shrink-0" class="form__btn button" onclick="clickInputFile()" type="button"><?=$lg_choose_file?></button>
                             <span id="add-file__text" class="form__text">&hellip;</span>
                         </div>
-                            <img class="add-file__delete" src="/gaintimeoff/img/delete_file_32.png" onclick="clearFile()">
+                            <img class="add-file__delete" src="/img/delete_file_32.png" onclick="clearFile()">
 
                         <div class='form__error'><?=$error_photo?></div>
                     </div>

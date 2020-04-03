@@ -310,7 +310,7 @@ class ParentController extends HtmlController
     {
         if($kid->photo === NULL)
         {
-            return '/gaintimeoff/img/'.$kid->gender.'.png';
+            return '/img/'.$kid->gender.'.png';
         }
         else 
         {
