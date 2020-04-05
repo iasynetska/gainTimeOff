@@ -1,29 +1,29 @@
 <?php
 
 namespace core;
+
 use \PDO;
 
 class DbConnection
 {
     private static $pdo;
 
+
     public static function getPDO(): PDO
     {
-        if(!isset(self::$pdo))
-        {
-            $connectionParams = sprintf(
-                    '%s:host=%s;dbname=%s;charset=%s', 
-                    AppConfig::DB_TYPE, 
-                    AppConfig::DB_HOST, 
-                    AppConfig::DB_NAME, 
-                    AppConfig::DB_ENCODING);
+        if (!isset(self::$pdo)) {
+            $appConfig = new AppConfig();
 
-            self::$pdo = new \PDO(
-                    $connectionParams, 
-                    AppConfig::DB_USER, 
-                    AppConfig::DB_PASSWORD,
-                    [PDO::ATTR_EMULATE_PREPARES=>false, 
-                        PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
+            $connectionParams = sprintf(
+                '%s:host=%s;dbname=%s;user=%s;password=%s',
+                $appConfig->getDbType(),
+                $appConfig->getDbHost(),
+                $appConfig->getDbName(),
+                $appConfig->getDbUser(),
+                $appConfig->getDbPassword()
+            );
+
+            self::$pdo = new \PDO($connectionParams);
         }
         return self::$pdo;
     }

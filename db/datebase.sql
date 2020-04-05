@@ -1,3 +1,82 @@
+/**POSTGRES**/
+CREATE TABLE parents (
+    id serial,
+    name varchar(255) NOT NULL,
+    login varchar(255) NOT NULL UNIQUE,
+    email varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE kids (
+    id serial,
+    name varchar(255) NOT NULL,
+    gender varchar(50) NOT NULL,
+    login varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL,
+    date_of_birth date,
+    photo BYTEA,
+    parent_id int NOT NULL,
+    time_to_play int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (parent_id) REFERENCES parents (id)
+);
+
+CREATE TABLE subjects (
+    id serial,
+    name varchar(255) NOT NULL,
+    kid_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id)
+);
+
+CREATE TABLE marks (
+    id serial,
+    name int NOT NULL,
+    gameTime int NOT NULL,
+    kid_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id)
+);
+
+CREATE TABLE tasks (
+    id serial,
+    name varchar(255) NOT NULL,
+    gameTime int NOT NULL,
+    kid_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id)
+);
+
+CREATE TABLE received_marks (
+    id serial,
+    subject_id int NOT NULL,
+    mark_id int NOT NULL,
+    date date NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (subject_id) REFERENCES subjects (id),
+    FOREIGN KEY (mark_id) REFERENCES marks (id)
+);
+
+CREATE TABLE completed_tasks (
+    id serial,
+    task_id int NOT NULL,
+    date date NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (task_id) REFERENCES tasks (id)
+);
+
+CREATE TABLE time_to_play (
+    id serial,
+    time int NOT NULL,
+    date date NOT NULL,
+    kid_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (kid_id) REFERENCES kids (id)
+);
+
+
+/**MYSQL**/
 /*Create new datebase*/
 CREATE DATABASE gainTimeOff; 
 
@@ -87,3 +166,11 @@ CREATE TABLE time_to_play (
     PRIMARY KEY (id),
     FOREIGN KEY (kid_id) REFERENCES kids (id)
 );
+
+
+
+
+
+
+
+
